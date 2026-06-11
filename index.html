@@ -9,6 +9,7 @@
 <style>
 :root {
   --bg: #080808;
+  --panel: #0E0E0E;
   --accent: #29ABE2;
   --accent-soft: rgba(41, 171, 226, 0.14);
   --heading: #FFFFFF;
@@ -38,6 +39,17 @@ body {
   overflow-x: hidden;
 }
 
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(circle at 20% 10%, rgba(41, 171, 226, 0.12), transparent 28%),
+    radial-gradient(circle at 82% 24%, rgba(255, 255, 255, 0.05), transparent 24%),
+    var(--bg);
+}
+
 a {
   color: inherit;
   text-decoration: none;
@@ -55,6 +67,17 @@ img {
   background: rgba(8, 8, 8, 0.92);
   border-bottom: 1px solid var(--line);
   backdrop-filter: blur(16px);
+}
+
+.site-header::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(41, 171, 226, 0.8), transparent);
+  opacity: 0.72;
 }
 
 .header-inner,
@@ -78,6 +101,20 @@ img {
 .logo-img {
   width: 174px;
   height: auto;
+}
+
+.logo-fallback {
+  display: none;
+  color: var(--heading);
+  font-size: 19px;
+  font-weight: 900;
+  letter-spacing: 0.09em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.logo-fallback span {
+  color: var(--accent);
 }
 
 section {
@@ -141,10 +178,20 @@ p {
   transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
 }
 
+.btn-primary::after {
+  content: "→";
+  margin-left: 10px;
+  transition: transform 180ms ease;
+}
+
 .btn-primary:hover {
   background: #35B8EF;
   box-shadow: 0 12px 32px rgba(41, 171, 226, 0.28);
   transform: translateY(-2px);
+}
+
+.btn-primary:hover::after {
+  transform: translateX(4px);
 }
 
 .hero {
@@ -165,6 +212,7 @@ p {
     linear-gradient(90deg, rgba(41, 171, 226, 0.035) 1px, transparent 1px);
   background-size: 56px 56px;
   mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), transparent 84%);
+  animation: grid-drift 18s linear infinite;
 }
 
 .hero .wrap {
@@ -204,6 +252,7 @@ p {
   padding: 44px 0;
   border-top: 1px solid var(--accent-soft);
   border-bottom: 1px solid var(--accent-soft);
+  background: linear-gradient(90deg, rgba(41, 171, 226, 0.08), transparent 34%, rgba(41, 171, 226, 0.06));
 }
 
 .audit-inner {
@@ -236,11 +285,33 @@ p {
 }
 
 .outcome-block,
-.work-column,
+.process-step,
 .industry-tile {
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  background: transparent;
+  background: rgba(14, 14, 14, 0.72);
+  position: relative;
+  overflow: hidden;
+}
+
+.outcome-block::before,
+.process-step::before,
+.industry-tile::before,
+.proof-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(135deg, rgba(41, 171, 226, 0.18), transparent 38%);
+  opacity: 0;
+  transition: opacity 240ms ease;
+}
+
+.outcome-block:hover::before,
+.process-step:hover::before,
+.industry-tile:hover::before,
+.proof-card:hover::before {
+  opacity: 1;
 }
 
 .outcome-block {
@@ -249,46 +320,74 @@ p {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  transform: translateZ(0);
+  transition: border-color 220ms ease, transform 220ms ease;
 }
 
-.outcome-number {
+.outcome-icon {
+  width: 58px;
+  height: 58px;
+  border: 1px solid var(--accent-soft);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
   color: var(--accent);
-  font-size: 54px;
-  font-weight: 900;
-  line-height: 1;
+  background: rgba(41, 171, 226, 0.08);
+}
+
+.outcome-icon svg {
+  width: 28px;
+  height: 28px;
+}
+
+.outcome-block:hover {
+  border-color: var(--accent-soft);
+  transform: translateY(-4px);
 }
 
 .outcome-block h3,
-.work-column h3 {
+.process-step h3 {
   margin-bottom: 12px;
 }
 
-.work-column {
+.process-grid {
+  display: grid;
+  gap: 18px;
+}
+
+.process-step {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 28px;
   padding: 32px;
 }
 
-.work-column ul {
-  display: grid;
-  gap: 12px;
-  margin-top: 22px;
+.process-kicker {
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.process-step p {
+  max-width: 760px;
+}
+
+.process-step ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
   list-style: none;
 }
 
-.work-column li {
+.process-step li {
   position: relative;
-  padding-left: 18px;
+  padding: 8px 11px;
+  border: 1px solid var(--line);
   color: var(--body);
-}
-
-.work-column li::before {
-  content: "";
-  position: absolute;
-  top: 0.72em;
-  left: 0;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--accent);
+  font-size: 14px;
 }
 
 .industry-grid {
@@ -296,15 +395,87 @@ p {
 }
 
 .industry-tile {
-  min-height: 112px;
+  min-height: 138px;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 24px;
   color: var(--heading);
+  text-align: center;
+  transition: border-color 220ms ease, transform 220ms ease;
+}
+
+.industry-tile strong {
+  display: block;
+  color: var(--heading);
   font-size: clamp(17px, 2vw, 21px);
   font-weight: 800;
-  text-align: center;
+  line-height: 1.2;
+}
+
+.industry-tile span {
+  display: block;
+  max-width: 240px;
+  margin-top: 10px;
+  color: rgba(204, 204, 204, 0.76);
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.industry-tile:hover {
+  border-color: var(--accent-soft);
+  transform: translateY(-3px);
+}
+
+.proof {
+  padding: 86px 0;
+}
+
+.proof-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 40px;
+  align-items: stretch;
+}
+
+.proof-layout h2 {
+  margin-bottom: 18px;
+}
+
+.proof-layout > div > p {
+  max-width: 470px;
+}
+
+.proof-cards {
+  display: grid;
+  gap: 16px;
+}
+
+.proof-card {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: rgba(14, 14, 14, 0.72);
+  padding: 26px;
+}
+
+.proof-card strong {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--heading);
+  font-size: 18px;
+}
+
+.proof-card p {
+  font-size: 15px;
+}
+
+.proof-note {
+  margin-top: 18px;
+  color: rgba(204, 204, 204, 0.68);
+  font-size: 13px;
 }
 
 .geography-line {
@@ -347,12 +518,62 @@ p {
 .footer-inner {
   width: min(1120px, calc(100% - 40px));
   margin: 0 auto;
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: 1.1fr 1.4fr 1fr;
+  gap: 36px;
+  align-items: start;
 }
 
 .footer-inner .logo-img {
   width: 162px;
+}
+
+.footer-copy,
+.footer-contact,
+.footer-meta {
+  color: rgba(204, 204, 204, 0.74);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.footer-contact a,
+.footer-meta a {
+  color: var(--heading);
+  transition: color 180ms ease;
+}
+
+.footer-contact a:hover,
+.footer-meta a:hover {
+  color: var(--accent);
+}
+
+.footer-title {
+  margin-bottom: 10px;
+  color: var(--heading);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 640ms ease, transform 640ms ease;
+}
+
+.reveal.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes grid-drift {
+  from {
+    background-position: 0 0, 0 0;
+  }
+  to {
+    background-position: 56px 56px, 56px 56px;
+  }
 }
 
 @media (max-width: 900px) {
@@ -362,7 +583,12 @@ p {
 
   .audit-inner,
   .outcomes-grid,
-  .work-grid {
+  .proof-layout,
+  .footer-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .process-step {
     grid-template-columns: 1fr;
   }
 
@@ -414,7 +640,7 @@ p {
   }
 
   .outcome-block,
-  .work-column {
+  .process-step {
     padding: 26px;
   }
 
@@ -425,6 +651,25 @@ p {
   .credibility p {
     font-size: 24px;
   }
+
+  .process-step ul {
+    display: grid;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
 }
 </style>
 </head>
@@ -432,7 +677,8 @@ p {
 <header class="site-header">
   <div class="header-inner">
     <a href="#" class="logo-link" aria-label="Webwise Digital">
-      <img src="Webwise_Dark_Logo.png" alt="Webwise Digital" class="logo-img" />
+      <img src="Webwise_Dark_Logo.png" alt="Webwise Digital" class="logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='inline-block';" />
+      <span class="logo-fallback">Webwise <span>Digital</span></span>
     </a>
   </div>
 </header>
@@ -440,50 +686,55 @@ p {
 <main>
   <section class="hero" id="hero">
     <div class="wrap">
-      <h1>Your Next Customer Already Contacted You. Did You Respond In Time?</h1>
-      <div class="hero-subheadline" aria-label="Enquiries go unanswered. Follow-ups happen too late. Trust is never built. That is where revenue gets lost.">
+      <h1 class="reveal">Your Next Customer Already Contacted You. Did You Respond In Time?</h1>
+      <div class="hero-subheadline reveal" aria-label="Enquiries go unanswered. Follow-ups happen too late. Trust is never built. That is where revenue gets lost.">
         <span>Enquiries go unanswered.</span>
         <span>Follow-ups happen too late.</span>
         <span>Trust is never built.</span>
         <span>That is where revenue gets lost.</span>
       </div>
-      <p class="proof-statement">The faster you respond, the more likely a customer is to choose you over a competitor.</p>
-      <p class="supporting-statement">Webwise Digital helps clinics, restaurants, salons, real estate professionals, architects, and local service businesses capture more enquiries, respond faster, and build trust automatically.</p>
-      <div class="hero-actions">
+      <p class="proof-statement reveal">Fast replies turn warm enquiries into booked customers before competitors get a chance.</p>
+      <p class="supporting-statement reveal">Webwise Digital helps clinics, restaurants, salons, real estate professionals, architects, and local service businesses capture more enquiries, respond faster, and build trust automatically.</p>
+      <div class="hero-actions reveal">
         <a class="btn-primary" href="https://calendar.app.google/ZEpBJhBUKoqKtgqMA">See Where I'm Losing Customers</a>
       </div>
-    </div>
-  </section>
-
-  <section class="audit-strip" id="audit">
-    <div class="wrap audit-inner">
-      <div>
-        <h2>Book a Free 20-Minute AI Growth Audit</h2>
-        <p>In 20 minutes, we will show you where potential customers are slipping through the cracks — and what you can do to fix it.</p>
-      </div>
-      <a class="btn-primary" href="https://calendar.app.google/ZEpBJhBUKoqKtgqMA">See Where I'm Losing Customers</a>
     </div>
   </section>
 
   <section class="section-divider" id="outcomes">
     <div class="wrap">
       <div class="outcomes-grid">
-        <article class="outcome-block">
-          <div class="outcome-number">01</div>
+        <article class="outcome-block reveal">
+          <div class="outcome-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M4 5h16v10H8l-4 4V5Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+              <path d="M8 9h8M8 12h5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+            </svg>
+          </div>
           <div>
             <h3>Capture More Enquiries</h3>
             <p>We improve every place a customer first interacts with your business.</p>
           </div>
         </article>
-        <article class="outcome-block">
-          <div class="outcome-number">02</div>
+        <article class="outcome-block reveal">
+          <div class="outcome-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M12 7v5l3 2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M5 4.5 3.5 6M19 4.5 20.5 6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+              <path d="M12 21a8 8 0 1 0 0-16 8 8 0 0 0 0 16Z" stroke="currentColor" stroke-width="1.7"/>
+            </svg>
+          </div>
           <div>
             <h3>Respond Faster</h3>
             <p>We automate the first few minutes after a customer shows interest.</p>
           </div>
         </article>
-        <article class="outcome-block">
-          <div class="outcome-number">03</div>
+        <article class="outcome-block reveal">
+          <div class="outcome-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="m12 3 2.7 5.48 6.05.88-4.38 4.27 1.03 6.02L12 16.8l-5.4 2.85 1.03-6.02-4.38-4.27 6.05-.88L12 3Z" stroke="currentColor" stroke-width="1.55" stroke-linejoin="round"/>
+            </svg>
+          </div>
           <div>
             <h3>Build Trust Automatically</h3>
             <p>We help you collect and showcase proof that customers trust you.</p>
@@ -495,36 +746,82 @@ p {
 
   <section class="section-divider" id="how-it-works">
     <div class="wrap">
-      <div class="section-head">
+      <div class="section-head reveal">
         <h2>How It Works</h2>
       </div>
-      <div class="work-grid">
-        <article class="work-column">
-          <h3>Capture More Enquiries</h3>
-          <ul>
-            <li>AI-powered websites</li>
-            <li>Landing pages</li>
-            <li>Lead forms</li>
-            <li>WhatsApp entry points</li>
-          </ul>
+      <div class="process-grid">
+        <article class="process-step reveal">
+          <div class="process-kicker">Discovery</div>
+          <div>
+            <h3>A customer finds you and shows interest.</h3>
+            <p>Your website, landing page, lead form, or WhatsApp entry point gives them a clear next step instead of making them wait, search, or leave.</p>
+            <ul>
+              <li>AI-powered websites</li>
+              <li>Landing pages</li>
+              <li>Lead forms</li>
+              <li>WhatsApp entry points</li>
+            </ul>
+          </div>
         </article>
-        <article class="work-column">
-          <h3>Respond Faster</h3>
-          <ul>
-            <li>Instant WhatsApp replies</li>
-            <li>Qualification flows</li>
-            <li>Appointment booking</li>
-            <li>Follow-up sequences</li>
-          </ul>
+        <article class="process-step reveal">
+          <div class="process-kicker">Response</div>
+          <div>
+            <h3>They get a useful reply while the intent is still warm.</h3>
+            <p>The first few minutes are automated so the enquiry is acknowledged, qualified, and routed towards booking before a competitor takes the conversation.</p>
+            <ul>
+              <li>Instant WhatsApp replies</li>
+              <li>Qualification flows</li>
+              <li>Appointment booking</li>
+              <li>Follow-up sequences</li>
+            </ul>
+          </div>
         </article>
-        <article class="work-column">
-          <h3>Build Trust Automatically</h3>
-          <ul>
-            <li>Automated review requests</li>
-            <li>Reputation monitoring</li>
-            <li>Feedback systems</li>
-            <li>Testimonial display</li>
-          </ul>
+        <article class="process-step reveal">
+          <div class="process-kicker">Trust</div>
+          <div>
+            <h3>The relationship keeps building after the first interaction.</h3>
+            <p>Happy customers are prompted for reviews, private feedback is captured early, and proof is displayed where the next customer can see it.</p>
+            <ul>
+              <li>Automated review requests</li>
+              <li>Reputation monitoring</li>
+              <li>Feedback systems</li>
+              <li>Testimonial display</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="audit-strip" id="audit">
+    <div class="wrap audit-inner reveal">
+      <div>
+        <h2>Book a Free 20-Minute Growth Audit</h2>
+        <p>In 20 minutes, we will show you where potential customers are slipping through the cracks — and what you can do to fix it.</p>
+      </div>
+      <a class="btn-primary" href="https://calendar.app.google/ZEpBJhBUKoqKtgqMA">See Where I'm Losing Customers</a>
+    </div>
+  </section>
+
+  <section class="proof section-divider" id="proof">
+    <div class="wrap proof-layout">
+      <div class="reveal">
+        <h2>Customer Proof</h2>
+        <p>This section is ready for one verified customer result, testimonial, or review asset before paid traffic starts.</p>
+        <p class="proof-note">Use only approved client data here before launch.</p>
+      </div>
+      <div class="proof-cards">
+        <article class="proof-card reveal">
+          <strong>Verified result</strong>
+          <p>Use an approved result from a local business, such as enquiry lift, response time improvement, review growth, or booked appointments.</p>
+        </article>
+        <article class="proof-card reveal">
+          <strong>Customer quote</strong>
+          <p>Use a short customer testimonial that names the business type, location, and outcome.</p>
+        </article>
+        <article class="proof-card reveal">
+          <strong>Trust asset</strong>
+          <p>Use a client logo, review screenshot, or before-and-after snapshot once it is approved for public use.</p>
         </article>
       </div>
     </div>
@@ -532,29 +829,29 @@ p {
 
   <section class="section-divider" id="industries">
     <div class="wrap">
-      <div class="section-head">
+      <div class="section-head reveal">
         <h2>Who We Work With</h2>
       </div>
       <div class="industry-grid">
-        <div class="industry-tile">Clinics &amp; Doctors</div>
-        <div class="industry-tile">Restaurants &amp; Hospitality</div>
-        <div class="industry-tile">Salons &amp; Spas</div>
-        <div class="industry-tile">Real Estate Professionals</div>
-        <div class="industry-tile">Wedding Planners &amp; Caterers</div>
-        <div class="industry-tile">D2C Brands</div>
+        <div class="industry-tile reveal"><strong>Clinics &amp; Doctors</strong><span>Missed calls become missed appointments.</span></div>
+        <div class="industry-tile reveal"><strong>Restaurants &amp; Hospitality</strong><span>Slow replies lose bookings, tables, and event enquiries.</span></div>
+        <div class="industry-tile reveal"><strong>Salons &amp; Spas</strong><span>Late follow-ups leave chairs empty at peak hours.</span></div>
+        <div class="industry-tile reveal"><strong>Real Estate Professionals</strong><span>Cold follow-up loses high-intent property leads.</span></div>
+        <div class="industry-tile reveal"><strong>Wedding Planners &amp; Caterers</strong><span>Large-ticket enquiries need instant confidence.</span></div>
+        <div class="industry-tile reveal"><strong>D2C Brands</strong><span>Unanswered questions turn into abandoned carts.</span></div>
       </div>
-      <p class="geography-line">Based in Delhi NCR. Working with businesses across India.</p>
+      <p class="geography-line reveal">Based in Delhi NCR. Working with businesses across India.</p>
     </div>
   </section>
 
   <section class="credibility section-divider" id="credibility">
     <div class="wrap">
-      <p>Webwise Digital was founded by a business leader with 20+ years of experience across enterprise, digital, and growth-focused organisations — built on one belief: local businesses deserve the same customer systems that large companies take for granted.</p>
+      <p class="reveal">Webwise Digital was founded by a business leader with 20+ years of experience across enterprise, digital, and growth-focused organisations — built on one belief: local businesses deserve the same customer systems that large companies take for granted.</p>
     </div>
   </section>
 
   <section class="final-cta section-divider" id="final-cta">
-    <div class="wrap">
+    <div class="wrap reveal">
       <h2>Ready to Find Out Where You're Losing Customers?</h2>
       <p>No obligation. No pitch. Just clarity on where your business is leaking revenue.</p>
       <a class="btn-primary" href="https://calendar.app.google/ZEpBJhBUKoqKtgqMA">Book My Free 20-Minute Audit</a>
@@ -564,8 +861,46 @@ p {
 
 <footer class="site-footer">
   <div class="footer-inner">
-    <img src="Webwise_Dark_Logo.png" alt="Webwise Digital" class="logo-img" />
+    <div>
+      <img src="Webwise_Dark_Logo.png" alt="Webwise Digital" class="logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='inline-block';" />
+      <span class="logo-fallback">Webwise <span>Digital</span></span>
+      <p class="footer-copy">Customer capture, response automation, and trust systems for local businesses across India.</p>
+    </div>
+    <div class="footer-contact">
+      <div class="footer-title">Contact</div>
+      <p>
+        Webwise Digital Solutions<br />
+        S-53, Manish Global Mall, 2nd Floor<br />
+        Plot No. 2, Sector 22, Dwarka<br />
+        New Delhi — 110077
+      </p>
+    </div>
+    <div class="footer-meta">
+      <div class="footer-title">Reach Us</div>
+      <p>
+        <a href="mailto:Saurabh@webwisedigital.net">Saurabh@webwisedigital.net</a><br />
+        <a href="tel:+919654509382">+91-9654509382</a><br />
+        GST: 07AFRPC8163L1ZX<br />
+        <a href="https://wa.me/919654509382" target="_blank" rel="noreferrer">WhatsApp Us</a>
+      </p>
+    </div>
   </div>
 </footer>
+
+<script>
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('in-view');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.14 });
+
+document.querySelectorAll('.reveal').forEach((element, index) => {
+  element.style.transitionDelay = `${Math.min(index % 4, 3) * 80}ms`;
+  revealObserver.observe(element);
+});
+</script>
 </body>
 </html>
