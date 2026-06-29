@@ -1314,14 +1314,14 @@ gsap.to('.hero-grid', { x: x * 0.4, y: y * 0.4, duration:1.8, ease:'power2.out' 
 </script>
 <script>
 (function (Q, R) {
-    if (Q._qr_) return;
+    if (Q.__qr__) return;
     var u = 'https://webview.quickreply.ai/whatsapp/script-v2.min.js';
     var h = R.head || R.documentElement;
     var e = R.createElement('script');
     e.type = 'text/javascript';
     e.async = true;
     e.src = u;
-    Q._qr_ = {
+    Q.__qr__ = {
         brandSetting: {
             includePageLink: false,
             messageText: "Hello! How can we help you?",
