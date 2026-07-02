@@ -221,21 +221,58 @@ position:relative; overflow:hidden;
 .pain-text { font-size:17px; font-weight:700; line-height:1.45; color:var(--white); }
 .pain-who { margin-top:10px; font-size:12px; color:var(--muted); letter-spacing:1.5px; text-transform:uppercase; }
 /* ── RESULTS (moved up) ── */
-#results { background:var(--bg2); border-top:1px solid var(--border); }
-.results-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
-.res-card {
-background:var(--card); border:1px solid var(--border); border-radius:var(--r);
-padding:36px 32px; transition:border-color .3s, transform .3s;
+#results {
+  background: var(--bg2);
+  border-top: 1px solid var(--border);
 }
-.res-card:hover { border-color:var(--cyan); transform:translateY(-4px); }
-.res-niche { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--cyan); margin-bottom:22px; font-weight:500; }
-.res-metrics { display:flex; flex-direction:column; gap:14px; margin-bottom:24px; }
-.metric { display:flex; align-items:baseline; gap:8px; }
-.metric-n { font-size:34px; font-weight:900; color:var(--white); letter-spacing:-1px; line-height:1; }
-.metric-n span { color:var(--cyan); }
-.metric-l { font-size:13px; color:var(--muted); }
-.res-quote { font-size:14px; color:var(--muted); line-height:1.7; font-style:italic; border-top:1px solid var(--border); padding-top:18px; }
-.res-who { margin-top:10px; font-size:12px; color:var(--white); font-weight:500; font-style:normal; }
+
+.res-head {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto 56px;
+}
+
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.result-card {
+  position: relative;
+  min-height: 260px;
+  padding: 32px 28px;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background:
+    linear-gradient(180deg, rgba(41,171,226,0.08), rgba(17,17,17,0.96)),
+    var(--card);
+  overflow: hidden;
+  transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease;
+}
+
+.result-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(rgba(41,171,226,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(41,171,226,0.05) 1px, transparent 1px);
+  background-size: 28px 28px;
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+.result-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--cyan);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.32);
+}
+
+.result-metric {
+  position: relative;
+  z-index: 1;
+  margin
 /* ── MECHANISM ── */
 #mechanism { background:var(--bg); }
 .mech-inner { display:grid; grid-template-columns:1fr 1fr; gap:72px; align-items:center; }
@@ -833,118 +870,76 @@ Get My Free Revenue Leak Map →
 <div class="metric"><span class="metric-n">3<span>×</span></span><span class="metric-l">more WhatsApp enquiries in 30 days</span></div>
 <div class="metric"><span class="metric-n">4.8<span>★</span></span><span class="metric-l">Google rating (was 3.9)</span></div>
 </div>
-<div class="res-quote">"We used to miss enquiries every night. Now the system replies before I even see the notification."
-<div class="res-who">— Dr. Sharma, Clinic Owner</div>
-</div>
-</div>
-<div class="res-card sr">
-<div class="res-niche">Luxury Salon · Vasant Kunj</div>
-<div class="res-metrics">
-<div class="metric"><span class="metric-n">60<span>%</span></span><span class="metric-l">fewer no-shows in 6 weeks</span></div>
-<div class="metric"><span class="metric-n">₹22<span>k</span></span><span class="metric-l">recovered monthly from lapsed clients</span></div>
-</div>
-<div class="res-quote">"My staff was spending 3 hours a day on WhatsApp. That's now done by the system. They focus on clients."
-<div class="res-who">— Priya M., Salon Director</div>
-</div>
-</div>
-<div class="res-card sr">
-<div class="res-niche">Multi-Cuisine Restaurant · CP</div>
-<div class="res-metrics">
-<div class="metric"><span class="metric-n">2<span>×</span></span><span class="metric-l">Google Maps profile views in 60 days</span></div>
-<div class="metric"><span class="metric-n">47</span><span class="metric-l">new 5-star reviews in first month</span></div>
-</div>
-<div class="res-quote">"Customers started finding us on Maps who never knew we existed. We didn't spend a rupee on ads."
-<div class="res-who">— Rahul K., Owner</div>
+<section id="results">
+  <div class="wrap">
+    <div class="res-head sr">
+      <div class="label" style="justify-content:center;">What We Usually Find</div>
+      <h2 class="sec" style="text-align:center;">Small response gaps create big revenue leaks.</h2>
+      <p class="sub" style="text-align:center;max-width:720px;margin:0 auto;">Most local businesses do not have a lead problem. They have a speed, follow-up, and trust problem. That is where revenue quietly slips away.</p>
+    </div>
+
+    <div class="results-grid">
+      <article class="result-card sr">
+        <div class="result-metric">Missed first replies</div>
+        <p class="result-copy">Warm enquiries lose momentum when calls go unanswered or WhatsApp messages sit too long without a response.</p>
+      </article>
+
+      <article class="result-card sr">
+        <div class="result-metric">Booking friction</div>
+        <p class="result-copy">Interested customers drop off when scheduling takes too many steps or no clear next action is given.</p>
+      </article>
+
+      <article class="result-card sr">
+        <div class="result-metric">Trust not captured</div>
+        <p class="result-copy">Happy customers often leave with no review request, no testimonial capture, and no proof added back into the business.</p>
+      </article>
+    </div>
+  </div>
+</section>
 </div>
 </div>
 </div>
 </div>
 </section>
 <section id="mechanism">
-<div class="wrap">
-<div class="mech-inner">
-<div class="mech-text">
-<div class="label sr">The System</div>
-<h2 class="sr">The <em>Local Customer Capture System</em></h2>
-<p class="sr">Most agencies sell you a website and disappear. We sell you one integrated system — a <strong>conversion-ready website</strong>, <strong>WhatsApp automation</strong> that never sleeps, and a <strong>review engine</strong> that turns happy customers into your loudest salespeople.</p>
-<p class="sr sub">No ad budget. No tech team. No juggling 12 vendors. We build it in 14 days, you run your business.</p>
-</div>
-<div class="mech-flow sr">
-<div class="flow-label">How a customer goes from stranger to loyal client</div>
-<div class="flow-steps">
-<div class="flow-step">
-<div class="flow-num">1</div>
-<div class="flow-step-text"><div class="ft">They find you on Google Maps</div><div class="fd">Presence workflow keeps your listing sharp and ranked</div></div>
-</div>
-<div class="flow-step">
-<div class="flow-num">2</div>
-<div class="flow-step-text"><div class="ft">They message you on WhatsApp</div><div class="fd">Capture workflow replies in under 30 seconds, automatically</div></div>
-</div>
-<div class="flow-step">
-<div class="flow-num">3</div>
-<div class="flow-step-text"><div class="ft">They book an appointment</div><div class="fd">Appointments workflow confirms, reminds, and reschedules</div></div>
-</div>
-<div class="flow-step">
-<div class="flow-num">4</div>
-<div class="flow-step-text"><div class="ft">They leave a 5-star review</div><div class="fd">Reputation workflow requests it at the perfect moment</div></div>
-</div>
-<div class="flow-step">
-<div class="flow-num">5</div>
-<div class="flow-step-text"><div class="ft">They come back — and bring friends</div><div class="fd">Recovery workflow re-engages lapsed customers automatically</div></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="workflows">
-<div class="wrap">
-<div class="wf-header">
-<div class="label sr" style="justify-content:center">The 6 Growth Engines</div>
-<h2 class="sec sr">Six Growth Engines. <em>One Revenue System.</em></h2>
-<p class="sub sr" style="max-width:580px;margin:0 auto;">Each engine fixes a specific leak in your customer journey — from the moment someone finds you online to the moment they book, review, return, and refer.</p>
-</div>
-<div class="wf-tabs sr">
-<button class="tab-btn active" data-tab="capture">LeadFlow</button>
-<button class="tab-btn" data-tab="reputation">TrustScore</button>
-<button class="tab-btn" data-tab="appointments">SmartBook</button>
-<button class="tab-btn" data-tab="recovery">ReEngage</button>
-<button class="tab-btn" data-tab="assist">AutoAssist</button>
-<button class="tab-btn" data-tab="presence">LocalRank</button>
-</div>
-<div class="wf-panels">
-<div class="wf-panel active" id="tab-capture">
-<div><div class="wf-icon">📥</div><div class="wf-title">LeadFlow</div><div class="wf-desc">Turn website visits, WhatsApp messages, and social enquiries into qualified leads before they go cold. Every new enquiry gets an instant response, the right follow-up, and a clear path to book.</div>
-<ul class="wf-list"><li>Instant WhatsApp reply for every new enquiry</li><li>Lead forms connected directly to your WhatsApp/CRM</li><li>Smart qualification before human handoff</li><li>Missed enquiry follow-up sequence</li><li>Daily lead summary so nothing slips through</li></ul></div>
-<div class="wf-vis"><div class="wf-vis-lbl">Engine output</div><div class="wf-stat"><span class="wf-stat-k">First response</span><span class="wf-stat-v">Under 30 seconds</span></div><div class="wf-stat"><span class="wf-stat-k">Lead capture</span><span class="wf-stat-v">Website + WhatsApp + Social</span></div><div class="wf-stat"><span class="wf-stat-k">Follow-up</span><span class="wf-stat-v">3-touch sequence</span></div><div class="wf-stat"><span class="wf-stat-k">Best for</span><span class="wf-stat-v">Clinics · Salons · Restaurants</span></div></div>
-</div>
-<div class="wf-panel" id="tab-reputation">
-<div><div class="wf-icon">⭐</div><div class="wf-title">TrustScore</div><div class="wf-desc">More 5-star reviews mean more calls, more walk-ins, and more bookings. We automate review requests at the exact moment customers are happiest — while privately catching negative feedback before it damages your reputation.</div>
-<ul class="wf-list"><li>Automated Google review requests on WhatsApp</li><li>Review reminders sent after visits or purchases</li><li>Negative feedback routed privately</li><li>Google Business Profile reputation tracking</li><li>Monthly review growth report</li></ul></div>
-<div class="wf-vis"><div class="wf-vis-lbl">Engine output</div><div class="wf-stat"><span class="wf-stat-k">Avg rating lift</span><span class="wf-stat-v">3.2★ → 4.7★</span></div><div class="wf-stat"><span class="wf-stat-k">Review conversion</span><span class="wf-stat-v">34% ask→post</span></div><div class="wf-stat"><span class="wf-stat-k">Negative reviews</span><span class="wf-stat-v">Caught before live</span></div><div class="wf-stat"><span class="wf-stat-k">Platforms</span><span class="wf-stat-v">Google · Justdial</span></div></div>
-</div>
-<div class="wf-panel" id="tab-appointments">
-<div><div class="wf-icon">📅</div><div class="wf-title">SmartBook</div><div class="wf-desc">Stop depending on staff to chase confirmations manually. Customers can book, confirm, reschedule, and receive reminders through WhatsApp — so your calendar stays full and no-shows drop.</div>
-<ul class="wf-list"><li>WhatsApp-based booking confirmation</li><li>Automated reminders before appointments</li><li>Easy rescheduling without staff involvement</li><li>Google Calendar sync</li><li>Post-visit review trigger</li></ul></div>
-<div class="wf-vis"><div class="wf-vis-lbl">Engine output</div><div class="wf-stat"><span class="wf-stat-k">No-shows</span><span class="wf-stat-v">Reduced up to 60%</span></div><div class="wf-stat"><span class="wf-stat-k">Staff time saved</span><span class="wf-stat-v">3–4 hours/day</span></div><div class="wf-stat"><span class="wf-stat-k">Confirmations</span><span class="wf-stat-v">Automated</span></div><div class="wf-stat"><span class="wf-stat-k">Best for</span><span class="wf-stat-v">Clinics · Salons · Consultants</span></div></div>
-</div>
-<div class="wf-panel" id="tab-recovery">
-<div><div class="wf-icon">🔁</div><div class="wf-title">ReEngage</div><div class="wf-desc">Your past customers are the easiest people to sell to again. We bring back no-shows, abandoned enquiries, and lapsed customers with timely WhatsApp follow-ups that recover revenue automatically.</div>
-<ul class="wf-list"><li>No-show rebooking messages</li><li>Abandoned enquiry follow-up</li><li>Lapsed customer reactivation campaigns</li><li>Seasonal offer broadcasts</li><li>Revenue recovery tracking</li></ul></div>
-<div class="wf-vis"><div class="wf-vis-lbl">Engine output</div><div class="wf-stat"><span class="wf-stat-k">No-show recovery</span><span class="wf-stat-v">28% rebook</span></div><div class="wf-stat"><span class="wf-stat-k">Win-back window</span><span class="wf-stat-v">60–90 days</span></div><div class="wf-stat"><span class="wf-stat-k">Avg recovered</span><span class="wf-stat-v">₹18,000/mo</span></div><div class="wf-stat"><span class="wf-stat-k">Effort required</span><span class="wf-stat-v">Zero</span></div></div>
-</div>
-<div class="wf-panel" id="tab-assist">
-<div><div class="wf-icon">🤖</div><div class="wf-title">AutoAssist</div><div class="wf-desc">Give every customer an instant answer, even after hours. Your AI assistant handles FAQs, pricing, services, directions, and basic qualification — then hands off serious buyers to your team.</div>
-<ul class="wf-list"><li>Instant FAQ replies on WhatsApp</li><li>Pricing and service information shared automatically</li><li>Location, timing, and directions support</li><li>Hindi + English responses</li><li>Smart handoff when a human is needed</li></ul></div>
-<div class="wf-vis"><div class="wf-vis-lbl">Engine output</div><div class="wf-stat"><span class="wf-stat-k">Queries handled</span><span class="wf-stat-v">Up to 80%</span></div><div class="wf-stat"><span class="wf-stat-k">Availability</span><span class="wf-stat-v">24/7</span></div><div class="wf-stat"><span class="wf-stat-k">Languages</span><span class="wf-stat-v">Hindi + English</span></div><div class="wf-stat"><span class="wf-stat-k">Best for</span><span class="wf-stat-v">High-message-volume businesses</span></div></div>
-</div>
-<div class="wf-panel" id="tab-presence">
-<div><div class="wf-icon">🌐</div><div class="wf-title">LocalRank</div><div class="wf-desc">Show up where buyers are already searching. We optimise your Google Business Profile, local listings, and website presence so more high-intent customers find you before they find your competitors.</div>
-<ul class="wf-list"><li>Google Business Profile optimisation</li><li>Local SEO setup and monitoring</li><li>Consistent business listings across platforms</li><li>Monthly Google profile updates</li><li>Competitor visibility tracking</li></ul></div>
-<div class="wf-vis"><div class="wf-vis-lbl">Engine output</div><div class="wf-stat"><span class="wf-stat-k">Google profile views</span><span class="wf-stat-v">2× growth target</span></div><div class="wf-stat"><span class="wf-stat-k">Local ranking</span><span class="wf-stat-v">Top 3 goal</span></div><div class="wf-stat"><span class="wf-stat-k">Listings covered</span><span class="wf-stat-v">12+ platforms</span></div><div class="wf-stat"><span class="wf-stat-k">Best for</span><span class="wf-stat-v">Local search-dependent businesses</span></div></div>
-</div>
-</div>
-</div>
+  <div class="wrap">
+    <div class="mech-inner">
+      <div class="mech-text">
+        <div class="label sr">How We Work</div>
+        <h2 class="sec sr">How We Work With Local Businesses</h2>
+        <p class="sub sr">We don't throw random tools at your business. We diagnose the leak, isolate the friction, and design a system that makes every enquiry easier to convert.</p>
+      </div>
+
+      <div class="mech-flow sr">
+        <div class="flow-label">A simple 3-step system</div>
+        <div class="flow-steps">
+          <div class="flow-step">
+            <div class="flow-num">1</div>
+            <div class="flow-step-text">
+              <div class="ft">Diagnose</div>
+              <div class="fd">We map exactly where your business is losing customers: missed calls, unanswered WhatsApp enquiries, reviews that never arrive, and bookings that fall through. Most businesses do not realise how much is slipping away until we show them.</div>
+            </div>
+          </div>
+
+          <div class="flow-step">
+            <div class="flow-num">2</div>
+            <div class="flow-step-text">
+              <div class="ft">Identify Gaps</div>
+              <div class="fd">We pinpoint the exact missing pieces: response speed, booking friction, review collection, and local search visibility. No guesswork. Just a clear view of what is broken and what it is costing you.</div>
+            </div>
+          </div>
+
+          <div class="flow-step">
+            <div class="flow-num">3</div>
+            <div class="flow-step-text">
+              <div class="ft">Blueprint</div>
+              <div class="fd">You do not get a generic plan. We build a simple customised system around your business so enquiries convert, customers return, and nothing falls through the cracks.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 <section id="niches">
 <div class="wrap">
