@@ -52,7 +52,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .menu-toggle.open span:nth-child(2){opacity:0;}
 .menu-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
 .mobile-menu{display:none;position:fixed;top:68px;left:14px;right:14px;z-index:99;background:rgba(15,15,15,.98);border:1px solid var(--border);border-radius:12px;padding:14px;box-shadow:0 18px 60px rgba(0,0,0,.42);}
-.mobile-menu.open{display:block;}
 .mobile-menu a{display:block;padding:13px 12px;border-bottom:1px solid var(--border);font-size:14px;color:var(--white);}
 .mobile-menu a:last-child{border-bottom:0;}
 section{padding:96px 56px;}
@@ -108,9 +107,8 @@ h2.sec{font-size:clamp(30px,3vw,46px);font-weight:900;letter-spacing:-1.5px;line
 .handoff-k{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--teal);margin-bottom:8px;}
 .handoff-v{font-size:13px;color:var(--white);line-height:1.6;}
 #proof-strip{padding:0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--bg2);overflow:hidden;}
-.marquee-outer{display:flex;padding:20px 0;}
-.marquee-inner{display:flex;align-items:center;gap:48px;animation:mq 24s linear infinite;flex-shrink:0;white-space:nowrap;}
-@keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.marquee-outer{display:flex;justify-content:center;padding:20px 18px;}
+.marquee-inner{width:100%;display:flex;align-items:center;justify-content:center;gap:12px 28px;flex-wrap:wrap;white-space:normal;}
 .mq-item{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--muted);}
 .mq-sep{width:4px;height:4px;background:var(--border);border-radius:50%;flex-shrink:0;}
 #problem,#security,#faq,#cta{background:var(--bg2);border-top:1px solid var(--border);}
@@ -241,6 +239,11 @@ footer{padding:44px 28px;}
 .nav-right .nav-link{display:none;}
 .nav-cta{display:none;}
 .menu-toggle{display:flex;}
+.mobile-menu.open{display:block;}
+}
+@media(min-width:1025px){
+.mobile-menu,.mobile-menu.open{display:none!important;}
+.menu-toggle{display:none!important;}
 }
 @media(max-width:640px){
 section{padding:56px 18px;}
@@ -424,17 +427,7 @@ footer{padding:40px 18px 104px;}
 <div class="mq-item">Admin data only</div><div class="mq-sep"></div>
 <div class="mq-item">CRM or Google Sheet</div><div class="mq-sep"></div>
 <div class="mq-item">Reception queue</div><div class="mq-sep"></div>
-<div class="mq-item">Clinic-safe setup</div><div class="mq-sep"></div>
-<div class="mq-item">Fast enquiry replies</div><div class="mq-sep"></div>
-<div class="mq-item">Booking requests</div><div class="mq-sep"></div>
-<div class="mq-item">WhatsApp reminders</div><div class="mq-sep"></div>
-<div class="mq-item">Google review asks</div><div class="mq-sep"></div>
-<div class="mq-item">Human handoff</div><div class="mq-sep"></div>
-<div class="mq-item">No clinical records</div><div class="mq-sep"></div>
-<div class="mq-item">Admin data only</div><div class="mq-sep"></div>
-<div class="mq-item">CRM or Google Sheet</div><div class="mq-sep"></div>
-<div class="mq-item">Reception queue</div><div class="mq-sep"></div>
-<div class="mq-item">Clinic-safe setup</div><div class="mq-sep"></div>
+<div class="mq-item">Clinic-safe setup</div>
 </div>
 </div>
 </div>
@@ -817,6 +810,9 @@ if(menu.contains(event.target) || event.target.closest('.menu-toggle'))return;
 closeMenu();
 });
 window.addEventListener('scroll', closeMenu, { passive:true });
+window.addEventListener('resize', () => {
+if(window.innerWidth > 1024) closeMenu();
+});
 function formatInr(value){
 return 'INR '+Math.round(value).toLocaleString('en-IN');
 }
