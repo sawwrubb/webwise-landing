@@ -177,9 +177,9 @@ h2.sec{font-size:clamp(30px,3vw,46px);font-weight:900;letter-spacing:-1.5px;line
 .flow-n{font-size:11px;font-weight:900;color:var(--blue);margin-bottom:6px;}
 .flow-t{font-size:12px;color:var(--white);font-weight:700;line-height:1.35;}
 .flow-arrow{display:none;}
-.guarantee{background:linear-gradient(135deg,rgba(41,171,226,.12),rgba(0,212,170,.07));border:1px solid rgba(41,171,226,.22);border-radius:18px;padding:42px;display:grid;grid-template-columns:1.15fr .85fr;gap:38px;align-items:center;}
-.guarantee h2{font-size:clamp(28px,3vw,44px);font-weight:900;letter-spacing:-1.4px;line-height:1.08;margin-bottom:16px;}
-.guarantee p{color:var(--muted);font-size:15px;line-height:1.8;margin-bottom:14px;}
+.demo-panel{background:linear-gradient(135deg,rgba(41,171,226,.12),rgba(0,212,170,.07));border:1px solid rgba(41,171,226,.22);border-radius:18px;padding:42px;display:grid;grid-template-columns:1.15fr .85fr;gap:38px;align-items:center;}
+.demo-panel h2{font-size:clamp(28px,3vw,44px);font-weight:900;letter-spacing:-1.4px;line-height:1.08;margin-bottom:16px;}
+.demo-panel p{color:var(--muted);font-size:15px;line-height:1.8;margin-bottom:14px;}
 .terms{background:rgba(10,22,39,.48);border:1px solid var(--border);border-radius:12px;padding:22px;}
 .terms-k{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--teal);margin-bottom:12px;font-weight:800;}
 .terms ul{list-style:none;display:flex;flex-direction:column;gap:10px;}
@@ -275,7 +275,7 @@ section{padding:72px 28px;}
 .dashboard-mock{grid-template-columns:1fr;}
 nav{padding:16px 28px;}
 footer{padding:44px 28px;}
-.hero-inner,.split,.guarantee,.cta-inner{grid-template-columns:1fr;}
+.hero-inner,.split,.demo-panel,.cta-inner{grid-template-columns:1fr;}
 .sticky-copy{position:static;}
 .card-grid,.card-grid.three{grid-template-columns:repeat(2,1fr);}
 .calc-grid{grid-template-columns:1fr;}
@@ -314,7 +314,7 @@ h1{font-size:clamp(36px,11vw,48px);line-height:1.02;letter-spacing:-1.5px;}
 .mockup-visual{padding:18px;margin-top:26px;}
 .dash-row{grid-template-columns:1fr;gap:4px;}
 .card-grid,.card-grid.three{grid-template-columns:1fr;}
-.cost-card,.flow-card,.guarantee,.lead-form{padding:26px 18px;}
+.cost-card,.flow-card,.demo-panel,.lead-form{padding:26px 18px;}
 .compare-row{display:block;border-bottom:1px solid var(--border);}
 .compare-cell{border-right:0;border-bottom:1px solid var(--border);padding:14px 16px;}
 .compare-cell:last-child{border-bottom:0;}
@@ -355,14 +355,6 @@ footer{padding:40px 18px 104px;}
       "@type": "FAQPage",
       "@id": "https://www.webwisedigital.net/clinics-doctors/#faq-schema",
       "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "You have not done a clinic before. Why should I go first?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "The first-clinic offer is defined in the signed proposal. We agree the inputs in writing on day one and review them at day 30, so both sides count the same way."
-          }
-        },
         {
           "@type": "Question",
           "name": "Does this chatbot diagnose patients?",
@@ -585,7 +577,7 @@ footer{padding:40px 18px 104px;}
 </section>
 <section id="demo-proof">
 <div class="wrap">
-<div class="guarantee">
+<div class="demo-panel">
 <div>
 <div class="label">See It Before You Buy It</div>
 <h2>Ask for a working clinic demo before you buy.</h2>
@@ -600,28 +592,6 @@ footer{padding:40px 18px 104px;}
 <li>Captures booking requests for human confirm.</li>
 <li>Routes clinical or unclear questions to a person.</li>
 <li>Shows you the tone before you pay.</li>
-</ul>
-</div>
-</div>
-</div>
-</section>
-<section id="first-clinic">
-<div class="wrap">
-<div class="split">
-<div class="copy">
-<div class="label">First Clinic Advantage</div>
-<h2 class="big-copy">You would be our first clinic. That is the point.</h2>
-<p>We are not going to pretend we have clinic case studies if we do not. We have built the same kind of system for local business workflows, and clinics are the next focused niche.</p>
-<p>So the terms should reflect that. You get a founding rate, a clear 30-day check, and a system built around your actual front desk.</p>
-</div>
-<div class="terms">
-<div class="terms-k">First-clinic guarantee</div>
-<ul>
-<li>This page summarises the offer. The signed proposal will define the guarantee terms.</li>
-<li>We agree the inputs in writing on day one: missed enquiries, average patient value, and your stated booking rate.</li>
-<li>At day 30, we review enquiries captured, bookings made, and no-shows prevented against those inputs.</li>
-<li>Founding rate locked for 12 months.</li>
-<li>Your results become the case study only if you approve it.</li>
 </ul>
 </div>
 </div>
@@ -849,11 +819,6 @@ footer{padding:40px 18px 104px;}
 <div class="compare-cell">Email support, SLA queue</div>
 <div class="compare-cell highlight">One person in Delhi, on WhatsApp</div>
 </div>
-<div class="compare-row">
-<div class="compare-cell label">Guarantee</div>
-<div class="compare-cell">None</div>
-<div class="compare-cell highlight">First-clinic terms written into the signed proposal</div>
-</div>
 </div>
 <p class="compare-close" style="text-align:center;max-width:640px;margin:40px auto 0;">A platform login costs less because you do the work. Webwise costs more because we build it, run it, and stand behind it. Your time is worth more than the difference.</p>
 </div>
@@ -894,7 +859,6 @@ footer{padding:40px 18px 104px;}
 <div class="label" style="justify-content:center;">Questions Doctors Ask</div>
 <h2 class="sec" style="text-align:center;">Clear answers before you try it.</h2>
 <div class="faq-grid" style="margin-top:48px;">
-<div class="faq-item" onclick="toggleFaq(this)"><div class="faq-q">You have not done a clinic before. Why should I go first?<span class="arrow">+</span></div><div class="faq-a">The first-clinic offer is defined in the signed proposal. We agree the inputs in writing on day one and review them at day 30, so both sides count the same way.</div></div>
 <div class="faq-item" onclick="toggleFaq(this)"><div class="faq-q">Does this chatbot diagnose patients?<span class="arrow">+</span></div><div class="faq-a">No. Logistics only: timings, bookings, reminders, reviews, and handoff. Any clinical question routes to your team.</div></div>
 <div class="faq-item" onclick="toggleFaq(this)"><div class="faq-q">What patient data does it hold?<span class="arrow">+</span></div><div class="faq-a">Name, phone number, preferred slot, and admin notes you approve. It does not see or store clinical records.</div></div>
 <div class="faq-item" onclick="toggleFaq(this)"><div class="faq-q">Does it work in Hindi?<span class="arrow">+</span></div><div class="faq-a">The flow can be configured for Hindi and English. We confirm the exact language behaviour during setup before anything goes live.</div></div>
@@ -911,7 +875,7 @@ footer{padding:40px 18px 104px;}
 <div class="cta-left">
 <div class="label">Final CTA</div>
 <h2>Let me show you what this looks like for <em>your clinic.</em></h2>
-<p class="sub">A working WhatsApp flow built on your clinic type, patient flow, and follow-up process. Not a slide deck. The first-clinic guarantee will be defined in writing before the build starts.</p>
+<p class="sub">A working WhatsApp flow built on your clinic type, patient flow, and follow-up process. Not a slide deck. You review the actual front-desk journey before approving the build.</p>
 <div class="cta-bullets">
 <div class="cta-bullet"><div class="ck-icon">✦</div><div><strong>We map your leakage</strong> using your enquiry volume, patient value, and reply time.</div></div>
 <div class="cta-bullet"><div class="ck-icon">✦</div><div><strong>You test a live demo</strong> before approving the build.</div></div>
