@@ -106,6 +106,39 @@ h2.sec{font-size:clamp(30px,3vw,46px);font-weight:900;letter-spacing:-1.5px;line
 .handoff{margin-top:18px;background:rgba(0,212,170,.08);border:1px solid rgba(0,212,170,.20);border-radius:12px;padding:14px;}
 .handoff-k{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--teal);margin-bottom:8px;}
 .handoff-v{font-size:13px;color:var(--white);line-height:1.6;}
+.social-proof{padding:28px 56px;background:var(--bg);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+.proof-bar{max-width:1180px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:24px;}
+.proof-bar-title{font-size:13px;font-weight:900;letter-spacing:2px;text-transform:uppercase;color:var(--white);white-space:nowrap;}
+.proof-cats{display:flex;align-items:center;justify-content:flex-end;gap:10px;flex-wrap:wrap;}
+.proof-cat{display:inline-flex;align-items:center;gap:8px;background:var(--bg3);border:1px solid var(--border);border-radius:100px;padding:8px 13px;font-size:12px;font-weight:800;color:var(--muted);}
+.proof-cat span{color:var(--blue);font-size:10px;letter-spacing:1px;}
+.mockup-visual{margin-top:34px;background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px;box-shadow:0 18px 54px rgba(0,0,0,.22);}
+.mockup-kicker{font-size:11px;font-weight:900;letter-spacing:2px;text-transform:uppercase;color:var(--blue);margin-bottom:18px;}
+.split-mockups{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+.mini-phone{background:#0b141a;border:1px solid rgba(242,242,238,.08);border-radius:18px;padding:14px;min-height:260px;display:flex;flex-direction:column;box-shadow:inset 0 0 0 1px rgba(255,255,255,.03);}
+.mini-phone-head{display:flex;align-items:center;justify-content:space-between;gap:12px;border-bottom:1px solid rgba(255,255,255,.08);padding-bottom:10px;margin-bottom:14px;font-size:12px;font-weight:900;color:#f2f2ee;}
+.mini-phone-badge{font-size:10px;font-weight:900;color:var(--teal);background:rgba(0,212,170,.10);border:1px solid rgba(0,212,170,.22);border-radius:100px;padding:4px 8px;white-space:nowrap;}
+.mini-chat{display:flex;flex-direction:column;gap:10px;flex:1;}
+.wa-msg{max-width:88%;border-radius:13px;padding:11px 12px;font-size:12px;line-height:1.5;}
+.wa-msg.patient{background:#202c33;color:#f2f2ee;align-self:flex-start;}
+.wa-msg.bot{background:#005c4b;color:#fff;align-self:flex-end;font-weight:700;}
+.wa-msg.note{background:rgba(41,171,226,.12);border:1px solid var(--border);color:#f2f2ee;align-self:center;text-align:center;font-weight:800;}
+.wa-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:auto;padding-top:12px;}
+.wa-action{border:1px solid rgba(41,171,226,.28);color:var(--blue);border-radius:100px;padding:6px 9px;font-size:11px;font-weight:900;}
+.dashboard-mock{display:grid;grid-template-columns:1.1fr .9fr;gap:18px;align-items:stretch;}
+.dash-panel,.dash-thread{background:var(--bg3);border:1px solid var(--border);border-radius:12px;padding:16px;}
+.dash-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px;}
+.dash-title{font-size:13px;font-weight:900;color:var(--white);}
+.dash-pill{font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:1px;border:1px solid rgba(0,212,170,.22);background:rgba(0,212,170,.08);color:var(--teal);border-radius:100px;padding:5px 8px;white-space:nowrap;}
+.dash-row{display:grid;grid-template-columns:72px 1fr auto;gap:10px;align-items:center;border-top:1px solid var(--border);padding:12px 0;font-size:12px;color:var(--muted);}
+.dash-row:first-of-type{border-top:0;}
+.dash-role{font-weight:900;color:var(--white);}
+.dash-status{font-size:10px;font-weight:900;color:var(--blue);text-transform:uppercase;letter-spacing:1px;}
+.dash-thread{display:flex;flex-direction:column;gap:10px;}
+.thread-item{border:1px solid var(--border);border-radius:10px;padding:12px;background:rgba(8,8,8,.35);}
+.thread-name{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:12px;font-weight:900;color:var(--white);margin-bottom:6px;}
+.thread-copy{font-size:12px;color:var(--muted);line-height:1.55;}
+.thread-tag{font-size:10px;font-weight:900;color:var(--teal);background:rgba(0,212,170,.10);border:1px solid rgba(0,212,170,.22);border-radius:100px;padding:4px 7px;white-space:nowrap;}
 #proof-strip{padding:0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--bg2);overflow:hidden;}
 .marquee-outer{display:flex;justify-content:center;padding:20px 18px;}
 .marquee-inner{width:100%;display:flex;align-items:center;justify-content:center;gap:12px 28px;flex-wrap:wrap;white-space:normal;}
@@ -236,6 +269,10 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:56px;}
 ::-webkit-scrollbar-thumb{background:var(--blue);border-radius:2px;}
 @media(max-width:1024px){
 section{padding:72px 28px;}
+.social-proof{padding:24px 28px;}
+.proof-bar{align-items:flex-start;flex-direction:column;}
+.proof-cats{justify-content:flex-start;}
+.dashboard-mock{grid-template-columns:1fr;}
 nav{padding:16px 28px;}
 footer{padding:44px 28px;}
 .hero-inner,.split,.guarantee,.cta-inner{grid-template-columns:1fr;}
@@ -269,7 +306,13 @@ h1{font-size:clamp(36px,11vw,48px);line-height:1.02;letter-spacing:-1.5px;}
 .hero-inner{gap:34px;}
 .hero-ctas{align-items:stretch;flex-direction:column;}
 .btn-primary{padding:14px 18px;}
-.phone-card{display:none;}
+.phone-card{max-width:390px;margin:4px auto 0;padding:14px;}
+.social-proof{padding:22px 18px;}
+.proof-bar-title{white-space:normal;line-height:1.4;}
+.proof-cat{width:calc(50% - 5px);justify-content:center;text-align:center;}
+.split-mockups{grid-template-columns:1fr;}
+.mockup-visual{padding:18px;margin-top:26px;}
+.dash-row{grid-template-columns:1fr;gap:4px;}
 .card-grid,.card-grid.three{grid-template-columns:1fr;}
 .cost-card,.flow-card,.guarantee,.lead-form{padding:26px 18px;}
 .compare-row{display:block;border-bottom:1px solid var(--border);}
@@ -317,7 +360,7 @@ footer{padding:40px 18px 104px;}
           "name": "You have not done a clinic before. Why should I go first?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "The first-clinic offer is defined in the signed proposal. Inputs are agreed in writing on day one and reviewed at day 30, so both sides count the same way."
+            "text": "The first-clinic offer is defined in the signed proposal. We agree the inputs in writing on day one and review them at day 30, so both sides count the same way."
           }
         },
         {
@@ -325,7 +368,7 @@ footer{padding:40px 18px 104px;}
           "name": "Does this chatbot diagnose patients?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "No. It handles logistics such as timings, bookings, reminders, reviews, and human handoff. Clinical questions route to the clinic team."
+            "text": "No. Logistics only: timings, bookings, reminders, reviews, and handoff. Any clinical question routes to your team."
           }
         },
         {
@@ -333,7 +376,39 @@ footer{padding:40px 18px 104px;}
           "name": "What patient data does it hold?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "It uses admin details such as name, phone number, preferred slot, and approved admin notes. It does not see or store clinical records."
+            "text": "Name, phone number, preferred slot, and admin notes you approve. It does not see or store clinical records."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does it work in Hindi?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The flow can be configured for Hindi and English. We confirm the exact language behaviour during setup before anything goes live."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Who sets it up?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We do. You share timings, services, fees, branches, and handoff rules. Your team only needs a short setup call."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What if my receptionist will not use it?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It does not replace her. It reduces repeat typing. What reaches her is shorter, cleaner, and already sorted."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "We have three branches. Does that work?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Separate numbers and timings per branch can be supported, with one dashboard across all locations."
           }
         },
         {
@@ -341,7 +416,7 @@ footer{padding:40px 18px 104px;}
           "name": "Can I cancel?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. The offer is monthly with no lock-in and no setup fee. The clinic owns its records and accounts."
+            "text": "Yes. Monthly, no lock-in, no setup fee. You own your records and accounts."
           }
         }
       ]
@@ -415,7 +490,7 @@ footer{padding:40px 18px 104px;}
 <div class="bubble in m1">Hi, is the doctor available tomorrow evening?</div>
 <div class="typing t1" aria-label="Bot is typing"><span></span><span></span><span></span></div>
 <div class="bubble out m2">Yes. Please share your name, phone number, and preferred time. The clinic team will confirm your slot.</div>
-<div class="bubble in m3">Rohan Mehta, 6 PM. First visit.</div>
+<div class="bubble in m3">Rahul Mehta, 6 PM. First visit.</div>
 <div class="typing t2" aria-label="Bot is typing"><span></span><span></span><span></span></div>
 <div class="bubble out m4">Thank you. Your request is recorded. You will get a confirmation and reminder on WhatsApp.</div>
 </div>
@@ -424,6 +499,19 @@ footer{padding:40px 18px 104px;}
 <div class="handoff-v">Clinical questions, complaints, and unclear requests route to your team instead of being answered by the flow.</div>
 </div>
 </div>
+</div>
+</div>
+</section>
+<section class="social-proof" aria-label="Business categories supported by Webwise Digital">
+<div class="proof-bar">
+<div class="proof-bar-title">Trusted by Business Across Pan India</div>
+<div class="proof-cats">
+<div class="proof-cat"><span>01</span> Clinics</div>
+<div class="proof-cat"><span>02</span> Salons</div>
+<div class="proof-cat"><span>03</span> Restaurants</div>
+<div class="proof-cat"><span>04</span> Hospitality</div>
+<div class="proof-cat"><span>05</span> Real Estate</div>
+<div class="proof-cat"><span>06</span> D2C Brands</div>
 </div>
 </div>
 </section>
@@ -552,6 +640,35 @@ footer{padding:40px 18px 104px;}
 <div class="feature-card"><div class="feature-num">5</div><div class="feature-title">Follow-up reminder</div><div class="feature-desc">"Your follow-up with Dr. [name] is due on [date]." Sent 7 days ahead, so the second visit is not left to memory.</div></div>
 <div class="feature-card"><div class="feature-num">6</div><div class="feature-title">Feedback &amp; reviews</div><div class="feature-desc">After the visit, every patient is asked for feedback and invited to leave a Google review. A low score also pings your team privately, so you can put it right before it becomes public.</div></div>
 </div>
+<div class="mockup-visual" aria-label="Reminder and review WhatsApp flow mockup">
+<div class="mockup-kicker">Reminder &amp; Review Flow</div>
+<div class="split-mockups">
+<div class="mini-phone">
+<div class="mini-phone-head"><span>Appointment Reminder</span><span class="mini-phone-badge">Auto-sent</span></div>
+<div class="mini-chat">
+<div class="wa-msg bot">Your appointment with Dr. [name] is tomorrow at 10 AM. Tap to confirm or reschedule.</div>
+<div class="wa-actions">
+<div class="wa-action">Confirm</div>
+<div class="wa-action">Reschedule</div>
+</div>
+<div class="wa-msg patient">Confirm</div>
+<div class="wa-msg note">Reception view updated</div>
+</div>
+</div>
+<div class="mini-phone">
+<div class="mini-phone-head"><span>Post-visit Follow-up</span><span class="mini-phone-badge">Review ask</span></div>
+<div class="mini-chat">
+<div class="wa-msg bot">How was your visit?</div>
+<div class="wa-msg bot">Leave a Google review →</div>
+<div class="wa-actions">
+<div class="wa-action">Open Google</div>
+<div class="wa-action">Share feedback</div>
+</div>
+<div class="wa-msg note">Low scores alert your team privately</div>
+</div>
+</div>
+</div>
+</div>
 </div>
 </section>
 <section id="flow">
@@ -566,6 +683,31 @@ footer{padding:40px 18px 104px;}
 <div class="flow-node"><div class="flow-n">05</div><div class="flow-t">Reminder sent</div></div>
 <div class="flow-node"><div class="flow-n">06</div><div class="flow-t">Clinic visit</div></div>
 <div class="flow-node"><div class="flow-n">07</div><div class="flow-t">Review request</div></div>
+</div>
+<div class="mockup-visual dashboard-mock" aria-label="Shared inbox dashboard mockup">
+<div class="dash-panel">
+<div class="dash-top">
+<div class="dash-title">Shared Clinic Inbox</div>
+<div class="dash-pill">No clinical data</div>
+</div>
+<div class="dash-row"><div class="dash-role">Reception</div><div>New booking requests and slot changes</div><div class="dash-status">Active</div></div>
+<div class="dash-row"><div class="dash-role">Doctor</div><div>Only threads handed over by staff</div><div class="dash-status">View</div></div>
+<div class="dash-row"><div class="dash-role">Staff</div><div>Reports, bills, reminders, and reviews</div><div class="dash-status">Queue</div></div>
+</div>
+<div class="dash-thread">
+<div class="dash-top">
+<div class="dash-title">Today</div>
+<div class="dash-pill">Human handoff</div>
+</div>
+<div class="thread-item">
+<div class="thread-name">Rahul Mehta <span class="thread-tag">Handoff</span></div>
+<div class="thread-copy">Patient asked a clinical question. The flow stopped and routed the thread to reception.</div>
+</div>
+<div class="thread-item">
+<div class="thread-name">Asha Verma <span class="thread-tag">Reminder</span></div>
+<div class="thread-copy">Appointment reminder sent. Patient confirmed the slot from WhatsApp.</div>
+</div>
+</div>
 </div>
 </div>
 </div>
