@@ -586,6 +586,17 @@ background: #25D366; color: #fff; font-weight: 700; font-size: 15px;
 padding: 14px 28px; border-radius: 8px; transition: opacity .2s;
 }
 .form-success .fs-wa:hover { opacity: 0.9; }
+.form-error {
+background: rgba(255,120,100,.10);
+border: 1px solid rgba(255,120,100,.30);
+border-radius: 10px;
+padding: 12px 14px;
+margin-top: 14px;
+color: #FFD5CC;
+font-size: 13px;
+line-height: 1.6;
+display: none;
+}
 .wa-cta-link {
 display: block; text-align: center; margin-top: 14px;
 font-size: 13px; color: var(--muted); transition: color .2s;
@@ -1090,6 +1101,7 @@ Get My Free Revenue Leak Map →
 <button class="form-btn" id="form-submit-btn" onclick="submitForm()">
 <span>Show Me What's Leaking Revenue →</span>
 </button>
+<div class="form-error" id="form-error"></div>
 <a href="https://wa.me/918796504200?text=Hi%2C%20I%20want%20my%20free%20Revenue%20Leak%20Map%20for%20my%20business" target="_blank" class="wa-cta-link">📱 Prefer WhatsApp? Send your details now →</a>
 <div class="form-trust">No pitch. No pressure. No spam.<br/>You'll get a clear plan — free.</div>
 </div>
@@ -1128,6 +1140,12 @@ New Delhi — 110077<br/><br/>
 </div>
 </footer>
 <script>
+const WEBWISE_CONFIG = {
+whatsappNumber: '918796504200',
+leadEndpoint: 'https://wwds.app.n8n.cloud/webhook/webwise-lead-capture',
+gaId: '',
+searchConsoleVerification: ''
+};
 // Nav shrink on scroll
 window.addEventListener('scroll', () => {
 const isMobile = window.innerWidth < 640;
@@ -1153,6 +1171,11 @@ const wa      = document.getElementById('f-wa');
 const type    = document.getElementById('f-type');
 const url     = document.getElementById('f-url');
 const btn     = document.getElementById('form-submit-btn');
+const errorBox = document.getElementById('form-error');
+if (errorBox) {
+errorBox.style.display = 'none';
+errorBox.innerHTML = '';
+}
 // Validate
 let valid = true;
 [name, wa, type].forEach(el => {
@@ -1173,19 +1196,6 @@ profile_url:    url.value.trim(),
 submitted_at:   new Date().toISOString(),
 source:         'Webwise Landing Page'
 };
-// Show loading
-btn.innerHTML = '<span>Sending...</span>';
-btn.disabled = true;
-// Send to n8n webhook
-const WEBHOOK_URL = 'https://wwds.app.n8n.cloud/webhook/webwise-lead-capture';
-fetch(WEBHOOK_URL, {
-method: 'POST',
-headers: { 'Content-Type': 'application/json' },
-body: JSON.stringify(data)
-})
-.catch(() => {}) // silently fail — still show success + WhatsApp
-.finally(() => {
-// Build prefilled WhatsApp message
 const msg = encodeURIComponent(
 `Hi Saurabh, I just filled the Revenue Leak Map form on your website.\n\n` +
 `Business: ${data.business_name}\n` +
@@ -1194,6 +1204,18 @@ const msg = encodeURIComponent(
 `My WhatsApp: ${data.whatsapp}\n\n` +
 `Please send me my Revenue Leak Map!`
 );
+// Show loading
+btn.innerHTML = '<span>Sending...</span>';
+btn.disabled = true;
+// Send to n8n webhook
+const WEBHOOK_URL = WEBWISE_CONFIG.leadEndpoint;
+fetch(WEBHOOK_URL, {
+method: 'POST',
+headers: { 'Content-Type': 'application/json' },
+body: JSON.stringify(data)
+})
+.then(res => {
+if (!res.ok) throw new Error('Lead endpoint returned ' + res.status);
 // Show success state
 document.querySelector('.lead-form').innerHTML = `
 <div class="form-success">
@@ -1208,6 +1230,14 @@ For <strong>priority review</strong>, message us on WhatsApp now and we will con
 </a>
 </div>
 `;
+})
+.catch(() => {
+btn.innerHTML = '<span>Show Me What&#39;s Leaking Revenue →</span>';
+btn.disabled = false;
+if (errorBox) {
+errorBox.innerHTML = `We could not confirm the form submission. Please send the same details on WhatsApp so the lead does not get missed: <a href="https://wa.me/${WEBWISE_CONFIG.whatsappNumber}?text=${msg}" target="_blank" rel="noopener" style="color:#fff;text-decoration:underline;">message Webwise now</a>.`;
+errorBox.style.display = 'block';
+}
 });
 }
 // ── Exit Intent ───────────────────────────────────────
