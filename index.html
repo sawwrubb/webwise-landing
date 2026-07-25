@@ -25,7 +25,7 @@
       "url": "https://www.webwisedigital.net/",
       "email": "saurabh@webwisedigital.net",
       "telephone": "+918796504200",
-      "logo": "https://www.webwisedigital.net/favicon.svg",
+      "logo": "https://www.webwisedigital.net/webwise-logo.png",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "S-53, Manish Global Mall, 2nd Floor, Plot No. 2, Sector 22, Dwarka",
@@ -41,7 +41,7 @@
       "url": "https://www.webwisedigital.net/",
       "email": "saurabh@webwisedigital.net",
       "telephone": "+918796504200",
-      "image": "https://www.webwisedigital.net/favicon.svg",
+      "image": "https://www.webwisedigital.net/webwise-logo.png",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "S-53, Manish Global Mall, 2nd Floor, Plot No. 2, Sector 22, Dwarka",
@@ -66,6 +66,104 @@
       "parentOrganization": {
         "@id": "https://www.webwisedigital.net/#organization"
       }
+    },
+    {
+      "@type": "Service",
+      "@id": "https://www.webwisedigital.net/#service",
+      "name": "Local Business Acquisition System",
+      "provider": {
+        "@id": "https://www.webwisedigital.net/#localbusiness"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "India"
+      },
+      "serviceType": "Website, WhatsApp automation, review automation, and local business lead capture",
+      "audience": {
+        "@type": "Audience",
+        "audienceType": "Local business owners in India"
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Webwise Digital local business systems",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "WhatsApp lead capture automation"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Google review automation"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Appointment and follow-up workflows"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://www.webwisedigital.net/#faq-schema",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Do I need to spend on ads?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Our system works through WhatsApp automation, Google Maps optimisation, and review management — organic channels that cost nothing to run once set up. Zero ad spend required."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need to understand tech?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Not at all. We build everything. Your team gets a 30-minute training and a simple dashboard. If something breaks, you call us — not a support ticket system."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Will this work with my existing WhatsApp?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. We work with your existing WhatsApp Business number. No new number needed. We set up the automation layer on top of what you already have."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What if I already have a website?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We audit it first. If it's converting well, we keep it and focus on WhatsApp + reviews. If it's leaking leads, we'll tell you honestly and rebuild only what's needed."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How fast can this go live?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "14 days from sign-off. That's our standard. If we miss it, your first month is free — no questions asked. We've delivered on time for every client so far."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens after 30 days?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The system runs itself. We send a monthly report, monitor for issues, and are available on WhatsApp if anything needs attention. You're never left alone with a system you don't understand."
+          }
+        }
+      ]
     }
   ]
 }
@@ -285,6 +383,16 @@ position:relative; overflow:hidden;
 .pain-card:nth-child(4) .pain-q { color:#B464FF; }
 .pain-text { font-size:17px; font-weight:700; line-height:1.45; color:var(--white); }
 .pain-who { margin-top:10px; font-size:12px; color:var(--muted); letter-spacing:1.5px; text-transform:uppercase; }
+/* ── REVENUE LEAK CALCULATOR ── */
+#calculator { background:var(--bg2); border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
+.calc-card { background:var(--card); border:1px solid var(--border); border-radius:16px; padding:36px; }
+.calc-top { display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:start; }
+.calc-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+.calc-result { margin-top:22px; background:linear-gradient(135deg,var(--cyan-dim),rgba(0,212,170,.08)); border:1px solid var(--border); border-radius:14px; padding:24px; }
+.calc-result-k { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--muted); font-weight:700; margin-bottom:8px; }
+.calc-result-v { font-size:clamp(32px,4vw,50px); font-weight:900; color:var(--white); letter-spacing:-1.5px; line-height:1; }
+.calc-result-sub { font-size:13px; color:var(--muted); line-height:1.7; margin-top:10px; }
+.calc-actions { display:flex; align-items:center; gap:14px; flex-wrap:wrap; margin-top:24px; }
 /* ── RESULTS (moved up) ── */
 #results { background:var(--bg2); border-top:1px solid var(--border); }
 .results-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
@@ -635,6 +743,7 @@ border-radius: 7px; border: none; cursor: pointer;
 white-space: nowrap; flex-shrink: 0; transition: background .2s;
 }
 .sticky-cta-btn:hover { background: #fff; }
+@media(min-width: 769px) { #sticky-cta { display: none !important; } }
 @media(max-width: 768px) { #sticky-cta { display: block; } }
 /* ── FORM IMPROVEMENTS ── */
 .field input.error, .field select.error { border-color: #ff6b6b; }
@@ -678,6 +787,7 @@ footer{padding:44px 28px;}
 .hero-inner,.pain-layout,.mech-inner,.why-inner,.offer-inner,.cta-inner{grid-template-columns:1fr;}
 .hero-stats{display:none;}
 .results-grid,.niches-grid{grid-template-columns:repeat(2,1fr);}
+.calc-top,.calc-grid{grid-template-columns:1fr;}
 .how-steps{grid-template-columns:1fr;gap:4px;}
 .how-steps::before{display:none;}
 .step-c{border-radius:var(--r)!important;}
@@ -706,6 +816,8 @@ h1{font-size:clamp(36px,11vw,48px);line-height:1.02;letter-spacing:-1.5px;}
 .btn-primary{justify-content:center;text-align:center;padding:14px 18px;}
 .hero-proof{gap:12px;}
 .results-grid,.niches-grid{grid-template-columns:1fr;}
+.calc-card{padding:26px 18px;}
+.calc-actions{align-items:stretch;flex-direction:column;}
 .wf-panel{grid-template-columns:1fr;padding:28px 22px;}
 .footer-inner{grid-template-columns:1fr;gap:30px;}
 footer{padding:40px 18px 104px;}
@@ -731,7 +843,7 @@ footer{padding:40px 18px 104px;}
 #sticky-cta{padding:10px 12px;}
 .sticky-cta-text .ss{display:none;}
 .sticky-cta-btn{padding:10px 12px;}
-.qr_wa_icon{bottom:72px!important;right:14px!important;}
+.qr_wa_icon{display:none!important;}
 .cta-visible .qr_wa_icon{display:none!important;}
 }
 </style>
@@ -753,7 +865,7 @@ footer{padding:40px 18px 104px;}
 <div class="st">Free Revenue Leak Map</div>
 <div class="ss">14-day go-live · No ad spend needed</div>
 </div>
-<button class="sticky-cta-btn" onclick="document.getElementById('cta').scrollIntoView({behavior:'smooth'})">Get Mine Free →</button>
+<button class="sticky-cta-btn" onclick="trackEvent('whatsapp_sticky');window.open('https://wa.me/918796504200?text=Hi%2C%20I%20want%20my%20free%20Revenue%20Leak%20Map%20for%20my%20business','_blank','noopener')">Get Mine Free →</button>
 </div>
 </div>
 <div id="exit-popup">
@@ -791,7 +903,7 @@ Get My Free Revenue Leak Map →
 <div class="nav-right">
 <a href="#results" class="nav-link">Results</a>
 <a href="/blog/" class="nav-link">Blog</a>
-<a href="#cta" class="nav-cta"><span class="nav-cta-desktop">Get Free Revenue Leak Map</span><span class="nav-cta-mobile">Free Audit</span> →</a>
+<a href="https://wa.me/918796504200?text=Hi%2C%20I%20want%20my%20free%20Revenue%20Leak%20Map%20for%20my%20business" target="_blank" rel="noopener" class="nav-cta" data-track="whatsapp_nav"><span class="nav-cta-desktop">Get Free Revenue Leak Map</span><span class="nav-cta-mobile">Free Audit</span> →</a>
 </div>
 </nav>
 <section id="hero">
@@ -810,7 +922,7 @@ Get My Free Revenue Leak Map →
 <strong>Reply faster. Build your reputation. Fill your calendar.</strong></p>
 <div class="zero-ads">₹0 ad spend needed — our system works through WhatsApp, reviews &amp; local search</div>
 <div class="hero-ctas">
-<a href="#cta" class="btn-primary">Get My Free Revenue Leak Map →</a>
+<a href="https://wa.me/918796504200?text=Hi%2C%20I%20want%20my%20free%20Revenue%20Leak%20Map%20for%20my%20business" target="_blank" rel="noopener" class="btn-primary" data-track="whatsapp_hero">Get My Free Revenue Leak Map →</a>
 <a href="#how" class="btn-ghost">See how it works ↓</a>
 </div>
 <p class="cta-note"><em>It&#39;s free, it takes 2 minutes, and it will show you exactly where you&#39;re losing money.</em></p>
@@ -893,6 +1005,40 @@ Get My Free Revenue Leak Map →
 <div class="pain-q">"</div>
 <div class="pain-text">My competitor's salon shows up on Google Maps. Mine doesn't. Same area, same services.</div>
 <div class="pain-who">Spa Owner · Dwarka</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="calculator">
+<div class="wrap">
+<div class="calc-card">
+<div class="calc-top">
+<div>
+<div class="label">Revenue Leak Calculator</div>
+<h2 class="sec">Put your numbers in. <em>See the monthly leak.</em></h2>
+<p class="sub">Use this as a working estimate before the audit. Your actual numbers may differ.</p>
+</div>
+<div>
+<div class="calc-grid">
+<div class="field">
+<label>Missed enquiries per week</label>
+<input id="calc-enquiries" type="number" min="0" value="5" oninput="updateRevenueCalculator()" />
+</div>
+<div class="field">
+<label>Average order value</label>
+<input id="calc-value" type="number" min="0" value="3000" oninput="updateRevenueCalculator()" />
+</div>
+</div>
+<div class="calc-result">
+<div class="calc-result-k">Estimated revenue leak</div>
+<div class="calc-result-v" id="calc-result">₹60,000/mo</div>
+<div class="calc-result-sub" id="calc-result-sub">Based on 20 missed enquiries per month. Annual leak: ₹7,20,000. Your numbers may differ.</div>
+</div>
+<div class="calc-actions">
+<a href="https://wa.me/918796504200?text=Hi%2C%20I%20used%20the%20Revenue%20Leak%20Calculator%20and%20want%20to%20see%20the%20WhatsApp%20demo." target="_blank" rel="noopener" class="btn-primary" data-track="whatsapp_calculator">Get My Free Revenue Leak Map →</a>
+<a href="#cta" class="btn-ghost">Use the form instead ↓</a>
+</div>
 </div>
 </div>
 </div>
@@ -1211,6 +1357,33 @@ leadEndpoint: 'https://wwds.app.n8n.cloud/webhook/webwise-lead-capture',
 gaId: 'G-JPEVGCV4QP',
 searchConsoleVerification: ''
 };
+function trackEvent(name, params = {}) {
+if (typeof window.gtag === 'function') {
+window.gtag('event', name, params);
+}
+}
+function formatInr(value) {
+return '₹' + Math.round(value).toLocaleString('en-IN');
+}
+function updateRevenueCalculator(shouldTrack = true) {
+const enquiries = Number(document.getElementById('calc-enquiries')?.value || 0);
+const orderValue = Number(document.getElementById('calc-value')?.value || 0);
+const missedPerMonth = Math.max(0, enquiries * 4);
+const monthlyLeak = missedPerMonth * Math.max(0, orderValue);
+const annualLeak = monthlyLeak * 12;
+const result = document.getElementById('calc-result');
+const sub = document.getElementById('calc-result-sub');
+if (result) result.textContent = formatInr(monthlyLeak) + '/mo';
+if (sub) sub.textContent = `Based on ${missedPerMonth.toLocaleString('en-IN')} missed enquiries per month. Annual leak: ${formatInr(annualLeak)}. Your numbers may differ.`;
+if (shouldTrack && !window.__webwiseCalcTracked) {
+window.__webwiseCalcTracked = true;
+trackEvent('calculator_complete', {
+missed_enquiries_per_week: enquiries,
+average_order_value: orderValue,
+monthly_leak: monthlyLeak
+});
+}
+}
 // Nav shrink on scroll
 window.addEventListener('scroll', () => {
 const isMobile = window.innerWidth < 640;
@@ -1228,7 +1401,11 @@ document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
 });
 });
 // ── FAQ toggle ────────────────────────────────────────
-function toggleFaq(el) { el.classList.toggle('open'); }
+function toggleFaq(el) {
+el.classList.toggle('open');
+const question = el.querySelector('.faq-q')?.textContent?.replace('+','').trim();
+trackEvent('faq_open', { question });
+}
 // ── Form submit ───────────────────────────────────────
 function submitForm() {
 const name    = document.getElementById('f-name');
@@ -1252,6 +1429,7 @@ btn.style.animation = 'shake .3s ease';
 setTimeout(() => btn.style.animation = '', 400);
 return;
 }
+trackEvent('form_start', { source: 'homepage_revenue_leak_map' });
 // Build data
 const data = {
 business_name:  name.value.trim(),
@@ -1281,6 +1459,7 @@ body: JSON.stringify(data)
 })
 .then(res => {
 if (!res.ok) throw new Error('Lead endpoint returned ' + res.status);
+trackEvent('form_submit', { source: 'homepage_revenue_leak_map', business_type: data.business_type });
 // Show success state
 document.querySelector('.lead-form').innerHTML = `
 <div class="form-success">
@@ -1376,16 +1555,23 @@ if (window.innerWidth > 768) schedulePopups();
 // ── Mobile sticky — hide after form section visible ────
 const formSection = document.getElementById('cta');
 const stickyEl    = document.getElementById('sticky-cta');
-if (stickyEl) {
+if (stickyEl && window.matchMedia('(max-width: 768px)').matches) {
 const stickyObs = new IntersectionObserver(entries => {
 const formIsVisible = entries[0].isIntersecting;
 stickyEl.style.display = formIsVisible ? 'none' : 'block';
 document.body.classList.toggle('cta-visible', formIsVisible);
-const quickReplyButton = document.querySelector('.qr_wa_icon');
-if (quickReplyButton) quickReplyButton.style.display = formIsVisible ? 'none' : 'block';
 }, { threshold: 0.1 });
 stickyObs.observe(formSection);
 }
+document.querySelectorAll('a[href*="wa.me"]').forEach(link => {
+link.addEventListener('click', () => {
+trackEvent('whatsapp_tap', {
+source: link.dataset.track || 'homepage',
+link_text: link.textContent.trim().slice(0, 80)
+});
+});
+});
+updateRevenueCalculator(false);
 // ── Shake keyframe via JS ─────────────────────────────
 const shakeStyle = document.createElement('style');
 shakeStyle.textContent = '@keyframes shake{0%,100%{transform:translateX(0)}20%,60%{transform:translateX(-6px)}40%,80%{transform:translateX(6px)}}';
