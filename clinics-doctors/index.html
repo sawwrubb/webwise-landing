@@ -6,332 +6,145 @@
 <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 <meta name="google-site-verification" content="" data-webwise-pending="search-console" />
 <script>window.WEBWISE_ANALYTICS={gaId:"G-JPEVGCV4QP"};(function(){var id=window.WEBWISE_ANALYTICS&&window.WEBWISE_ANALYTICS.gaId;if(!/^G-[A-Z0-9]+$/.test(id||""))return;var s=document.createElement("script");s.async=true;s.src="https://www.googletagmanager.com/gtag/js?id="+encodeURIComponent(id);document.head.appendChild(s);window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}window.gtag=gtag;gtag("js",new Date());gtag("config",id);})();</script>
-<title>Clinic WhatsApp Automation & Booking System | Webwise Digital</title>
-<meta name="description" content="A clinic-safe WhatsApp automation system for doctors. Capture patient enquiries, confirm bookings, send reminders, request reviews, and protect clinical handoff." />
+<title>Clinic WhatsApp Automation & Appointment Booking | Webwise Digital</title>
+<meta name="description" content="Capture clinic WhatsApp enquiries, route bookings to reception, send reminders and protect clinical handoff with Webwise Digital." />
 <link rel="canonical" href="https://www.webwisedigital.net/clinics-doctors/" />
-<meta property="og:title" content="Clinic WhatsApp Automation & Booking System | Webwise Digital" />
-<meta property="og:description" content="Capture patient enquiries, confirm bookings, send reminders, and request reviews with a clinic-safe WhatsApp automation system." />
+<meta property="og:title" content="Clinic WhatsApp Automation & Appointment Booking | Webwise Digital" />
+<meta property="og:description" content="Capture clinic WhatsApp enquiries, route bookings to reception, send reminders and protect clinical handoff with Webwise Digital." />
 <meta property="og:url" content="https://www.webwisedigital.net/clinics-doctors/" />
 <meta property="og:type" content="website" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
 <style>
-:root {
---bg:#080808;
---bg2:#0f0f0f;
---bg3:#141414;
---card:#111111;
---border:rgba(41,171,226,0.14);
---blue:#29ABE2;
---blue-dim:rgba(41,171,226,0.10);
---blue-glow:rgba(41,171,226,0.30);
---teal:#00D4AA;
---white:#F2F2EE;
---muted:#6B7280;
---font:'Inter',Arial,sans-serif;
---r:10px;
-}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-html{width:100%;max-width:100%;scroll-behavior:smooth;overflow-x:clip;}
-body{background:var(--bg);color:var(--white);font-family:var(--font);font-size:17px;line-height:1.65;width:100%;max-width:100%;overflow-x:clip;}
-a{color:inherit;text-decoration:none;}
-button,input,select,textarea{font-family:var(--font);}
-button{border:none;background:none;cursor:pointer;}
-strong{color:var(--white);font-weight:700;}
-nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:18px 56px;background:rgba(8,8,8,0.90);backdrop-filter:blur(18px);border-bottom:1px solid var(--border);transition:padding .2s;}
-.nav-logo,.foot-logo{display:flex;align-items:center;gap:10px;}
-.logo-text{font-size:20px;font-weight:900;letter-spacing:2px;color:var(--white);text-transform:uppercase;line-height:1;}
-.logo-text em{font-style:normal;color:var(--blue);margin-left:2px;}
-.nav-right{display:flex;align-items:center;gap:28px;}
-.nav-link{font-size:14px;color:var(--muted);transition:color .2s;}
-.nav-link:hover{color:var(--white);}
-.nav-cta{background:var(--blue);color:#fff;font-weight:700;font-size:13px;padding:10px 22px;border-radius:6px;transition:all .2s;letter-spacing:.2px;}
-.nav-cta:hover{background:#fff;color:var(--bg);box-shadow:0 6px 24px var(--blue-glow);}
-.nav-cta-mobile{display:none;}
-.menu-toggle{display:none;width:42px;height:42px;border:1px solid var(--border);border-radius:8px;align-items:center;justify-content:center;flex-direction:column;gap:5px;background:var(--card);}
-.menu-toggle span{width:18px;height:2px;background:var(--white);border-radius:2px;transition:transform .2s,opacity .2s;}
-.menu-toggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
-.menu-toggle.open span:nth-child(2){opacity:0;}
-.menu-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
-.mobile-menu{display:none;position:fixed;top:68px;left:14px;right:14px;z-index:99;background:rgba(15,15,15,.98);border:1px solid var(--border);border-radius:12px;padding:14px;box-shadow:0 18px 60px rgba(0,0,0,.42);}
-.mobile-menu a{display:block;padding:13px 12px;border-bottom:1px solid var(--border);font-size:14px;color:var(--white);}
-.mobile-menu a:last-child{border-bottom:0;}
-section{padding:96px 56px;}
-.wrap{width:100%;max-width:1180px;min-width:0;margin:0 auto;}
-.label{font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--blue);margin-bottom:18px;display:flex;align-items:center;gap:10px;}
-.label::before{content:'';width:20px;height:1px;background:var(--blue);display:inline-block;}
-h1{font-size:clamp(42px,5.2vw,70px);font-weight:900;letter-spacing:-2.7px;line-height:1.04;margin-bottom:24px;}
-h1 em,h2 em{color:var(--blue);font-style:italic;}
-h2.sec{font-size:clamp(30px,3vw,46px);font-weight:900;letter-spacing:-1.5px;line-height:1.08;margin-bottom:16px;}
-.sub{color:var(--muted);font-size:16px;line-height:1.8;}
-.btn-primary{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--blue);color:#fff;font-weight:800;font-size:15px;padding:15px 30px;border-radius:8px;transition:all .22s;text-align:center;}
-.btn-primary:hover{background:#fff;color:var(--bg);transform:translateY(-2px);box-shadow:0 10px 36px var(--blue-glow);}
-.btn-ghost{display:inline-flex;align-items:center;gap:8px;color:var(--muted);font-size:14px;transition:color .2s;}
-.btn-ghost:hover{color:var(--white);}
-.sr{transition:opacity .6s ease,transform .6s ease;}
-#hero{min-height:100vh;padding-top:130px;display:flex;align-items:center;position:relative;overflow:hidden;}
-.hero-bg{position:absolute;inset:0;z-index:0;background:radial-gradient(ellipse 55% 55% at 67% 32%,rgba(41,171,226,.10) 0%,transparent 70%),radial-gradient(ellipse 36% 44% at 15% 78%,rgba(0,212,170,.06) 0%,transparent 65%);}
-.hero-grid{position:absolute;inset:0;z-index:0;background-image:linear-gradient(rgba(41,171,226,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(41,171,226,.035) 1px,transparent 1px);background-size:56px 56px;mask-image:radial-gradient(ellipse 75% 75% at 50% 50%,black 0%,transparent 100%);}
-.hero-inner{position:relative;z-index:1;display:grid;grid-template-columns:1fr 410px;gap:70px;align-items:center;}
-.hero-pill{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--blue);border:1px solid var(--border);background:var(--blue-dim);padding:6px 14px;border-radius:100px;margin-bottom:24px;}
-@keyframes blink{0%,100%{opacity:1;}50%{opacity:.3;}}
-.hero-pill::before{content:'';width:6px;height:6px;background:var(--blue);border-radius:50%;animation:blink 1.5s infinite;}
-.hero-sub{font-size:17px;color:var(--muted);line-height:1.75;max-width:600px;margin-bottom:28px;}
-.hero-ctas{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:18px;}
-.cta-note{font-size:13px;color:var(--muted);max-width:560px;}
-.hero-proof{display:flex;gap:18px;flex-wrap:wrap;margin-top:34px;}
-.proof-chip{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted);}
-.proof-chip .dot{width:6px;height:6px;background:var(--blue);border-radius:50%;flex-shrink:0;}
-.phone-card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:18px;box-shadow:0 22px 70px rgba(0,0,0,.35);position:relative;overflow:hidden;}
-.phone-card::before{content:'';position:absolute;inset:0;background:linear-gradient(145deg,rgba(41,171,226,.10),transparent 45%);pointer-events:none;}
-.phone-top{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);padding-bottom:14px;margin-bottom:16px;position:relative;}
-.phone-name{font-size:13px;font-weight:800;}
-.phone-status{font-size:11px;color:var(--teal);}
-.chat{display:flex;flex-direction:column;gap:12px;position:relative;}
-.bubble{max-width:86%;padding:12px 14px;border-radius:12px;font-size:13px;line-height:1.55;}
-.bubble.in{background:var(--bg3);border:1px solid var(--border);color:var(--white);}
-.bubble.out{align-self:flex-end;background:var(--blue);color:#fff;font-weight:700;}
-.chat-animated .bubble,.chat-animated .typing{opacity:0;transform:translateY(10px);animation:chatIn 12s infinite;}
-.chat-animated .m1{animation-delay:.4s;}
-.chat-animated .t1{animation-delay:2s;}
-.chat-animated .m2{animation-delay:3s;}
-.chat-animated .m3{animation-delay:5.6s;}
-.chat-animated .t2{animation-delay:7s;}
-.chat-animated .m4{animation-delay:8.1s;}
-.typing{align-self:flex-end;background:var(--blue);color:#fff;border-radius:12px;padding:12px 14px;display:flex;gap:4px;align-items:center;}
-.typing span{width:6px;height:6px;border-radius:50%;background:#fff;opacity:.6;animation:typeDot 1s infinite;}
-.typing span:nth-child(2){animation-delay:.16s;}
-.typing span:nth-child(3){animation-delay:.32s;}
-@keyframes chatIn{0%,8%{opacity:0;transform:translateY(10px)}12%,78%{opacity:1;transform:translateY(0)}90%,100%{opacity:0;transform:translateY(-4px)}}
+:root{--bg:#080808;--bg2:#0f0f0f;--panel:#111827;--card:#10151d;--line:rgba(41,171,226,.18);--blue:#29ABE2;--blue2:#2979FF;--teal:#00D4AA;--white:#F2F2EE;--muted:#8b949e;--soft:#c7cdd4;--danger:#8993a0;--font:'Inter',Arial,sans-serif;--r:12px}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;overflow-x:clip}
+body{background:var(--bg);color:var(--white);font-family:var(--font);font-size:17px;line-height:1.65;overflow-x:clip}
+a{color:inherit;text-decoration:none}
+button,input,select{font:inherit}
+button{border:0;cursor:pointer}
+strong{color:var(--white)}
+.wrap{width:min(1180px,calc(100% - 36px));margin:0 auto}
+.nav{position:fixed;inset:0 0 auto 0;z-index:40;background:rgba(8,8,8,.92);border-bottom:1px solid var(--line);backdrop-filter:blur(18px)}
+.nav-inner{height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.brand{display:flex;align-items:center;gap:10px;min-width:0}
+.brand svg{width:38px;height:38px;flex:0 0 38px}
+.brand span{font-size:20px;font-weight:900;letter-spacing:1.8px;white-space:nowrap}
+.brand em{font-style:normal;color:var(--blue)}
+.nav-links{display:flex;align-items:center;gap:26px}
+.nav-links a{font-size:14px;font-weight:700;color:var(--muted)}
+.nav-links a:hover{color:var(--white)}
+.nav-cta{display:inline-flex;align-items:center;justify-content:center;background:var(--blue);color:#fff;font-size:14px;font-weight:900;border-radius:8px;padding:12px 18px}
+.menu{display:none;width:42px;height:42px;border:1px solid var(--line);border-radius:8px;background:var(--card);align-items:center;justify-content:center;flex-direction:column;gap:5px}
+.menu span{width:18px;height:2px;background:var(--white);border-radius:2px}
+.mobile-menu{display:none;position:fixed;top:84px;left:18px;right:18px;z-index:35;background:#10151d;border:1px solid var(--line);border-radius:12px;padding:10px}
+.mobile-menu.open{display:block}
+.mobile-menu a{display:block;padding:13px 12px;border-bottom:1px solid var(--line);font-size:14px;color:var(--white)}
+.mobile-menu a:last-child{border-bottom:0}
+section{padding:88px 0;border-top:1px solid rgba(41,171,226,.08)}
+.eyebrow{display:flex;align-items:center;gap:10px;color:var(--blue);font-size:11px;font-weight:900;letter-spacing:3px;text-transform:uppercase;margin-bottom:18px}
+.eyebrow::before{content:'';width:20px;height:1px;background:var(--blue)}
+h1{font-size:clamp(42px,5.4vw,76px);line-height:1.02;letter-spacing:-2.8px;font-weight:900;margin-bottom:22px}
+h2{font-size:clamp(31px,3.4vw,50px);line-height:1.08;letter-spacing:-1.6px;font-weight:900;margin-bottom:16px}
+h3{font-size:22px;line-height:1.2;font-weight:900;margin-bottom:8px}
+em{font-style:italic;color:var(--blue)}
+.sub,.copy{color:var(--muted);font-size:16px;line-height:1.8}
+.btn-row{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-top:28px}
+.btn-primary,.btn-secondary{display:inline-flex;align-items:center;justify-content:center;border-radius:8px;padding:15px 22px;font-weight:900;font-size:15px}
+.btn-primary{background:var(--blue);color:#fff;box-shadow:0 16px 42px rgba(41,171,226,.22)}
+.btn-secondary{border:1px solid var(--line);background:rgba(41,171,226,.07);color:var(--white)}
+.btn-primary:hover,.btn-secondary:hover{transform:translateY(-2px)}
+.hero{min-height:100vh;padding:136px 0 88px;position:relative;display:flex;align-items:center;overflow:hidden;border-top:0}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 50% 45% at 74% 28%,rgba(41,171,226,.16),transparent 68%),radial-gradient(ellipse 38% 42% at 16% 82%,rgba(0,212,170,.08),transparent 70%)}
+.hero::after{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(41,171,226,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(41,171,226,.04) 1px,transparent 1px);background-size:58px 58px;mask-image:radial-gradient(ellipse 78% 78% at 50% 50%,black,transparent)}
+.hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1fr) 430px;gap:70px;align-items:center}
+.hero-pill{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:rgba(41,171,226,.09);border-radius:100px;color:var(--blue);font-size:12px;font-weight:900;letter-spacing:1.6px;text-transform:uppercase;padding:7px 13px;margin-bottom:24px}
+.hero-pill::before{content:'';width:7px;height:7px;background:var(--teal);border-radius:50%;box-shadow:0 0 16px rgba(0,212,170,.65)}
+.hero-copy{max-width:680px;color:var(--soft);font-size:18px;line-height:1.78}
+.guardrails{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.guardrails span{border:1px solid var(--line);background:rgba(16,21,29,.72);border-radius:100px;padding:8px 12px;color:var(--muted);font-size:13px;font-weight:800}
+.phone{position:relative;background:#0b141a;border:1px solid var(--line);border-radius:24px;padding:18px;box-shadow:0 26px 80px rgba(0,0,0,.38);overflow:hidden}
+.phone::before{content:'';position:absolute;inset:0;background:linear-gradient(145deg,rgba(41,171,226,.13),transparent 48%);pointer-events:none}
+.phone-head{position:relative;display:flex;align-items:center;justify-content:space-between;gap:14px;border-bottom:1px solid rgba(255,255,255,.08);padding-bottom:14px;margin-bottom:16px}
+.phone-title{font-size:14px;font-weight:900}
+.phone-status{font-size:11px;color:var(--teal);font-weight:900}
+.chat{position:relative;display:flex;flex-direction:column;gap:12px;min-height:355px}
+.bubble{max-width:88%;border-radius:14px;padding:12px 14px;font-size:13px;line-height:1.55}
+.bubble.in{background:#202c33;color:#f2f2ee;align-self:flex-start}
+.bubble.out{background:#005c4b;color:#fff;align-self:flex-end;font-weight:700}
+.bubble.system{align-self:center;background:rgba(41,171,226,.10);border:1px solid var(--line);color:var(--soft);font-weight:800;text-align:center}
+.typing{align-self:flex-end;background:#005c4b;border-radius:14px;padding:12px 14px;display:flex;gap:4px}
+.typing span{width:6px;height:6px;border-radius:50%;background:#fff;opacity:.55;animation:typeDot 1s infinite}
+.typing span:nth-child(2){animation-delay:.16s}
+.typing span:nth-child(3){animation-delay:.32s}
+.chat-animated .bubble,.chat-animated .typing{opacity:0;transform:translateY(8px);animation:chatIn 12s infinite}
+.chat-animated .m1{animation-delay:.4s}.chat-animated .t1{animation-delay:2s}.chat-animated .m2{animation-delay:3s}.chat-animated .m3{animation-delay:5.2s}.chat-animated .m4{animation-delay:6.9s}.chat-animated .m5{animation-delay:8.6s}
+@keyframes chatIn{0%,8%{opacity:0;transform:translateY(8px)}12%,80%{opacity:1;transform:translateY(0)}93%,100%{opacity:0;transform:translateY(-4px)}}
 @keyframes typeDot{0%,80%,100%{transform:translateY(0);opacity:.45}40%{transform:translateY(-3px);opacity:1}}
-@media(prefers-reduced-motion:reduce){.chat-animated .bubble,.chat-animated .typing{opacity:1;transform:none;animation:none}.typing span{animation:none}}
-.handoff{margin-top:18px;background:rgba(0,212,170,.08);border:1px solid rgba(0,212,170,.20);border-radius:12px;padding:14px;}
-.handoff-k{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--teal);margin-bottom:8px;}
-.handoff-v{font-size:13px;color:var(--white);line-height:1.6;}
-.social-proof{padding:28px 56px;background:var(--bg);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
-.proof-bar{max-width:1180px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:24px;}
-.proof-bar-title{font-size:13px;font-weight:900;letter-spacing:2px;text-transform:uppercase;color:var(--white);white-space:nowrap;}
-.proof-cats{display:flex;align-items:center;justify-content:flex-end;gap:10px;flex-wrap:wrap;}
-.proof-cat{display:inline-flex;align-items:center;gap:8px;background:var(--bg3);border:1px solid var(--border);border-radius:100px;padding:8px 13px;font-size:12px;font-weight:800;color:var(--muted);}
-.proof-cat span{color:var(--blue);font-size:10px;letter-spacing:1px;}
-.mockup-visual{margin-top:34px;background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px;box-shadow:0 18px 54px rgba(0,0,0,.22);}
-.mockup-kicker{font-size:11px;font-weight:900;letter-spacing:2px;text-transform:uppercase;color:var(--blue);margin-bottom:18px;}
-.split-mockups{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
-.mini-phone{background:#0b141a;border:1px solid rgba(242,242,238,.08);border-radius:18px;padding:14px;min-height:260px;display:flex;flex-direction:column;box-shadow:inset 0 0 0 1px rgba(255,255,255,.03);}
-.mini-phone-head{display:flex;align-items:center;justify-content:space-between;gap:12px;border-bottom:1px solid rgba(255,255,255,.08);padding-bottom:10px;margin-bottom:14px;font-size:12px;font-weight:900;color:#f2f2ee;}
-.mini-phone-badge{font-size:10px;font-weight:900;color:var(--teal);background:rgba(0,212,170,.10);border:1px solid rgba(0,212,170,.22);border-radius:100px;padding:4px 8px;white-space:nowrap;}
-.mini-chat{display:flex;flex-direction:column;gap:10px;flex:1;}
-.wa-msg{max-width:88%;border-radius:13px;padding:11px 12px;font-size:12px;line-height:1.5;}
-.wa-msg.patient{background:#202c33;color:#f2f2ee;align-self:flex-start;}
-.wa-msg.bot{background:#005c4b;color:#fff;align-self:flex-end;font-weight:700;}
-.wa-msg.note{background:rgba(41,171,226,.12);border:1px solid var(--border);color:#f2f2ee;align-self:center;text-align:center;font-weight:800;}
-.wa-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:auto;padding-top:12px;}
-.wa-action{border:1px solid rgba(41,171,226,.28);color:var(--blue);border-radius:100px;padding:6px 9px;font-size:11px;font-weight:900;}
-.dashboard-mock{display:grid;grid-template-columns:1.1fr .9fr;gap:18px;align-items:stretch;}
-.dash-panel,.dash-thread{background:var(--bg3);border:1px solid var(--border);border-radius:12px;padding:16px;}
-.dash-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px;}
-.dash-title{font-size:13px;font-weight:900;color:var(--white);}
-.dash-pill{font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:1px;border:1px solid rgba(0,212,170,.22);background:rgba(0,212,170,.08);color:var(--teal);border-radius:100px;padding:5px 8px;white-space:nowrap;}
-.dash-row{display:grid;grid-template-columns:72px 1fr auto;gap:10px;align-items:center;border-top:1px solid var(--border);padding:12px 0;font-size:12px;color:var(--muted);}
-.dash-row:first-of-type{border-top:0;}
-.dash-role{font-weight:900;color:var(--white);}
-.dash-status{font-size:10px;font-weight:900;color:var(--blue);text-transform:uppercase;letter-spacing:1px;}
-.dash-thread{display:flex;flex-direction:column;gap:10px;}
-.thread-item{border:1px solid var(--border);border-radius:10px;padding:12px;background:rgba(8,8,8,.35);}
-.thread-name{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:12px;font-weight:900;color:var(--white);margin-bottom:6px;}
-.thread-copy{font-size:12px;color:var(--muted);line-height:1.55;}
-.thread-tag{font-size:10px;font-weight:900;color:var(--teal);background:rgba(0,212,170,.10);border:1px solid rgba(0,212,170,.22);border-radius:100px;padding:4px 7px;white-space:nowrap;}
-#proof-strip{padding:0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--bg2);overflow:hidden;}
-.marquee-outer{display:flex;justify-content:center;padding:20px 18px;}
-.marquee-inner{width:100%;display:flex;align-items:center;justify-content:center;gap:12px 28px;flex-wrap:wrap;white-space:normal;}
-.mq-item{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--muted);}
-.mq-sep{width:4px;height:4px;background:var(--border);border-radius:50%;flex-shrink:0;}
-#problem,#security,#faq,#cta,#system,#process{background:var(--bg2);border-top:1px solid var(--border);}
-#calculator,#monitoring,#compare{background:var(--bg);}
-.split{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:start;}
-.sticky-copy{position:sticky;top:110px;align-self:start;}
-.big-copy{font-size:clamp(30px,3.2vw,48px);font-weight:900;letter-spacing:-1.5px;line-height:1.1;margin-bottom:16px;}
-.copy p{color:var(--muted);font-size:15px;line-height:1.85;margin-bottom:18px;}
-.cost-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:34px;position:relative;overflow:hidden;}
-.cost-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--blue),var(--teal));}
-.cost-row{display:flex;align-items:center;justify-content:space-between;gap:20px;border-bottom:1px solid var(--border);padding:15px 0;}
-.cost-row:first-child{padding-top:0;}
-.cost-row:last-child{border-bottom:none;padding-bottom:0;}
-.example-badge{display:inline-flex;align-items:center;background:var(--blue-dim);border:1px solid var(--border);border-radius:100px;padding:5px 12px;color:var(--blue);font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:14px;}
-.cost-k{font-size:13px;color:var(--muted);}
-.cost-v{font-size:18px;font-weight:900;color:var(--white);white-space:nowrap;}
-.cost-v.hot{font-size:30px;color:var(--blue);letter-spacing:-1px;}
-.card-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
-.card-grid.three{grid-template-columns:repeat(3,1fr);}
-.feature-card,.safe-card,.faq-item,.step-card,.system-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:28px;transition:border-color .3s,transform .3s;}
-.feature-card:hover,.safe-card:hover,.step-card:hover,.system-card:hover{border-color:var(--blue);transform:translateY(-4px);}
-.feature-num{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--blue-dim);border:1.5px solid var(--blue);color:var(--blue);font-size:13px;font-weight:900;margin-bottom:16px;}
-.feature-title,.safe-title,.step-title{font-size:18px;font-weight:800;margin-bottom:8px;line-height:1.25;}
-.feature-desc,.safe-desc,.step-desc{font-size:13px;color:var(--muted);line-height:1.7;}
-.system-icon{width:42px;height:42px;border-radius:10px;background:var(--blue-dim);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--blue);font-size:18px;font-weight:900;margin-bottom:18px;}
-.system-tag{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--teal);font-weight:800;margin-bottom:10px;}
-.system-title{font-size:20px;font-weight:900;letter-spacing:-.3px;line-height:1.2;margin-bottom:10px;}
-.system-desc{font-size:13px;color:var(--muted);line-height:1.75;}
-.inbox-strip{margin-top:22px;background:rgba(41,171,226,.08);border:1px solid var(--border);border-radius:12px;padding:18px 22px;text-align:center;font-size:14px;color:var(--muted);line-height:1.7;}
-.flow-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:34px;}
-.flow-track{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;align-items:stretch;}
-.flow-node{background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:15px 10px;text-align:center;min-height:104px;display:flex;flex-direction:column;justify-content:center;}
-.flow-n{font-size:11px;font-weight:900;color:var(--blue);margin-bottom:6px;}
-.flow-t{font-size:12px;color:var(--white);font-weight:700;line-height:1.35;}
-.flow-arrow{display:none;}
-.demo-panel{background:linear-gradient(135deg,rgba(41,171,226,.12),rgba(0,212,170,.07));border:1px solid rgba(41,171,226,.22);border-radius:18px;padding:42px;display:grid;grid-template-columns:1.15fr .85fr;gap:38px;align-items:center;}
-.demo-panel h2{font-size:clamp(28px,3vw,44px);font-weight:900;letter-spacing:-1.4px;line-height:1.08;margin-bottom:16px;}
-.demo-panel p{color:var(--muted);font-size:15px;line-height:1.8;margin-bottom:14px;}
-.terms{background:rgba(10,22,39,.48);border:1px solid var(--border);border-radius:12px;padding:22px;}
-.terms-k{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--teal);margin-bottom:12px;font-weight:800;}
-.terms ul{list-style:none;display:flex;flex-direction:column;gap:10px;}
-.terms li{font-size:13px;color:var(--muted);line-height:1.55;padding-left:18px;position:relative;}
-.terms li::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--blue);position:absolute;left:0;top:8px;}
-.safe-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;}
-.safe-card.good{border-color:rgba(0,212,170,.20);}
-.safe-card.stop{border-color:rgba(107,114,128,.24);}
-.safe-eyebrow{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--blue);margin-bottom:14px;font-weight:800;}
-.stop .safe-eyebrow{color:var(--muted);}
-.built-list{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px;}
-.built-pill{border:1px solid var(--border);background:var(--blue-dim);border-radius:100px;padding:9px 14px;font-size:13px;color:var(--white);}
-.calc-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:34px;}
-.calc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:22px 0;}
-.calc-result{background:linear-gradient(135deg,var(--blue-dim),rgba(0,212,170,.08));border:1px solid var(--border);border-radius:14px;padding:24px;margin-top:8px;}
-.calc-result-k{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);font-weight:800;margin-bottom:8px;}
-.calc-result-v{font-size:clamp(30px,4vw,48px);font-weight:900;color:var(--white);letter-spacing:-1.5px;line-height:1;}
-.calc-result-sub{font-size:13px;color:var(--muted);line-height:1.7;margin-top:10px;}
-.faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:940px;margin:0 auto;}
-.faq-item{cursor:pointer;}
-.faq-item:hover{border-color:var(--blue);}
-.faq-q{font-size:15px;font-weight:800;display:flex;align-items:center;justify-content:space-between;gap:12px;}
-.faq-q .arrow{color:var(--blue);font-size:18px;transition:transform .25s;flex-shrink:0;}
-.faq-a{font-size:14px;color:var(--muted);line-height:1.7;margin-top:14px;display:none;}
-.faq-item.open .faq-a{display:block;}
-.faq-item.open .arrow{transform:rotate(45deg);}
-.cta-inner{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start;}
-.cta-left h2{font-size:clamp(30px,3vw,46px);font-weight:900;letter-spacing:-1.5px;line-height:1.08;margin-bottom:16px;}
-.cta-bullets{display:flex;flex-direction:column;gap:10px;margin-top:28px;}
-.cta-bullet{display:flex;align-items:flex-start;gap:14px;font-size:15px;color:var(--muted);line-height:1.6;}
-.ck-icon{color:var(--blue);font-size:14px;flex-shrink:0;margin-top:3px;}
-.lead-form{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:40px 36px;}
-.form-title{font-size:20px;font-weight:800;margin-bottom:6px;}
-.form-sub{font-size:14px;color:var(--muted);margin-bottom:28px;line-height:1.6;}
-.field{margin-bottom:16px;}
-.field label{display:block;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:7px;}
-.field input,.field select,.field textarea{width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:7px;padding:12px 16px;font-size:14px;color:var(--white);outline:none;transition:border-color .2s;}
-.field textarea{min-height:92px;resize:vertical;}
-.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--blue);}
-.field input.error,.field select.error,.field textarea.error{border-color:#ff6b6b;}
-.field-helper{font-size:11px;color:var(--muted);margin-top:5px;}
-.form-btn{width:100%;background:var(--blue);color:#fff;font-weight:800;font-size:15px;padding:16px;border-radius:8px;cursor:pointer;transition:all .22s;margin-top:6px;display:flex;align-items:center;justify-content:center;gap:10px;}
-.form-btn:hover{background:#fff;color:var(--bg);box-shadow:0 8px 28px var(--blue-glow);}
-.wa-cta-link{display:block;text-align:center;margin-top:14px;font-size:13px;color:var(--muted);transition:color .2s;}
-.wa-cta-link:hover{color:var(--white);}
-.form-trust{font-size:12px;color:var(--muted);text-align:center;margin-top:12px;line-height:1.6;}
-.form-success{text-align:center;padding:28px 10px;}
-.form-success .fs-icon{font-size:42px;margin-bottom:16px;color:var(--teal);}
-.form-success .fs-title{font-size:20px;font-weight:800;margin-bottom:10px;}
-.form-success .fs-sub{font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:24px;}
-.form-success .fs-wa{display:inline-flex;align-items:center;justify-content:center;background:#25D366;color:#fff;font-weight:800;font-size:15px;padding:14px 24px;border-radius:8px;transition:opacity .2s;}
-.form-success .fs-wa:hover{opacity:.9;}
-.form-error{background:rgba(255,120,100,.10);border:1px solid rgba(255,120,100,.30);border-radius:10px;padding:12px 14px;margin-top:14px;color:#FFD5CC;font-size:13px;line-height:1.6;display:none;}
-.step-num{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--blue-dim);border:1.5px solid var(--blue);color:var(--blue);font-size:12px;font-weight:900;margin-bottom:18px;}
-.compare-table{background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;}
-.compare-row{display:grid;grid-template-columns:1.05fr 1fr 1fr;border-bottom:1px solid var(--border);}
-.compare-row:last-child{border-bottom:0;}
-.compare-cell{padding:18px 20px;font-size:14px;color:var(--muted);line-height:1.55;border-right:1px solid var(--border);}
-.compare-cell:last-child{border-right:0;}
-.compare-cell.label{color:var(--white);font-weight:800;}
-.compare-head .compare-cell{font-size:13px;font-weight:900;color:var(--white);background:var(--bg3);}
-.compare-head span{display:block;font-size:11px;font-weight:500;color:var(--muted);margin-top:3px;}
-.compare-cell.highlight{background:rgba(41,171,226,.07);color:var(--white);}
-.compare-close{font-size:14px;color:var(--muted);line-height:1.8;}
-footer{background:var(--bg);border-top:1px solid var(--border);padding:56px;}
-.footer-inner{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:44px;}
-.foot-logo{margin-bottom:18px;}
-.foot-brand p{font-size:13px;color:var(--muted);line-height:1.7;max-width:300px;}
-.foot-addr{margin-top:18px;font-size:12px;color:var(--muted);line-height:1.9;}
-.foot-addr strong{color:var(--white);font-weight:600;}
-.foot-col h4{font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--white);margin-bottom:18px;}
-.foot-col ul{list-style:none;display:flex;flex-direction:column;gap:9px;}
-.foot-col ul a{font-size:13px;color:var(--muted);transition:color .2s;}
-.foot-col ul a:hover{color:var(--blue);}
-.footer-bottom{max-width:1180px;margin:36px auto 0;padding-top:20px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;gap:16px;}
-.footer-bottom p{font-size:12px;color:var(--muted);}
-.gst{font-size:11px;color:var(--muted);font-family:monospace;}
-#sticky-cta{display:none;position:fixed;bottom:0;left:0;right:0;z-index:90;background:rgba(21,39,68,.97);backdrop-filter:blur(16px);border-top:1px solid var(--border);padding:14px 20px;}
-.sticky-cta-inner{display:flex;align-items:center;gap:12px;}
-.sticky-cta-text{flex:1;min-width:0;}
-.sticky-cta-text .st{font-size:12px;font-weight:800;color:var(--white);}
-.sticky-cta-text .ss{font-size:11px;color:var(--muted);}
-.sticky-cta-btn{background:var(--blue);color:#fff;font-weight:800;font-size:13px;padding:11px 16px;border-radius:7px;white-space:nowrap;flex-shrink:0;}
-.qr_wa_icon{position:fixed!important;right:20px!important;bottom:20px!important;top:auto!important;transform:none!important;}
-::-webkit-scrollbar{width:3px;}
-::-webkit-scrollbar-track{background:var(--bg);}
-::-webkit-scrollbar-thumb{background:var(--blue);border-radius:2px;}
-@media(max-width:1024px){
-section{padding:72px 28px;}
-.social-proof{padding:24px 28px;}
-.proof-bar{align-items:flex-start;flex-direction:column;}
-.proof-cats{justify-content:flex-start;}
-.dashboard-mock{grid-template-columns:1fr;}
-nav{padding:16px 28px;}
-footer{padding:44px 28px;}
-.hero-inner,.split,.demo-panel,.cta-inner{grid-template-columns:1fr;}
-.sticky-copy{position:static;}
-.card-grid,.card-grid.three{grid-template-columns:repeat(2,1fr);}
-.calc-grid{grid-template-columns:1fr;}
-.flow-track{grid-template-columns:1fr;}
-.safe-grid,.faq-grid{grid-template-columns:1fr;}
-.footer-inner{grid-template-columns:1fr 1fr;}
-.nav-right .nav-link{display:none;}
-.nav-cta{display:none;}
-.menu-toggle{display:flex;}
-.mobile-menu.open{display:block;}
-}
-@media(min-width:1025px){
-.mobile-menu,.mobile-menu.open{display:none!important;}
-.menu-toggle{display:none!important;}
-}
-@media(max-width:640px){
-section{padding:56px 18px;}
-nav{gap:12px;padding:12px 14px;}
-.nav-logo{min-width:0;gap:7px;}
-.nav-logo svg{width:32px;height:32px;flex:0 0 32px;}
-.logo-text{font-size:14px;letter-spacing:1px;white-space:nowrap;}
-.nav-right{gap:0;}
-.nav-cta{font-size:12px;padding:10px 12px;white-space:nowrap;}
-.nav-cta-desktop{display:none;}
-.nav-cta-mobile{display:inline;}
-#hero{min-height:auto;padding-top:104px;padding-bottom:62px;}
-h1{font-size:clamp(36px,11vw,48px);line-height:1.02;letter-spacing:-1.5px;}
-.hero-inner{gap:34px;}
-.hero-ctas{align-items:stretch;flex-direction:column;}
-.btn-primary{padding:14px 18px;}
-.phone-card{max-width:390px;margin:4px auto 0;padding:14px;}
-.social-proof{padding:22px 18px;}
-.proof-bar-title{white-space:normal;line-height:1.4;}
-.proof-cat{width:calc(50% - 5px);justify-content:center;text-align:center;}
-.split-mockups{grid-template-columns:1fr;}
-.mockup-visual{padding:18px;margin-top:26px;}
-.dash-row{grid-template-columns:1fr;gap:4px;}
-.card-grid,.card-grid.three{grid-template-columns:1fr;}
-.cost-card,.flow-card,.demo-panel,.lead-form{padding:26px 18px;}
-.compare-row{display:block;border-bottom:1px solid var(--border);}
-.compare-cell{border-right:0;border-bottom:1px solid var(--border);padding:14px 16px;}
-.compare-cell:last-child{border-bottom:0;}
-.compare-head .compare-cell:first-child{display:none;}
-.compare-cell.label{background:var(--bg3);}
-.footer-inner{grid-template-columns:1fr;gap:30px;}
-footer{padding:40px 18px 104px;}
-.footer-bottom{align-items:flex-start;flex-direction:column;}
-#sticky-cta{display:block;padding:10px 12px;}
-.sticky-cta-text .ss{display:none;}
-.sticky-cta-btn{padding:10px 12px;}
-.qr_wa_icon{display:none!important;}
-.cta-visible .qr_wa_icon{display:none!important;}
-}
+.strip{padding:24px 0;background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.strip-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.strip b{font-size:13px;letter-spacing:2px;text-transform:uppercase}
+.strip-items{display:flex;gap:10px;flex-wrap:wrap}
+.strip-items span{border:1px solid var(--line);background:var(--card);border-radius:100px;padding:8px 12px;color:var(--muted);font-size:12px;font-weight:800}
+.split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:62px;align-items:start}
+.panel,.card,.timeline,.form-card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:0 18px 54px rgba(0,0,0,.22)}
+.panel{padding:34px}
+.problem-lines{display:grid;gap:14px;margin-top:24px}
+.line-card{border:1px solid rgba(41,171,226,.12);background:rgba(8,8,8,.36);border-radius:10px;padding:18px}
+.line-card b{display:block;margin-bottom:6px}
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.card{padding:28px}
+.num{width:42px;height:42px;border:1px solid var(--blue);background:rgba(41,171,226,.10);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--blue);font-weight:900;margin-bottom:16px}
+.tag{color:var(--teal);font-size:11px;font-weight:900;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px}
+.card p{color:var(--muted);font-size:14px;line-height:1.75}
+.workflow{counter-reset:step;display:grid;gap:14px}
+.flow-step{display:grid;grid-template-columns:46px 1fr;gap:16px;align-items:start;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px}
+.flow-step::before{counter-increment:step;content:counter(step,decimal-leading-zero);width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(41,171,226,.10);border:1px solid var(--blue);color:var(--blue);font-weight:900;font-size:12px}
+.flow-step b{display:block;margin-bottom:6px}
+.flow-step p{color:var(--muted);font-size:14px;line-height:1.7}
+.safe-list{display:grid;gap:12px;margin-top:18px}
+.safe-item{display:flex;gap:12px;align-items:flex-start;color:var(--muted);font-size:14px;line-height:1.65}
+.safe-item i{width:22px;height:22px;flex:0 0 22px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(41,171,226,.10);color:var(--blue);font-style:normal;font-size:12px;font-weight:900}
+.safe-item.stop i{color:var(--danger);border:1px solid rgba(137,147,160,.28);background:rgba(137,147,160,.08)}
+.niche-list{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.niche-list span{border:1px solid var(--line);background:rgba(41,171,226,.08);border-radius:100px;padding:9px 13px;color:var(--white);font-size:13px;font-weight:800}
+.control-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:24px}
+.control-grid div{border:1px solid rgba(41,171,226,.12);background:rgba(8,8,8,.34);border-radius:10px;padding:16px;color:var(--muted);font-size:14px}
+.cta{background:linear-gradient(135deg,rgba(41,171,226,.13),rgba(0,212,170,.07));border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.form-card{padding:34px}
+.field{margin-bottom:16px}
+.field label{display:block;color:var(--muted);font-size:12px;font-weight:900;letter-spacing:1px;text-transform:uppercase;margin-bottom:7px}
+.field input,.field select{width:100%;background:#141414;border:1px solid var(--line);border-radius:8px;color:var(--white);padding:13px 14px;outline:0}
+.field input:focus,.field select:focus{border-color:var(--blue)}
+.field .error{border-color:#ff6b6b}
+.form-btn{width:100%;border-radius:8px;background:var(--blue);color:#fff;font-weight:900;padding:15px;margin-top:4px}
+.form-error{display:none;margin-top:12px;border:1px solid rgba(255,120,100,.3);background:rgba(255,120,100,.10);border-radius:10px;padding:12px;color:#ffd5cc;font-size:13px}
+.form-note{font-size:12px;color:var(--muted);line-height:1.6;text-align:center;margin-top:12px}
+.success{text-align:center;padding:24px}
+.success b{font-size:22px;display:block;margin-bottom:8px}
+.success p{color:var(--muted);margin-bottom:18px}
+.faq-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:34px}
+.faq-item{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px}
+.faq-item button{width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;text-align:left;background:transparent;color:var(--white);font-weight:900}
+.faq-a{display:none;color:var(--muted);font-size:14px;line-height:1.75;margin-top:12px}
+.faq-item.open .faq-a{display:block}
+.faq-item.open .plus{transform:rotate(45deg)}
+.plus{color:var(--blue);font-size:22px;transition:transform .2s}
+footer{padding:56px 0;background:var(--bg);border-top:1px solid var(--line)}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px}
+.footer-grid p,.footer-grid a,.footer-bottom{color:var(--muted);font-size:13px;line-height:1.8}
+.footer-grid h4{font-size:12px;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:14px}
+.footer-grid ul{list-style:none;display:grid;gap:8px}
+.footer-grid a:hover{color:var(--blue)}
+.footer-bottom{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;border-top:1px solid var(--line);margin-top:34px;padding-top:18px}
+#sticky-cta{display:none;position:fixed;left:0;right:0;bottom:0;z-index:30;background:rgba(8,8,8,.94);backdrop-filter:blur(14px);border-top:1px solid var(--line);padding:11px 14px}
+.sticky-row{display:flex;align-items:center;gap:12px}.sticky-row span{flex:1;color:var(--white);font-size:13px;font-weight:900}.sticky-row a{background:var(--blue);border-radius:8px;color:#fff;font-size:13px;font-weight:900;padding:10px 12px;white-space:nowrap}
+.qr_wa_icon{position:fixed!important;right:20px!important;bottom:20px!important;top:auto!important;transform:none!important}
+@media(max-width:1024px){.hero-grid,.split,.grid3,.grid2,.footer-grid{grid-template-columns:1fr}.hero-grid{gap:36px}.nav-links a{display:none}.menu{display:flex}.control-grid,.faq-grid{grid-template-columns:1fr}section{padding:72px 0}}
+@media(max-width:640px){.nav-inner{height:66px}.brand svg{width:32px;height:32px}.brand span{font-size:14px;letter-spacing:1px}.nav-cta{display:none}.hero{min-height:auto;padding:104px 0 62px}h1{font-size:clamp(37px,12vw,52px);letter-spacing:-1.8px}.btn-row{flex-direction:column;align-items:stretch}.btn-primary,.btn-secondary{width:100%}.phone{padding:14px}.chat{min-height:330px}.strip-inner{align-items:flex-start}.strip-items span{width:calc(50% - 5px);text-align:center}.panel,.card,.form-card{padding:24px 18px}footer{padding-bottom:96px}#sticky-cta{display:block}.qr_wa_icon{display:none!important}}
+@media(prefers-reduced-motion:reduce){.chat-animated .bubble,.chat-animated .typing{animation:none;opacity:1;transform:none}.typing span{animation:none}}
 </style>
 <script type="application/ld+json">
 {
@@ -351,69 +164,30 @@ footer{padding:40px 18px 104px;}
         "postalCode": "110077",
         "addressCountry": "IN"
       },
-      "areaServed": "India",
-      "description": "AI automation and local business acquisition systems for clinics and local businesses."
+      "areaServed": ["India", "Global"],
+      "description": "AI automation and client acquisition systems for clinics and local businesses."
+    },
+    {
+      "@type": "Service",
+      "@id": "https://www.webwisedigital.net/clinics-doctors/#service",
+      "name": "Clinic WhatsApp Automation and Appointment Booking",
+      "serviceType": "Clinic WhatsApp automation",
+      "provider": {"@id": "https://www.webwisedigital.net/#business"},
+      "areaServed": ["India", "Global"],
+      "url": "https://www.webwisedigital.net/clinics-doctors/",
+      "description": "WhatsApp enquiry capture, appointment request routing, reminders, feedback, reviews and clinic-safe human handoff."
     },
     {
       "@type": "FAQPage",
       "@id": "https://www.webwisedigital.net/clinics-doctors/#faq-schema",
       "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Does this chatbot diagnose patients?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "No. Logistics only: timings, bookings, reminders, reviews, and handoff. Any clinical question routes to your team."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What patient data does it hold?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Name, phone number, preferred slot, and admin notes you approve. It does not see or store clinical records."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Does it work in Hindi?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "The flow can be configured for Hindi and English. We confirm the exact language behaviour during setup before anything goes live."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Who sets it up?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "We do. You share timings, services, fees, branches, and handoff rules. Your team only needs a short setup call."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What if my receptionist will not use it?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "It does not replace her. It reduces repeat typing. What reaches her is shorter, cleaner, and already sorted."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "We have three branches. Does that work?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes. Separate numbers and timings per branch can be supported, with one dashboard across all locations."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Can I cancel?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes. Monthly, no lock-in, no setup fee. You own your records and accounts."
-          }
-        }
+        {"@type":"Question","name":"Does this chatbot diagnose patients?","acceptedAnswer":{"@type":"Answer","text":"No. It handles clinic admin only: timings, bookings, reminders, reviews and handoff. Any clinical question routes to your team."}},
+        {"@type":"Question","name":"Are appointments automatically confirmed?","acceptedAnswer":{"@type":"Answer","text":"The system captures the booking request and routes it to reception for confirmation using your clinic rules. Your team decides what is auto-confirmed and what needs a person."}},
+        {"@type":"Question","name":"What patient data does it collect?","acceptedAnswer":{"@type":"Answer","text":"Only admin details you approve, such as name, phone number, preferred time, branch and request type. It does not read or store clinical records."}},
+        {"@type":"Question","name":"Can reception take over the conversation?","acceptedAnswer":{"@type":"Answer","text":"Yes. Staff can take over any time, with the patient's context already visible in the conversation."}},
+        {"@type":"Question","name":"Does this work for multiple branches?","acceptedAnswer":{"@type":"Answer","text":"Yes. Branch-specific timings, routing and handoff rules can be supported, with one operating view across locations."}},
+        {"@type":"Question","name":"Can it send reminders and review requests?","acceptedAnswer":{"@type":"Answer","text":"Yes. It can send appointment confirmations, reminders, rescheduling prompts, post-visit feedback, review requests and follow-up reminders based on your approved rules."}},
+        {"@type":"Question","name":"Does it replace my clinic software?","acceptedAnswer":{"@type":"Answer","text":"No. It is a front-desk layer for enquiry capture, routing and follow-up. It can log admin records to Google Sheets or Zoho, and connect to other software where your system allows."}}
       ]
     }
   ]
@@ -421,709 +195,227 @@ footer{padding:40px 18px 104px;}
 </script>
 </head>
 <body>
-<div id="sticky-cta">
-<div class="sticky-cta-inner">
-<div class="sticky-cta-text">
-<div class="st">Clinic WhatsApp demo</div>
-<div class="ss">Booking flow · reminders · reviews</div>
-</div>
-<button class="sticky-cta-btn" onclick="document.getElementById('demo').scrollIntoView({behavior:'smooth'})">Build Demo</button>
-</div>
-</div>
-<nav>
-<a href="/" class="nav-logo" aria-label="Webwise Digital home">
-<svg width="40" height="40" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-<polygon points="14,2 26,8 26,20 14,26 2,20 2,8" fill="none" stroke="#29ABE2" stroke-width="1.5"/>
-<polygon points="14,6 22,10 22,18 14,22 6,18 6,10" fill="#29ABE2" opacity="0.15"/>
-<path d="M14 8 L17 13 L14 20 L11 13 Z" fill="#29ABE2"/>
-<circle cx="14" cy="10" r="2" fill="#fff"/>
-</svg>
-<span class="logo-text">WEBWISE<em>DIGITAL</em></span>
+<div id="sticky-cta"><div class="sticky-row"><span>Build your clinic WhatsApp demo</span><a class="track-wa" href="https://wa.me/918796504200?text=Hi%20Webwise%2C%20I%20want%20a%20clinic%20WhatsApp%20demo%20for%20my%20clinic." target="_blank" rel="noopener">Message</a></div></div>
+<nav class="nav">
+<div class="wrap nav-inner">
+<a class="brand" href="/" aria-label="Webwise Digital home">
+<svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><polygon points="14,2 26,8 26,20 14,26 2,20 2,8" fill="none" stroke="#29ABE2" stroke-width="1.5"/><polygon points="14,6 22,10 22,18 14,22 6,18 6,10" fill="#29ABE2" opacity="0.15"/><path d="M14 8 L17 13 L14 20 L11 13 Z" fill="#29ABE2"/><circle cx="14" cy="10" r="2" fill="#fff"/></svg>
+<span>WEBWISE<em>DIGITAL</em></span>
 </a>
-<div class="nav-right">
-<a href="#security" class="nav-link">Safety</a>
-<a href="#demo" class="nav-cta"><span class="nav-cta-desktop">Build my clinic WhatsApp demo</span><span class="nav-cta-mobile">Build Demo</span> →</a>
-<button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" onclick="toggleMenu(this)">
-<span></span><span></span><span></span>
-</button>
+<div class="nav-links">
+<a href="#system">System</a>
+<a href="#workflow">Workflow</a>
+<a href="#safety">Safety</a>
+<a href="#faq">FAQ</a>
+<a class="nav-cta" href="#demo">Build Demo</a>
+<button class="menu" type="button" aria-label="Open menu" aria-expanded="false" onclick="toggleMenu(this)"><span></span><span></span><span></span></button>
+</div>
 </div>
 </nav>
 <div class="mobile-menu" id="mobile-menu">
-<a href="#problem" onclick="closeMenu()">Leakage</a>
 <a href="#system" onclick="closeMenu()">System</a>
-<a href="#automations" onclick="closeMenu()">Automations</a>
-<a href="#security" onclick="closeMenu()">Safety</a>
-<a href="#calculator" onclick="closeMenu()">Calculator</a>
+<a href="#workflow" onclick="closeMenu()">Workflow</a>
+<a href="#safety" onclick="closeMenu()">Safety</a>
 <a href="#demo" onclick="closeMenu()">Build Demo</a>
 </div>
-<section id="hero">
-<div class="hero-bg"></div>
-<div class="hero-grid"></div>
-<div class="wrap">
-<div class="hero-inner">
+<main>
+<section class="hero">
+<div class="wrap hero-grid">
 <div>
-<div class="hero-pill">Clinic Growth System · New Delhi</div>
-<h1>Patients are on WhatsApp. Your reception is on the phone. <em>Stop losing patients to missed enquiries.</em></h1>
-<p class="hero-sub">A WhatsApp receptionist for your clinic. It replies fast, captures booking requests, sends reminders, and asks for reviews — without touching clinical records.</p>
-<div class="hero-ctas">
-<a href="#demo" class="btn-primary">Build my clinic WhatsApp demo →</a>
-<a href="https://wa.me/918796504200?text=Hi%20Webwise%2C%20I%20want%20a%20clinic%20WhatsApp%20demo%20for%20my%20clinic." target="_blank" rel="noopener" class="btn-ghost">Message Webwise on WhatsApp</a>
+<div class="hero-pill">Clinics & Doctors</div>
+<h1>Clinic WhatsApp automation that turns enquiries into confirmed next steps</h1>
+<p class="hero-copy">Webwise builds WhatsApp enquiry and appointment systems for clinics that need faster replies without handing clinical conversations to a bot. We capture the patient's admin request, route it to the right person and confirm the next step, so reminders and follow-up no longer depend on a busy reception desk.</p>
+<div class="btn-row">
+<a class="btn-primary track-wa" href="https://wa.me/918796504200?text=Hi%20Webwise%2C%20I%20want%20a%20clinic%20WhatsApp%20demo%20for%20my%20clinic." target="_blank" rel="noopener">Build my clinic WhatsApp demo</a>
+<a class="btn-secondary track-wa" href="https://wa.me/918796504200?text=Hi%20Webwise%2C%20I%20want%20to%20understand%20the%20clinic%20WhatsApp%20system." target="_blank" rel="noopener">Message Webwise on WhatsApp</a>
 </div>
-<p class="cta-note">Or message +91 8796504200 and ask for the clinic demo. We will confirm the working flow before you review it.</p>
-<div class="hero-proof">
-<div class="proof-chip"><div class="dot"></div><strong>Official WhatsApp API</strong></div>
-<div class="proof-chip"><div class="dot"></div><strong>Admin data only</strong></div>
-<div class="proof-chip"><div class="dot"></div><strong>No lock-in</strong></div>
+<div class="guardrails"><span>No medical advice</span><span>No clinical-record access</span><span>No forced call to understand the basics</span></div>
 </div>
-</div>
-<div class="phone-card" aria-label="Clinic WhatsApp chat preview">
-<div class="phone-top">
-<div class="phone-name">Clinic WhatsApp Chat</div>
-<div class="phone-status">Auto-reply active</div>
-</div>
+<div class="phone" aria-label="Clinic WhatsApp enquiry preview">
+<div class="phone-head"><div class="phone-title">Clinic WhatsApp thread</div><div class="phone-status">Approved admin flow</div></div>
 <div class="chat chat-animated">
-<div class="bubble in m1">Hi, is the doctor available tomorrow evening?</div>
-<div class="typing t1" aria-label="Bot is typing"><span></span><span></span><span></span></div>
-<div class="bubble out m2">Yes. Please share your name, phone number, and preferred time. The clinic team will confirm your slot.</div>
-<div class="bubble in m3">Rahul Mehta, 6 PM. First visit.</div>
-<div class="typing t2" aria-label="Bot is typing"><span></span><span></span><span></span></div>
-<div class="bubble out m4">Thank you. Your request is recorded. You will get a confirmation and reminder on WhatsApp.</div>
-</div>
-<div class="handoff">
-<div class="handoff-k">Human handoff rule</div>
-<div class="handoff-v">Clinical questions, complaints, and unclear requests route to your team instead of being answered by the flow.</div>
-</div>
+<div class="bubble in m1">Hi, is implant consultation available this Saturday?</div>
+<div class="typing m2"><span></span><span></span><span></span></div>
+<div class="bubble out m3">Saturday 11:00 AM is available. Is this for a new implant visit or a second opinion?</div>
+<div class="bubble in m4">New implant. Dwarka branch.</div>
+<div class="bubble out m5">Your request is recorded. Reception will confirm the slot and send your visit details here.</div>
+<div class="bubble system m5">Clinical questions route to the clinic team.</div>
 </div>
 </div>
 </div>
 </section>
-<section class="social-proof" aria-label="Business categories supported by Webwise Digital">
-<div class="proof-bar">
-<div class="proof-bar-title">Trusted by Business Across Pan India</div>
-<div class="proof-cats">
-<div class="proof-cat"><span>01</span> Clinics</div>
-<div class="proof-cat"><span>02</span> Salons</div>
-<div class="proof-cat"><span>03</span> Restaurants</div>
-<div class="proof-cat"><span>04</span> Hospitality</div>
-<div class="proof-cat"><span>05</span> Real Estate</div>
-<div class="proof-cat"><span>06</span> D2C Brands</div>
+<div class="strip"><div class="wrap strip-inner"><b>Clinic-safe by design</b><div class="strip-items"><span>Admin data only</span><span>Human handoff</span><span>Reception control</span><span>WhatsApp-first</span><span>Multi-branch ready</span></div></div></div>
+<section id="problem">
+<div class="wrap split">
+<div>
+<div class="eyebrow">The Gap</div>
+<h2>Your reception is busy. Patient enquiries do not wait.</h2>
+<p class="copy">A patient checks your Google listing, sees a service they need, and sends a WhatsApp message. Your team is with patients, on calls, or closing the clinic. That enquiry waits.</p>
+<p class="copy">The problem is not that your receptionist is doing poor work. The problem is that too many important handoffs rely on one person being free at exactly the right minute.</p>
+</div>
+<div class="panel">
+<h3>What Webwise fixes</h3>
+<p class="copy">Webwise closes that gap with a clinic-safe WhatsApp system built around your approved timings, services, booking rules, branch details and escalation paths.</p>
+<div class="problem-lines">
+<div class="line-card"><b>Patients get a clear first response</b><span class="copy">Admin questions are answered using approved inputs.</span></div>
+<div class="line-card"><b>Your team gets cleaner context</b><span class="copy">The request is captured before reception takes over.</span></div>
+<div class="line-card"><b>Clinical conversations stay with your people</b><span class="copy">The system stops rather than guessing.</span></div>
+</div>
 </div>
 </div>
 </section>
 <section id="system">
 <div class="wrap">
-<div class="label" style="justify-content:center;">24/7 Clinic Front Desk</div>
-<h2 class="sec" style="text-align:center;">Your WhatsApp front desk, <em>working after hours.</em></h2>
-<p class="sub" style="text-align:center;max-width:680px;margin:0 auto 48px;">Patients ask questions before and after clinic hours. This gives them a clear admin reply, captures the booking request, and keeps your team in control.</p>
-<div class="card-grid three">
-<div class="system-card">
-<div class="system-icon">01</div>
-<div class="system-tag">Enquiries</div>
-<div class="system-title">24/7 Patient Response</div>
-<div class="system-desc">The enquiry that arrives late on a Sunday gets a clear, useful reply then, not after the patient has booked elsewhere. Fees, timings, and services are answered; the booking request is queued for your team to confirm.</div>
-</div>
-<div class="system-card">
-<div class="system-icon">02</div>
-<div class="system-tag">Visits</div>
-<div class="system-title">Appointment &amp; Visit Support</div>
-<div class="system-desc">Reminders go before the slot. Location and directions can go on the day. After the visit, the report or GST invoice your team signs off and uploads can be delivered on the same thread with a QR to verify it is genuine. The system moves the file. It never reads what is in it.</div>
-</div>
-<div class="system-card">
-<div class="system-icon">03</div>
-<div class="system-tag">Follow-up</div>
-<div class="system-title">Reviews &amp; Return Visits</div>
-<div class="system-desc">After the visit, every patient is asked for feedback and invited to leave a Google review. A low score also alerts your team privately, so you can put it right. Later, patients due a follow-up or check-up get a gentle nudge.</div>
-</div>
-</div>
-<div class="inbox-strip"><strong>One shared inbox.</strong> Your reception, doctors, and staff work from a single WhatsApp view. Anyone on the team can read the thread or take over a handoff from one place.</div>
-</div>
-</section>
-<div id="proof-strip">
-<div class="marquee-outer">
-<div class="marquee-inner">
-<div class="mq-item">Fast enquiry replies</div><div class="mq-sep"></div>
-<div class="mq-item">Booking requests</div><div class="mq-sep"></div>
-<div class="mq-item">WhatsApp reminders</div><div class="mq-sep"></div>
-<div class="mq-item">Google review asks</div><div class="mq-sep"></div>
-<div class="mq-item">Human handoff</div><div class="mq-sep"></div>
-<div class="mq-item">No clinical records</div><div class="mq-sep"></div>
-<div class="mq-item">Admin data only</div><div class="mq-sep"></div>
-<div class="mq-item">Sheets or Zoho</div><div class="mq-sep"></div>
-<div class="mq-item">Reception queue</div><div class="mq-sep"></div>
-<div class="mq-item">Clinic-safe setup</div>
-</div>
-</div>
-</div>
-<section id="problem">
-<div class="wrap">
-<div class="split">
-<div class="sticky-copy copy">
-<div class="label">The Real Problem</div>
-<h2 class="big-copy">Every missed call can become a <em>lost patient.</em></h2>
-<p>Your reception is busy with the patient in front of them. The patient on WhatsApp waits. By the time someone replies, they may have booked with the clinic down the road.</p>
-<p>None of that loss appears on a report, because you never knew those patients existed.</p>
-</div>
-<div class="cost-card">
-<div class="example-badge">Example arithmetic</div>
-<div class="label">Count What You're Missing</div>
-<div class="cost-row"><div class="cost-k">Monthly enquiries</div><div class="cost-v">40</div></div>
-<div class="cost-row"><div class="cost-k">Average reply time</div><div class="cost-v">4 hours</div></div>
-<div class="cost-row"><div class="cost-k">Lost to faster clinics</div><div class="cost-v">1 in 4</div></div>
-<div class="cost-row"><div class="cost-k">Missed patients per month</div><div class="cost-v">10</div></div>
-<div class="cost-row"><div class="cost-k">Patient value</div><div class="cost-v">INR 3,000</div></div>
-<div class="cost-row"><div class="cost-k">Monthly leakage</div><div class="cost-v hot">INR 30,000</div></div>
-<div class="cost-row"><div class="cost-k">Annual leakage</div><div class="cost-v hot">INR 3.6 lakh</div></div>
-<p class="sub" style="margin-top:22px;">Your enquiry volume and patient value will be different. The free leakage audit works out yours.</p>
-</div>
+<div class="eyebrow">What The Clinic System Handles</div>
+<h2>Three admin layers that keep the front desk moving.</h2>
+<div class="grid3">
+<article class="card"><div class="num">01</div><div class="tag">WhatsApp enquiry capture</div><h3>Fast approved responses</h3><p>Routine front-desk questions: clinic timings and location, services offered, doctor availability rules, consultation guidance you approve, branch selection, first-visit requests and follow-up booking requests.</p><p>Collects only admin details: name, phone number, preferred time, branch and request type.</p></article>
+<article class="card"><div class="num">02</div><div class="tag">Appointment requests</div><h3>Human confirmation</h3><p>Captures the request, checks approved info, and routes the thread to reception for confirmation. Staff can take over any time with the patient's context already in the conversation.</p></article>
+<article class="card"><div class="num">03</div><div class="tag">Follow-up</div><h3>Reminders, rescheduling and reviews</h3><p>Confirmations, reminders before the visit, rescheduling prompts, location instructions, post-visit feedback, review requests and follow-up reminders. Your team decides which messages send, when, and to whom.</p></article>
 </div>
 </div>
 </section>
-<section id="demo-proof">
-<div class="wrap">
-<div class="demo-panel">
+<section id="workflow">
+<div class="wrap split">
 <div>
-<div class="label">See It Before You Buy It</div>
-<h2>Ask for a working clinic demo before you buy.</h2>
-<p>Share your clinic type, timings, services, and common patient questions. We will map the flow and confirm what it can answer before you approve the build.</p>
-<p>No slide deck. You review the actual front-desk journey: enquiry, booking request, handoff, reminder, and review ask.</p>
-<a href="https://wa.me/918796504200?text=Hi%20Webwise%2C%20I%20want%20a%20clinic%20WhatsApp%20demo%20for%20my%20clinic." target="_blank" rel="noopener" class="btn-primary" style="margin-top:8px;">Message +91 8796504200 →</a>
+<div class="eyebrow">How The Workflow Works</div>
+<h2>One front door. Clear handoff. No guessing.</h2>
+<p class="copy">The page, Google listing, Instagram and WhatsApp link all lead into one approved admin flow. It records the request, shows the next step and routes anything sensitive to a person.</p>
 </div>
-<div class="terms">
-<div class="terms-k">Demo review</div>
-<ul>
-<li>Answers clinic admin questions.</li>
-<li>Captures booking requests for human confirm.</li>
-<li>Routes clinical or unclear questions to a person.</li>
-<li>Shows you the tone before you pay.</li>
-</ul>
+<div class="workflow">
+<div class="flow-step"><div><b>Patient sends an enquiry</b><p>Google Maps, website, Instagram or WhatsApp link into one front-door system.</p></div></div>
+<div class="flow-step"><div><b>Patient receives an approved admin response</b><p>Timings, services, branches and booking steps. No symptoms, diagnosis, report interpretation or clinical promises.</p></div></div>
+<div class="flow-step"><div><b>Booking request is captured</b><p>Name, preferred day or time, location and visit type. Recorded, not lost in a missed message.</p></div></div>
+<div class="flow-step"><div><b>Your team confirms or takes over</b><p>Cleaner handoff. Any clinical question, complaint or exception routes to a person.</p></div></div>
+<div class="flow-step"><div><b>Patient gets the next operational message</b><p>Reminders, rescheduling, review requests and follow-ups based on your rules.</p></div></div>
+</div>
+</div>
+</section>
+<section id="safety">
+<div class="wrap grid2">
+<div class="panel">
+<div class="eyebrow">Built For Clinic Admin</div>
+<h2>It handles the desk. Not the diagnosis.</h2>
+<div class="safe-list">
+<div class="safe-item"><i>+</i><div>Timings, directions and branch selection.</div></div>
+<div class="safe-item"><i>+</i><div>Admin service info, appointment requests and reminders.</div></div>
+<div class="safe-item"><i>+</i><div>Review and feedback flows, reception handoffs and approved document-delivery notifications.</div></div>
+</div>
+</div>
+<div class="panel">
+<div class="eyebrow">Hard Boundary</div>
+<h2>No medical advice.</h2>
+<div class="safe-list">
+<div class="safe-item stop"><i>x</i><div>No diagnosis or symptom assessment.</div></div>
+<div class="safe-item stop"><i>x</i><div>No prescriptions or treatment advice.</div></div>
+<div class="safe-item stop"><i>x</i><div>No clinical histories, record interpretation or unapproved medical claims.</div></div>
+<div class="safe-item stop"><i>x</i><div>No complex complaints without human review.</div></div>
 </div>
 </div>
 </div>
 </section>
-<section id="automations">
-<div class="wrap">
-<div class="label" style="justify-content:center;">The 6 Automations Every Clinic Runs</div>
-<h2 class="sec" style="text-align:center;">Your front desk, running <em>while you see patients.</em></h2>
-<p class="sub" style="text-align:center;max-width:660px;margin:0 auto 48px;">Six admin jobs your reception does by hand today. The system does them when triggered: nothing clinical, nothing left to memory.</p>
-<div class="card-grid">
-<div class="feature-card"><div class="feature-num">1</div><div class="feature-title">Appointment confirmation</div><div class="feature-desc">Sent when a patient books: date, time, doctor, and clinic location in one message. No "did it go through?" calls.</div></div>
-<div class="feature-card"><div class="feature-num">2</div><div class="feature-title">Appointment reminder</div><div class="feature-desc">Two touches: 24 hours before, and again 2 hours before the slot. Built to reduce empty chairs.</div></div>
-<div class="feature-card"><div class="feature-num">3</div><div class="feature-title">Bill &amp; GST receipt</div><div class="feature-desc">A GST invoice PDF on the WhatsApp thread when payment confirms. No printing, no "please send the bill again."</div></div>
-<div class="feature-card"><div class="feature-num">4</div><div class="feature-title">Report delivery</div><div class="feature-desc">When your team signs off and uploads a pathology, ECG, X-ray, or USG report, the approved PDF is delivered to the patient with a verification QR. The system delivers the file. It does not read the report.</div></div>
-<div class="feature-card"><div class="feature-num">5</div><div class="feature-title">Follow-up reminder</div><div class="feature-desc">"Your follow-up with Dr. [name] is due on [date]." Sent 7 days ahead, so the second visit is not left to memory.</div></div>
-<div class="feature-card"><div class="feature-num">6</div><div class="feature-title">Feedback &amp; reviews</div><div class="feature-desc">After the visit, every patient is asked for feedback and invited to leave a Google review. A low score also pings your team privately, so you can put it right before it becomes public.</div></div>
-</div>
-<div class="mockup-visual" aria-label="Reminder and review WhatsApp flow mockup">
-<div class="mockup-kicker">Reminder &amp; Review Flow</div>
-<div class="split-mockups">
-<div class="mini-phone">
-<div class="mini-phone-head"><span>Appointment Reminder</span><span class="mini-phone-badge">Auto-sent</span></div>
-<div class="mini-chat">
-<div class="wa-msg bot">Your appointment with Dr. [name] is tomorrow at 10 AM. Tap to confirm or reschedule.</div>
-<div class="wa-actions">
-<div class="wa-action">Confirm</div>
-<div class="wa-action">Reschedule</div>
-</div>
-<div class="wa-msg patient">Confirm</div>
-<div class="wa-msg note">Reception view updated</div>
-</div>
-</div>
-<div class="mini-phone">
-<div class="mini-phone-head"><span>Post-visit Follow-up</span><span class="mini-phone-badge">Review ask</span></div>
-<div class="mini-chat">
-<div class="wa-msg bot">How was your visit?</div>
-<div class="wa-msg bot">Leave a Google review →</div>
-<div class="wa-actions">
-<div class="wa-action">Open Google</div>
-<div class="wa-action">Share feedback</div>
-</div>
-<div class="wa-msg note">Low scores alert your team privately</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="flow">
-<div class="wrap">
-<div class="flow-card">
-<div class="label">How The Flow Works</div>
-<div class="flow-track">
-<div class="flow-node"><div class="flow-n">01</div><div class="flow-t">Patient enquiry</div></div>
-<div class="flow-node"><div class="flow-n">02</div><div class="flow-t">Fast reply</div></div>
-<div class="flow-node"><div class="flow-n">03</div><div class="flow-t">Booking request</div></div>
-<div class="flow-node"><div class="flow-n">04</div><div class="flow-t">Reception confirms</div></div>
-<div class="flow-node"><div class="flow-n">05</div><div class="flow-t">Reminder sent</div></div>
-<div class="flow-node"><div class="flow-n">06</div><div class="flow-t">Clinic visit</div></div>
-<div class="flow-node"><div class="flow-n">07</div><div class="flow-t">Review request</div></div>
-</div>
-<div class="mockup-visual dashboard-mock" aria-label="Shared inbox dashboard mockup">
-<div class="dash-panel">
-<div class="dash-top">
-<div class="dash-title">Shared Clinic Inbox</div>
-<div class="dash-pill">No clinical data</div>
-</div>
-<div class="dash-row"><div class="dash-role">Reception</div><div>New booking requests and slot changes</div><div class="dash-status">Active</div></div>
-<div class="dash-row"><div class="dash-role">Doctor</div><div>Only threads handed over by staff</div><div class="dash-status">View</div></div>
-<div class="dash-row"><div class="dash-role">Staff</div><div>Reports, bills, reminders, and reviews</div><div class="dash-status">Queue</div></div>
-</div>
-<div class="dash-thread">
-<div class="dash-top">
-<div class="dash-title">Today</div>
-<div class="dash-pill">Human handoff</div>
-</div>
-<div class="thread-item">
-<div class="thread-name">Rahul Mehta <span class="thread-tag">Handoff</span></div>
-<div class="thread-copy">Patient asked a clinical question. The flow stopped and routed the thread to reception.</div>
-</div>
-<div class="thread-item">
-<div class="thread-name">Asha Verma <span class="thread-tag">Reminder</span></div>
-<div class="thread-copy">Appointment reminder sent. Patient confirmed the slot from WhatsApp.</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="monitoring">
-<div class="wrap">
-<div class="split">
-<div class="sticky-copy copy">
-<div class="label">Who Monitors It</div>
-<h2 class="big-copy">Automation where it helps. <em>Humans where it matters.</em></h2>
-<p>The system is built with clear rules, so your reception team knows what it handles and what comes back to them.</p>
-</div>
-<div class="card-grid" style="grid-template-columns:1fr;">
-<div class="step-card"><div class="step-title">Working hours</div><div class="step-desc">Admin replies can run outside working hours. Anything needing a person is queued and flagged for your reception.</div></div>
-<div class="step-card"><div class="step-title">Handoff rules</div><div class="step-desc">Clinical questions, complaints, and anything the flow does not recognise route to your team with a clear patient message.</div></div>
-<div class="step-card"><div class="step-title">Failed replies</div><div class="step-desc">If the flow cannot answer twice, it stops trying and hands over. It does not loop.</div></div>
-<div class="step-card"><div class="step-title">Multi-branch support</div><div class="step-desc">Each branch can have its own number, timings, and queue, with one view across the group.</div></div>
-</div>
-</div>
-</div>
-</section>
-<section id="security">
-<div class="wrap">
-<div class="label" style="justify-content:center;">Safety & Data</div>
-<h2 class="sec" style="text-align:center;">Built for clinic admin, <em>not medical advice.</em></h2>
-<p class="sub" style="text-align:center;max-width:680px;margin:0 auto 48px;">The flow is designed to stay away from diagnosis, symptoms, history, reports, prescriptions, and clinical records.</p>
-<div class="safe-grid">
-<div class="safe-card good">
-<div class="safe-eyebrow">It does</div>
-<div class="safe-title">Handle front-desk admin</div>
-<div class="safe-desc">Timings, location, fees, booking requests, reminders, follow-ups, review asks, and handoff to your team.</div>
-</div>
-<div class="safe-card stop">
-<div class="safe-eyebrow">It does not</div>
-<div class="safe-title">Give medical advice</div>
-<div class="safe-desc">No diagnosis. No symptom collection. No reports. No prescriptions. No clinical record access.</div>
-</div>
-<div class="safe-card good">
-<div class="safe-eyebrow">Consent first</div>
-<div class="safe-title">Official WhatsApp Business API</div>
-<div class="safe-desc">Patients opt in before messages are sent. No cold messaging, scraped numbers, or unofficial workarounds.</div>
-</div>
-<div class="safe-card good">
-<div class="safe-eyebrow">Your data</div>
-<div class="safe-title">Admin records stay with you</div>
-<div class="safe-desc">Name, phone, and appointment slot sit in Google Sheets or Zoho. EMR connection is possible where your software allows. Access is per-person and can be removed.</div>
-</div>
-</div>
-</div>
-</section>
-<section id="built-for">
-<div class="wrap">
-<div class="split">
+<section id="reception">
+<div class="wrap split">
 <div>
-<div class="label">Built For Indian Clinics</div>
-<h2 class="big-copy">If patients reach you on WhatsApp, <em>it fits.</em></h2>
-<p class="sub">Official WhatsApp Business API, Google Reviews, and Google Sheets or Zoho — EMR connection where your software allows. Built in Delhi NCR for clinics that already run on WhatsApp.</p>
-<div class="built-list">
-<div class="built-pill">Dentists</div>
-<div class="built-pill">Dermatologists</div>
-<div class="built-pill">General physicians</div>
-<div class="built-pill">Physiotherapists</div>
-<div class="built-pill">Eye clinics</div>
-<div class="built-pill">Paediatricians</div>
-<div class="built-pill">Diagnostic centres</div>
-<div class="built-pill">Multi-branch clinics</div>
+<div class="eyebrow">Built Around Your Reception</div>
+<h2>A system your reception can actually use.</h2>
+<p class="copy">We map the workflow around how your clinic already operates: enquiry sources, approved answers, booking and confirmation rules, branch, doctor and timing logic, human handoff points, reminder and review process.</p>
+<p class="copy">Then we build a working version to review. You see the actual enquiry-to-booking journey before approving the build. No generic slide deck. No black box.</p>
 </div>
-</div>
-<div class="card-grid" style="grid-template-columns:1fr;">
-<div class="feature-card"><div class="feature-title">Enquiries answered faster</div><div class="feature-desc">Patients get the first useful reply before your reception has to type.</div></div>
-<div class="feature-card"><div class="feature-title">Reception hours back</div><div class="feature-desc">Your team spends less time repeating answers and more time with patients in the room.</div></div>
-<div class="feature-card"><div class="feature-title">Reviews that compound</div><div class="feature-desc">Every satisfied patient is asked once, at the right time, without staff chasing.</div></div>
-</div>
+<div class="panel">
+<h3>Built for clinics that already run on WhatsApp</h3>
+<p class="copy">Dental, dermatology, general physicians, physiotherapy, eye, paediatric clinics, diagnostic centres and multi-branch practices.</p>
+<div class="niche-list"><span>Dental</span><span>Dermatology</span><span>General physician</span><span>Physiotherapy</span><span>Eye clinic</span><span>Paediatric</span><span>Diagnostics</span><span>Multi-branch</span></div>
 </div>
 </div>
 </section>
-<section id="process">
-<div class="wrap">
-<div class="label" style="justify-content:center;">How The Audit Works</div>
-<h2 class="sec" style="text-align:center;">Three steps. <em>Before you pay for anything.</em></h2>
-<p class="sub" style="text-align:center;max-width:640px;margin:0 auto 48px;">No slide deck, no generic pitch. We look at your actual front desk first, then show you what a fixed one looks like.</p>
-<div class="card-grid three">
-<div class="step-card">
-<div class="step-num">01</div>
-<div class="step-title">Diagnose</div>
-<div class="step-desc">We start with your biggest issue, then map how enquiries reach you today: WhatsApp, calls, Google, and walk-ins. Your real volume, your real reply times.</div>
-</div>
-<div class="step-card">
-<div class="step-num">02</div>
-<div class="step-title">Identify the gaps</div>
-<div class="step-desc">We pinpoint where patients leak: the after-hours enquiry, the no-show, the review that never got asked for. In numbers, using your figures, not ours.</div>
-</div>
-<div class="step-card">
-<div class="step-num">03</div>
-<div class="step-title">Build the blueprint</div>
-<div class="step-desc">We walk you through the exact front-desk flow we would build for your clinic: enquiry to booking to reminder to review. Then you decide.</div>
-</div>
-</div>
-</div>
-</section>
-<section id="compare">
-<div class="wrap">
-<div class="label" style="justify-content:center;">Platform vs Partner</div>
-<h2 class="sec" style="text-align:center;">A login, or a <em>working front desk?</em></h2>
-<p class="sub" style="text-align:center;max-width:660px;margin:0 auto 48px;">Most WhatsApp tools hand you software and wish you luck. The build, monitoring, and fixes are still yours. Here is the difference.</p>
-<div class="compare-table">
-<div class="compare-row compare-head">
-<div class="compare-cell"></div>
-<div class="compare-cell">A WhatsApp platform<span>AiSensy, WATI, Interakt</span></div>
-<div class="compare-cell highlight">Webwise Digital</div>
-</div>
-<div class="compare-row">
-<div class="compare-cell label">What you are buying</div>
-<div class="compare-cell">A software login</div>
-<div class="compare-cell highlight">A front desk, built and run</div>
-</div>
-<div class="compare-row">
-<div class="compare-cell label">Who builds the flows</div>
-<div class="compare-cell">You, or your staff</div>
-<div class="compare-cell highlight">We do</div>
-</div>
-<div class="compare-row">
-<div class="compare-cell label">Templates &amp; Meta approval</div>
-<div class="compare-cell">Your job, and you wait</div>
-<div class="compare-cell highlight">We handle it</div>
-</div>
-<div class="compare-row">
-<div class="compare-cell label">Who monitors &amp; improves it</div>
-<div class="compare-cell">You</div>
-<div class="compare-cell highlight">We do, every month</div>
-</div>
-<div class="compare-row">
-<div class="compare-cell label">Setup effort</div>
-<div class="compare-cell">Your evenings, for weeks</div>
-<div class="compare-cell highlight">30 minutes of your time</div>
-</div>
-<div class="compare-row">
-<div class="compare-cell label">If it breaks at 9 PM</div>
-<div class="compare-cell">Email support, SLA queue</div>
-<div class="compare-cell highlight">One person in Delhi, on WhatsApp</div>
-</div>
-</div>
-<p class="compare-close" style="text-align:center;max-width:640px;margin:40px auto 0;">A platform login costs less because you do the work. Webwise costs more because we build it, run it, and stand behind it. Your time is worth more than the difference.</p>
-</div>
-</section>
-<section id="calculator">
-<div class="wrap">
-<div class="calc-card">
+<section id="control">
+<div class="wrap split">
 <div>
-<div class="label">Clinic Leakage Calculator</div>
-<h2 class="sec">Put your numbers in. <em>See the monthly leak.</em></h2>
-<p class="sub" style="max-width:680px;">This is not proof or a case study. It is arithmetic using your enquiry volume, patient value, and estimated lost-enquiry rate.</p>
+<div class="eyebrow">Your Clinic Keeps Control</div>
+<h2>You own the rules, tone and accounts.</h2>
+<p class="copy">The system is built around your approved admin answers and your handoff rules. Webwise builds and manages the flow. Your clinic stays in control of the patient-facing experience.</p>
 </div>
-<div class="calc-grid">
-<div class="field">
-<label>Monthly enquiries</label>
-<input id="calc-enquiries" type="number" min="0" value="40" oninput="updateCalculator()" />
-</div>
-<div class="field">
-<label>Average patient value</label>
-<input id="calc-value" type="number" min="0" value="3000" oninput="updateCalculator()" />
-</div>
-<div class="field">
-<label>Lost enquiry rate (%)</label>
-<input id="calc-loss" type="number" min="0" max="100" value="25" oninput="updateCalculator()" />
+<div class="control-grid">
+<div>Your WhatsApp Business account</div>
+<div>Patient-facing tone</div>
+<div>Opening hours and escalation rules</div>
+<div>Team access</div>
+<div>Approved services and consultation guidance</div>
+<div>Administrative records and handover</div>
 </div>
 </div>
-<div class="calc-result">
-<div class="calc-result-k">Estimated monthly leakage</div>
-<div class="calc-result-v" id="calc-result">INR 30,000</div>
-<div class="calc-result-sub" id="calc-result-sub">Based on 10 missed patients per month. Use this as a working estimate, then confirm real numbers during the audit.</div>
+</section>
+<section class="cta" id="demo">
+<div class="wrap split">
+<div>
+<div class="eyebrow">Build Your Clinic WhatsApp Demo</div>
+<h2>Show us how patients currently reach you.</h2>
+<p class="copy">We map where enquiries wait, go cold or reach your team without context. Then we show you the working flow Webwise would build.</p>
+<div class="btn-row"><a class="btn-secondary track-wa" href="https://wa.me/918796504200?text=Hi%20Webwise%2C%20I%20want%20a%20clinic%20WhatsApp%20demo%20for%20my%20clinic." target="_blank" rel="noopener">Message Webwise on WhatsApp</a></div>
 </div>
-<a href="#demo" class="btn-primary" style="margin-top:24px;">Build my clinic WhatsApp demo →</a>
+<div class="form-card">
+<h3>Build my clinic WhatsApp demo</h3>
+<p class="copy" style="font-size:14px;margin-bottom:22px">Share the basics. We will review your clinic flow and come back with the next step.</p>
+<div class="field"><label>Clinic name</label><input id="f-name" type="text" placeholder="e.g. Sharma Dental Clinic" /></div>
+<div class="field"><label>WhatsApp number</label><input id="f-wa" type="tel" placeholder="+91 98765 43210" /></div>
+<div class="field"><label>Clinic type</label><select id="f-type"><option value="">Select clinic type</option><option>Dental</option><option>Dermatology</option><option>General Physician</option><option>Physiotherapy</option><option>Eye Clinic</option><option>Paediatric Clinic</option><option>Diagnostic Centre</option><option>Multi-branch Practice</option><option>Other Clinic</option></select></div>
+<div class="field"><label>Biggest front-desk issue</label><select id="f-issue"><option value="">Select the issue</option><option>Missed WhatsApp enquiries</option><option>Slow replies</option><option>Manual booking confirmation</option><option>No-shows</option><option>Manual reminders</option><option>Review requests</option><option>Multi-branch routing</option></select></div>
+<button class="form-btn" id="form-submit-btn" type="button" onclick="submitClinicForm()">Build my clinic WhatsApp demo</button>
+<div class="form-error" id="form-error"></div>
+<div class="form-note">By submitting, you agree that we may contact you about this request. Read our <a href="/privacy-policy/" style="color:var(--blue);text-decoration:underline">Privacy Policy</a>.</div>
 </div>
 </div>
 </section>
 <section id="faq">
 <div class="wrap">
-<div class="label" style="justify-content:center;">Questions Doctors Ask</div>
-<h2 class="sec" style="text-align:center;">Clear answers before you try it.</h2>
-<div class="faq-grid" style="margin-top:48px;">
-<div class="faq-item" onclick="toggleFaq(this)"><div class="faq-q">Does this chatbot diagnose patients?<span class="arrow">+</span></div><div class="faq-a">No. Logistics only: timings, bookings, reminders, reviews, and handoff. Any clinical question routes to your team.</div></div>
-<div class="faq-item" onclick="toggleFaq(this)"><div class="faq-q">What patient data does it hold?<span class="arrow">+</span></div><div class="faq-a">Name, phone number, preferred slot, and admin notes you approve. It does not see or store clinical records.</div></div>
-<div class="faq-item" onclick="toggleFaq(this)"><div class="faq-q">Does it work in Hindi?<span class="arrow">+</span></div><div class="faq-a">The flow can be configured for Hindi and English. We confirm the exact language behaviour during setup before anything goes live.</div></div>
-<div class="faq-item" onclick="toggleFaq(this)"><div class="faq-q">Who sets it up?<span class="arrow">+</span></div><div class="faq-a">We do. You share timings, services, fees, branches, and handoff rules. Your team only needs a short setup call.</div></div>
-<div class="faq-item" onclick="toggleFaq(this)"><div class="faq-q">What if my receptionist will not use it?<span class="arrow">+</span></div><div class="faq-a">It does not replace her. It reduces repeat typing. What reaches her is shorter, cleaner, and already sorted.</div></div>
-<div class="faq-item" onclick="toggleFaq(this)"><div class="faq-q">We have three branches. Does that work?<span class="arrow">+</span></div><div class="faq-a">Yes. Separate numbers and timings per branch can be supported, with one dashboard across all locations.</div></div>
-<div class="faq-item" onclick="toggleFaq(this)"><div class="faq-q">Can I cancel?<span class="arrow">+</span></div><div class="faq-a">Yes. Monthly, no lock-in, no setup fee. You own your records and accounts.</div></div>
+<div class="eyebrow">FAQ</div>
+<h2>Questions doctors ask before trying it.</h2>
+<div class="faq-grid">
+<div class="faq-item"><button type="button" onclick="toggleFaq(this)">Does this chatbot diagnose patients?<span class="plus">+</span></button><div class="faq-a">No. It handles clinic admin only: timings, bookings, reminders, reviews and handoff. Any clinical question routes to your team.</div></div>
+<div class="faq-item"><button type="button" onclick="toggleFaq(this)">Are appointments automatically confirmed?<span class="plus">+</span></button><div class="faq-a">The system captures the booking request and routes it to reception for confirmation using your clinic rules. Your team decides what is auto-confirmed and what needs a person.</div></div>
+<div class="faq-item"><button type="button" onclick="toggleFaq(this)">What patient data does it collect?<span class="plus">+</span></button><div class="faq-a">Only admin details you approve, such as name, phone number, preferred time, branch and request type. It does not read or store clinical records.</div></div>
+<div class="faq-item"><button type="button" onclick="toggleFaq(this)">Can reception take over the conversation?<span class="plus">+</span></button><div class="faq-a">Yes. Staff can take over any time, with the patient's context already visible in the conversation.</div></div>
+<div class="faq-item"><button type="button" onclick="toggleFaq(this)">Does this work for multiple branches?<span class="plus">+</span></button><div class="faq-a">Yes. Branch-specific timings, routing and handoff rules can be supported, with one operating view across locations.</div></div>
+<div class="faq-item"><button type="button" onclick="toggleFaq(this)">Can it send reminders and review requests?<span class="plus">+</span></button><div class="faq-a">Yes. It can send appointment confirmations, reminders, rescheduling prompts, post-visit feedback, review requests and follow-up reminders based on your approved rules.</div></div>
+<div class="faq-item"><button type="button" onclick="toggleFaq(this)">Does it replace my clinic software?<span class="plus">+</span></button><div class="faq-a">No. It is a front-desk layer for enquiry capture, routing and follow-up. It can log admin records to Google Sheets or Zoho, and connect to other software where your system allows.</div></div>
 </div>
 </div>
 </section>
-<section id="demo">
-<div class="wrap">
-<div class="cta-inner">
-<div class="cta-left">
-<div class="label">Final CTA</div>
-<h2>Let me show you what this looks like for <em>your clinic.</em></h2>
-<p class="sub">A working WhatsApp flow built on your clinic type, patient flow, and follow-up process. Not a slide deck. You review the actual front-desk journey before approving the build.</p>
-<div class="cta-bullets">
-<div class="cta-bullet"><div class="ck-icon">✦</div><div><strong>We map your leakage</strong> using your enquiry volume, patient value, and reply time.</div></div>
-<div class="cta-bullet"><div class="ck-icon">✦</div><div><strong>You test a live demo</strong> before approving the build.</div></div>
-<div class="cta-bullet"><div class="ck-icon">✦</div><div><strong>You keep control</strong> of WhatsApp, Google Sheets or Zoho, and patient admin data.</div></div>
-</div>
-</div>
-<div class="lead-form">
-<div class="form-title">Build my clinic WhatsApp demo</div>
-<div class="form-sub">Share the basics. We will review your clinic flow and come back with the next step.</div>
-<div class="field">
-<label>Clinic Name <span style="color:#ff6b6b">*</span></label>
-<input id="f-name" type="text" placeholder="e.g. Sharma Dental Clinic" required />
-</div>
-<div class="field">
-<label>WhatsApp Number <span style="color:#ff6b6b">*</span></label>
-<input id="f-wa" type="tel" placeholder="+91 98765 43210" required />
-</div>
-<div class="field">
-<label>Clinic Type <span style="color:#ff6b6b">*</span></label>
-<select id="f-type" required>
-<option value="">Select your clinic type</option>
-<option>Dentist</option>
-<option>Dermatologist</option>
-<option>General Physician</option>
-<option>Physiotherapist</option>
-<option>Eye Clinic</option>
-<option>Paediatrician</option>
-<option>Diagnostic Centre</option>
-<option>Multi-branch Clinic</option>
-<option>Other Clinic</option>
-</select>
-</div>
-<div class="field">
-<label>Biggest Issue / Pain Point <span style="color:#ff6b6b">*</span></label>
-<select id="f-issue" required>
-<option value="">Select the biggest issue</option>
-<option>Missed WhatsApp enquiries</option>
-<option>Slow replies</option>
-<option>No-shows</option>
-<option>Low Google reviews</option>
-<option>Manual follow-ups</option>
-<option>Reports or bills sent manually</option>
-<option>Other front-desk issue</option>
-</select>
-<div class="field-helper">Pick the main leak. We will map the rest during the audit.</div>
-</div>
-<button class="form-btn" id="form-submit-btn" onclick="submitClinicForm()"><span>Build my clinic WhatsApp demo →</span></button>
-<div class="form-error" id="form-error"></div>
-<a href="https://wa.me/918796504200?text=Hi%20Webwise%2C%20I%20want%20a%20clinic%20WhatsApp%20demo%20for%20my%20clinic." target="_blank" rel="noopener" class="wa-cta-link">Prefer WhatsApp? Message us now →</a>
-<div class="form-trust">No pitch. No pressure. No spam.<br/>By submitting, you agree that we may contact you about this request. Read our <a href="/privacy-policy" style="color:var(--blue);text-decoration:underline;">Privacy Policy</a>.</div>
-</div>
-</div>
-</div>
-</section>
+</main>
 <footer>
-<div class="footer-inner">
-<div class="foot-brand">
-<div class="foot-logo">
-<svg width="36" height="36" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-<polygon points="14,2 26,8 26,20 14,26 2,20 2,8" fill="none" stroke="#29ABE2" stroke-width="1.5"/>
-<polygon points="14,6 22,10 22,18 14,22 6,18 6,10" fill="#29ABE2" opacity="0.15"/>
-<path d="M14 8 L17 13 L14 20 L11 13 Z" fill="#29ABE2"/>
-<circle cx="14" cy="10" r="2" fill="#fff"/>
-</svg>
-<span class="logo-text">WEBWISE<em>DIGITAL</em></span>
+<div class="wrap">
+<div class="footer-grid">
+<div><a class="brand" href="/"><svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><polygon points="14,2 26,8 26,20 14,26 2,20 2,8" fill="none" stroke="#29ABE2" stroke-width="1.5"/><polygon points="14,6 22,10 22,18 14,22 6,18 6,10" fill="#29ABE2" opacity="0.15"/><path d="M14 8 L17 13 L14 20 L11 13 Z" fill="#29ABE2"/><circle cx="14" cy="10" r="2" fill="#fff"/></svg><span>WEBWISE<em>DIGITAL</em></span></a><p style="margin-top:18px">AI automation and client acquisition systems for clinics and local businesses.</p><p style="margin-top:18px">+91 8796504200<br/>Saurabh@webwisedigital.net</p></div>
+<div><h4>Services</h4><ul><li><a href="/#why">AI Smart Site</a></li><li><a href="/#why">AI Employees</a></li><li><a href="/#why">Business Automation</a></li><li><a href="/#why">Reviews & Reputation</a></li><li><a href="/#why">Get Found</a></li></ul></div>
+<div><h4>Industries</h4><ul><li><a href="/clinics-doctors/">Clinics & Doctors</a></li><li><a href="/#niches">Salons & Spas</a></li><li><a href="/#niches">Restaurants/Hospitality</a></li><li><a href="/#niches">Wedding Planners & Caterers</a></li><li><a href="/#niches">D2C Brands</a></li><li><a href="/#niches">Real Estate & Architects</a></li></ul></div>
+<div><h4>Company</h4><ul><li><a href="/#why">Why Webwise</a></li><li><a href="/#quiz">Free Leak Score</a></li><li><a href="/blog/">Blog</a></li><li><a href="/privacy-policy/">Privacy Policy</a></li><li><a href="/terms-of-service/">Terms of Service</a></li><li><a href="/data-deletion/">Data Deletion</a></li></ul></div>
 </div>
-<p>AI automation and local business acquisition systems for clinics, salons, restaurants, and local businesses across India.</p>
-<div class="foot-addr">
-<strong>Webwise Digital Solutions</strong><br/>
-S-53, Manish Global Mall, 2nd Floor<br/>
-Plot No. 2, Sector 22, Dwarka<br/>
-New Delhi - 110077<br/><br/>
-+91 8796504200<br/>
-Saurabh@webwisedigital.net
-</div>
-</div>
-<div class="foot-col"><h4>Services</h4><ul><li><a href="/#workflows">Capture</a></li><li><a href="/#workflows">Reputation</a></li><li><a href="/#workflows">Appointments</a></li><li><a href="/#workflows">Recovery</a></li><li><a href="/#workflows">Assist</a></li><li><a href="/#workflows">Presence</a></li></ul></div>
-<div class="foot-col"><h4>Industries</h4><ul><li><a href="/clinics-doctors/">Clinics &amp; Doctors</a></li><li><a href="/#niches">Salons &amp; Spas</a></li><li><a href="/#niches">Restaurants</a></li><li><a href="/#niches">Wedding Planners</a></li><li><a href="/#niches">D2C Brands</a></li><li><a href="/#niches">Real Estate &amp; Architects</a></li></ul></div>
-<div class="foot-col"><h4>Company</h4><ul><li><a href="/#why">About WDS</a></li><li><a href="/#cta">Book Audit</a></li><li><a href="https://wa.me/918796504200" target="_blank" rel="noopener">WhatsApp Us</a></li><li><a href="/privacy-policy">Privacy Policy</a></li><li><a href="/terms-of-service">Terms of Service</a></li><li><a href="/data-deletion">Data Deletion</a></li></ul></div>
-</div>
-<div class="footer-bottom">
-<p>© 2026 Webwise Digital Solutions. All rights reserved.</p>
-<div class="gst">GST: 07AFRPC8163L1ZX</div>
+<div class="footer-bottom"><span>Copyright 2026 Webwise Digital Solutions. All rights reserved.</span><span>GST: 07AFRPC8163L1ZX</span></div>
 </div>
 </footer>
 <script>
-window.addEventListener('scroll', () => {
-const isMobile = window.innerWidth < 640;
-document.querySelector('nav').style.padding = window.scrollY > 50
-? (isMobile ? '10px 14px' : '12px 56px')
-: (isMobile ? '12px 14px' : '18px 56px');
-});
-function toggleFaq(el){el.classList.toggle('open');}
-function toggleMenu(btn){
-const menu=document.getElementById('mobile-menu');
-const open=!menu.classList.contains('open');
-menu.classList.toggle('open',open);
-btn.classList.toggle('open',open);
-btn.setAttribute('aria-expanded',String(open));
-btn.setAttribute('aria-label',open?'Close menu':'Open menu');
-}
-function closeMenu(){
-const menu=document.getElementById('mobile-menu');
-const btn=document.querySelector('.menu-toggle');
-if(menu)menu.classList.remove('open');
-if(btn){
-btn.classList.remove('open');
-btn.setAttribute('aria-expanded','false');
-btn.setAttribute('aria-label','Open menu');
-}
-}
-document.addEventListener('click', event => {
-const menu=document.getElementById('mobile-menu');
-if(!menu || !menu.classList.contains('open'))return;
-if(menu.contains(event.target) || event.target.closest('.menu-toggle'))return;
-closeMenu();
-});
-window.addEventListener('scroll', closeMenu, { passive:true });
-window.addEventListener('resize', () => {
-if(window.innerWidth > 1024) closeMenu();
-});
-function formatInr(value){
-return 'INR '+Math.round(value).toLocaleString('en-IN');
-}
-function updateCalculator(){
-const enquiries=Number(document.getElementById('calc-enquiries')?.value||0);
-const patientValue=Number(document.getElementById('calc-value')?.value||0);
-const lossRate=Number(document.getElementById('calc-loss')?.value||0);
-const missed=Math.max(0,enquiries*(Math.max(0,lossRate)/100));
-const leakage=missed*Math.max(0,patientValue);
-const result=document.getElementById('calc-result');
-const sub=document.getElementById('calc-result-sub');
-if(result)result.textContent=formatInr(leakage);
-if(sub)sub.textContent=`Based on ${missed.toFixed(missed % 1 ? 1 : 0)} missed patients per month. Use this as a working estimate, then confirm real numbers during the audit.`;
-}
+function toggleMenu(btn){const menu=document.getElementById('mobile-menu');const open=!menu.classList.contains('open');menu.classList.toggle('open',open);btn.setAttribute('aria-expanded',String(open))}
+function closeMenu(){const menu=document.getElementById('mobile-menu');const btn=document.querySelector('.menu');if(menu)menu.classList.remove('open');if(btn)btn.setAttribute('aria-expanded','false')}
+document.addEventListener('click',event=>{const menu=document.getElementById('mobile-menu');if(!menu||!menu.classList.contains('open'))return;if(menu.contains(event.target)||event.target.closest('.menu'))return;closeMenu()})
+window.addEventListener('scroll',closeMenu,{passive:true})
+function trackWhatsApp(){if(window.gtag)window.gtag('event','whatsapp_enquiry_start',{page_type:'clinic_service_page'})}
+document.querySelectorAll('.track-wa').forEach(link=>link.addEventListener('click',trackWhatsApp))
+function toggleFaq(btn){btn.closest('.faq-item').classList.toggle('open')}
 function submitClinicForm(){
-const name=document.getElementById('f-name');
-const wa=document.getElementById('f-wa');
-const type=document.getElementById('f-type');
-const issue=document.getElementById('f-issue');
-const btn=document.getElementById('form-submit-btn');
-const errorBox=document.getElementById('form-error');
-let valid=true;
-[name,wa,type,issue].forEach(el=>{
-el.classList.remove('error');
-if(!el.value.trim()){el.classList.add('error');valid=false;}
-});
-if(!valid){
-if(errorBox){
-errorBox.style.display='block';
-errorBox.textContent='Please fill clinic name, WhatsApp number, clinic type, and biggest issue.';
+const fields=['f-name','f-wa','f-type','f-issue'].map(id=>document.getElementById(id));let valid=true;fields.forEach(el=>{el.classList.remove('error');if(!el.value.trim()){el.classList.add('error');valid=false}})
+const errorBox=document.getElementById('form-error');const btn=document.getElementById('form-submit-btn');
+if(!valid){errorBox.style.display='block';errorBox.textContent='Please fill clinic name, WhatsApp number, clinic type and biggest issue.';return}
+errorBox.style.display='none';btn.textContent='Sending...';btn.disabled=true;
+const data={business_name:fields[0].value.trim(),whatsapp:fields[1].value.trim(),business_type:fields[2].value,biggest_issue:fields[3].value,source:'Clinic Doctors Landing Page',page_type:'clinic_service_page',submitted_at:new Date().toISOString()};
+const waText=encodeURIComponent(`Hi Saurabh, I want a clinic WhatsApp demo.\n\nClinic: ${data.business_name}\nType: ${data.business_type}\nBiggest issue: ${data.biggest_issue}\nMy WhatsApp: ${data.whatsapp}`);
+fetch('https://wwds.app.n8n.cloud/webhook/webwise-lead-capture',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)})
+.then(response=>{if(!response.ok)throw new Error('Lead capture failed');if(window.gtag)window.gtag('event','generate_lead',{page_type:'clinic_service_page'});document.querySelector('.form-card').innerHTML=`<div class="success"><b>Your clinic demo request is in.</b><p>We will review your clinic flow and come back with the next step. For priority, message us on WhatsApp now.</p><a class="btn-primary track-wa" onclick="trackWhatsApp()" href="https://wa.me/918796504200?text=${waText}" target="_blank" rel="noopener">Message Webwise on WhatsApp</a></div>`})
+.catch(()=>{btn.textContent='Build my clinic WhatsApp demo';btn.disabled=false;errorBox.style.display='block';errorBox.innerHTML=`We could not confirm the form submission. Please send the same details on WhatsApp so the lead does not get missed: <a href="https://wa.me/918796504200?text=${waText}" onclick="trackWhatsApp()" target="_blank" rel="noopener" style="color:#fff;text-decoration:underline">message Webwise now</a>.`})
 }
-btn.style.animation='shake .3s ease';
-setTimeout(()=>btn.style.animation='',400);
-return;
-}
-if(errorBox){
-errorBox.style.display='none';
-errorBox.textContent='';
-}
-const data={
-business_name:name.value.trim(),
-whatsapp:wa.value.trim(),
-business_type:type.value,
-biggest_issue:issue.value,
-submitted_at:new Date().toISOString(),
-source:'Clinic Doctors Landing Page'
-};
-const msg=encodeURIComponent(
-`Hi Saurabh, I want a clinic WhatsApp demo.\n\n`+
-`Clinic: ${data.business_name}\n`+
-`Type: ${data.business_type}\n`+
-`Biggest issue: ${data.biggest_issue}\n\n`+
-`My WhatsApp: ${data.whatsapp}`
-);
-btn.innerHTML='<span>Sending...</span>';
-btn.disabled=true;
-const WEBHOOK_URL='https://wwds.app.n8n.cloud/webhook/webwise-lead-capture';
-fetch(WEBHOOK_URL,{
-method:'POST',
-headers:{'Content-Type':'application/json'},
-body:JSON.stringify(data)
-})
-.then(response=>{
-if(!response.ok)throw new Error('Lead capture failed');
-document.querySelector('.lead-form').innerHTML=`
-<div class="form-success">
-<div class="fs-icon">&#10003;</div>
-<div class="fs-title">Your clinic demo request is in.</div>
-<div class="fs-sub">We will review your clinic flow and come back with the next step. For priority, message us on WhatsApp now.</div>
-<a href="https://wa.me/918796504200?text=${msg}" target="_blank" rel="noopener" class="fs-wa">Message Webwise on WhatsApp</a>
-</div>
-`;
-})
-.catch(()=>{
-btn.innerHTML='<span>Build my clinic WhatsApp demo →</span>';
-btn.disabled=false;
-if(errorBox){
-errorBox.style.display='block';
-errorBox.innerHTML=`We could not confirm the form submission. Please send the same details on WhatsApp so the lead does not get missed: <a href="https://wa.me/918796504200?text=${msg}" target="_blank" rel="noopener" style="color:#fff;text-decoration:underline;">message Webwise now</a>.`;
-}
-});
-}
-updateCalculator();
-const formSection=document.getElementById('demo');
-const stickyEl=document.getElementById('sticky-cta');
-if(stickyEl){
-const stickyObs=new IntersectionObserver(entries=>{
-const formIsVisible=entries[0].isIntersecting;
-stickyEl.style.display=formIsVisible?'none':'block';
-document.body.classList.toggle('cta-visible',formIsVisible);
-},{threshold:.1});
-stickyObs.observe(formSection);
-}
-const shakeStyle=document.createElement('style');
-shakeStyle.textContent='@keyframes shake{0%,100%{transform:translateX(0)}20%,60%{transform:translateX(-6px)}40%,80%{transform:translateX(6px)}}';
-document.head.appendChild(shakeStyle);
 </script>
 <script>
-(function(Q,R){
-if(Q.__qr__)return;
-var u='https://webview.quickreply.ai/whatsapp/script-v2.min.js';
-var h=R.head||R.documentElement;
-var e=R.createElement('script');
-e.type='text/javascript';
-e.async=true;
-e.src=u;
-Q.__qr__={
-brandSetting:{
-includePageLink:false,
-messageText:"Hello! How can we help you?",
-phoneNumber:"+918796504200"
-},
-chatButtonSetting:{
-sideMargin:20,
-marginBottom:20,
-position:"right",
-buttonType:"ICON",
-buttonText:undefined,
-buttonBgColor:"#25D366",
-buttonTextColor:"#FFFFFF"
-}
-};
-h.insertBefore(e,h.lastChild);
-})(window,document);
+(function(Q,R){if(Q.__qr__)return;var u='https://webview.quickreply.ai/whatsapp/script-v2.min.js';var h=R.head||R.documentElement;var e=R.createElement('script');e.type='text/javascript';e.async=true;e.src=u;Q.__qr__={brandSetting:{includePageLink:false,messageText:"Hello! How can we help you?",phoneNumber:"+918796504200"},chatButtonSetting:{sideMargin:20,marginBottom:20,position:"right",buttonType:"ICON",buttonText:undefined,buttonBgColor:"#25D366",buttonTextColor:"#FFFFFF"}};h.insertBefore(e,h.lastChild)})(window,document);
 </script>
 </body>
 </html>
