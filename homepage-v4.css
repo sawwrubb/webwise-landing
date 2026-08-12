@@ -1951,12 +1951,29 @@
       padding: 20px 24px;
       box-shadow: var(--shadow);
     }
-    .leak-bottom > b {
+    .leak-bottom-copy {
+      display: grid;
+      gap: 10px;
+      min-width: 0;
+    }
+    .leak-bottom-copy > b {
       color: var(--white);
       font-size: 22px;
       line-height: 1.18;
     }
-    .leak-bottom > b span { color: var(--cyan); }
+    .leak-bottom-copy > b span { color: var(--cyan); }
+    .leak-property-link {
+      color: rgba(255,255,255,.64);
+      font-size: 13px;
+      line-height: 1.5;
+      margin: 0;
+    }
+    .leak-property-link a {
+      color: var(--cyan);
+      font-weight: 800;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
     .leak-bottom-item {
       display: grid;
       grid-template-columns: auto 1fr;
@@ -3120,7 +3137,7 @@
       .compare {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
-      .leak-bottom > b {
+      .leak-bottom-copy {
         grid-column: 1 / -1;
       }
       .leak-path {
@@ -3236,7 +3253,7 @@
       .leak-bottom {
         padding: 18px;
       }
-      .leak-bottom > b {
+      .leak-bottom-copy > b {
         font-size: 20px;
       }
       .wa-demo-btn {
