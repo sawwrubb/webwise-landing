@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="760" viewBox="0 0 1400 760" role="img" aria-labelledby="title desc">
+  <title id="title">Tribal knowledge revenue leak visual</title>
+  <desc id="desc">A revenue leak diagram showing leads, tasks, and handoffs escaping when knowledge lives with one person.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#080808"/>
+      <stop offset="1" stop-color="#121212"/>
+    </linearGradient>
+    <linearGradient id="flow" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#29ABE2"/>
+      <stop offset="1" stop-color="#00D4AA"/>
+    </linearGradient>
+  </defs>
+  <rect width="1400" height="760" fill="url(#bg)"/>
+  <circle cx="1090" cy="180" r="220" fill="#29ABE2" opacity=".07"/>
+  <circle cx="220" cy="600" r="170" fill="#00D4AA" opacity=".06"/>
+  <g font-family="Arial, sans-serif">
+    <text x="88" y="92" fill="#29ABE2" font-size="18" font-weight="700" letter-spacing="4">REVENUE LEAK MAP</text>
+    <text x="88" y="158" fill="#F2F2EE" font-size="58" font-weight="900">Where knowledge leaks money</text>
+    <text x="88" y="204" fill="#8B949E" font-size="24">If only one person knows the flow, every absence creates missed work.</text>
+    <g transform="translate(88 306)">
+      <rect x="0" y="0" width="344" height="270" rx="16" fill="#111111" stroke="#29ABE2" stroke-opacity=".28"/>
+      <text x="34" y="58" fill="#F2F2EE" font-size="28" font-weight="900">Enquiry arrives</text>
+      <text x="34" y="104" fill="#8B949E" font-size="20">WhatsApp, call, form, DM</text>
+      <path d="M52 172h236" stroke="url(#flow)" stroke-width="12" stroke-linecap="round"/>
+      <circle cx="294" cy="172" r="18" fill="#00D4AA"/>
+    </g>
+    <g transform="translate(528 248)">
+      <rect x="0" y="0" width="344" height="386" rx="18" fill="#111111" stroke="#F2F2EE" stroke-opacity=".16"/>
+      <circle cx="172" cy="96" r="54" fill="#F2F2EE"/>
+      <path d="M90 250c18-74 146-74 164 0l32 70H58l32-70Z" fill="#29ABE2"/>
+      <text x="172" y="196" fill="#F2F2EE" font-size="28" text-anchor="middle" font-weight="900">One star employee</text>
+      <text x="172" y="232" fill="#8B949E" font-size="20" text-anchor="middle">owns the hidden process</text>
+    </g>
+    <g transform="translate(960 306)">
+      <rect x="0" y="0" width="344" height="270" rx="16" fill="#111111" stroke="#00D4AA" stroke-opacity=".28"/>
+      <text x="34" y="58" fill="#F2F2EE" font-size="28" font-weight="900">System catches it</text>
+      <text x="34" y="104" fill="#8B949E" font-size="20">Playbook, CRM, reminder</text>
+      <path d="M52 172h236" stroke="url(#flow)" stroke-width="12" stroke-linecap="round"/>
+      <circle cx="294" cy="172" r="18" fill="#00D4AA"/>
+    </g>
+    <path d="M432 442C488 442 486 442 528 442" stroke="#29ABE2" stroke-width="5" stroke-dasharray="12 12"/>
+    <path d="M872 442C918 442 914 442 960 442" stroke="#00D4AA" stroke-width="5" stroke-dasharray="12 12"/>
+    <g fill="none" stroke="#d49a2d" stroke-width="4" stroke-linecap="round" opacity=".95">
+      <path d="M700 152v48"/>
+      <path d="M640 168l26 38"/>
+      <path d="M760 168l-26 38"/>
+    </g>
+    <text x="700" y="704" fill="#d49a2d" font-size="24" font-weight="900" text-anchor="middle">Fix the leak by turning memory into repeatable systems.</text>
+  </g>
+</svg>
