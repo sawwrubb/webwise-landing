@@ -1,0 +1,14 @@
+---
+description: Never edit live/public site pages without explicit user confirmation
+alwaysApply: true
+---
+
+# Live site lock
+
+Never edit, restyle, restructure, or add links to anything that is already live on webwisedigital.net unless the user gives an explicit confirmation in that conversation.
+
+Live includes, without limitation: `index.html`, niche/landing pages, blog posts, legal pages, `homepage-v4.css`, `homepage-v4.js`, `sitemap.xml`, `robots.txt`, and other currently published marketing pages.
+
+New work must be additive (new paths/files only) until the user confirms it may be wired into the live site.
+
+Webwise OS lives in `webwise-os/` as a separate Next.js app. Do not change the root Vercel static site config to point at it unless confirmed.
