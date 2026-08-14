@@ -1,0 +1,9 @@
+{
+  "enquiriesPerMonth": 120,
+  "missRate": 0.4,
+  "arpuInr": 8000,
+  "closeRate": 0.08,
+  "leakLabel": "Brokerage-side range. Site-visit value, not a full deal. Not a guarantee.",
+  "story": "Shared portal leads die on speed. The leak is missed visits, not missing billboards.",
+  "estimatedMonthlyLeakInr": 30720
+}

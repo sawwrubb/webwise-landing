@@ -1,0 +1,122 @@
+{
+  "id": "real-estate",
+  "status": "template",
+  "niche": "Real estate & architects",
+  "pill": "Template · Property",
+  "businessName": "Property LeadFlow kit",
+  "title": "Real estate kit (template) — site-visit flow",
+  "description": "Qualify locality, budget, and timing. Route an agent. Book a site visit. No invented inventory.",
+  "hero": {
+    "headline": "Property WhatsApp that turns a listing click into a booked site visit.",
+    "copy": "Portal and Instagram leads go cold in a shared queue. This kit captures project, budget, locality, and visit day, then hands a clean thread to the right agent.",
+    "primaryCta": "See the leak card",
+    "secondaryCta": "Message Webwise"
+  },
+  "guardrails": ["No invented inventory", "No final price promises", "Agent keeps the close"],
+  "strip": {
+    "label": "Property handoff",
+    "items": ["Portal leads", "Locality", "Budget", "Agent routing", "Visit reminders"]
+  },
+  "chat": {
+    "title": "Property WhatsApp thread",
+    "status": "Site-visit flow",
+    "messages": [
+      { "type": "in", "text": "Hi, is a 3BHK available near Dwarka Sector 21?" },
+      { "type": "out", "text": "What budget range and visit day should the agent plan around?" },
+      { "type": "in", "text": "Around 1.6 Cr. Saturday morning." },
+      { "type": "out", "text": "Request recorded. The Dwarka agent will confirm options and the visit." },
+      { "type": "system", "text": "No invented inventory or final pricing." }
+    ]
+  },
+  "problem": {
+    "eyebrow": "The gap",
+    "title": "Buyers move on before your team gets a fair turn.",
+    "copy": [
+      "The lead hits 10 brokers at once. Your agents are on site.",
+      "By the time someone calls, another viewing is already booked."
+    ],
+    "fixTitle": "What this kit fixes",
+    "fixes": [
+      { "title": "Fast first response", "copy": "Source, locality, budget, timing while intent is hot." },
+      { "title": "Right agent", "copy": "Project and area routing, not a group dump." },
+      { "title": "Visit follow-up", "copy": "Reminders until the visit is confirmed or lost for a reason." }
+    ]
+  },
+  "system": {
+    "eyebrow": "Three layers",
+    "title": "Qualify, route, remind.",
+    "cards": [
+      { "num": "01", "tag": "Qualify", "title": "Budget and locality", "copy": "Serious vs browsing, without fake unit lists." },
+      { "num": "02", "tag": "Route", "title": "Agent handoff", "copy": "Context sits in the thread. No reconstruction." },
+      { "num": "03", "tag": "Visit", "title": "Site-visit ops", "copy": "Slot request, reminder, no-show follow-up." }
+    ]
+  },
+  "workflow": {
+    "eyebrow": "Listing to visit",
+    "title": "One flow from 99acres, Instagram, or the project site.",
+    "copy": "The agent steps in at conversion, not at ‘hello who is this’.",
+    "steps": [
+      { "title": "Buyer enquires", "copy": "Portal, IG, or site." },
+      { "title": "Context captured", "copy": "Project, budget, locality, day." },
+      { "title": "Agent assigned", "copy": "By project or area rules." },
+      { "title": "Visit requested", "copy": "Human confirms inventory." },
+      { "title": "Reminders", "copy": "Until show or closed-lost." }
+    ]
+  },
+  "safety": {
+    "allowTitle": "The kit may",
+    "stopTitle": "The kit must not",
+    "allow": ["Ask budget and locality", "Offer approved project facts", "Book a visit request"],
+    "stop": ["Invent available units", "Commit a final price", "Talk legal title", "Spam other brokers’ leads"]
+  },
+  "niches": {
+    "title": "Brokers, project teams, architects",
+    "copy": "Swap project names and localities in JSON. Keep the no-inventory rule.",
+    "tags": ["Brokers", "Builders", "Channel partners", "Architects"]
+  },
+  "control": {
+    "title": "The team owns inventory truth.",
+    "copy": "The bot never becomes the CRM of record for units.",
+    "items": ["Agent assignment", "Approved brochures", "Visit calendar", "Lead ownership"]
+  },
+  "faq": [
+    { "q": "Will it promise a 3BHK that is sold?", "a": "No. It captures intent. Inventory is human." },
+    { "q": "Is this the live /real-estate page?", "a": "Not yet. Template only." },
+    { "q": "Can it replace MagicBricks?", "a": "No. It protects the enquiry after the click." }
+  ],
+  "form": {
+    "eyebrow": "Template capture",
+    "title": "Build a property demo from this kit.",
+    "copy": "Tell us project, city, and the leak.",
+    "button": "Build property demo",
+    "namePlaceholder": "e.g. Sharma Realty / Project name",
+    "typeLabel": "Team type",
+    "types": ["Broker", "Builder team", "Channel partner", "Architect"],
+    "issues": ["Shared portal leads", "Slow reply", "No qualification", "Visit no-shows"]
+  },
+  "whatsapp": {
+    "phone": "918796504200",
+    "demoText": "Hi Webwise, I want a real estate WhatsApp demo from the kit lab."
+  },
+  "resultCard": {
+    "enquiriesPerMonth": 120,
+    "missRate": 0.4,
+    "arpuInr": 8000,
+    "closeRate": 0.08,
+    "leakLabel": "Brokerage-side range. Site-visit value, not a full deal. Not a guarantee.",
+    "story": "Shared portal leads die on speed. The leak is missed visits, not missing billboards."
+  },
+  "leakQuiz": [
+    { "q": "How fast does someone reply after hours?", "a": ["Under 5 minutes", "Within 1 hour", "Next working day", "Not tracked"] },
+    { "q": "Are portal leads owned or shared-and-forgotten?", "a": ["Owned in a sheet", "Sometimes", "Group chat only", "No"] },
+    { "q": "Biggest gap?", "a": ["Slow replies", "No qualification", "No visit follow-up", "Wrong agent"] }
+  ],
+  "rules": {
+    "systemPrompt": "Property enquiry assistant. Capture project, locality, budget, visit day. Never invent inventory or final prices. Route to the assigned agent.",
+    "approved": [
+      { "trigger": "available 3bhk", "response": "I can record your locality, budget, and visit day. An agent confirms current options." }
+    ],
+    "fallback": "An agent will continue with live inventory.",
+    "never": ["invented units", "final pricing", "legal advice"]
+  }
+}

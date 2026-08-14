@@ -1,0 +1,124 @@
+{
+  "id": "webwise",
+  "status": "dogfood",
+  "niche": "AI automation agency",
+  "pill": "Client zero · Webwise",
+  "businessName": "Webwise Digital",
+  "title": "Webwise Kit Lab — we run this system on ourselves first",
+  "description": "Dogfood kit: Webwise Digital’s own enquiry, qualification, and follow-up system before any niche is sold.",
+  "hero": {
+    "headline": "Your business shouldn’t stop when you do. We test that line on ourselves first.",
+    "copy": "Enquiries hit WhatsApp at night. Strategy calls get missed. Follow-up sits in Saurabh’s head. This kit is Webwise running Webwise: capture, qualify, book the next step, write the lead down.",
+    "primaryCta": "Score our own leak",
+    "secondaryCta": "Message the live number"
+  },
+  "guardrails": ["No fake case studies", "No public SEO yet", "Human fallback to Saurabh"],
+  "strip": {
+    "label": "Dogfood stack",
+    "items": ["WhatsApp front door", "Leak Score", "Lead record", "Result Card", "14-day install story"]
+  },
+  "chat": {
+    "title": "Webwise WhatsApp",
+    "status": "Agency kit live",
+    "messages": [
+      { "type": "in", "text": "Hi, can you automate WhatsApp for my dental clinic?" },
+      { "type": "out", "text": "Yes. Is the pain missed night enquiries, slow follow-up, or no lead sheet?" },
+      { "type": "in", "text": "Night messages. Reception is with patients." },
+      { "type": "out", "text": "Recorded: clinic, night-reply leak. A 20-min walkthrough slot is free tomorrow 11:00. Want it?" },
+      { "type": "system", "text": "Unknown pricing questions route to Saurabh." }
+    ]
+  },
+  "problem": {
+    "eyebrow": "The gap on us",
+    "title": "If Webwise leaks enquiries, we should not sell leak-fixing.",
+    "copy": [
+      "Owners message after hours. If only the founder replies, the agency has the same tribal-knowledge problem it writes about.",
+      "This kit is the sandwich we eat first: approved answers, a lead record, and a morning stack."
+    ],
+    "fixTitle": "What this kit does on Webwise",
+    "fixes": [
+      { "title": "First reply in seconds", "copy": "Niche, volume, and leak type are asked from an approved list." },
+      { "title": "The lead is written down", "copy": "n8n already stores the form. This kit makes the WhatsApp thread match that record." },
+      { "title": "Founder is the exception", "copy": "Pricing, custom stacks, and complaints go to a human." }
+    ]
+  },
+  "system": {
+    "eyebrow": "Same three layers we sell",
+    "title": "Smart Site, AI employee, automation — on our own door.",
+    "cards": [
+      { "num": "01", "tag": "Smart Site", "title": "This preview page", "copy": "Talks, captures, and sends the visitor to WhatsApp or the form. Generated from JSON, not hand-built HTML." },
+      { "num": "02", "tag": "AI employee", "title": "Approved Webwise replies", "copy": "Clinic vs salon vs property. Books a walkthrough. Stops on price negotiation." },
+      { "num": "03", "tag": "Automation", "title": "Lead + Result Card", "copy": "Every enquiry is stored. The leak number is visible before a strategy call." }
+    ]
+  },
+  "workflow": {
+    "eyebrow": "How we treat our own enquiries",
+    "title": "One front door. Clean handoff. No guessing.",
+    "copy": "Website, WhatsApp widget, and Leak Score all dump into the same record. Morning: unread threads with context.",
+    "steps": [
+      { "title": "Owner messages", "copy": "Night or lunch. Same front door." },
+      { "title": "Approved questions", "copy": "Niche, biggest leak, WhatsApp number." },
+      { "title": "Lead saved", "copy": "n8n webhook + kit id webwise." },
+      { "title": "Human for exceptions", "copy": "Custom quotes and complaints." },
+      { "title": "Next step sent", "copy": "Walkthrough slot or Leak Score link." }
+    ]
+  },
+  "safety": {
+    "allowTitle": "The desk can say this",
+    "stopTitle": "The desk must not say this",
+    "allow": ["What LeadFlow is", "14-day install once inputs are ready", "Who owns the data", "Book a walkthrough"],
+    "stop": ["Invented ROI numbers", "Medical or legal advice for their clients", "Guaranteed lead volume", "Lock-in or hidden fees"]
+  },
+  "niches": {
+    "title": "This kit is only for Webwise.",
+    "copy": "When this flow feels boringly reliable, clone the JSON for clinics, salons, property, and the rest.",
+    "tags": ["Agency dogfood", "Partner later", "Not a client SKU"]
+  },
+  "control": {
+    "title": "Saurabh still owns tone and exceptions.",
+    "copy": "Rules live in preview/webwise/rules.json. Change JSON, regenerate, review. Do not auto-publish the live homepage from this factory.",
+    "items": ["WhatsApp +91 8796504200", "Approved answers", "n8n capture", "Noindex preview"]
+  },
+  "faq": [
+    { "q": "Is this the live homepage?", "a": "No. The live site stays hand-edited until this kit is trusted." },
+    { "q": "Why dogfood first?", "a": "If we cannot catch our own night enquiries, we should not sell the system." },
+    { "q": "When do we sell it?", "a": "After this kit is live on us and one niche clone (clinic) is a template, not a rewrite." },
+    { "q": "Does the bot set price?", "a": "No. It books a walkthrough. Pricing stays on a human call." }
+  ],
+  "form": {
+    "eyebrow": "Dogfood capture",
+    "title": "Send a test enquiry through the same pipe clients will use.",
+    "copy": "Use a real WhatsApp number. Treat it like a client lead.",
+    "button": "Send test lead",
+    "namePlaceholder": "e.g. Webwise internal test",
+    "typeLabel": "Who is this test for",
+    "types": ["Webwise internal", "Partner agency", "Clinic prospect", "Other"],
+    "issues": ["Night replies", "No lead record", "Founder bottleneck", "Slow follow-up"]
+  },
+  "whatsapp": {
+    "phone": "918796504200",
+    "demoText": "Hi Webwise, this is a dogfood test of the Webwise kit."
+  },
+  "resultCard": {
+    "enquiriesPerMonth": 40,
+    "missRate": 0.35,
+    "arpuInr": 25000,
+    "closeRate": 0.2,
+    "leakLabel": "Range for an agency that misses night enquiries. Not a promise.",
+    "story": "If 40 serious chats arrive a month and a third go cold, that is not a marketing problem. It is an unanswered-door problem. We use this card on ourselves before we show it to a clinic."
+  },
+  "leakQuiz": [
+    { "q": "How fast does Webwise reply after hours?", "a": ["Under 5 minutes", "Within 1 hour", "Next working day", "Not tracked"] },
+    { "q": "Are enquiries saved in a sheet or OS?", "a": ["Always", "Sometimes", "Only hot ones", "No"] },
+    { "q": "Biggest gap on us today?", "a": ["Slow replies", "Poor follow-up", "No lead visibility", "Founder is the system"] }
+  ],
+  "rules": {
+    "systemPrompt": "You are the Webwise Digital front-desk assistant. Qualify niche and leak. Book a walkthrough. Never invent ROI. Never quote a final price. Unknowns go to Saurabh.",
+    "approved": [
+      { "trigger": "what do you do", "response": "We install a customer acquisition system: site, WhatsApp replies, lead record, reviews. We run it on our own agency first." },
+      { "trigger": "pricing", "response": "Pricing depends on niche, volume, and handoff rules. I can book a walkthrough. I cannot set the fee here." }
+    ],
+    "fallback": "I will pass this to Saurabh with your niche and WhatsApp number.",
+    "never": ["fake case studies", "guaranteed leads", "medical advice"]
+  }
+}

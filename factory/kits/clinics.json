@@ -1,0 +1,124 @@
+{
+  "id": "clinics",
+  "status": "template",
+  "niche": "Clinics & doctors",
+  "pill": "Template · Clinics",
+  "businessName": "Clinic LeadFlow kit",
+  "title": "Clinic kit (template) — cloned from Webwise dogfood",
+  "description": "WhatsApp enquiry and appointment-request kit for clinics. Template only until the Webwise kit is trusted.",
+  "hero": {
+    "headline": "Clinic WhatsApp that turns enquiries into a confirmed next step.",
+    "copy": "A patient messages during a procedure. This kit answers admin questions, captures the booking request, and hands the thread to reception. It does not diagnose.",
+    "primaryCta": "See the leak card",
+    "secondaryCta": "Message Webwise"
+  },
+  "guardrails": ["No medical advice", "No clinical records", "Reception can take over"],
+  "strip": {
+    "label": "Clinic-safe",
+    "items": ["Admin data only", "Human handoff", "Reminders", "Review ask", "Multi-branch ready"]
+  },
+  "chat": {
+    "title": "Clinic WhatsApp thread",
+    "status": "Approved admin flow",
+    "messages": [
+      { "type": "in", "text": "Hi, is implant consultation available this Saturday?" },
+      { "type": "out", "text": "Saturday 11:00 AM is available. New implant visit or second opinion?" },
+      { "type": "in", "text": "New implant. Dwarka branch." },
+      { "type": "out", "text": "Request recorded. Reception will confirm the slot here." },
+      { "type": "system", "text": "Clinical questions route to the clinic team." }
+    ]
+  },
+  "problem": {
+    "eyebrow": "The gap",
+    "title": "Your reception is busy. Patient enquiries do not wait.",
+    "copy": [
+      "Someone sees Google Maps, WhatsApps the clinic, and waits. The team is with patients.",
+      "The problem is not a bad receptionist. Too much depends on one person being free at the right minute."
+    ],
+    "fixTitle": "What this kit fixes",
+    "fixes": [
+      { "title": "Clear first response", "copy": "Timings, branch, visit type — from approved text." },
+      { "title": "Cleaner context", "copy": "Reception sees the request before they type." },
+      { "title": "No guessing on health", "copy": "Symptoms and treatment questions stop the bot." }
+    ]
+  },
+  "system": {
+    "eyebrow": "Three admin layers",
+    "title": "Capture, request, follow-up — not diagnosis.",
+    "cards": [
+      { "num": "01", "tag": "Capture", "title": "Approved first reply", "copy": "Hours, location, services you listed, first-visit vs follow-up." },
+      { "num": "02", "tag": "Booking request", "title": "Human confirmation", "copy": "The slot is requested, not silently confirmed, unless you say so." },
+      { "num": "03", "tag": "Follow-up", "title": "Reminders and reviews", "copy": "Before the visit, after the visit, review ask — your rules." }
+    ]
+  },
+  "workflow": {
+    "eyebrow": "Front door",
+    "title": "Maps, site, Instagram, WhatsApp — one admin flow.",
+    "copy": "Same questions every time. Same handoff. Same record.",
+    "steps": [
+      { "title": "Patient writes", "copy": "Any channel into WhatsApp." },
+      { "title": "Admin answer", "copy": "No symptoms, no reports, no promises of cure." },
+      { "title": "Request saved", "copy": "Name, time, branch, visit type." },
+      { "title": "Reception confirms", "copy": "Or takes over." },
+      { "title": "Operational messages", "copy": "Reminder, reschedule, review." }
+    ]
+  },
+  "safety": {
+    "allowTitle": "Desk work",
+    "stopTitle": "No medical advice",
+    "allow": ["Timings and directions", "Appointment requests", "Reminders and review links"],
+    "stop": ["Diagnosis or symptom assessment", "Prescriptions", "Reading reports or records", "Complaints without a human"]
+  },
+  "niches": {
+    "title": "Built for WhatsApp-first clinics",
+    "copy": "Clone this JSON and change services, branches, and hours. Do not loosen the medical stop list.",
+    "tags": ["Dental", "Dermatology", "GP", "Physio", "Eye", "Paediatric", "Diagnostics"]
+  },
+  "control": {
+    "title": "The clinic owns the rules.",
+    "copy": "Their WhatsApp, their tone, their hours. Webwise builds the flow.",
+    "items": ["WABA stays theirs", "Approved services", "Handoff points", "Admin records only"]
+  },
+  "faq": [
+    { "q": "Does this chatbot diagnose?", "a": "No. Admin only. Clinical questions go to the team." },
+    { "q": "Are slots auto-confirmed?", "a": "Only if the clinic says so. Default is request + reception confirm." },
+    { "q": "What data is stored?", "a": "Name, phone, time, branch, request type — not clinical records." },
+    { "q": "Is this live on webwisedigital.net/clinics-doctors?", "a": "Not yet. That page stays until this template is trusted." }
+  ],
+  "form": {
+    "eyebrow": "Template capture",
+    "title": "Build a clinic demo from this kit.",
+    "copy": "We map where patients wait, then show the flow.",
+    "button": "Build clinic demo",
+    "namePlaceholder": "e.g. Sharma Dental Clinic",
+    "typeLabel": "Clinic type",
+    "types": ["Dental", "Dermatology", "General Physician", "Physiotherapy", "Eye", "Paediatric", "Diagnostics", "Multi-branch"],
+    "issues": ["Missed WhatsApp", "Slow replies", "No-shows", "Manual reminders", "Reviews"]
+  },
+  "whatsapp": {
+    "phone": "918796504200",
+    "demoText": "Hi Webwise, I want a clinic WhatsApp demo from the kit lab."
+  },
+  "resultCard": {
+    "enquiriesPerMonth": 80,
+    "missRate": 0.3,
+    "arpuInr": 2500,
+    "closeRate": 0.35,
+    "leakLabel": "Range for a busy clinic. INR 30,000/month is the audit story we already publish — this card is a working estimate, not a guarantee.",
+    "story": "Missed Maps and WhatsApp enquiries stack. A consult fee times missed intent is the leak, not ‘we need more ads’."
+  },
+  "leakQuiz": [
+    { "q": "How fast does someone reply after hours?", "a": ["Under 5 minutes", "Within 1 hour", "Next working day", "Not tracked"] },
+    { "q": "Are enquiries saved in a sheet?", "a": ["Always", "Sometimes", "Only hot ones", "No"] },
+    { "q": "Biggest front-desk gap?", "a": ["Slow replies", "No-shows", "No lead visibility", "No review ask"] }
+  ],
+  "rules": {
+    "systemPrompt": "Clinic admin assistant only. No diagnosis, symptoms, prescriptions, or record reading. Capture name, time, branch, visit type. Route clinical questions to reception.",
+    "approved": [
+      { "trigger": "hours", "response": "Share approved clinic hours and the next booking-request step." },
+      { "trigger": "pain or symptom", "response": "I cannot advise on symptoms. A team member will take this thread." }
+    ],
+    "fallback": "A receptionist will continue this conversation.",
+    "never": ["diagnosis", "prescriptions", "clinical records"]
+  }
+}

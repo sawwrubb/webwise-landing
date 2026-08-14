@@ -1,0 +1,9 @@
+{
+  "enquiriesPerMonth": 80,
+  "missRate": 0.3,
+  "arpuInr": 2500,
+  "closeRate": 0.35,
+  "leakLabel": "Range for a busy clinic. INR 30,000/month is the audit story we already publish — this card is a working estimate, not a guarantee.",
+  "story": "Missed Maps and WhatsApp enquiries stack. A consult fee times missed intent is the leak, not ‘we need more ads’.",
+  "estimatedMonthlyLeakInr": 21000
+}

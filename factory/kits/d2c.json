@@ -1,0 +1,119 @@
+{
+  "id": "d2c",
+  "status": "template",
+  "niche": "D2C brands",
+  "pill": "Template · D2C",
+  "businessName": "D2C kit",
+  "title": "D2C kit (template) — question to purchase to repeat",
+  "description": "Product questions, order status handoff, repeat WhatsApp. Not a full Shopify replacement.",
+  "hero": {
+    "headline": "From product question to purchase and repeat.",
+    "copy": "WhatsApp is where Indian D2C actually closes. This kit answers approved FAQs, captures intent, and hands payments and complaints to the right person or shop link.",
+    "primaryCta": "See the leak card",
+    "secondaryCta": "Message Webwise"
+  },
+  "guardrails": ["No fake stock", "No medical claims", "Payments on approved links only"],
+  "strip": {
+    "label": "D2C flow",
+    "items": ["FAQ", "Intent capture", "Shop link", "Order handoff", "Repeat"]
+  },
+  "chat": {
+    "title": "Brand WhatsApp",
+    "status": "Commerce flow",
+    "messages": [
+      { "type": "in", "text": "Does this serum work for pigmentation? COD to Dwarka?" },
+      { "type": "out", "text": "I can share the approved product notes and COD rules. Skin concerns that need a doctor go to a human. Want the 30ml link?" },
+      { "type": "in", "text": "Yes, 30ml COD." },
+      { "type": "out", "text": "Link sent. Order issues after payment go to support with your order ID." },
+      { "type": "system", "text": "No medical claims beyond the approved card." }
+    ]
+  },
+  "problem": {
+    "eyebrow": "The gap",
+    "title": "Ads make the click. WhatsApp loses the sale.",
+    "copy": [
+      "Support is in email. Buyers are in chat.",
+      "Repeat purchase depends on someone remembering to ping."
+    ],
+    "fixTitle": "What this kit fixes",
+    "fixes": [
+      { "title": "Approved FAQ", "copy": "Size, COD, shipping cities." },
+      { "title": "Clean handoff", "copy": "Order ID to support, not a new group." },
+      { "title": "Repeat ping", "copy": "Reorder window you set." }
+    ]
+  },
+  "system": {
+    "eyebrow": "Three layers",
+    "title": "Answer, route, repeat.",
+    "cards": [
+      { "num": "01", "tag": "Answer", "title": "Product FAQ", "copy": "Only copy on the approved card." },
+      { "num": "02", "tag": "Route", "title": "Order + complaint", "copy": "Humans for damaged, refund, medical." },
+      { "num": "03", "tag": "Repeat", "title": "Reorder", "copy": "Opt-in WhatsApp, not spam." }
+    ]
+  },
+  "workflow": {
+    "eyebrow": "Buyer path",
+    "title": "Ad → chat → link → support.",
+    "copy": "The kit is the aisle, not the warehouse.",
+    "steps": [
+      { "title": "Question", "copy": "Product, COD, city." },
+      { "title": "Approved answer", "copy": "Or human." },
+      { "title": "Shop link", "copy": "Official checkout only." },
+      { "title": "Order help", "copy": "ID required." },
+      { "title": "Repeat", "copy": "If they opted in." }
+    ]
+  },
+  "safety": {
+    "allowTitle": "Allowed",
+    "stopTitle": "Stop",
+    "allow": ["Approved FAQ", "Official checkout links", "Opt-in reorder"],
+    "stop": ["Unapproved health claims", "Fake in-stock", "Asking card details in chat"]
+  },
+  "niches": {
+    "title": "Beauty, food, fashion D2C",
+    "copy": "Swap the FAQ card. Keep payment-off-chat.",
+    "tags": ["Beauty", "Food", "Fashion", "Home"]
+  },
+  "control": {
+    "title": "The brand owns claims and stock.",
+    "copy": "Shopify/Razorpay stay the checkout.",
+    "items": ["FAQ card", "Support queue", "Opt-in list", "Official links"]
+  },
+  "faq": [
+    { "q": "Does this replace Shopify?", "a": "No. It catches the chat around the shop." },
+    { "q": "COD questions?", "a": "Yes, from the approved policy card." }
+  ],
+  "form": {
+    "eyebrow": "Template capture",
+    "title": "Build a D2C demo from this kit.",
+    "copy": "Category, chat volume, leak.",
+    "button": "Build D2C demo",
+    "namePlaceholder": "e.g. Brand name",
+    "typeLabel": "Category",
+    "types": ["Beauty", "Food", "Fashion", "Home", "Other"],
+    "issues": ["Unread chats", "Order confusion", "No repeat", "Policy questions"]
+  },
+  "whatsapp": {
+    "phone": "918796504200",
+    "demoText": "Hi Webwise, I want a D2C kit demo."
+  },
+  "resultCard": {
+    "enquiriesPerMonth": 200,
+    "missRate": 0.3,
+    "arpuInr": 900,
+    "closeRate": 0.25,
+    "leakLabel": "Missed chat-assisted orders. Range only.",
+    "story": "If ads are on and chat is slow, you are paying for clicks you do not catch."
+  },
+  "leakQuiz": [
+    { "q": "How fast do you reply after hours?", "a": ["Under 5 minutes", "Within 1 hour", "Next working day", "Not tracked"] },
+    { "q": "Are chats tagged to orders?", "a": ["Always", "Sometimes", "Rarely", "No"] },
+    { "q": "Biggest gap?", "a": ["Slow replies", "Order chaos", "No repeat", "Policy FAQs"] }
+  ],
+  "rules": {
+    "systemPrompt": "D2C WhatsApp assistant. Approved FAQ only. Official checkout links only. No card numbers in chat. No unapproved health claims. Complaints to support.",
+    "approved": [{ "trigger": "COD", "response": "Share approved COD cities and the official product link." }],
+    "fallback": "Support will continue with your order ID.",
+    "never": ["card details", "fake stock", "unapproved medical claims"]
+  }
+}

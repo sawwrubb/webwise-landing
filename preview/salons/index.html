@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex,nofollow" />
+<title>Salon kit (template) — chairs full, not inboxes full</title>
+<meta name="description" content="Enquiry to slot to rebooking. WhatsApp-first for salons and spas." />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<style>:root{--bg:#080808;--bg2:#0f0f0f;--panel:#111827;--card:#10151d;--line:rgba(41,171,226,.18);--blue:#29ABE2;--teal:#00D4AA;--white:#F2F2EE;--muted:#8b949e;--soft:#c7cdd4;--danger:#8993a0;--font:'Inter',Arial,sans-serif;--r:12px}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;overflow-x:clip}
+body{background:var(--bg);color:var(--white);font-family:var(--font);font-size:17px;line-height:1.65;overflow-x:clip}
+a{color:inherit;text-decoration:none}
+button,input,select{font:inherit}
+button{border:0;cursor:pointer}
+.wrap{width:min(1180px,calc(100% - 36px));margin:0 auto}
+.lab-banner{position:relative;z-index:50;background:#10151d;border-bottom:1px solid var(--line);padding:10px 18px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:13px;font-weight:800;color:var(--teal)}
+.lab-banner a{color:var(--blue)}
+.nav{position:sticky;top:0;z-index:40;background:rgba(8,8,8,.92);border-bottom:1px solid var(--line);backdrop-filter:blur(18px)}
+.nav-inner{height:70px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.brand{font-size:18px;font-weight:900;letter-spacing:1.6px}
+.brand em{font-style:normal;color:var(--blue)}
+.nav-links{display:flex;align-items:center;gap:22px;font-size:14px;font-weight:700;color:var(--muted)}
+.nav-cta{background:var(--blue);color:#fff;border-radius:8px;padding:11px 16px;font-size:14px;font-weight:900}
+section{padding:80px 0;border-top:1px solid rgba(41,171,226,.08)}
+.eyebrow{display:flex;align-items:center;gap:10px;color:var(--blue);font-size:11px;font-weight:900;letter-spacing:3px;text-transform:uppercase;margin-bottom:18px}
+.eyebrow::before{content:'';width:20px;height:1px;background:var(--blue)}
+h1{font-size:clamp(36px,5vw,68px);line-height:1.04;letter-spacing:-2.2px;font-weight:900;margin-bottom:20px}
+h2{font-size:clamp(28px,3.2vw,46px);line-height:1.1;letter-spacing:-1.4px;font-weight:900;margin-bottom:14px}
+h3{font-size:22px;line-height:1.2;font-weight:900;margin-bottom:8px}
+.copy,.sub{color:var(--muted);font-size:16px;line-height:1.8}
+.btn-row{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-top:26px}
+.btn-primary,.btn-secondary{display:inline-flex;align-items:center;justify-content:center;border-radius:8px;padding:14px 20px;font-weight:900;font-size:15px}
+.btn-primary{background:var(--blue);color:#fff}
+.btn-secondary{border:1px solid var(--line);background:rgba(41,171,226,.07);color:var(--white)}
+.hero{padding:48px 0 72px}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1fr) 400px;gap:56px;align-items:center}
+.hero-pill{display:inline-flex;gap:8px;border:1px solid var(--line);background:rgba(41,171,226,.09);border-radius:100px;color:var(--blue);font-size:12px;font-weight:900;letter-spacing:1.4px;text-transform:uppercase;padding:7px 13px;margin-bottom:20px}
+.hero-copy{max-width:680px;color:var(--soft);font-size:18px;line-height:1.75}
+.guardrails{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.guardrails span{border:1px solid var(--line);background:rgba(16,21,29,.72);border-radius:100px;padding:8px 12px;color:var(--muted);font-size:13px;font-weight:800}
+.phone{background:#0b141a;border:1px solid var(--line);border-radius:24px;padding:18px}
+.phone-head{display:flex;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.08);padding-bottom:14px;margin-bottom:16px;font-size:14px;font-weight:900}
+.phone-status{font-size:11px;color:var(--teal)}
+.chat{display:flex;flex-direction:column;gap:12px;min-height:300px}
+.bubble{max-width:88%;border-radius:14px;padding:12px 14px;font-size:13px;line-height:1.55}
+.bubble.in{background:#202c33;align-self:flex-start}
+.bubble.out{background:#005c4b;align-self:flex-end;font-weight:700}
+.bubble.system{align-self:center;background:rgba(41,171,226,.1);border:1px solid var(--line);color:var(--soft);font-weight:800;text-align:center}
+.strip{padding:22px 0;background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.strip-inner{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.strip b{font-size:13px;letter-spacing:2px;text-transform:uppercase}
+.strip-items{display:flex;gap:10px;flex-wrap:wrap}
+.strip-items span{border:1px solid var(--line);background:var(--card);border-radius:100px;padding:8px 12px;color:var(--muted);font-size:12px;font-weight:800}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.panel,.card,.form-card,.result-card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:28px}
+.problem-lines{display:grid;gap:12px;margin-top:20px}
+.line-card{border:1px solid rgba(41,171,226,.12);background:rgba(8,8,8,.36);border-radius:10px;padding:16px}
+.line-card b{display:block;margin-bottom:6px}
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.num{width:40px;height:40px;border:1px solid var(--blue);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--blue);font-weight:900;margin-bottom:14px}
+.tag{color:var(--teal);font-size:11px;font-weight:900;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px}
+.card p{color:var(--muted);font-size:14px;line-height:1.7}
+.workflow{counter-reset:step;display:grid;gap:12px}
+.flow-step{display:grid;grid-template-columns:46px 1fr;gap:14px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px}
+.flow-step::before{counter-increment:step;content:counter(step,decimal-leading-zero);width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(41,171,226,.1);border:1px solid var(--blue);color:var(--blue);font-weight:900;font-size:12px}
+.flow-step p{color:var(--muted);font-size:14px}
+.safe-list{display:grid;gap:10px;margin-top:16px}
+.safe-item{display:flex;gap:10px;color:var(--muted);font-size:14px}
+.safe-item i{width:22px;height:22px;flex:0 0 22px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(41,171,226,.1);color:var(--blue);font-style:normal;font-size:12px;font-weight:900}
+.safe-item.stop i{color:var(--danger);background:rgba(137,147,160,.08)}
+.niche-list{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.niche-list span{border:1px solid var(--line);border-radius:100px;padding:8px 12px;font-size:13px;font-weight:800}
+.control-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px}
+.control-grid div{border:1px solid rgba(41,171,226,.12);border-radius:10px;padding:14px;color:var(--muted);font-size:14px}
+.cta{background:linear-gradient(135deg,rgba(41,171,226,.13),rgba(0,212,170,.07))}
+.field{margin-bottom:14px}
+.field label{display:block;color:var(--muted);font-size:12px;font-weight:900;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px}
+.field input,.field select{width:100%;background:#141414;border:1px solid var(--line);border-radius:8px;color:var(--white);padding:12px 14px}
+.form-btn{width:100%;border-radius:8px;background:var(--blue);color:#fff;font-weight:900;padding:14px}
+.form-error{display:none;margin-top:12px;border:1px solid rgba(255,120,100,.3);background:rgba(255,120,100,.1);border-radius:10px;padding:12px;color:#ffd5cc;font-size:13px}
+.form-note{font-size:12px;color:var(--muted);text-align:center;margin-top:12px}
+.success{text-align:center;padding:18px}
+.faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:28px}
+.faq-item{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px}
+.faq-item button{width:100%;display:flex;justify-content:space-between;gap:12px;text-align:left;background:transparent;color:var(--white);font-weight:900}
+.faq-a{display:none;color:var(--muted);font-size:14px;margin-top:10px}
+.faq-item.open .faq-a{display:block}
+.plus{color:var(--blue);font-size:22px}
+footer{padding:40px 0;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
+.result-card .leak-inr{font-size:42px;font-weight:900;color:var(--teal);letter-spacing:-1.5px;margin:8px 0 14px}
+.quiz-q{margin-bottom:16px}
+.quiz-q b{display:block;margin-bottom:8px}
+.quiz-q button{display:block;width:100%;text-align:left;margin:6px 0;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:rgba(8,8,8,.4);color:var(--white);font-weight:700}
+.quiz-q button:hover,.quiz-q button.on{border-color:var(--blue);background:rgba(41,171,226,.12)}
+.kit-meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.kit-meta span{font-size:12px;font-weight:800;color:var(--muted);border:1px solid var(--line);border-radius:100px;padding:6px 10px}
+.gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.gallery a.card{display:block;transition:.2s}
+.gallery a.card:hover{border-color:var(--blue);transform:translateY(-3px)}
+.status{color:var(--teal);font-size:11px;font-weight:900;letter-spacing:2px;text-transform:uppercase}
+@media(max-width:900px){.hero-grid,.split,.grid3,.grid2,.faq-grid,.gallery,.control-grid{grid-template-columns:1fr}.nav-links a:not(.nav-cta){display:none}}
+</style>
+</head>
+<body>
+<div class="lab-banner"><span>TEMPLATE · cloned from the Webwise kit · not sold as a live client page yet</span><a href="/preview/">All kits</a></div>
+<nav class="nav"><div class="wrap nav-inner">
+  <a class="brand" href="/">WEBWISE<em>DIGITAL</em></a>
+  <div class="nav-links">
+    <a href="#result">Result Card</a>
+    <a href="#system">System</a>
+    <a href="#demo" class="nav-cta">Build demo</a>
+  </div>
+</div></nav>
+<main>
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="hero-pill">Template · Salons</div>
+      <h1>From empty slot to booking and rebooking.</h1>
+      <p class="hero-copy">Night DMs for bridal and hair colour wait until morning. This kit replies, takes a slot request, reminds, and asks for a review after a good visit.</p>
+      <div class="btn-row">
+        <a class="btn-primary" href="#result">See the leak card</a>
+        <a class="btn-secondary" href="https://wa.me/918796504200?text=Hi%20Webwise%2C%20I%20want%20a%20salon%20kit%20demo.">Message Webwise</a>
+      </div>
+      <div class="guardrails"><span>No medical skin diagnosis</span><span>Staff confirm colour/chemical services</span><span>Owner keeps offers</span></div>
+      <div class="kit-meta"><span>Kit: salons</span><span>Salons &amp; spas</span><span>template</span></div>
+    </div>
+    <div class="phone">
+      <div class="phone-head"><span>Salon WhatsApp</span><span class="phone-status">Chair flow</span></div>
+      <div class="chat"><div class="bubble in m1">Hi, do you have a balayage slot this Saturday?</div><div class="bubble out m2">Saturday afternoon has two colour slots. Hair length — shoulder or longer?</div><div class="bubble in m3">Longer. Around 3pm.</div><div class="bubble out m4">Request saved. The colourist will confirm time and patch-test rules.</div><div class="bubble system m5">Chemical services need staff confirmation.</div></div>
+    </div>
+  </div>
+</section>
+<div class="strip"><div class="wrap strip-inner"><b>Salon flow</b><div class="strip-items"><span>Instagram DMs</span><span>Slot request</span><span>Reminders</span><span>Rebooking</span><span>Reviews</span></div></div></div>
+<section id="result">
+  <div class="wrap split">
+    <div>
+      <div class="eyebrow">Result Card</div>
+      <h2>If this leak stays open, the month already has a cost.</h2>
+      <p class="copy">An unanswered Saturday DM is an empty chair, not a branding problem.</p>
+      <p class="copy">This card uses honest ranges, not fake case studies. Change the quiz answers on the right to see the number move.</p>
+    </div>
+    <div class="result-card">
+      <div class="tag">Estimated monthly leak</div>
+      <div class="leak-inr" id="leakInr">₹22,680</div>
+      <p class="copy" id="leakStory">Missed colour or bridal chats. Range only.</p>
+      <div id="quizBox"></div>
+    </div>
+  </div>
+</section>
+<section id="problem">
+  <div class="wrap split">
+    <div>
+      <div class="eyebrow">The gap</div>
+      <h2>Chairs sit empty while DMs sit unanswered.</h2>
+      <p class="copy">The stylist is with a client. Instagram does not wait.</p><p class="copy">Rebooking depends on whoever remembers.</p>
+    </div>
+    <div class="panel">
+      <h3>What this kit fixes</h3>
+      <div class="problem-lines"><div class="line-card"><b>Night reply</b><span class="copy">Service, day, stylist preference captured.</span></div><div class="line-card"><b>Reminders</b><span class="copy">Fewer no-shows on bridal and colour.</span></div><div class="line-card"><b>Review ask</b><span class="copy">After a completed visit, not a random blast.</span></div></div>
+    </div>
+  </div>
+</section>
+<section id="system">
+  <div class="wrap">
+    <div class="eyebrow">Three layers</div>
+    <h2>Book, remind, repeat.</h2>
+    <div class="grid3"><article class="card"><div class="num">01</div><div class="tag">Book</div><h3>Slot request</h3><p>Service menu you approved. No mystery prices for custom colour until staff say so.</p></article><article class="card"><div class="num">02</div><div class="tag">Show</div><h3>Reminders</h3><p>Day-before ping. Easy reschedule.</p></article><article class="card"><div class="num">03</div><div class="tag">Repeat</div><h3>Rebook + review</h3><p>6-week hair reminder. Google review link.</p></article></div>
+  </div>
+</section>
+<section id="workflow">
+  <div class="wrap split">
+    <div>
+      <div class="eyebrow">IG to chair</div>
+      <h2>One thread from the bio link.</h2>
+      <p class="copy">Front desk is not typing the same three questions.</p>
+    </div>
+    <div class="workflow"><div class="flow-step"><div><b>DM or WhatsApp</b><p>From Instagram, Maps, or walk-in QR.</p></div></div><div class="flow-step"><div><b>Service + time</b><p>Approved menu only.</p></div></div><div class="flow-step"><div><b>Staff confirm</b><p>Colour, keratin, bridal packages.</p></div></div><div class="flow-step"><div><b>Reminder</b><p>Reduce no-shows.</p></div></div><div class="flow-step"><div><b>Aftercare</b><p>Rebook and review.</p></div></div></div>
+  </div>
+</section>
+<section id="safety">
+  <div class="wrap grid2">
+    <div class="panel">
+      <div class="eyebrow">Allowed</div>
+      <h2>Allowed</h2>
+      <div class="safe-list"><div class="safe-item"><i>+</i><div>Menu and hours</div></div><div class="safe-item"><i>+</i><div>Slot requests</div></div><div class="safe-item"><i>+</i><div>Reminders</div></div></div>
+    </div>
+    <div class="panel">
+      <div class="eyebrow">Hard stop</div>
+      <h2>Stop</h2>
+      <div class="safe-list"><div class="safe-item stop"><i>x</i><div>Skin disease diagnosis</div></div><div class="safe-item stop"><i>x</i><div>Guaranteeing colour results</div></div><div class="safe-item stop"><i>x</i><div>Discount wars without owner rules</div></div></div>
+    </div>
+  </div>
+</section>
+<section>
+  <div class="wrap split">
+    <div>
+      <div class="eyebrow">Fits this work</div>
+      <h2>Salons, spas, barbers, nail</h2>
+      <p class="copy">Change the menu JSON. Keep chemical-service confirmation.</p>
+      <div class="niche-list"><span>Hair</span><span>Spa</span><span>Bridal</span><span>Barber</span><span>Nails</span></div>
+    </div>
+    <div>
+      <div class="eyebrow">You keep control</div>
+      <h2>The owner owns the menu.</h2>
+      <p class="copy">Prices and packages stay in approved lists.</p>
+      <div class="control-grid"><div>Stylist calendar</div><div>Service menu</div><div>Offer codes</div><div>Review link</div></div>
+    </div>
+  </div>
+</section>
+<section class="cta" id="demo">
+  <div class="wrap split">
+    <div>
+      <div class="eyebrow">Template capture</div>
+      <h2>Build a salon demo from this kit.</h2>
+      <p class="copy">Tell us chairs, services, and the leak.</p>
+    </div>
+    <div class="form-card" id="formCard">
+      <h3>Build salon demo</h3>
+      <div class="field"><label>Business name</label><input id="f-name" type="text" placeholder="e.g. Glow Studio" /></div>
+      <div class="field"><label>WhatsApp number</label><input id="f-wa" type="tel" placeholder="+91 98765 43210" /></div>
+      <div class="field"><label>Business type</label><select id="f-type"><option value="">Select</option><option>Hair salon</option><option>Spa</option><option>Bridal</option><option>Barber</option><option>Nails</option></select></div>
+      <div class="field"><label>Biggest leak</label><select id="f-issue"><option value="">Select</option><option>Missed DMs</option><option>Empty chairs</option><option>No-shows</option><option>No rebooking</option><option>No reviews</option></select></div>
+      <button class="form-btn" id="formBtn" type="button">Build salon demo</button>
+      <div class="form-error" id="formError"></div>
+      <p class="form-note">Kit lab form. Same n8n capture Webwise already uses. Preview pages are noindex.</p>
+    </div>
+  </div>
+</section>
+<section id="faq">
+  <div class="wrap">
+    <div class="eyebrow">FAQ</div>
+    <h2>Questions before anyone trusts the system.</h2>
+    <div class="faq-grid">
+    <div class="faq-item"><button type="button" onclick="this.parentElement.classList.toggle('open')">Will it auto-book colour?<span class="plus">+</span></button><div class="faq-a">It requests. Staff confirm patch tests and timing.</div></div>
+    <div class="faq-item"><button type="button" onclick="this.parentElement.classList.toggle('open')">Instagram too?<span class="plus">+</span></button><div class="faq-a">Yes — the kit assumes IG and WhatsApp meet in one record.</div></div></div>
+  </div>
+</section>
+</main>
+<footer><div class="wrap">Webwise Digital Solutions · Kit lab · +91 8796504200 · Preview only</div></footer>
+<script>
+const KIT = {"id":"salons","status":"template","niche":"Salons & spas","pill":"Template · Salons","businessName":"Salon kit","title":"Salon kit (template) — chairs full, not inboxes full","description":"Enquiry to slot to rebooking. WhatsApp-first for salons and spas.","hero":{"headline":"From empty slot to booking and rebooking.","copy":"Night DMs for bridal and hair colour wait until morning. This kit replies, takes a slot request, reminds, and asks for a review after a good visit.","primaryCta":"See the leak card","secondaryCta":"Message Webwise"},"guardrails":["No medical skin diagnosis","Staff confirm colour/chemical services","Owner keeps offers"],"strip":{"label":"Salon flow","items":["Instagram DMs","Slot request","Reminders","Rebooking","Reviews"]},"chat":{"title":"Salon WhatsApp","status":"Chair flow","messages":[{"type":"in","text":"Hi, do you have a balayage slot this Saturday?"},{"type":"out","text":"Saturday afternoon has two colour slots. Hair length — shoulder or longer?"},{"type":"in","text":"Longer. Around 3pm."},{"type":"out","text":"Request saved. The colourist will confirm time and patch-test rules."},{"type":"system","text":"Chemical services need staff confirmation."}]},"problem":{"eyebrow":"The gap","title":"Chairs sit empty while DMs sit unanswered.","copy":["The stylist is with a client. Instagram does not wait.","Rebooking depends on whoever remembers."],"fixTitle":"What this kit fixes","fixes":[{"title":"Night reply","copy":"Service, day, stylist preference captured."},{"title":"Reminders","copy":"Fewer no-shows on bridal and colour."},{"title":"Review ask","copy":"After a completed visit, not a random blast."}]},"system":{"eyebrow":"Three layers","title":"Book, remind, repeat.","cards":[{"num":"01","tag":"Book","title":"Slot request","copy":"Service menu you approved. No mystery prices for custom colour until staff say so."},{"num":"02","tag":"Show","title":"Reminders","copy":"Day-before ping. Easy reschedule."},{"num":"03","tag":"Repeat","title":"Rebook + review","copy":"6-week hair reminder. Google review link."}]},"workflow":{"eyebrow":"IG to chair","title":"One thread from the bio link.","copy":"Front desk is not typing the same three questions.","steps":[{"title":"DM or WhatsApp","copy":"From Instagram, Maps, or walk-in QR."},{"title":"Service + time","copy":"Approved menu only."},{"title":"Staff confirm","copy":"Colour, keratin, bridal packages."},{"title":"Reminder","copy":"Reduce no-shows."},{"title":"Aftercare","copy":"Rebook and review."}]},"safety":{"allowTitle":"Allowed","stopTitle":"Stop","allow":["Menu and hours","Slot requests","Reminders"],"stop":["Skin disease diagnosis","Guaranteeing colour results","Discount wars without owner rules"]},"niches":{"title":"Salons, spas, barbers, nail","copy":"Change the menu JSON. Keep chemical-service confirmation.","tags":["Hair","Spa","Bridal","Barber","Nails"]},"control":{"title":"The owner owns the menu.","copy":"Prices and packages stay in approved lists.","items":["Stylist calendar","Service menu","Offer codes","Review link"]},"faq":[{"q":"Will it auto-book colour?","a":"It requests. Staff confirm patch tests and timing."},{"q":"Instagram too?","a":"Yes — the kit assumes IG and WhatsApp meet in one record."}],"form":{"eyebrow":"Template capture","title":"Build a salon demo from this kit.","copy":"Tell us chairs, services, and the leak.","button":"Build salon demo","namePlaceholder":"e.g. Glow Studio","typeLabel":"Business type","types":["Hair salon","Spa","Bridal","Barber","Nails"],"issues":["Missed DMs","Empty chairs","No-shows","No rebooking","No reviews"]},"whatsapp":{"phone":"918796504200","demoText":"Hi Webwise, I want a salon kit demo."},"resultCard":{"enquiriesPerMonth":90,"missRate":0.35,"arpuInr":1800,"closeRate":0.4,"leakLabel":"Missed colour or bridal chats. Range only.","story":"An unanswered Saturday DM is an empty chair, not a branding problem."},"leakQuiz":[{"q":"How fast do you reply after hours?","a":["Under 5 minutes","Within 1 hour","Next working day","Not tracked"]},{"q":"Are bookings in one place?","a":["Always","Sometimes","Only walk-ins","No"]},{"q":"Biggest gap?","a":["Missed DMs","No-shows","No rebooking","No reviews"]}],"rules":{"systemPrompt":"Salon front desk. Capture service, day, stylist. Staff confirm chemical services. No skin diagnosis.","approved":[{"trigger":"saturday slot","response":"Ask service and preferred time. Save the request for staff confirmation."}],"fallback":"The front desk will confirm this service.","never":["medical skin advice","guaranteed colour"]}};
+const quiz = { index: 0, answers: [] };
+function inr(n){ return "₹" + Math.round(n).toLocaleString("en-IN"); }
+function leakFromAnswers(){
+  const card = KIT.resultCard;
+  let miss = card.missRate;
+  const after = quiz.answers.find((a) => a.q.includes("after hours") || a.q.includes("reply"));
+  if (after && /next|not tracked|next day/i.test(after.a)) miss = Math.min(0.55, miss + 0.15);
+  if (after && /under 5|5 minutes/i.test(after.a)) miss = Math.max(0.12, miss - 0.12);
+  const recorded = quiz.answers.find((a) => /record|sheet|saved/i.test(a.q));
+  if (recorded && /^no$/i.test(recorded.a)) miss = Math.min(0.6, miss + 0.1);
+  const missed = card.enquiriesPerMonth * miss;
+  return Math.round(missed * card.arpuInr * card.closeRate);
+}
+function renderQuiz(){
+  const box = document.getElementById("quizBox");
+  const q = KIT.leakQuiz[quiz.index];
+  if (!q) {
+    const n = leakFromAnswers();
+    document.getElementById("leakInr").textContent = inr(n);
+    document.getElementById("leakStory").textContent = "Your answers moved the card. This is still a range until real enquiry data is connected.";
+    box.innerHTML = "<p class='copy'>Score mapped. Send the form or WhatsApp to walk the live flow.</p>";
+    return;
+  }
+  box.innerHTML = "<div class='quiz-q'><b>" + q.q + "</b>" + q.a.map((opt) => "<button type='button' data-a='" + opt.replace(/'/g, "&#39;") + "'>" + opt + "</button>").join("") + "</div>";
+  box.querySelectorAll("button").forEach((btn) => btn.addEventListener("click", () => {
+    quiz.answers.push({ q: q.q, a: btn.getAttribute("data-a") });
+    quiz.index += 1;
+    document.getElementById("leakInr").textContent = inr(leakFromAnswers());
+    renderQuiz();
+  }));
+}
+renderQuiz();
+document.getElementById("formBtn").addEventListener("click", () => {
+  const fields = ["f-name","f-wa","f-type","f-issue"].map((id) => document.getElementById(id));
+  const error = document.getElementById("formError");
+  if (fields.some((el) => !el.value.trim())) { error.style.display = "block"; error.textContent = "Fill every field."; return; }
+  const data = {
+    business_name: fields[0].value.trim(),
+    whatsapp: fields[1].value.trim(),
+    business_type: fields[2].value,
+    biggest_issue: fields[3].value,
+    source: "Kit lab " + KIT.id,
+    page_type: "kit_preview_" + KIT.id,
+    kit_status: KIT.status,
+    submitted_at: new Date().toISOString()
+  };
+  const waText = encodeURIComponent("Hi Webwise, kit " + KIT.id + "\nBusiness: " + data.business_name + "\nType: " + data.business_type + "\nLeak: " + data.biggest_issue);
+  fetch("https://wwds.app.n8n.cloud/webhook/webwise-lead-capture", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(data) })
+    .then((res) => { if (!res.ok) throw new Error("fail"); document.getElementById("formCard").innerHTML = "<div class='success'><b>Request in.</b><p>Message WhatsApp if you want this kit walked live.</p><a class='btn-primary' href='https://wa.me/918796504200?text=" + waText + "'>WhatsApp</a></div>"; })
+    .catch(() => { error.style.display = "block"; error.innerHTML = "Form did not confirm. <a href='https://wa.me/918796504200?text=" + waText + "'>Message WhatsApp</a>"; });
+});
+</script>
+</body></html>

@@ -1,0 +1,9 @@
+{
+  "enquiriesPerMonth": 40,
+  "missRate": 0.35,
+  "arpuInr": 25000,
+  "closeRate": 0.2,
+  "leakLabel": "Range for an agency that misses night enquiries. Not a promise.",
+  "story": "If 40 serious chats arrive a month and a third go cold, that is not a marketing problem. It is an unanswered-door problem. We use this card on ourselves before we show it to a clinic.",
+  "estimatedMonthlyLeakInr": 70000
+}

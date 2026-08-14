@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex,nofollow" />
+<title>Webwise Kit Lab — we run this system on ourselves first</title>
+<meta name="description" content="Dogfood kit: Webwise Digital’s own enquiry, qualification, and follow-up system before any niche is sold." />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<style>:root{--bg:#080808;--bg2:#0f0f0f;--panel:#111827;--card:#10151d;--line:rgba(41,171,226,.18);--blue:#29ABE2;--teal:#00D4AA;--white:#F2F2EE;--muted:#8b949e;--soft:#c7cdd4;--danger:#8993a0;--font:'Inter',Arial,sans-serif;--r:12px}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;overflow-x:clip}
+body{background:var(--bg);color:var(--white);font-family:var(--font);font-size:17px;line-height:1.65;overflow-x:clip}
+a{color:inherit;text-decoration:none}
+button,input,select{font:inherit}
+button{border:0;cursor:pointer}
+.wrap{width:min(1180px,calc(100% - 36px));margin:0 auto}
+.lab-banner{position:relative;z-index:50;background:#10151d;border-bottom:1px solid var(--line);padding:10px 18px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:13px;font-weight:800;color:var(--teal)}
+.lab-banner a{color:var(--blue)}
+.nav{position:sticky;top:0;z-index:40;background:rgba(8,8,8,.92);border-bottom:1px solid var(--line);backdrop-filter:blur(18px)}
+.nav-inner{height:70px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.brand{font-size:18px;font-weight:900;letter-spacing:1.6px}
+.brand em{font-style:normal;color:var(--blue)}
+.nav-links{display:flex;align-items:center;gap:22px;font-size:14px;font-weight:700;color:var(--muted)}
+.nav-cta{background:var(--blue);color:#fff;border-radius:8px;padding:11px 16px;font-size:14px;font-weight:900}
+section{padding:80px 0;border-top:1px solid rgba(41,171,226,.08)}
+.eyebrow{display:flex;align-items:center;gap:10px;color:var(--blue);font-size:11px;font-weight:900;letter-spacing:3px;text-transform:uppercase;margin-bottom:18px}
+.eyebrow::before{content:'';width:20px;height:1px;background:var(--blue)}
+h1{font-size:clamp(36px,5vw,68px);line-height:1.04;letter-spacing:-2.2px;font-weight:900;margin-bottom:20px}
+h2{font-size:clamp(28px,3.2vw,46px);line-height:1.1;letter-spacing:-1.4px;font-weight:900;margin-bottom:14px}
+h3{font-size:22px;line-height:1.2;font-weight:900;margin-bottom:8px}
+.copy,.sub{color:var(--muted);font-size:16px;line-height:1.8}
+.btn-row{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-top:26px}
+.btn-primary,.btn-secondary{display:inline-flex;align-items:center;justify-content:center;border-radius:8px;padding:14px 20px;font-weight:900;font-size:15px}
+.btn-primary{background:var(--blue);color:#fff}
+.btn-secondary{border:1px solid var(--line);background:rgba(41,171,226,.07);color:var(--white)}
+.hero{padding:48px 0 72px}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1fr) 400px;gap:56px;align-items:center}
+.hero-pill{display:inline-flex;gap:8px;border:1px solid var(--line);background:rgba(41,171,226,.09);border-radius:100px;color:var(--blue);font-size:12px;font-weight:900;letter-spacing:1.4px;text-transform:uppercase;padding:7px 13px;margin-bottom:20px}
+.hero-copy{max-width:680px;color:var(--soft);font-size:18px;line-height:1.75}
+.guardrails{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.guardrails span{border:1px solid var(--line);background:rgba(16,21,29,.72);border-radius:100px;padding:8px 12px;color:var(--muted);font-size:13px;font-weight:800}
+.phone{background:#0b141a;border:1px solid var(--line);border-radius:24px;padding:18px}
+.phone-head{display:flex;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.08);padding-bottom:14px;margin-bottom:16px;font-size:14px;font-weight:900}
+.phone-status{font-size:11px;color:var(--teal)}
+.chat{display:flex;flex-direction:column;gap:12px;min-height:300px}
+.bubble{max-width:88%;border-radius:14px;padding:12px 14px;font-size:13px;line-height:1.55}
+.bubble.in{background:#202c33;align-self:flex-start}
+.bubble.out{background:#005c4b;align-self:flex-end;font-weight:700}
+.bubble.system{align-self:center;background:rgba(41,171,226,.1);border:1px solid var(--line);color:var(--soft);font-weight:800;text-align:center}
+.strip{padding:22px 0;background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.strip-inner{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.strip b{font-size:13px;letter-spacing:2px;text-transform:uppercase}
+.strip-items{display:flex;gap:10px;flex-wrap:wrap}
+.strip-items span{border:1px solid var(--line);background:var(--card);border-radius:100px;padding:8px 12px;color:var(--muted);font-size:12px;font-weight:800}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.panel,.card,.form-card,.result-card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:28px}
+.problem-lines{display:grid;gap:12px;margin-top:20px}
+.line-card{border:1px solid rgba(41,171,226,.12);background:rgba(8,8,8,.36);border-radius:10px;padding:16px}
+.line-card b{display:block;margin-bottom:6px}
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.num{width:40px;height:40px;border:1px solid var(--blue);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--blue);font-weight:900;margin-bottom:14px}
+.tag{color:var(--teal);font-size:11px;font-weight:900;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px}
+.card p{color:var(--muted);font-size:14px;line-height:1.7}
+.workflow{counter-reset:step;display:grid;gap:12px}
+.flow-step{display:grid;grid-template-columns:46px 1fr;gap:14px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px}
+.flow-step::before{counter-increment:step;content:counter(step,decimal-leading-zero);width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(41,171,226,.1);border:1px solid var(--blue);color:var(--blue);font-weight:900;font-size:12px}
+.flow-step p{color:var(--muted);font-size:14px}
+.safe-list{display:grid;gap:10px;margin-top:16px}
+.safe-item{display:flex;gap:10px;color:var(--muted);font-size:14px}
+.safe-item i{width:22px;height:22px;flex:0 0 22px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(41,171,226,.1);color:var(--blue);font-style:normal;font-size:12px;font-weight:900}
+.safe-item.stop i{color:var(--danger);background:rgba(137,147,160,.08)}
+.niche-list{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.niche-list span{border:1px solid var(--line);border-radius:100px;padding:8px 12px;font-size:13px;font-weight:800}
+.control-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px}
+.control-grid div{border:1px solid rgba(41,171,226,.12);border-radius:10px;padding:14px;color:var(--muted);font-size:14px}
+.cta{background:linear-gradient(135deg,rgba(41,171,226,.13),rgba(0,212,170,.07))}
+.field{margin-bottom:14px}
+.field label{display:block;color:var(--muted);font-size:12px;font-weight:900;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px}
+.field input,.field select{width:100%;background:#141414;border:1px solid var(--line);border-radius:8px;color:var(--white);padding:12px 14px}
+.form-btn{width:100%;border-radius:8px;background:var(--blue);color:#fff;font-weight:900;padding:14px}
+.form-error{display:none;margin-top:12px;border:1px solid rgba(255,120,100,.3);background:rgba(255,120,100,.1);border-radius:10px;padding:12px;color:#ffd5cc;font-size:13px}
+.form-note{font-size:12px;color:var(--muted);text-align:center;margin-top:12px}
+.success{text-align:center;padding:18px}
+.faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:28px}
+.faq-item{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px}
+.faq-item button{width:100%;display:flex;justify-content:space-between;gap:12px;text-align:left;background:transparent;color:var(--white);font-weight:900}
+.faq-a{display:none;color:var(--muted);font-size:14px;margin-top:10px}
+.faq-item.open .faq-a{display:block}
+.plus{color:var(--blue);font-size:22px}
+footer{padding:40px 0;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
+.result-card .leak-inr{font-size:42px;font-weight:900;color:var(--teal);letter-spacing:-1.5px;margin:8px 0 14px}
+.quiz-q{margin-bottom:16px}
+.quiz-q b{display:block;margin-bottom:8px}
+.quiz-q button{display:block;width:100%;text-align:left;margin:6px 0;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:rgba(8,8,8,.4);color:var(--white);font-weight:700}
+.quiz-q button:hover,.quiz-q button.on{border-color:var(--blue);background:rgba(41,171,226,.12)}
+.kit-meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.kit-meta span{font-size:12px;font-weight:800;color:var(--muted);border:1px solid var(--line);border-radius:100px;padding:6px 10px}
+.gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.gallery a.card{display:block;transition:.2s}
+.gallery a.card:hover{border-color:var(--blue);transform:translateY(-3px)}
+.status{color:var(--teal);font-size:11px;font-weight:900;letter-spacing:2px;text-transform:uppercase}
+@media(max-width:900px){.hero-grid,.split,.grid3,.grid2,.faq-grid,.gallery,.control-grid{grid-template-columns:1fr}.nav-links a:not(.nav-cta){display:none}}
+</style>
+</head>
+<body>
+<div class="lab-banner"><span>DOGFOOD · Webwise running Webwise · not a public marketing page yet</span><a href="/preview/">All kits</a></div>
+<nav class="nav"><div class="wrap nav-inner">
+  <a class="brand" href="/">WEBWISE<em>DIGITAL</em></a>
+  <div class="nav-links">
+    <a href="#result">Result Card</a>
+    <a href="#system">System</a>
+    <a href="#demo" class="nav-cta">Build demo</a>
+  </div>
+</div></nav>
+<main>
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="hero-pill">Client zero · Webwise</div>
+      <h1>Your business shouldn’t stop when you do. We test that line on ourselves first.</h1>
+      <p class="hero-copy">Enquiries hit WhatsApp at night. Strategy calls get missed. Follow-up sits in Saurabh’s head. This kit is Webwise running Webwise: capture, qualify, book the next step, write the lead down.</p>
+      <div class="btn-row">
+        <a class="btn-primary" href="#result">Score our own leak</a>
+        <a class="btn-secondary" href="https://wa.me/918796504200?text=Hi%20Webwise%2C%20this%20is%20a%20dogfood%20test%20of%20the%20Webwise%20kit.">Message the live number</a>
+      </div>
+      <div class="guardrails"><span>No fake case studies</span><span>No public SEO yet</span><span>Human fallback to Saurabh</span></div>
+      <div class="kit-meta"><span>Kit: webwise</span><span>AI automation agency</span><span>dogfood</span></div>
+    </div>
+    <div class="phone">
+      <div class="phone-head"><span>Webwise WhatsApp</span><span class="phone-status">Agency kit live</span></div>
+      <div class="chat"><div class="bubble in m1">Hi, can you automate WhatsApp for my dental clinic?</div><div class="bubble out m2">Yes. Is the pain missed night enquiries, slow follow-up, or no lead sheet?</div><div class="bubble in m3">Night messages. Reception is with patients.</div><div class="bubble out m4">Recorded: clinic, night-reply leak. A 20-min walkthrough slot is free tomorrow 11:00. Want it?</div><div class="bubble system m5">Unknown pricing questions route to Saurabh.</div></div>
+    </div>
+  </div>
+</section>
+<div class="strip"><div class="wrap strip-inner"><b>Dogfood stack</b><div class="strip-items"><span>WhatsApp front door</span><span>Leak Score</span><span>Lead record</span><span>Result Card</span><span>14-day install story</span></div></div></div>
+<section id="result">
+  <div class="wrap split">
+    <div>
+      <div class="eyebrow">Result Card</div>
+      <h2>If this leak stays open, the month already has a cost.</h2>
+      <p class="copy">If 40 serious chats arrive a month and a third go cold, that is not a marketing problem. It is an unanswered-door problem. We use this card on ourselves before we show it to a clinic.</p>
+      <p class="copy">This card uses honest ranges, not fake case studies. Change the quiz answers on the right to see the number move.</p>
+    </div>
+    <div class="result-card">
+      <div class="tag">Estimated monthly leak</div>
+      <div class="leak-inr" id="leakInr">₹70,000</div>
+      <p class="copy" id="leakStory">Range for an agency that misses night enquiries. Not a promise.</p>
+      <div id="quizBox"></div>
+    </div>
+  </div>
+</section>
+<section id="problem">
+  <div class="wrap split">
+    <div>
+      <div class="eyebrow">The gap on us</div>
+      <h2>If Webwise leaks enquiries, we should not sell leak-fixing.</h2>
+      <p class="copy">Owners message after hours. If only the founder replies, the agency has the same tribal-knowledge problem it writes about.</p><p class="copy">This kit is the sandwich we eat first: approved answers, a lead record, and a morning stack.</p>
+    </div>
+    <div class="panel">
+      <h3>What this kit does on Webwise</h3>
+      <div class="problem-lines"><div class="line-card"><b>First reply in seconds</b><span class="copy">Niche, volume, and leak type are asked from an approved list.</span></div><div class="line-card"><b>The lead is written down</b><span class="copy">n8n already stores the form. This kit makes the WhatsApp thread match that record.</span></div><div class="line-card"><b>Founder is the exception</b><span class="copy">Pricing, custom stacks, and complaints go to a human.</span></div></div>
+    </div>
+  </div>
+</section>
+<section id="system">
+  <div class="wrap">
+    <div class="eyebrow">Same three layers we sell</div>
+    <h2>Smart Site, AI employee, automation — on our own door.</h2>
+    <div class="grid3"><article class="card"><div class="num">01</div><div class="tag">Smart Site</div><h3>This preview page</h3><p>Talks, captures, and sends the visitor to WhatsApp or the form. Generated from JSON, not hand-built HTML.</p></article><article class="card"><div class="num">02</div><div class="tag">AI employee</div><h3>Approved Webwise replies</h3><p>Clinic vs salon vs property. Books a walkthrough. Stops on price negotiation.</p></article><article class="card"><div class="num">03</div><div class="tag">Automation</div><h3>Lead + Result Card</h3><p>Every enquiry is stored. The leak number is visible before a strategy call.</p></article></div>
+  </div>
+</section>
+<section id="workflow">
+  <div class="wrap split">
+    <div>
+      <div class="eyebrow">How we treat our own enquiries</div>
+      <h2>One front door. Clean handoff. No guessing.</h2>
+      <p class="copy">Website, WhatsApp widget, and Leak Score all dump into the same record. Morning: unread threads with context.</p>
+    </div>
+    <div class="workflow"><div class="flow-step"><div><b>Owner messages</b><p>Night or lunch. Same front door.</p></div></div><div class="flow-step"><div><b>Approved questions</b><p>Niche, biggest leak, WhatsApp number.</p></div></div><div class="flow-step"><div><b>Lead saved</b><p>n8n webhook + kit id webwise.</p></div></div><div class="flow-step"><div><b>Human for exceptions</b><p>Custom quotes and complaints.</p></div></div><div class="flow-step"><div><b>Next step sent</b><p>Walkthrough slot or Leak Score link.</p></div></div></div>
+  </div>
+</section>
+<section id="safety">
+  <div class="wrap grid2">
+    <div class="panel">
+      <div class="eyebrow">Allowed</div>
+      <h2>The desk can say this</h2>
+      <div class="safe-list"><div class="safe-item"><i>+</i><div>What LeadFlow is</div></div><div class="safe-item"><i>+</i><div>14-day install once inputs are ready</div></div><div class="safe-item"><i>+</i><div>Who owns the data</div></div><div class="safe-item"><i>+</i><div>Book a walkthrough</div></div></div>
+    </div>
+    <div class="panel">
+      <div class="eyebrow">Hard stop</div>
+      <h2>The desk must not say this</h2>
+      <div class="safe-list"><div class="safe-item stop"><i>x</i><div>Invented ROI numbers</div></div><div class="safe-item stop"><i>x</i><div>Medical or legal advice for their clients</div></div><div class="safe-item stop"><i>x</i><div>Guaranteed lead volume</div></div><div class="safe-item stop"><i>x</i><div>Lock-in or hidden fees</div></div></div>
+    </div>
+  </div>
+</section>
+<section>
+  <div class="wrap split">
+    <div>
+      <div class="eyebrow">Fits this work</div>
+      <h2>This kit is only for Webwise.</h2>
+      <p class="copy">When this flow feels boringly reliable, clone the JSON for clinics, salons, property, and the rest.</p>
+      <div class="niche-list"><span>Agency dogfood</span><span>Partner later</span><span>Not a client SKU</span></div>
+    </div>
+    <div>
+      <div class="eyebrow">You keep control</div>
+      <h2>Saurabh still owns tone and exceptions.</h2>
+      <p class="copy">Rules live in preview/webwise/rules.json. Change JSON, regenerate, review. Do not auto-publish the live homepage from this factory.</p>
+      <div class="control-grid"><div>WhatsApp +91 8796504200</div><div>Approved answers</div><div>n8n capture</div><div>Noindex preview</div></div>
+    </div>
+  </div>
+</section>
+<section class="cta" id="demo">
+  <div class="wrap split">
+    <div>
+      <div class="eyebrow">Dogfood capture</div>
+      <h2>Send a test enquiry through the same pipe clients will use.</h2>
+      <p class="copy">Use a real WhatsApp number. Treat it like a client lead.</p>
+    </div>
+    <div class="form-card" id="formCard">
+      <h3>Send test lead</h3>
+      <div class="field"><label>Business name</label><input id="f-name" type="text" placeholder="e.g. Webwise internal test" /></div>
+      <div class="field"><label>WhatsApp number</label><input id="f-wa" type="tel" placeholder="+91 98765 43210" /></div>
+      <div class="field"><label>Who is this test for</label><select id="f-type"><option value="">Select</option><option>Webwise internal</option><option>Partner agency</option><option>Clinic prospect</option><option>Other</option></select></div>
+      <div class="field"><label>Biggest leak</label><select id="f-issue"><option value="">Select</option><option>Night replies</option><option>No lead record</option><option>Founder bottleneck</option><option>Slow follow-up</option></select></div>
+      <button class="form-btn" id="formBtn" type="button">Send test lead</button>
+      <div class="form-error" id="formError"></div>
+      <p class="form-note">Kit lab form. Same n8n capture Webwise already uses. Preview pages are noindex.</p>
+    </div>
+  </div>
+</section>
+<section id="faq">
+  <div class="wrap">
+    <div class="eyebrow">FAQ</div>
+    <h2>Questions before anyone trusts the system.</h2>
+    <div class="faq-grid">
+    <div class="faq-item"><button type="button" onclick="this.parentElement.classList.toggle('open')">Is this the live homepage?<span class="plus">+</span></button><div class="faq-a">No. The live site stays hand-edited until this kit is trusted.</div></div>
+    <div class="faq-item"><button type="button" onclick="this.parentElement.classList.toggle('open')">Why dogfood first?<span class="plus">+</span></button><div class="faq-a">If we cannot catch our own night enquiries, we should not sell the system.</div></div>
+    <div class="faq-item"><button type="button" onclick="this.parentElement.classList.toggle('open')">When do we sell it?<span class="plus">+</span></button><div class="faq-a">After this kit is live on us and one niche clone (clinic) is a template, not a rewrite.</div></div>
+    <div class="faq-item"><button type="button" onclick="this.parentElement.classList.toggle('open')">Does the bot set price?<span class="plus">+</span></button><div class="faq-a">No. It books a walkthrough. Pricing stays on a human call.</div></div></div>
+  </div>
+</section>
+</main>
+<footer><div class="wrap">Webwise Digital Solutions · Kit lab · +91 8796504200 · Preview only</div></footer>
+<script>
+const KIT = {"id":"webwise","status":"dogfood","niche":"AI automation agency","pill":"Client zero · Webwise","businessName":"Webwise Digital","title":"Webwise Kit Lab — we run this system on ourselves first","description":"Dogfood kit: Webwise Digital’s own enquiry, qualification, and follow-up system before any niche is sold.","hero":{"headline":"Your business shouldn’t stop when you do. We test that line on ourselves first.","copy":"Enquiries hit WhatsApp at night. Strategy calls get missed. Follow-up sits in Saurabh’s head. This kit is Webwise running Webwise: capture, qualify, book the next step, write the lead down.","primaryCta":"Score our own leak","secondaryCta":"Message the live number"},"guardrails":["No fake case studies","No public SEO yet","Human fallback to Saurabh"],"strip":{"label":"Dogfood stack","items":["WhatsApp front door","Leak Score","Lead record","Result Card","14-day install story"]},"chat":{"title":"Webwise WhatsApp","status":"Agency kit live","messages":[{"type":"in","text":"Hi, can you automate WhatsApp for my dental clinic?"},{"type":"out","text":"Yes. Is the pain missed night enquiries, slow follow-up, or no lead sheet?"},{"type":"in","text":"Night messages. Reception is with patients."},{"type":"out","text":"Recorded: clinic, night-reply leak. A 20-min walkthrough slot is free tomorrow 11:00. Want it?"},{"type":"system","text":"Unknown pricing questions route to Saurabh."}]},"problem":{"eyebrow":"The gap on us","title":"If Webwise leaks enquiries, we should not sell leak-fixing.","copy":["Owners message after hours. If only the founder replies, the agency has the same tribal-knowledge problem it writes about.","This kit is the sandwich we eat first: approved answers, a lead record, and a morning stack."],"fixTitle":"What this kit does on Webwise","fixes":[{"title":"First reply in seconds","copy":"Niche, volume, and leak type are asked from an approved list."},{"title":"The lead is written down","copy":"n8n already stores the form. This kit makes the WhatsApp thread match that record."},{"title":"Founder is the exception","copy":"Pricing, custom stacks, and complaints go to a human."}]},"system":{"eyebrow":"Same three layers we sell","title":"Smart Site, AI employee, automation — on our own door.","cards":[{"num":"01","tag":"Smart Site","title":"This preview page","copy":"Talks, captures, and sends the visitor to WhatsApp or the form. Generated from JSON, not hand-built HTML."},{"num":"02","tag":"AI employee","title":"Approved Webwise replies","copy":"Clinic vs salon vs property. Books a walkthrough. Stops on price negotiation."},{"num":"03","tag":"Automation","title":"Lead + Result Card","copy":"Every enquiry is stored. The leak number is visible before a strategy call."}]},"workflow":{"eyebrow":"How we treat our own enquiries","title":"One front door. Clean handoff. No guessing.","copy":"Website, WhatsApp widget, and Leak Score all dump into the same record. Morning: unread threads with context.","steps":[{"title":"Owner messages","copy":"Night or lunch. Same front door."},{"title":"Approved questions","copy":"Niche, biggest leak, WhatsApp number."},{"title":"Lead saved","copy":"n8n webhook + kit id webwise."},{"title":"Human for exceptions","copy":"Custom quotes and complaints."},{"title":"Next step sent","copy":"Walkthrough slot or Leak Score link."}]},"safety":{"allowTitle":"The desk can say this","stopTitle":"The desk must not say this","allow":["What LeadFlow is","14-day install once inputs are ready","Who owns the data","Book a walkthrough"],"stop":["Invented ROI numbers","Medical or legal advice for their clients","Guaranteed lead volume","Lock-in or hidden fees"]},"niches":{"title":"This kit is only for Webwise.","copy":"When this flow feels boringly reliable, clone the JSON for clinics, salons, property, and the rest.","tags":["Agency dogfood","Partner later","Not a client SKU"]},"control":{"title":"Saurabh still owns tone and exceptions.","copy":"Rules live in preview/webwise/rules.json. Change JSON, regenerate, review. Do not auto-publish the live homepage from this factory.","items":["WhatsApp +91 8796504200","Approved answers","n8n capture","Noindex preview"]},"faq":[{"q":"Is this the live homepage?","a":"No. The live site stays hand-edited until this kit is trusted."},{"q":"Why dogfood first?","a":"If we cannot catch our own night enquiries, we should not sell the system."},{"q":"When do we sell it?","a":"After this kit is live on us and one niche clone (clinic) is a template, not a rewrite."},{"q":"Does the bot set price?","a":"No. It books a walkthrough. Pricing stays on a human call."}],"form":{"eyebrow":"Dogfood capture","title":"Send a test enquiry through the same pipe clients will use.","copy":"Use a real WhatsApp number. Treat it like a client lead.","button":"Send test lead","namePlaceholder":"e.g. Webwise internal test","typeLabel":"Who is this test for","types":["Webwise internal","Partner agency","Clinic prospect","Other"],"issues":["Night replies","No lead record","Founder bottleneck","Slow follow-up"]},"whatsapp":{"phone":"918796504200","demoText":"Hi Webwise, this is a dogfood test of the Webwise kit."},"resultCard":{"enquiriesPerMonth":40,"missRate":0.35,"arpuInr":25000,"closeRate":0.2,"leakLabel":"Range for an agency that misses night enquiries. Not a promise.","story":"If 40 serious chats arrive a month and a third go cold, that is not a marketing problem. It is an unanswered-door problem. We use this card on ourselves before we show it to a clinic."},"leakQuiz":[{"q":"How fast does Webwise reply after hours?","a":["Under 5 minutes","Within 1 hour","Next working day","Not tracked"]},{"q":"Are enquiries saved in a sheet or OS?","a":["Always","Sometimes","Only hot ones","No"]},{"q":"Biggest gap on us today?","a":["Slow replies","Poor follow-up","No lead visibility","Founder is the system"]}],"rules":{"systemPrompt":"You are the Webwise Digital front-desk assistant. Qualify niche and leak. Book a walkthrough. Never invent ROI. Never quote a final price. Unknowns go to Saurabh.","approved":[{"trigger":"what do you do","response":"We install a customer acquisition system: site, WhatsApp replies, lead record, reviews. We run it on our own agency first."},{"trigger":"pricing","response":"Pricing depends on niche, volume, and handoff rules. I can book a walkthrough. I cannot set the fee here."}],"fallback":"I will pass this to Saurabh with your niche and WhatsApp number.","never":["fake case studies","guaranteed leads","medical advice"]}};
+const quiz = { index: 0, answers: [] };
+function inr(n){ return "₹" + Math.round(n).toLocaleString("en-IN"); }
+function leakFromAnswers(){
+  const card = KIT.resultCard;
+  let miss = card.missRate;
+  const after = quiz.answers.find((a) => a.q.includes("after hours") || a.q.includes("reply"));
+  if (after && /next|not tracked|next day/i.test(after.a)) miss = Math.min(0.55, miss + 0.15);
+  if (after && /under 5|5 minutes/i.test(after.a)) miss = Math.max(0.12, miss - 0.12);
+  const recorded = quiz.answers.find((a) => /record|sheet|saved/i.test(a.q));
+  if (recorded && /^no$/i.test(recorded.a)) miss = Math.min(0.6, miss + 0.1);
+  const missed = card.enquiriesPerMonth * miss;
+  return Math.round(missed * card.arpuInr * card.closeRate);
+}
+function renderQuiz(){
+  const box = document.getElementById("quizBox");
+  const q = KIT.leakQuiz[quiz.index];
+  if (!q) {
+    const n = leakFromAnswers();
+    document.getElementById("leakInr").textContent = inr(n);
+    document.getElementById("leakStory").textContent = "Your answers moved the card. This is still a range until real enquiry data is connected.";
+    box.innerHTML = "<p class='copy'>Score mapped. Send the form or WhatsApp to walk the live flow.</p>";
+    return;
+  }
+  box.innerHTML = "<div class='quiz-q'><b>" + q.q + "</b>" + q.a.map((opt) => "<button type='button' data-a='" + opt.replace(/'/g, "&#39;") + "'>" + opt + "</button>").join("") + "</div>";
+  box.querySelectorAll("button").forEach((btn) => btn.addEventListener("click", () => {
+    quiz.answers.push({ q: q.q, a: btn.getAttribute("data-a") });
+    quiz.index += 1;
+    document.getElementById("leakInr").textContent = inr(leakFromAnswers());
+    renderQuiz();
+  }));
+}
+renderQuiz();
+document.getElementById("formBtn").addEventListener("click", () => {
+  const fields = ["f-name","f-wa","f-type","f-issue"].map((id) => document.getElementById(id));
+  const error = document.getElementById("formError");
+  if (fields.some((el) => !el.value.trim())) { error.style.display = "block"; error.textContent = "Fill every field."; return; }
+  const data = {
+    business_name: fields[0].value.trim(),
+    whatsapp: fields[1].value.trim(),
+    business_type: fields[2].value,
+    biggest_issue: fields[3].value,
+    source: "Kit lab " + KIT.id,
+    page_type: "kit_preview_" + KIT.id,
+    kit_status: KIT.status,
+    submitted_at: new Date().toISOString()
+  };
+  const waText = encodeURIComponent("Hi Webwise, kit " + KIT.id + "\nBusiness: " + data.business_name + "\nType: " + data.business_type + "\nLeak: " + data.biggest_issue);
+  fetch("https://wwds.app.n8n.cloud/webhook/webwise-lead-capture", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(data) })
+    .then((res) => { if (!res.ok) throw new Error("fail"); document.getElementById("formCard").innerHTML = "<div class='success'><b>Request in.</b><p>Message WhatsApp if you want this kit walked live.</p><a class='btn-primary' href='https://wa.me/918796504200?text=" + waText + "'>WhatsApp</a></div>"; })
+    .catch(() => { error.style.display = "block"; error.innerHTML = "Form did not confirm. <a href='https://wa.me/918796504200?text=" + waText + "'>Message WhatsApp</a>"; });
+});
+</script>
+</body></html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex,nofollow" />
+<title>Webwise Kit Lab</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet" />
+<style>:root{--bg:#080808;--bg2:#0f0f0f;--panel:#111827;--card:#10151d;--line:rgba(41,171,226,.18);--blue:#29ABE2;--teal:#00D4AA;--white:#F2F2EE;--muted:#8b949e;--soft:#c7cdd4;--danger:#8993a0;--font:'Inter',Arial,sans-serif;--r:12px}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;overflow-x:clip}
+body{background:var(--bg);color:var(--white);font-family:var(--font);font-size:17px;line-height:1.65;overflow-x:clip}
+a{color:inherit;text-decoration:none}
+button,input,select{font:inherit}
+button{border:0;cursor:pointer}
+.wrap{width:min(1180px,calc(100% - 36px));margin:0 auto}
+.lab-banner{position:relative;z-index:50;background:#10151d;border-bottom:1px solid var(--line);padding:10px 18px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:13px;font-weight:800;color:var(--teal)}
+.lab-banner a{color:var(--blue)}
+.nav{position:sticky;top:0;z-index:40;background:rgba(8,8,8,.92);border-bottom:1px solid var(--line);backdrop-filter:blur(18px)}
+.nav-inner{height:70px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.brand{font-size:18px;font-weight:900;letter-spacing:1.6px}
+.brand em{font-style:normal;color:var(--blue)}
+.nav-links{display:flex;align-items:center;gap:22px;font-size:14px;font-weight:700;color:var(--muted)}
+.nav-cta{background:var(--blue);color:#fff;border-radius:8px;padding:11px 16px;font-size:14px;font-weight:900}
+section{padding:80px 0;border-top:1px solid rgba(41,171,226,.08)}
+.eyebrow{display:flex;align-items:center;gap:10px;color:var(--blue);font-size:11px;font-weight:900;letter-spacing:3px;text-transform:uppercase;margin-bottom:18px}
+.eyebrow::before{content:'';width:20px;height:1px;background:var(--blue)}
+h1{font-size:clamp(36px,5vw,68px);line-height:1.04;letter-spacing:-2.2px;font-weight:900;margin-bottom:20px}
+h2{font-size:clamp(28px,3.2vw,46px);line-height:1.1;letter-spacing:-1.4px;font-weight:900;margin-bottom:14px}
+h3{font-size:22px;line-height:1.2;font-weight:900;margin-bottom:8px}
+.copy,.sub{color:var(--muted);font-size:16px;line-height:1.8}
+.btn-row{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-top:26px}
+.btn-primary,.btn-secondary{display:inline-flex;align-items:center;justify-content:center;border-radius:8px;padding:14px 20px;font-weight:900;font-size:15px}
+.btn-primary{background:var(--blue);color:#fff}
+.btn-secondary{border:1px solid var(--line);background:rgba(41,171,226,.07);color:var(--white)}
+.hero{padding:48px 0 72px}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1fr) 400px;gap:56px;align-items:center}
+.hero-pill{display:inline-flex;gap:8px;border:1px solid var(--line);background:rgba(41,171,226,.09);border-radius:100px;color:var(--blue);font-size:12px;font-weight:900;letter-spacing:1.4px;text-transform:uppercase;padding:7px 13px;margin-bottom:20px}
+.hero-copy{max-width:680px;color:var(--soft);font-size:18px;line-height:1.75}
+.guardrails{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.guardrails span{border:1px solid var(--line);background:rgba(16,21,29,.72);border-radius:100px;padding:8px 12px;color:var(--muted);font-size:13px;font-weight:800}
+.phone{background:#0b141a;border:1px solid var(--line);border-radius:24px;padding:18px}
+.phone-head{display:flex;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.08);padding-bottom:14px;margin-bottom:16px;font-size:14px;font-weight:900}
+.phone-status{font-size:11px;color:var(--teal)}
+.chat{display:flex;flex-direction:column;gap:12px;min-height:300px}
+.bubble{max-width:88%;border-radius:14px;padding:12px 14px;font-size:13px;line-height:1.55}
+.bubble.in{background:#202c33;align-self:flex-start}
+.bubble.out{background:#005c4b;align-self:flex-end;font-weight:700}
+.bubble.system{align-self:center;background:rgba(41,171,226,.1);border:1px solid var(--line);color:var(--soft);font-weight:800;text-align:center}
+.strip{padding:22px 0;background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.strip-inner{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.strip b{font-size:13px;letter-spacing:2px;text-transform:uppercase}
+.strip-items{display:flex;gap:10px;flex-wrap:wrap}
+.strip-items span{border:1px solid var(--line);background:var(--card);border-radius:100px;padding:8px 12px;color:var(--muted);font-size:12px;font-weight:800}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.panel,.card,.form-card,.result-card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:28px}
+.problem-lines{display:grid;gap:12px;margin-top:20px}
+.line-card{border:1px solid rgba(41,171,226,.12);background:rgba(8,8,8,.36);border-radius:10px;padding:16px}
+.line-card b{display:block;margin-bottom:6px}
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.num{width:40px;height:40px;border:1px solid var(--blue);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--blue);font-weight:900;margin-bottom:14px}
+.tag{color:var(--teal);font-size:11px;font-weight:900;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px}
+.card p{color:var(--muted);font-size:14px;line-height:1.7}
+.workflow{counter-reset:step;display:grid;gap:12px}
+.flow-step{display:grid;grid-template-columns:46px 1fr;gap:14px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px}
+.flow-step::before{counter-increment:step;content:counter(step,decimal-leading-zero);width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(41,171,226,.1);border:1px solid var(--blue);color:var(--blue);font-weight:900;font-size:12px}
+.flow-step p{color:var(--muted);font-size:14px}
+.safe-list{display:grid;gap:10px;margin-top:16px}
+.safe-item{display:flex;gap:10px;color:var(--muted);font-size:14px}
+.safe-item i{width:22px;height:22px;flex:0 0 22px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(41,171,226,.1);color:var(--blue);font-style:normal;font-size:12px;font-weight:900}
+.safe-item.stop i{color:var(--danger);background:rgba(137,147,160,.08)}
+.niche-list{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.niche-list span{border:1px solid var(--line);border-radius:100px;padding:8px 12px;font-size:13px;font-weight:800}
+.control-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px}
+.control-grid div{border:1px solid rgba(41,171,226,.12);border-radius:10px;padding:14px;color:var(--muted);font-size:14px}
+.cta{background:linear-gradient(135deg,rgba(41,171,226,.13),rgba(0,212,170,.07))}
+.field{margin-bottom:14px}
+.field label{display:block;color:var(--muted);font-size:12px;font-weight:900;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px}
+.field input,.field select{width:100%;background:#141414;border:1px solid var(--line);border-radius:8px;color:var(--white);padding:12px 14px}
+.form-btn{width:100%;border-radius:8px;background:var(--blue);color:#fff;font-weight:900;padding:14px}
+.form-error{display:none;margin-top:12px;border:1px solid rgba(255,120,100,.3);background:rgba(255,120,100,.1);border-radius:10px;padding:12px;color:#ffd5cc;font-size:13px}
+.form-note{font-size:12px;color:var(--muted);text-align:center;margin-top:12px}
+.success{text-align:center;padding:18px}
+.faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:28px}
+.faq-item{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px}
+.faq-item button{width:100%;display:flex;justify-content:space-between;gap:12px;text-align:left;background:transparent;color:var(--white);font-weight:900}
+.faq-a{display:none;color:var(--muted);font-size:14px;margin-top:10px}
+.faq-item.open .faq-a{display:block}
+.plus{color:var(--blue);font-size:22px}
+footer{padding:40px 0;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
+.result-card .leak-inr{font-size:42px;font-weight:900;color:var(--teal);letter-spacing:-1.5px;margin:8px 0 14px}
+.quiz-q{margin-bottom:16px}
+.quiz-q b{display:block;margin-bottom:8px}
+.quiz-q button{display:block;width:100%;text-align:left;margin:6px 0;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:rgba(8,8,8,.4);color:var(--white);font-weight:700}
+.quiz-q button:hover,.quiz-q button.on{border-color:var(--blue);background:rgba(41,171,226,.12)}
+.kit-meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.kit-meta span{font-size:12px;font-weight:800;color:var(--muted);border:1px solid var(--line);border-radius:100px;padding:6px 10px}
+.gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.gallery a.card{display:block;transition:.2s}
+.gallery a.card:hover{border-color:var(--blue);transform:translateY(-3px)}
+.status{color:var(--teal);font-size:11px;font-weight:900;letter-spacing:2px;text-transform:uppercase}
+@media(max-width:900px){.hero-grid,.split,.grid3,.grid2,.faq-grid,.gallery,.control-grid{grid-template-columns:1fr}.nav-links a:not(.nav-cta){display:none}}
+</style>
+</head>
+<body>
+<div class="lab-banner"><span>KIT LAB · dogfood first · templates second · sell later</span><a href="/">Live site</a></div>
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Step 1 then 2 then 3</div>
+    <h1>Run it on Webwise. Then copy the recipe.</h1>
+    <p class="copy">The Webwise kit is client zero. Other kits are the same page with a different filling. Live homepage, clinic, and real-estate pages are not generated from here yet.</p>
+    <div class="gallery" style="margin-top:32px">
+    <a class="card" href="/preview/webwise/">
+      <div class="status">dogfood</div>
+      <h3>Webwise Digital</h3>
+      <p>AI automation agency</p>
+      <p class="copy" style="margin-top:12px">Your business shouldn’t stop when you do. We test that line on ourselves first.</p>
+    </a>
+    <a class="card" href="/preview/clinics/">
+      <div class="status">template</div>
+      <h3>Clinic LeadFlow kit</h3>
+      <p>Clinics &amp; doctors</p>
+      <p class="copy" style="margin-top:12px">Clinic WhatsApp that turns enquiries into a confirmed next step.</p>
+    </a>
+    <a class="card" href="/preview/d2c/">
+      <div class="status">template</div>
+      <h3>D2C kit</h3>
+      <p>D2C brands</p>
+      <p class="copy" style="margin-top:12px">From product question to purchase and repeat.</p>
+    </a>
+    <a class="card" href="/preview/real-estate/">
+      <div class="status">template</div>
+      <h3>Property LeadFlow kit</h3>
+      <p>Real estate &amp; architects</p>
+      <p class="copy" style="margin-top:12px">Property WhatsApp that turns a listing click into a booked site visit.</p>
+    </a>
+    <a class="card" href="/preview/restaurants/">
+      <div class="status">template</div>
+      <h3>Restaurant kit</h3>
+      <p>Restaurants &amp; hospitality</p>
+      <p class="copy" style="margin-top:12px">From interest to a reserved table or event enquiry.</p>
+    </a>
+    <a class="card" href="/preview/salons/">
+      <div class="status">template</div>
+      <h3>Salon kit</h3>
+      <p>Salons &amp; spas</p>
+      <p class="copy" style="margin-top:12px">From empty slot to booking and rebooking.</p>
+    </a>
+    <a class="card" href="/preview/weddings/">
+      <div class="status">template</div>
+      <h3>Wedding kit</h3>
+      <p>Wedding planners &amp; caterers</p>
+      <p class="copy" style="margin-top:12px">From date and budget to a real booking conversation.</p>
+    </a></div>
+  </div>
+</section>
+</body></html>

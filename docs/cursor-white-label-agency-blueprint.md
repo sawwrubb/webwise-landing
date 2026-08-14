@@ -5,6 +5,8 @@
 **Date:** 14 August 2026  
 **Rule:** This document does not change the live marketing site.
 
+**Build status (step 1):** Kit factory is in `factory/`. Dogfood page: `/preview/webwise/`. Niche clones: `/preview/{niche}/`. Generate with `node factory/generate.mjs`. Live homepage stays hand-edited until dogfood is trusted.
+
 ---
 
 ## Executive answer

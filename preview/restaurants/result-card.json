@@ -1,0 +1,9 @@
+{
+  "enquiriesPerMonth": 150,
+  "missRate": 0.25,
+  "arpuInr": 3500,
+  "closeRate": 0.5,
+  "leakLabel": "Missed Saturday tables / small events. Range only.",
+  "story": "A table of six that never got a reply is a night of revenue, not a social-media problem.",
+  "estimatedMonthlyLeakInr": 65625
+}
