@@ -316,71 +316,149 @@
       </article>`;
   };
 
-  const viewLogin = (mode = "signup") => {
-    return shell(null, `
-      <div class="auth-wrap">
-        <div class="eyebrow">✦ Client portal</div>
-        <h1>${mode === "login" ? "Welcome <span>back.</span>" : "Start your <span>health check.</span>"}</h1>
-        <p class="lead">${mode === "login" ? "Sign in with Google, email or phone." : "Create a secure account. We confirm email only after you opt in."}</p>
-        <div class="card">
-          <div class="tabs">
-            <button class="tab ${mode === "signup" ? "on" : ""}" data-go="#/signup" type="button">Sign up</button>
-            <button class="tab ${mode === "login" ? "on" : ""}" data-go="#/login" type="button">Log in</button>
-          </div>
-          <div class="auth-methods">
-            <button class="auth-method" type="button" id="googleBtn"><i>G</i> Continue with Google</button>
-            <button class="auth-method email" type="button" id="showEmail"><i>@</i> Continue with email</button>
-            <button class="auth-method phone" type="button" id="showPhone"><i>●</i> Continue with phone</button>
-          </div>
-          <form id="emailForm" class="hidden" autocomplete="on">
-            ${mode === "signup" ? `<div class="field"><label>Full name <span class="req">*</span></label><input name="name" required placeholder="Your name" /></div>` : ""}
-            <div class="field"><label>Work email <span class="req">*</span></label><input name="email" type="email" required placeholder="you@business.com" /></div>
-            <div class="field"><label>Password <span class="req">*</span></label><input name="password" type="password" minlength="8" required placeholder="Min 8 characters" /></div>
-            ${mode === "signup" ? `<label class="check"><input type="checkbox" name="optin" required /><span>I opt in to receive my health-check report, onboarding emails and confirmation mail from Webwise Digital. I can unsubscribe anytime.</span></label>` : ""}
-            <p class="error hidden" id="authErr"></p>
-            <button class="btn btn-primary btn-block" type="submit">${mode === "login" ? "Log in with email" : "Create account & send confirmation"}</button>
-          </form>
-          <form id="phoneForm" class="hidden">
-            <div class="field"><label>Full name <span class="req">*</span></label><input name="name" required /></div>
-            <div class="field"><label>Mobile (India) <span class="req">*</span></label><input name="phone" required pattern="[6-9][0-9]{9}" placeholder="10-digit number" /></div>
-            <p class="hint">We send a 6-digit OTP to verify the number. Demo OTP is shown on the next screen until an SMS gateway is connected.</p>
-            <p class="error hidden" id="phoneErr"></p>
-            <button class="btn btn-primary btn-block" type="submit">Send OTP</button>
-          </form>
-          <p class="hint" style="margin-top:14px">By continuing you agree to the <a href="/terms-of-service/">Terms</a> and <a href="/privacy-policy/">Privacy Policy</a>.</p>
+  const iconMail = '<svg class="ico" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="2"/><path d="m4 7 8 6 8-6" stroke="currentColor" stroke-width="2"/></svg>';
+  const iconLock = '<svg class="ico" viewBox="0 0 24 24" fill="none"><rect x="5" y="10" width="14" height="10" rx="2" stroke="currentColor" stroke-width="2"/><path d="M8 10V8a4 4 0 0 1 8 0v2" stroke="currentColor" stroke-width="2"/></svg>';
+  const googleMark = '<svg viewBox="0 0 24 24"><path fill="#4285F4" d="M23.5 12.3c0-.8-.1-1.6-.2-2.3H12v4.4h6.5c-.3 1.5-1.2 2.8-2.5 3.6v3h4c2.4-2.2 3.5-5.4 3.5-8.7z"/><path fill="#34A853" d="M12 24c3.2 0 6-1 7.9-2.9l-4-3.1c-1.1.7-2.5 1.2-3.9 1.2-3 0-5.6-2-6.5-4.8H1.3v3.1C3.2 21.3 7.3 24 12 24z"/><path fill="#FBBC05" d="M5.5 14.4A7.2 7.2 0 0 1 5.1 12c0-.8.1-1.6.4-2.4V6.5H1.3A12 12 0 0 0 0 12c0 1.9.5 3.8 1.3 5.5l4.2-3.1z"/><path fill="#EA4335" d="M12 4.8c1.8 0 3.4.6 4.6 1.8l3.5-3.5C18 1.1 15.2 0 12 0 7.3 0 3.2 2.7 1.3 6.5l4.2 3.1C6.4 6.8 9 4.8 12 4.8z"/></svg>';
+  const msMark = '<svg viewBox="0 0 24 24"><path fill="#F25022" d="M1 1h10v10H1z"/><path fill="#7FBA00" d="M13 1h10v10H13z"/><path fill="#00A4EF" d="M1 13h10v10H1z"/><path fill="#FFB900" d="M13 13h10v10H13z"/></svg>';
+
+  const loginChrome = (cardInner) => `
+    <div class="login-page">
+      <header class="login-head">
+        <a class="login-brand" href="/">
+          <img src="/webwise-logo.png" alt="Webwise Digital" />
+          <span><b>WEBWISE DIGITAL</b><small>Systems that scale businesses</small></span>
+        </a>
+        <a class="help-btn" href="https://wa.me/918796504200?text=Hi%20Webwise%2C%20I%20need%20help%20with%20client%20login." target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M5 15v2a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3v-2M8 11a4 4 0 1 1 8 0M4 11h2M18 11h2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          Need help?
+        </a>
+      </header>
+      <div class="login-body">
+        <div class="login-copy">
+          <h1>Your Business. <span>Clearly Analyzed. Intelligently Optimized.</span></h1>
+          <p class="sub">Your secure client portal to access your Business Health Check Report, competitor insights and a roadmap to build systems that drive results.</p>
+          <ul class="feat">
+            <li><i><svg viewBox="0 0 24 24" fill="none"><path d="M12 3 20 7v5c0 5-3.4 8-8 9-4.6-1-8-4-8-9V7l8-4z" stroke="currentColor" stroke-width="2"/><path d="m9 12 2 2 4-4" stroke="currentColor" stroke-width="2"/></svg></i><div><b>100% Secure &amp; Private</b><span>Your data is encrypted and always protected.</span></div></li>
+            <li><i><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="2"/><path d="M12 4v8l6 3" stroke="currentColor" stroke-width="2"/></svg></i><div><b>Data-Backed Insights</b><span>Actionable insights about your business and competitors.</span></div></li>
+            <li><i><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg></i><div><b>Clear Way Forward</b><span>Custom recommendations and systems to help you grow.</span></div></li>
+            <li><i><svg viewBox="0 0 24 24" fill="none"><path d="M13 2 4 14h7l-1 8 10-14h-7l0-6z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></i><div><b>Built for Results</b><span>Turn insights into action with powerful systems.</span></div></li>
+          </ul>
+          <div class="lock-line"><svg viewBox="0 0 24 24" fill="none"><rect x="5" y="10" width="14" height="10" rx="2" stroke="currentColor" stroke-width="2"/><path d="M8 10V8a4 4 0 0 1 8 0v2" stroke="currentColor" stroke-width="2"/></svg> Enterprise grade security • Your data, always private.</div>
         </div>
-      </div>`);
+        <div class="preview-stage" aria-hidden="true">
+          <div class="preview-card">
+            <h3>Business Health Score</h3>
+            <div class="gauge-row">
+              <div class="gauge">
+                <svg viewBox="0 0 88 88"><circle cx="44" cy="44" r="34" stroke="#1b2430" stroke-width="8" fill="none"/><circle cx="44" cy="44" r="34" stroke="#29ABE2" stroke-width="8" fill="none" stroke-dasharray="154 214" stroke-linecap="round"/></svg>
+                <b>72</b>
+              </div>
+              <div class="gauge-copy"><small>Good</small><p>You're on the right track! Let's make it exceptional.</p></div>
+            </div>
+            <div class="bars">
+              <div class="bar">Visibility<i><em style="width:68%"></em></i>68</div>
+              <div class="bar">Engagement<i><em style="width:74%"></em></i>74</div>
+              <div class="bar">Reputation<i><em style="width:71%"></em></i>71</div>
+              <div class="bar">Conversions<i><em style="width:69%"></em></i>69</div>
+            </div>
+            <table class="mini-table">
+              <thead><tr><th>Competitor overview</th><th>You</th><th>A</th><th>B</th></tr></thead>
+              <tbody>
+                <tr><td>Website</td><td>72</td><td>88</td><td>81</td></tr>
+                <tr><td>Reviews</td><td>64</td><td>91</td><td>77</td></tr>
+                <tr><td>Automation</td><td>41</td><td>86</td><td>70</td></tr>
+              </tbody>
+            </table>
+            <ul class="checks"><li>Improve local visibility</li><li>Increase customer engagement</li><li>Close after-hours reply gaps</li></ul>
+            <div class="preview-cta"><span>Build. Automate. Scale.</span><span>→</span></div>
+          </div>
+        </div>
+        ${cardInner}
+      </div>
+      <footer class="login-foot">
+        <span>
+          <span>Trusted by 100+ businesses</span>
+          <span>Actionable. Practical. Profitable.</span>
+          <span>Systems that drive real results.</span>
+        </span>
+        <span>© Webwise Digital. All rights reserved.</span>
+      </footer>
+    </div>`;
+
+  const ssoButtons = `
+    <div class="or">or continue with</div>
+    <div class="sso">
+      <button type="button" id="googleBtn">${googleMark} Continue with Google</button>
+      <button type="button" id="microsoftBtn">${msMark} Continue with Microsoft</button>
+    </div>`;
+
+  const viewLogin = (mode = "login") => {
+    const isLogin = mode === "login";
+    const card = `
+      <aside class="login-card">
+        <div class="login-card-head">
+          <div class="shield" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" width="20" height="20"><path d="M12 3 20 7v5c0 5-3.4 8-8 9-4.6-1-8-4-8-9V7l8-4z" stroke="currentColor" stroke-width="2"/><path d="M8 12v-1a4 4 0 0 1 8 0v1" stroke="currentColor" stroke-width="2"/><rect x="9" y="12" width="6" height="5" rx="1" stroke="currentColor" stroke-width="2"/></svg></div>
+          <div>
+            <h2>${isLogin ? "Welcome Back!" : "Get your Health Check"}</h2>
+            <p>${isLogin ? "Log in to access your Business Health Check Report and unlock growth opportunities." : "Create your portal account. We send a confirmation email only after you opt in."}</p>
+          </div>
+        </div>
+        <form id="emailForm" autocomplete="on">
+          ${isLogin ? "" : `<div class="field"><label>Full name <span class="req">*</span></label><div class="ico-field"><input name="name" required placeholder="Your name" /></div></div>`}
+          <div class="field"><label>Work Email</label><div class="ico-field">${iconMail}<input name="email" type="email" required placeholder="you@business.com" /></div></div>
+          <div class="field"><label>Password</label><div class="ico-field">${iconLock}<input id="passInput" name="password" type="password" minlength="8" required placeholder="${isLogin ? "Enter your password" : "Min 8 characters"}" /><button class="eye" type="button" id="togglePass" aria-label="Show password">◉</button></div></div>
+          ${isLogin ? `<div class="forgot"><a href="#/forgot">Forgot password?</a></div>` : `<div class="field"><label>Phone (optional)</label><input name="phone" placeholder="10-digit mobile" /></div><label class="check"><input type="checkbox" name="optin" required /><span>I opt in to receive my health-check report and confirmation email from Webwise Digital.</span></label>`}
+          <p class="error hidden" id="authErr"></p>
+          <button class="btn-login" type="submit">${isLogin ? "Log in" : "Create account"}</button>
+        </form>
+        ${ssoButtons}
+        <p class="switch">${isLogin ? `New to Webwise Digital? <a href="#/signup">Get your Business Health Check →</a>` : `Already have an account? <a href="#/login">Log in</a>`}</p>
+      </aside>`;
+    return loginChrome(card);
   };
 
-  const viewVerify = (user) => shell(user, `
-    <div class="auth-wrap">
-      <div class="eyebrow">Secure confirmation</div>
-      <h1>Confirm your <span>${user.method === "phone" ? "phone" : "email"}.</span></h1>
-      <p class="lead">${user.method === "phone" ? "Enter the OTP sent to +91 " + esc(user.phone) : "Enter the 6-digit code we emailed to " + esc(user.email)}. This keeps the portal and report private.</p>
-      <div class="card">
-        <p class="note">Demo verification code: <b>${esc(user.pendingCode)}</b><br>Production wires this to transactional email / SMS. Opt-in is required before any confirmation mail is sent.</p>
-        <form id="verifyForm">
-          <div class="field"><label>Confirmation code</label><input name="code" inputmode="numeric" maxlength="6" required placeholder="000000" /></div>
-          <p class="error hidden" id="verErr"></p>
-          <button class="btn btn-primary btn-block" type="submit">Verify & continue</button>
-        </form>
+  const viewVerify = (user) => loginChrome(`
+    <aside class="login-card">
+      <div class="login-card-head">
+        <div class="shield"><svg viewBox="0 0 24 24" fill="none" width="20" height="20"><rect x="5" y="10" width="14" height="10" rx="2" stroke="currentColor" stroke-width="2"/><path d="M8 10V8a4 4 0 0 1 8 0v2" stroke="currentColor" stroke-width="2"/></svg></div>
+        <div><h2>Confirm it's you</h2><p>Enter the 6-digit code sent to ${esc(user.email || ("+91 " + user.phone))}.</p></div>
       </div>
-    </div>`);
+      <p class="note">Demo verification code: <b>${esc(user.pendingCode)}</b></p>
+      <form id="verifyForm">
+        <div class="field"><label>Confirmation code</label><input name="code" inputmode="numeric" maxlength="6" required placeholder="000000" /></div>
+        <p class="error hidden" id="verErr"></p>
+        <button class="btn-login" type="submit">Verify &amp; continue</button>
+      </form>
+    </aside>`);
 
-  const viewGoogle = () => shell(null, `
-    <div class="auth-wrap">
-      <div class="eyebrow">Google sign-in</div>
-      <h1>Use your <span>Google</span> account</h1>
-      <p class="lead">You stay on Webwise. We never clone a Google login page. Production OAuth uses your Google Client ID; this step captures the account you want linked.</p>
-      <div class="card">
-        <form id="googleForm">
-          <div class="field"><label>Name</label><input name="name" required placeholder="Name on Google account" /></div>
-          <div class="field"><label>Google email</label><input name="email" type="email" required placeholder="name@gmail.com" /></div>
-          <label class="check"><input type="checkbox" name="optin" required /><span>I opt in to health-check and onboarding emails from Webwise Digital.</span></label>
-          <button class="btn btn-primary btn-block" type="submit">Link Google & enter portal</button>
-        </form>
+  const viewSso = (provider) => loginChrome(`
+    <aside class="login-card">
+      <div class="login-card-head">
+        <div class="shield">${provider === "microsoft" ? msMark : googleMark}</div>
+        <div><h2>Continue with ${provider === "microsoft" ? "Microsoft" : "Google"}</h2><p>You stay on Webwise. We do not clone a Google or Microsoft login page. Production OAuth attaches here.</p></div>
       </div>
-    </div>`);
+      <form id="ssoForm" data-provider="${provider}">
+        <div class="field"><label>Name</label><input name="name" required placeholder="Name on the account" /></div>
+        <div class="field"><label>Work email</label><input name="email" type="email" required placeholder="you@company.com" /></div>
+        <label class="check"><input type="checkbox" name="optin" required /><span>I opt in to health-check and onboarding emails from Webwise Digital.</span></label>
+        <button class="btn-login" type="submit">Link account &amp; enter portal</button>
+      </form>
+      <p class="switch"><a href="#/login">Back to login</a></p>
+    </aside>`);
+
+  const viewForgot = () => loginChrome(`
+    <aside class="login-card">
+      <div class="login-card-head">
+        <div class="shield">${iconLock.replace('class="ico"','width="18" height="18"')}</div>
+        <div><h2>Reset password</h2><p>Enter the work email on your portal account. A demo reset code is shown until transactional email is connected.</p></div>
+      </div>
+      <form id="forgotForm">
+        <div class="field"><label>Work Email</label><div class="ico-field">${iconMail}<input name="email" type="email" required placeholder="you@business.com" /></div></div>
+        <p class="error hidden" id="authErr"></p>
+        <button class="btn-login" type="submit">Send reset code</button>
+      </form>
+      <p class="switch"><a href="#/login">Back to login</a></p>
+    </aside>`);
 
   const viewFunnel = (user, acc) => {
     const i = acc.funnelIndex;
@@ -755,7 +833,7 @@
     const user = {
       id: randomHex(8),
       method: "email",
-      name, email, phone: "",
+      name, email, phone: String(fd.get("phone") || "").trim(),
       salt,
       passHash: await hashPass(password, salt),
       verified: false,
@@ -769,35 +847,31 @@
   };
 
   const bindAuth = (mode) => {
-    document.querySelectorAll("[data-go]").forEach((b) => b.addEventListener("click", () => go(b.getAttribute("data-go").slice(1))));
     document.getElementById("googleBtn")?.addEventListener("click", () => go("/google"));
-    document.getElementById("showEmail")?.addEventListener("click", () => document.getElementById("emailForm").classList.remove("hidden"));
-    document.getElementById("showPhone")?.addEventListener("click", () => document.getElementById("phoneForm").classList.remove("hidden"));
+    document.getElementById("microsoftBtn")?.addEventListener("click", () => go("/microsoft"));
+    document.getElementById("togglePass")?.addEventListener("click", () => {
+      const input = document.getElementById("passInput");
+      if (!input) return;
+      input.type = input.type === "password" ? "text" : "password";
+    });
     document.getElementById("emailForm")?.addEventListener("submit", (e) => { e.preventDefault(); startEmailSignup(e.target, mode === "login"); });
-    document.getElementById("phoneForm")?.addEventListener("submit", (e) => {
+  };
+
+  const bindSso = (provider) => {
+    document.getElementById("ssoForm")?.addEventListener("submit", (e) => {
       e.preventDefault();
       const fd = new FormData(e.target);
-      const phone = String(fd.get("phone") || "");
-      const name = String(fd.get("name") || "");
-      if (!/^[6-9]\d{9}$/.test(phone)) {
-        const err = document.getElementById("phoneErr");
-        err.textContent = "Enter a valid 10-digit Indian mobile.";
-        err.classList.remove("hidden");
-        return;
+      const email = String(fd.get("email")).trim().toLowerCase();
+      let user = loadUsers().find((u) => u.email === email && u.method === provider);
+      if (!user) {
+        user = {
+          id: randomHex(8), method: provider, name: String(fd.get("name")), email, phone: "",
+          verified: true, optIn: true, pendingCode: "", createdAt: Date.now()
+        };
+        upsertUser(user);
       }
-      const existing = loadUsers().find((u) => u.phone === phone && u.method === "phone");
-      const user = existing || {
-        id: randomHex(8), method: "phone", name, email: "", phone,
-        verified: false, optIn: true, pendingCode: otp6(), createdAt: Date.now()
-      };
-      if (existing) {
-        user.name = name || existing.name;
-        user.pendingCode = otp6();
-        user.verified = false;
-      }
-      upsertUser(user);
       loginSession(user);
-      go("/verify");
+      go("/funnel");
     });
   };
 
@@ -807,28 +881,28 @@
     let user = currentUser();
 
     if (path === "/" || path === "/login") {
-      app.replaceChildren($("div"));
       app.innerHTML = viewLogin("login");
       bindAuth("login");
     } else if (path === "/signup") {
       app.innerHTML = viewLogin("signup");
       bindAuth("signup");
-    } else if (path === "/google") {
-      app.innerHTML = viewGoogle();
-      document.getElementById("googleForm").addEventListener("submit", (e) => {
+    } else if (path === "/google" || path === "/microsoft") {
+      const provider = path === "/microsoft" ? "microsoft" : "google";
+      app.innerHTML = viewSso(provider);
+      bindSso(provider);
+    } else if (path === "/forgot") {
+      app.innerHTML = viewForgot();
+      document.getElementById("forgotForm").addEventListener("submit", (e) => {
         e.preventDefault();
-        const fd = new FormData(e.target);
-        const email = String(fd.get("email")).trim().toLowerCase();
-        let user = loadUsers().find((u) => u.email === email && u.method === "google");
-        if (!user) {
-          user = {
-            id: randomHex(8), method: "google", name: String(fd.get("name")), email, phone: "",
-            verified: true, optIn: true, pendingCode: "", createdAt: Date.now()
-          };
-          upsertUser(user);
-        }
-        loginSession(user);
-        go("/funnel");
+        const email = String(new FormData(e.target).get("email") || "").trim().toLowerCase();
+        const existing = loadUsers().find((u) => u.email === email && u.method === "email");
+        const err = document.getElementById("authErr");
+        if (!existing) { err.textContent = "No portal account for that email."; err.classList.remove("hidden"); return; }
+        existing.pendingCode = otp6();
+        existing.verified = false;
+        upsertUser(existing);
+        loginSession(existing);
+        go("/verify");
       });
     } else if (path === "/verify") {
       user = currentUser();
@@ -969,6 +1043,6 @@
   };
 
   window.addEventListener("hashchange", render);
-  if (!location.hash) location.hash = "/signup";
+  if (!location.hash) location.hash = "/login";
   else render();
 })();
