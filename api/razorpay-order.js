@@ -1,0 +1,34 @@
+const { admin, userFromRequest, json } = require("../lib/supabase");
+
+const AMOUNT = 199900; // ₹1,999 in paise
+
+module.exports = async (req, res) => {
+  if (req.method !== "POST") return json(res, 405, { error: "POST only" });
+  const user = await userFromRequest(req);
+  if (!user) return json(res, 401, { error: "Sign in required" });
+  const key = process.env.RAZORPAY_KEY_ID;
+  const secret = process.env.RAZORPAY_KEY_SECRET;
+  if (!key || !secret) return json(res, 503, { error: "Razorpay is not configured" });
+
+  const auth = Buffer.from(`${key}:${secret}`).toString("base64");
+  const rzp = await fetch("https://api.razorpay.com/v1/orders", {
+    method: "POST",
+    headers: { Authorization: `Basic ${auth}`, "Content-Type": "application/json" },
+    body: JSON.stringify({
+      amount: AMOUNT,
+      currency: "INR",
+      receipt: `comp_${user.id.slice(0, 8)}_${Date.now()}`,
+      notes: { user_id: user.id, product: "competitor_pack" }
+    })
+  });
+  const order = await rzp.json();
+  if (!rzp.ok) return json(res, 502, { error: order.error?.description || "Razorpay order failed" });
+
+  await admin().from("payments").insert({
+    user_id: user.id,
+    razorpay_order_id: order.id,
+    amount: AMOUNT,
+    status: "created"
+  });
+  json(res, 200, { orderId: order.id, amount: AMOUNT, keyId: key, currency: "INR" });
+};

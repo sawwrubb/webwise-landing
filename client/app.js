@@ -108,7 +108,10 @@
   const setSession = (s) => localStorage.setItem(STORE_SESSION, JSON.stringify(s));
   const clearSession = () => localStorage.removeItem(STORE_SESSION);
   const account = (id) => JSON.parse(localStorage.getItem(storeKey(id)) || "null");
-  const saveAccount = (acc) => localStorage.setItem(storeKey(acc.userId), JSON.stringify(acc));
+  const saveAccount = async (acc) => {
+    if (cloudOn()) return WebwisePortal.saveAccount(acc);
+    localStorage.setItem(storeKey(acc.userId), JSON.stringify(acc));
+  };
 
   const bufToHex = (buf) => [...new Uint8Array(buf)].map((b) => b.toString(16).padStart(2, "0")).join("");
   const randomHex = (n = 16) => bufToHex(crypto.getRandomValues(new Uint8Array(n)));
@@ -118,13 +121,17 @@
   };
   const otp6 = () => String(Math.floor(100000 + Math.random() * 900000));
 
+  const cloudOn = () => Boolean(window.WebwisePortal && WebwisePortal.enabled);
+
   const currentUser = () => {
+    if (cloudOn()) return WebwisePortal.currentUser();
     const s = session();
     if (!s || s.expires < Date.now()) { clearSession(); return null; }
     return loadUsers().find((u) => u.id === s.userId) || null;
   };
 
-  const ensureAccount = (user) => {
+  const ensureAccount = async (user) => {
+    if (cloudOn()) return WebwisePortal.loadAccount(user);
     let acc = account(user.id);
     if (!acc) {
       acc = {
@@ -149,7 +156,7 @@
         inbox: [],
         nurtureArmed: false
       };
-      saveAccount(acc);
+      await saveAccount(acc);
     }
     return acc;
   };
@@ -209,7 +216,7 @@
 
   const pill = (n) => n >= 75 ? "good" : n >= 50 ? "mid" : "bad";
 
-  const armNurture = (acc) => {
+  const armNurture = async (acc) => {
     if (acc.nurtureArmed) return;
     acc.nurtureArmed = true;
     acc.inbox = EMAILS.map((e) => ({
@@ -217,7 +224,10 @@
       sentAt: Date.now() + e.day * 86400000,
       status: e.day === 0 ? "sent" : "queued"
     }));
-    saveAccount(acc);
+    await saveAccount(acc);
+    if (cloudOn() && WebwisePortal.cfg.mail) {
+      try { await WebwisePortal.armNurture(); } catch (err) { console.warn(err); }
+    }
   };
 
   const nav = (user) => `
@@ -789,10 +799,22 @@
       </ol>
     </div>`);
 
+  const viewCheckInbox = (email) => loginChrome(`
+    <aside class="login-card">
+      <div class="login-card-head">
+        <div class="shield">${iconMail.replace('class="ico"','width="18" height="18"')}</div>
+        <div><h2>Check your email</h2><p>We sent a confirmation link to ${esc(email)}. Open it to enter the portal. The same mailbox will receive your health check and nurture sequence.</p></div>
+      </div>
+      <p class="switch"><a href="#/login">Back to login</a></p>
+    </aside>`);
+
   const requireUser = () => {
     const user = currentUser();
     if (!user) { go("/login"); return null; }
-    if (!user.verified && route() !== "/verify") { go("/verify"); return null; }
+    if (!user.verified && route() !== "/verify" && route() !== "/check-email") {
+      go(cloudOn() ? "/check-email" : "/verify");
+      return null;
+    }
     return user;
   };
 
@@ -814,11 +836,27 @@
     const email = String(fd.get("email") || "").trim().toLowerCase();
     const name = String(fd.get("name") || "").trim();
     const password = String(fd.get("password") || "");
-    const users = loadUsers();
-    const existing = users.find((u) => u.email === email && u.method === "email");
     const err = form.querySelector("#authErr");
     const show = (m) => { err.textContent = m; err.classList.remove("hidden"); };
 
+    if (cloudOn()) {
+      try {
+        if (isLogin) {
+          const user = await WebwisePortal.signInEmail({ email, password });
+          go(user.verified ? "/dashboard" : "/check-email");
+          return;
+        }
+        if (!form.optin || !form.optin.checked) return show("Opt-in is required before we send a confirmation email.");
+        const result = await WebwisePortal.signUpEmail({ name, email, password, phone: String(fd.get("phone") || "") });
+        go(result.needsEmailConfirm ? "/check-email" : "/funnel");
+      } catch (e) {
+        show(e.message || "Could not sign in");
+      }
+      return;
+    }
+
+    const users = loadUsers();
+    const existing = users.find((u) => u.email === email && u.method === "email");
     if (isLogin) {
       if (!existing) return show("No email account found. Sign up first.");
       const hash = await hashPass(password, existing.salt);
@@ -847,8 +885,20 @@
   };
 
   const bindAuth = (mode) => {
-    document.getElementById("googleBtn")?.addEventListener("click", () => go("/google"));
-    document.getElementById("microsoftBtn")?.addEventListener("click", () => go("/microsoft"));
+    document.getElementById("googleBtn")?.addEventListener("click", async () => {
+      if (cloudOn()) {
+        try { await WebwisePortal.oauth("google"); } catch (e) { alert(e.message); }
+        return;
+      }
+      go("/google");
+    });
+    document.getElementById("microsoftBtn")?.addEventListener("click", async () => {
+      if (cloudOn()) {
+        try { await WebwisePortal.oauth("microsoft"); } catch (e) { alert(e.message); }
+        return;
+      }
+      go("/microsoft");
+    });
     document.getElementById("togglePass")?.addEventListener("click", () => {
       const input = document.getElementById("passInput");
       if (!input) return;
@@ -858,8 +908,12 @@
   };
 
   const bindSso = (provider) => {
-    document.getElementById("ssoForm")?.addEventListener("submit", (e) => {
+    document.getElementById("ssoForm")?.addEventListener("submit", async (e) => {
       e.preventDefault();
+      if (cloudOn()) {
+        try { await WebwisePortal.oauth(provider); } catch (err) { alert(err.message); }
+        return;
+      }
       const fd = new FormData(e.target);
       const email = String(fd.get("email")).trim().toLowerCase();
       let user = loadUsers().find((u) => u.email === email && u.method === provider);
@@ -875,28 +929,47 @@
     });
   };
 
-  const render = () => {
+  const render = async () => {
     const app = document.getElementById("app");
     const path = route();
     let user = currentUser();
 
     if (path === "/" || path === "/login") {
+      if (cloudOn() && user?.verified) return go("/dashboard");
       app.innerHTML = viewLogin("login");
       bindAuth("login");
     } else if (path === "/signup") {
       app.innerHTML = viewLogin("signup");
       bindAuth("signup");
+    } else if (path === "/check-email") {
+      app.innerHTML = viewCheckInbox((user && user.email) || "your inbox");
     } else if (path === "/google" || path === "/microsoft") {
       const provider = path === "/microsoft" ? "microsoft" : "google";
+      if (cloudOn()) {
+        try { await WebwisePortal.oauth(provider); } catch (e) { alert(e.message); }
+        return;
+      }
       app.innerHTML = viewSso(provider);
       bindSso(provider);
     } else if (path === "/forgot") {
       app.innerHTML = viewForgot();
-      document.getElementById("forgotForm").addEventListener("submit", (e) => {
+      document.getElementById("forgotForm").addEventListener("submit", async (e) => {
         e.preventDefault();
         const email = String(new FormData(e.target).get("email") || "").trim().toLowerCase();
-        const existing = loadUsers().find((u) => u.email === email && u.method === "email");
         const err = document.getElementById("authErr");
+        if (cloudOn()) {
+          try {
+            await WebwisePortal.forgotPassword(email);
+            err.classList.remove("hidden");
+            err.style.color = "var(--teal)";
+            err.textContent = "Reset link sent if that email exists.";
+          } catch (ex) {
+            err.textContent = ex.message;
+            err.classList.remove("hidden");
+          }
+          return;
+        }
+        const existing = loadUsers().find((u) => u.email === email && u.method === "email");
         if (!existing) { err.textContent = "No portal account for that email."; err.classList.remove("hidden"); return; }
         existing.pendingCode = otp6();
         existing.verified = false;
@@ -906,6 +979,7 @@
       });
     } else if (path === "/verify") {
       user = currentUser();
+      if (cloudOn()) return go("/check-email");
       if (!user) return go("/login");
       if (user.verified) return go("/funnel");
       app.innerHTML = viewVerify(user);
@@ -926,7 +1000,8 @@
     } else {
       user = requireUser();
       if (!user) return;
-      const acc = ensureAccount(user);
+      const acc = await ensureAccount(user);
+      const persist = () => saveAccount(acc);
       const map = {
         "/dashboard": () => viewDash(user, acc),
         "/funnel": () => {
@@ -935,12 +1010,12 @@
         },
         "/report": () => {
           acc.stage = "report";
-          saveAccount(acc);
+          persist();
           return viewReport(user, acc);
         },
         "/competitors": () => viewCompetitors(user, acc),
-        "/compare": () => { acc.comparisonSeen = true; saveAccount(acc); return viewCompare(user, acc); },
-        "/nurture": () => { armNurture(acc); acc.inbox[0].status = "sent"; saveAccount(acc); return viewNurture(user, acc); },
+        "/compare": () => { acc.comparisonSeen = true; persist(); return viewCompare(user, acc); },
+        "/nurture": () => { armNurture(acc); if (acc.inbox[0]) acc.inbox[0].status = "sent"; persist(); return viewNurture(user, acc); },
         "/onboarding": () => {
           if (!acc.approved) { go("/compare"); return "<p class='lead'>Approve the partner system first.</p>"; }
           return viewOnboarding(user, acc);
@@ -959,43 +1034,65 @@
       app.innerHTML = view();
       if (path === "/funnel" && acc.funnelIndex >= QUESTIONS.length) return;
 
-      document.getElementById("logoutBtn")?.addEventListener("click", () => { clearSession(); go("/login"); });
+      document.getElementById("logoutBtn")?.addEventListener("click", async () => {
+        clearSession();
+        if (cloudOn()) await WebwisePortal.logout();
+        go("/login");
+      });
 
-      document.querySelectorAll(".option").forEach((btn) => btn.addEventListener("click", () => {
+      document.querySelectorAll(".option").forEach((btn) => btn.addEventListener("click", async () => {
         acc.answers[btn.dataset.qid] = btn.dataset.val;
         acc.funnelIndex += 1;
         if (acc.funnelIndex >= QUESTIONS.length) {
           acc.stage = "report";
-          saveAccount(acc);
+          await persist();
           go("/report");
         } else {
-          saveAccount(acc);
+          await persist();
           render();
         }
       }));
 
       document.getElementById("printReport")?.addEventListener("click", () => window.print());
-      document.getElementById("emailReport")?.addEventListener("click", () => {
+      document.getElementById("emailReport")?.addEventListener("click", async () => {
         acc.reportSent = true;
-        armNurture(acc);
-        acc.inbox[0].status = "sent";
-        saveAccount(acc);
+        await armNurture(acc);
+        if (acc.inbox[0]) acc.inbox[0].status = "sent";
+        await persist();
+        if (cloudOn() && WebwisePortal.cfg.mail) {
+          try {
+            await WebwisePortal.sendReportEmail(
+              "Your Webwise Digital Health Check is ready",
+              "Your one-pager is in the client portal. Download it anytime from your dashboard."
+            );
+          } catch (e) { alert(e.message); }
+        }
         go("/inbox");
       });
       document.getElementById("orderComp")?.addEventListener("click", () => go("/competitors"));
-      document.getElementById("payComp")?.addEventListener("click", () => {
+      document.getElementById("payComp")?.addEventListener("click", async () => {
+        if (cloudOn() && WebwisePortal.cfg.payments) {
+          try {
+            acc.competitorOrder = await WebwisePortal.payCompetitorPack();
+            await persist();
+            render();
+          } catch (e) {
+            if (e.message !== "Payment cancelled") alert(e.message);
+          }
+          return;
+        }
         acc.competitorOrder = { id: "WWD-CP-" + randomHex(3).toUpperCase(), at: today(), amount: PRICE.competitorPack };
-        saveAccount(acc);
+        await persist();
         render();
       });
-      document.getElementById("approveBtn")?.addEventListener("click", () => {
+      document.getElementById("approveBtn")?.addEventListener("click", async () => {
         acc.approved = true;
         acc.comparisonSeen = true;
         acc.stage = "onboarding";
-        saveAccount(acc);
+        await persist();
         go("/onboarding");
       });
-      document.getElementById("onboardForm")?.addEventListener("submit", (e) => {
+      document.getElementById("onboardForm")?.addEventListener("submit", async (e) => {
         e.preventDefault();
         const fd = new FormData(e.target);
         ["company","address","phone","email","metaNumber","altNumber","website","websiteType","designPref","refs","certs"].forEach((k) => {
@@ -1003,46 +1100,52 @@
         });
         const logo = e.target.logo?.files?.[0];
         if (logo) acc.onboarding.logoName = logo.name;
-        ["aadhaar","gst","utility"].forEach((k) => {
+        for (const k of ["aadhaar", "gst", "utility"]) {
           const f = e.target[k]?.files?.[0];
-          if (f) acc.onboarding.kyc[k] = f.name;
-        });
+          if (f) {
+            acc.onboarding.kyc[k] = cloudOn() ? await WebwisePortal.uploadKyc(k, f) : f.name;
+          }
+        }
         if (!acc.onboarding.kyc.aadhaar || !acc.onboarding.kyc.gst || !acc.onboarding.kyc.utility) {
           alert("Upload Aadhaar, GST/COI and utility bill to complete KYC.");
           return;
         }
-        saveAccount(acc);
+        await persist();
         go("/automation");
       });
-      document.getElementById("submitMeta")?.addEventListener("click", () => {
+      document.getElementById("submitMeta")?.addEventListener("click", async () => {
         if (!/^https?:\/\//i.test(acc.onboarding.website || "")) return;
         acc.automation.submitted = true;
         acc.automation.websiteOk = true;
         acc.automation.metaStatus = "submitted — awaiting Meta";
         acc.stage = "reviews";
-        saveAccount(acc);
+        await persist();
         go("/reviews");
       });
-      document.getElementById("revForm")?.addEventListener("submit", (e) => {
+      document.getElementById("revForm")?.addEventListener("submit", async (e) => {
         e.preventDefault();
         const fd = new FormData(e.target);
         acc.reviewsMod.process = String(fd.get("process"));
         acc.reviewsMod.locations = String(fd.get("locations"));
-        saveAccount(acc);
+        await persist();
         go("/upsell-social");
       });
-      document.querySelectorAll("[data-upsell]").forEach((btn) => btn.addEventListener("click", () => {
+      document.querySelectorAll("[data-upsell]").forEach((btn) => btn.addEventListener("click", async () => {
         const field = btn.dataset.upsell;
         const val = btn.dataset.val;
         acc.upsells[field] = val;
-        saveAccount(acc);
+        await persist();
         if (val === "yes") go(field === "social" ? "/social-landing" : "/email-landing");
         else go(field === "social" ? "/upsell-email" : "/thanks");
       }));
     }
   };
 
-  window.addEventListener("hashchange", render);
-  if (!location.hash) location.hash = "/login";
-  else render();
+  window.addEventListener("hashchange", () => { render(); });
+  const boot = async () => {
+    if (window.WebwisePortal) await WebwisePortal.init();
+    if (!location.hash) location.hash = "/login";
+    else await render();
+  };
+  boot();
 })();
