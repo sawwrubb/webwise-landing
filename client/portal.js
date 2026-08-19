@@ -101,12 +101,18 @@
       return mapUser(this.session, this.profile);
     },
 
+    googleCallbackUri() {
+      const base = String(this.cfg.supabaseUrl || "").replace(/\/$/, "");
+      return base ? `${base}/auth/v1/callback` : "";
+    },
+
     async oauth(provider) {
       const supabaseProvider = provider === "microsoft" ? "azure" : "google";
+      const origin = location.origin.replace(/\/$/, "");
       const { error } = await this.sb.auth.signInWithOAuth({
         provider: supabaseProvider,
         options: {
-          redirectTo: `${location.origin}/client/#/funnel`,
+          redirectTo: `${origin}/client/?next=funnel`,
           skipBrowserRedirect: false,
           queryParams: { prompt: "select_account" }
         }

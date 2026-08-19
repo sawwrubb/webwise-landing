@@ -486,6 +486,12 @@
       <button type="button" id="googleBtn">${googleMark} Continue with Google</button>
     </div>`;
 
+  const googleSetupHint = () => {
+    const cb = cloudOn() && window.WebwisePortal?.googleCallbackUri?.();
+    if (!cb) return "";
+    return `<p class="hint" id="googleUriHint">If Google says <b>redirect_uri_mismatch</b>, open Google Cloud → APIs &amp; Services → Credentials → the <b>Web application</b> client (not Branding). Under <b>Authorized redirect URIs</b> add this exact URL, then save and wait a minute:<br><code style="display:block;margin-top:8px;word-break:break-all">${esc(cb)}</code></p>`;
+  };
+
   const viewLogin = (mode = "login") => {
     const isLogin = mode === "login";
     const card = `
@@ -506,6 +512,7 @@
           <button class="btn-login" type="submit">${isLogin ? "Log in" : "Yes, give me my Business Health Check Report"}</button>
         </form>
         ${ssoButtons}
+        ${googleSetupHint()}
         ${isLogin ? `<p class="hint" style="margin-top:12px">By continuing you agree to the <a href="/terms-of-service/" target="_blank" rel="noopener">Terms of Service</a>.</p>` : ""}
         <p class="switch">${isLogin ? `New to Webwise Digital? <a href="#/signup">Get your Business Health Check →</a>` : `Already have an account? <a href="#/login">Log in</a>`}</p>
       </aside>`;
@@ -536,6 +543,7 @@
         </div>
       </div>
       <p class="hint">By continuing you agree to the <a href="/terms-of-service/" target="_blank" rel="noopener">Terms of Service</a>.</p>
+      ${googleSetupHint()}
       <p class="error hidden" id="authErr"></p>
       <button class="btn-login" type="button" id="startGoogle">Continue to Google</button>
       <p class="switch"><a href="#/login">Back to login</a></p>
@@ -1257,7 +1265,8 @@
   window.addEventListener("hashchange", () => { render(); });
   const boot = async () => {
     if (window.WebwisePortal) await WebwisePortal.init();
-    if (!location.hash) location.hash = "/login";
+    const next = new URLSearchParams(location.search).get("next");
+    if (!location.hash) location.hash = next ? `/${next.replace(/^\//, "")}` : "/login";
     else await render();
   };
   boot();
