@@ -399,7 +399,6 @@
     <div class="or">or continue with</div>
     <div class="sso">
       <button type="button" id="googleBtn">${googleMark} Continue with Google</button>
-      <button type="button" id="microsoftBtn">${msMark} Continue with Microsoft</button>
     </div>`;
 
   const viewLogin = (mode = "login") => {
@@ -891,13 +890,6 @@
         return;
       }
       go("/google");
-    });
-    document.getElementById("microsoftBtn")?.addEventListener("click", async () => {
-      if (cloudOn()) {
-        try { await WebwisePortal.oauth("microsoft"); } catch (e) { alert(e.message); }
-        return;
-      }
-      go("/microsoft");
     });
     document.getElementById("togglePass")?.addEventListener("click", () => {
       const input = document.getElementById("passInput");
