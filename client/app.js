@@ -532,12 +532,12 @@
         <div class="shield">${googleMark}</div>
         <div>
           <h2>Continue with Google</h2>
-          <p>Google will ask you to choose an account. We use that email to send your Business Health Check Report.</p>
+          <p>Opening Google so you can choose an account. We never collect your Google password on this page.</p>
         </div>
       </div>
-      <p class="hint">By continuing you agree to the <a href="/terms-of-service/" target="_blank" rel="noopener">Terms of Service</a> and <a href="/privacy-policy/" target="_blank" rel="noopener">Privacy Policy</a>.</p>
+      <p class="hint">By continuing you agree to the <a href="/terms-of-service/" target="_blank" rel="noopener">Terms of Service</a>.</p>
       <p class="error hidden" id="authErr"></p>
-      <button class="btn-login" type="button" id="startGoogle">Yes, give me my Business Health Check Report</button>
+      <button class="btn-login" type="button" id="startGoogle">Continue to Google</button>
       <p class="switch"><a href="#/login">Back to login</a></p>
     </aside>`);
 
