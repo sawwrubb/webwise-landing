@@ -19,7 +19,8 @@
     reviewsMod: { process: "", locations: "" },
     upsells: { social: null, emailAuto: null },
     inbox: [],
-    nurtureArmed: false
+    nurtureArmed: false,
+    reportUnlocked: false
   });
 
   const mapUser = (session, profile) => {
@@ -104,7 +105,11 @@
       const supabaseProvider = provider === "microsoft" ? "azure" : "google";
       const { error } = await this.sb.auth.signInWithOAuth({
         provider: supabaseProvider,
-        options: { redirectTo: `${location.origin}/client/` }
+        options: {
+          redirectTo: `${location.origin}/client/#/funnel`,
+          skipBrowserRedirect: false,
+          queryParams: { prompt: "select_account" }
+        }
       });
       if (error) throw error;
     },

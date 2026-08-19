@@ -7,7 +7,7 @@
     competitorPack: 1999,
     bundleList: 20000,
     bundlePartner: 10000,
-    diy: { website: 80000, landing: 35000, whatsapp: 45000, reviews: 25000, staff: 60000 }
+    diy: { website: 115000, whatsapp: 45000, reviews: 25000, staff: 60000 }
   };
   const STEPS = [
     { id: "account", label: "Account" },
@@ -29,6 +29,13 @@
       { v: "restaurant", l: "Restaurant or hospitality", d: "Restaurants, cafes, hotels" },
       { v: "wedding", l: "Wedding or catering", d: "Planners, caterers, events" },
       { v: "d2c", l: "D2C or local brand", d: "Online brands, retailers, services" }
+    ]},
+    { id: "city", q: "Where is the business based?", h: "We benchmark you against the top local player in that city.", a: [
+      { v: "delhi", l: "Delhi NCR", d: "Delhi, Gurgaon, Noida, Faridabad, Ghaziabad" },
+      { v: "mumbai", l: "Mumbai / Pune", d: "Mumbai, Navi Mumbai, Thane, Pune" },
+      { v: "bengaluru", l: "Bengaluru", d: "Bengaluru and surrounding" },
+      { v: "hyderabad", l: "Hyderabad / South", d: "Hyderabad, Chennai, Kochi" },
+      { v: "other", l: "Another city in India", d: "We'll use the national category leader" }
     ]},
     { id: "hasWebsite", q: "Do you have a live website?", h: "A site is required later for Meta automation.", a: [
       { v: "strong", l: "Yes — updated in the last 12 months", d: "Fast, mobile, converting" },
@@ -54,7 +61,7 @@
       { v: "fssai", l: "FSSAI / hospitality credentials", d: "Food, events" },
       { v: "none", l: "None yet — help me present trust", d: "We will use process + reviews" }
     ]},
-    { id: "social", q: "How active is social media today?", h: "Benchmark vs the top domestic competitor.", a: [
+    { id: "social", q: "How active is social media today?", h: "Benchmark vs the top local player in your city.", a: [
       { v: "daily", l: "Posting most days", d: "Reels / posts running" },
       { v: "weekly", l: "A few posts a week", d: "Inconsistent" },
       { v: "dormant", l: "Profiles exist but quiet", d: "No system" },
@@ -74,17 +81,94 @@
     ]}
   ];
 
-  const COMPETITORS = {
-    clinic: { local: "North Delhi multi-chair clinic", youHint: "Your clinic", global: "US DSO implant brand" },
-    salon: { local: "Premium salon chain (city lead)", youHint: "Your salon", global: "Drybar / international spa brand" },
-    realestate: { local: "Top local channel partner desk", youHint: "Your project desk", global: "International property portal brand" },
-    restaurant: { local: "Highest-rated neighbourhood restaurant", youHint: "Your restaurant", global: "Global casual-dining chain" },
-    wedding: { local: "City wedding planner with 4.8 GBP", youHint: "Your studio", global: "Destination wedding house" },
-    d2c: { local: "Category Amazon/D2C leader", youHint: "Your brand", global: "Global D2C benchmark brand" }
+  const LOCAL_PLAYERS = {
+    clinic: {
+      delhi: { name: "Clove Dental", detail: "National dental chain with dense Delhi-NCR coverage, instant booking, and a review engine on every chair." },
+      mumbai: { name: "Sabka Dentist", detail: "High-volume Mumbai dental brand with standardised Smart Sites and aggressive Google review capture." },
+      bengaluru: { name: "Apollo Dental", detail: "Hospital-backed dental network; strong maps presence and after-hours enquiry handling." },
+      hyderabad: { name: "KIMS Dental", detail: "Hospital-linked Hyderabad player with trust signals, maps, and call tracking in place." },
+      other: { name: "Clove Dental", detail: "The national chain most local clinics lose after-hours implant and aligner leads to." }
+    },
+    salon: {
+      delhi: { name: "Looks Salon", detail: "Multi-outlet NCR brand with booking links, reels, and review volume that ranks locally." },
+      mumbai: { name: "Jawed Habib", detail: "Recognised Mumbai/Pune name with listing strength and appointment capture on every outlet." },
+      bengaluru: { name: "Naturals", detail: "South India salon chain with consistent GBP, offers, and WhatsApp booking." },
+      hyderabad: { name: "Naturals", detail: "Category-leading salon chain in the south with review velocity and booking automation." },
+      other: { name: "Naturals", detail: "The salon chain most independents lose Google Pack and Instagram DMs to." }
+    },
+    realestate: {
+      delhi: { name: "Square Yards", detail: "NCR-heavy portal-plus-desk model: speed to lead and a structured site-visit pipeline." },
+      mumbai: { name: "Magicbricks local desk", detail: "Portal-fed Mumbai desks that reply in minutes and qualify before a human calls." },
+      bengaluru: { name: "NoBroker", detail: "Tech-led Bengaluru player with on-site conversion and automated follow-up." },
+      hyderabad: { name: "Square Yards", detail: "Organised channel with paid capture, WhatsApp qualification, and visit slots." },
+      other: { name: "Square Yards", detail: "The organised desk most independent brokers lose shared portal leads to." }
+    },
+    restaurant: {
+      delhi: { name: "The Big Chill", detail: "NCR restaurant brand with packed GBP, reservation flow, and review compounding." },
+      mumbai: { name: "Social", detail: "Mumbai-first hospitality brand; listings, waitlist, and social proof run as a system." },
+      bengaluru: { name: "Truffles", detail: "Bengaluru favourite with maps dominance and always-on enquiry replies." },
+      hyderabad: { name: "Paradise", detail: "Hyderabad category leader with brand search, reviews, and table demand capture." },
+      other: { name: "a city-lead restaurant group", detail: "The local group that owns maps, reviews, and after-hours reservations in your category." }
+    },
+    wedding: {
+      delhi: { name: "The Wedding Designers", detail: "NCR planner brand with portfolio SEO, WhatsApp qualification, and review reels." },
+      mumbai: { name: "Wedniksha", detail: "Mumbai-facing wedding house with content velocity and lead-response SLAs." },
+      bengaluru: { name: "Weddings by Shutterdown", detail: "Bengaluru planner with strong Instagram capture and FAQ automation." },
+      hyderabad: { name: "Events n Celebrations", detail: "Hyderabad events brand with maps, packages, and fast WhatsApp close." },
+      other: { name: "the top-rated planner in your city", detail: "Whoever owns Google Pack and Instagram DMs for destination and city weddings near you." }
+    },
+    d2c: {
+      delhi: { name: "Mamaearth", detail: "NCR-born D2C machine: landing speed, reviews, and always-on chat conversion." },
+      mumbai: { name: "Bombay Shaving Company", detail: "Mumbai D2C brand with tight landing pages and review-led ads." },
+      bengaluru: { name: "Wakefit", detail: "Bengaluru D2C operator with site conversion, chat, and review loops at scale." },
+      hyderabad: { name: "a category Amazon/D2C leader", detail: "The brand that ranks, replies in-chat, and harvests reviews on every SKU." },
+      other: { name: "the category Amazon/D2C leader", detail: "Whoever already owns search, chat, and review velocity in your niche." }
+    }
   };
 
+  const localPlayer = (answers) => {
+    const niche = LOCAL_PLAYERS[answers.businessType] || LOCAL_PLAYERS.d2c;
+    return niche[answers.city] || niche.other;
+  };
+
+  const METRIC_LABEL = {
+    website: "High-converting Smart Sites",
+    social: "Social media",
+    automation: "WhatsApp Automation",
+    reviews: "Review Automation"
+  };
+  const METRIC_KEYS = ["website", "social", "automation", "reviews"];
+
+  const scoreWhy = (key, n, answers) => {
+    if (key === "website") {
+      if (answers.hasWebsite === "none" || answers.hasWebsite === "builder") return "Low because there is no converting Smart Site. Visitors leave without a next step.";
+      if (answers.hasWebsite === "weak") return "Mid because a site exists but it is slow or not built to capture intent.";
+      return "High because the site is current. The remaining gap is usually conversion and after-hours capture.";
+    }
+    if (key === "social") {
+      if (answers.social === "none" || answers.social === "dormant") return "Low because profiles are quiet. The local leader posts, replies, and converts DMs.";
+      if (answers.social === "weekly") return "Mid because posting is inconsistent, so Google and Instagram do not compound.";
+      return "High because you are already visible. The leak is usually DM response time, not content volume.";
+    }
+    if (key === "automation") {
+      if (answers.automation === "instant") return "High because someone (or a system) replies in minutes. This is what the local leader also does.";
+      if (answers.automation === "morning") return "Low-to-mid because night and lunch enquiries wait until morning. That is where they book the other clinic.";
+      return "Low because WhatsApp and chat are unanswered. The local leader never lets a message sit.";
+    }
+    if (n >= 75) return "High because reviews are requested as a habit, which feeds Maps ranking.";
+    if (n >= 50) return "Mid because staff ask sometimes. Volume drops the week the front desk is busy.";
+    return "Low because there is no review automation. Finished work is not turning into the next enquiry.";
+  };
+
+  const competitorWhy = (key) => ({
+    website: "They run a fast Smart Site that talks to the visitor and captures the enquiry before a human is free.",
+    social: "They post on a calendar and reply to DMs from the same system that handles WhatsApp.",
+    automation: "After-hours messages get an answer in seconds, with need, timing and next step already captured.",
+    reviews: "Every completed visit triggers a review request. Maps ranking is a by-product, not a campaign."
+  }[key]);
+
   const EMAILS = [
-    { day: 0, id: "e0", subject: "Your Webwise Digital Health Check is ready", body: "Your one-pager is in the portal. We scored website, social, landing page, automation and reviews against a top domestic competitor. Download it anytime from your dashboard." },
+    { day: 0, id: "e0", subject: "Your Webwise Digital Health Check is ready", body: "Your full Health Check is in this email and in the portal. We scored Smart Site, social, WhatsApp Automation and Review Automation against the top local player in your city. There is no download — this inbox is the copy of record." },
     { day: 1, id: "e1", subject: "Case study: the clinic that stopped missing night enquiries", body: "I'M Dental went live with Smart Site + WhatsApp + reviews. After-hours implant enquiries now get a reply in seconds. Same system we just scored for you." },
     { day: 3, id: "e2", subject: "What owners tell us after week two", body: "“We did not need more ads. We needed the system that never drops a lead.” — typical partner note. Your leak is still open until onboarding is finished." },
     { day: 5, id: "e3", subject: "Your competitor pack (₹1,999) — 24-hour TAT", body: "See two domestic competitors + one global benchmark. Order from the report page. Delivery inside 24 hours of payment confirmation." },
@@ -154,10 +238,12 @@
         reviewsMod: { process: "", locations: "" },
         upsells: { social: null, emailAuto: null },
         inbox: [],
-        nurtureArmed: false
+        nurtureArmed: false,
+        reportUnlocked: false
       };
       await saveAccount(acc);
     }
+    if (acc.reportUnlocked == null) acc.reportUnlocked = false;
     return acc;
   };
 
@@ -246,13 +332,14 @@
 
   const progressBar = (user, acc, nowId) => {
     const pct = completion(user, acc);
-    const reached = STEPS.findIndex((s) => s.id === nowId);
+    const visible = acc.approved ? STEPS : STEPS.filter((s) => !["onboarding","automation","reviews","growth","complete"].includes(s.id));
+    const reached = visible.findIndex((s) => s.id === nowId);
     return `
       <div class="progress-shell">
-        <div class="progress-meta"><span>Onboarding completion</span><b>${pct}%</b></div>
+        <div class="progress-meta"><span>${acc.approved ? "Onboarding completion" : "Your progress"}</span><b>${pct}%</b></div>
         <div class="progress-track"><div class="progress-fill" style="width:${pct}%"></div></div>
         <div class="steps">
-          ${STEPS.map((s, i) => `<span class="step-chip ${i < reached ? "done" : i === reached ? "now" : ""}">${esc(s.label)}</span>`).join("")}
+          ${visible.map((s, i) => `<span class="step-chip ${i < reached ? "done" : i === reached ? "now" : ""}">${esc(s.label)}</span>`).join("")}
         </div>
       </div>`;
   };
@@ -263,8 +350,9 @@
     const a = acc.answers;
     const scores = metricScore(a);
     const comp = competitorScores(scores);
-    const niche = COMPETITORS[a.businessType] || COMPETITORS.d2c;
+    const player = localPlayer(a);
     const q = QUESTIONS.find((x) => x.id === "businessType").a.find((x) => x.v === a.businessType);
+    const city = (QUESTIONS.find((x) => x.id === "city").a.find((x) => x.v === a.city) || {}).l || "your city";
     const name = acc.onboarding.company || user.name || "Your business";
     return `
       <article class="ww-report" id="healthReport">
@@ -275,26 +363,23 @@
         <div class="ww-r-banner">
           <div class="kicker">Digital Health Check · One-Pager</div>
           <h1>Client Acquisition System Health Check for ${esc(name)}</h1>
-          <p>Website · Social · Landing page · Automation · Reviews</p>
-          <div class="ww-r-meta">Prepared for ${esc(user.name || user.email || "Client")} — ${esc(q ? q.l : "Business")} | ${esc(today())} | Ref: WWD-HC-${esc(String(user.id).slice(0, 6).toUpperCase())}</div>
+          <p>Smart Site · Social · WhatsApp Automation · Review Automation</p>
+          <div class="ww-r-meta">Prepared for ${esc(user.name || user.email || "Client")} — ${esc(q ? q.l : "Business")} · ${esc(city)} | ${esc(today())} | Ref: WWD-HC-${esc(String(user.id).slice(0, 6).toUpperCase())}</div>
         </div>
         <p class="ww-r-quote">“You don’t need more marketing. You need a system that never misses a customer.”</p>
         <div class="ww-r-body">
           <div class="ww-r-sec">
             <div class="ww-r-num">1</div>
             <div>
-              <h2>Benchmark vs top domestic competitor</h2>
-              <p>Scored from your funnel answers against a typical category leader (${esc(niche.local)}). Global reference: ${esc(niche.global)}.</p>
-              <table class="ww-r-table">
-                <thead><tr><th>Metric</th><th>You</th><th>Top domestic</th><th>Gap</th></tr></thead>
-                <tbody>
-                  ${["website","social","landing","automation","reviews"].map((k) => {
-                    const label = { website: "Website", social: "Social media", landing: "Landing page", automation: "Automation", reviews: "Reviews" }[k];
-                    const gap = comp.local[k] - scores[k];
-                    return `<tr><td>${label}</td><td class="you"><span class="score-pill ${pill(scores[k])}">${scores[k]}</span></td><td>${comp.local[k]}</td><td>${gap > 0 ? "−" + gap : "on par"}</td></tr>`;
-                  }).join("")}
-                </tbody>
-              </table>
+              <h2>You vs ${esc(player.name)}</h2>
+              <p><b>${esc(player.name)}</b> is the top local player we benchmark for ${esc(city)}. ${esc(player.detail)}</p>
+              ${METRIC_KEYS.map((k) => {
+                const gap = comp.local[k] - scores[k];
+                return `<div class="ww-r-card" style="margin-bottom:8px">
+                  <b>${METRIC_LABEL[k]} — you ${scores[k]} / ${player.name} ${comp.local[k]} ${gap > 0 ? "(gap −" + gap + ")" : "(on par)"}</b>
+                  <span><b>You:</b> ${esc(scoreWhy(k, scores[k], a))}<br><b>${esc(player.name)}:</b> ${esc(competitorWhy(k))}</span>
+                </div>`;
+              }).join("")}
             </div>
           </div>
           <div class="ww-r-sec">
@@ -409,18 +494,19 @@
           <div class="shield" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" width="20" height="20"><path d="M12 3 20 7v5c0 5-3.4 8-8 9-4.6-1-8-4-8-9V7l8-4z" stroke="currentColor" stroke-width="2"/><path d="M8 12v-1a4 4 0 0 1 8 0v1" stroke="currentColor" stroke-width="2"/><rect x="9" y="12" width="6" height="5" rx="1" stroke="currentColor" stroke-width="2"/></svg></div>
           <div>
             <h2>${isLogin ? "Welcome Back!" : "Get your Health Check"}</h2>
-            <p>${isLogin ? "Log in to access your Business Health Check Report and unlock growth opportunities." : "Create your portal account. We send a confirmation email only after you opt in."}</p>
+            <p>${isLogin ? "Log in to access your Business Health Check Report and unlock growth opportunities." : "Create your portal account. We email the full report after you verify this address."}</p>
           </div>
         </div>
         <form id="emailForm" autocomplete="on">
           ${isLogin ? "" : `<div class="field"><label>Full name <span class="req">*</span></label><div class="ico-field"><input name="name" required placeholder="Your name" /></div></div>`}
           <div class="field"><label>Work Email</label><div class="ico-field">${iconMail}<input name="email" type="email" required placeholder="you@business.com" /></div></div>
           <div class="field"><label>Password</label><div class="ico-field">${iconLock}<input id="passInput" name="password" type="password" minlength="8" required placeholder="${isLogin ? "Enter your password" : "Min 8 characters"}" /><button class="eye" type="button" id="togglePass" aria-label="Show password">◉</button></div></div>
-          ${isLogin ? `<div class="forgot"><a href="#/forgot">Forgot password?</a></div>` : `<div class="field"><label>Phone (optional)</label><input name="phone" placeholder="10-digit mobile" /></div><label class="check"><input type="checkbox" name="optin" required /><span>I opt in to receive my health-check report and confirmation email from Webwise Digital.</span></label>`}
+          ${isLogin ? `<div class="forgot"><a href="#/forgot">Forgot password?</a></div>` : `<div class="field"><label>Phone (optional)</label><input name="phone" placeholder="10-digit mobile" /></div><p class="hint">By continuing you agree to the <a href="/terms-of-service/" target="_blank" rel="noopener">Terms of Service</a> and <a href="/privacy-policy/" target="_blank" rel="noopener">Privacy Policy</a>.</p>`}
           <p class="error hidden" id="authErr"></p>
-          <button class="btn-login" type="submit">${isLogin ? "Log in" : "Create account"}</button>
+          <button class="btn-login" type="submit">${isLogin ? "Log in" : "Yes, give me my Business Health Check Report"}</button>
         </form>
         ${ssoButtons}
+        ${isLogin ? `<p class="hint" style="margin-top:12px">By continuing you agree to the <a href="/terms-of-service/" target="_blank" rel="noopener">Terms of Service</a>.</p>` : ""}
         <p class="switch">${isLogin ? `New to Webwise Digital? <a href="#/signup">Get your Business Health Check →</a>` : `Already have an account? <a href="#/login">Log in</a>`}</p>
       </aside>`;
     return loginChrome(card);
@@ -440,18 +526,18 @@
       </form>
     </aside>`);
 
-  const viewSso = (provider) => loginChrome(`
+  const viewSso = () => loginChrome(`
     <aside class="login-card">
       <div class="login-card-head">
-        <div class="shield">${provider === "microsoft" ? msMark : googleMark}</div>
-        <div><h2>Continue with ${provider === "microsoft" ? "Microsoft" : "Google"}</h2><p>You stay on Webwise. We do not clone a Google or Microsoft login page. Production OAuth attaches here.</p></div>
+        <div class="shield">${googleMark}</div>
+        <div>
+          <h2>Continue with Google</h2>
+          <p>Google will ask you to choose an account. We use that email to send your Business Health Check Report.</p>
+        </div>
       </div>
-      <form id="ssoForm" data-provider="${provider}">
-        <div class="field"><label>Name</label><input name="name" required placeholder="Name on the account" /></div>
-        <div class="field"><label>Work email</label><input name="email" type="email" required placeholder="you@company.com" /></div>
-        <label class="check"><input type="checkbox" name="optin" required /><span>I opt in to health-check and onboarding emails from Webwise Digital.</span></label>
-        <button class="btn-login" type="submit">Link account &amp; enter portal</button>
-      </form>
+      <p class="hint">By continuing you agree to the <a href="/terms-of-service/" target="_blank" rel="noopener">Terms of Service</a> and <a href="/privacy-policy/" target="_blank" rel="noopener">Privacy Policy</a>.</p>
+      <p class="error hidden" id="authErr"></p>
+      <button class="btn-login" type="button" id="startGoogle">Yes, give me my Business Health Check Report</button>
       <p class="switch"><a href="#/login">Back to login</a></p>
     </aside>`);
 
@@ -472,7 +558,7 @@
   const viewFunnel = (user, acc) => {
     const i = acc.funnelIndex;
     const q = QUESTIONS[i];
-    if (!q) { go("/report"); return ""; }
+    if (!q) { go("/sample"); return ""; }
     return shell(user, `
       ${progressBar(user, acc, "funnel")}
       <div class="eyebrow">Lead capture · ${i + 1} / ${QUESTIONS.length}</div>
@@ -482,33 +568,64 @@
         <div class="options">
           ${q.a.map((opt) => `<button class="option" type="button" data-qid="${q.id}" data-val="${esc(opt.v)}"><span><b>${esc(opt.l)}</b><span>${esc(opt.d)}</span></span><span class="option-arrow">→</span></button>`).join("")}
         </div>
+        ${i > 0 ? `<div class="actions"><button class="btn btn-secondary" type="button" id="quizBack">← Back</button></div>` : ""}
+      </div>`);
+  };
+
+  const viewSample = (user, acc) => {
+    if (Object.keys(acc.answers || {}).length < QUESTIONS.length) { go("/funnel"); return "<p class='lead'>Opening the health quiz…</p>"; }
+    if (acc.reportUnlocked) { go("/report"); return "<p class='lead'>Opening your report…</p>"; }
+    const player = localPlayer(acc.answers);
+    return shell(user, `
+      ${progressBar(user, acc, "report")}
+      <div class="eyebrow">Sample format</div>
+      <h1>This is how your <span>Health Check</span> reads.</h1>
+      <p class="lead">Scores, the named local player, and the why-behind-each-number. The full report is emailed only after this address is verified.</p>
+      <div class="card" style="opacity:.88; pointer-events:none; filter:grayscale(.15)">
+        <p class="hint">Sample layout — not your full scored report.</p>
+        <h3>You vs ${esc(player.name)}</h3>
+        <p>${esc(player.detail)}</p>
+        <div class="metric-grid">
+          ${METRIC_KEYS.map((k) => `<div class="metric"><div class="k">${METRIC_LABEL[k]}</div><div class="v">—</div><small>Why it's high or low, in plain language</small></div>`).join("")}
+        </div>
+      </div>
+      <div class="card" style="margin-top:16px">
+        <h3>Email me the full report</h3>
+        <p class="hint">We'll send it to a verified inbox. You can go back and change answers first.</p>
+        <form id="unlockReport">
+          <div class="field"><label>Work email</label><input name="email" type="email" required value="${esc(user.email || "")}" placeholder="you@business.com" ${user.email ? "readonly" : ""} /></div>
+          ${user.verified ? `<p class="hint">We'll send the full report to this verified address only.</p>` : `<p class="hint">Enter the code we sent to this address to unlock the full report.</p>
+          <div class="field"><label>Verification code</label><input name="code" inputmode="numeric" maxlength="6" placeholder="000000" /></div>`}
+          <p class="error hidden" id="authErr"></p>
+          <div class="actions">
+            <button class="btn btn-primary" type="submit">Email my full Health Check</button>
+            <button class="btn btn-secondary" type="button" id="quizBack">← Update my answers</button>
+          </div>
+        </form>
       </div>`);
   };
 
   const viewReport = (user, acc) => {
+    if (!acc.reportUnlocked) { go("/sample"); return "<p class='lead'>Opening the sample…</p>"; }
     const scores = metricScore(acc.answers);
+    const player = localPlayer(acc.answers);
     return shell(user, `
       ${progressBar(user, acc, "report")}
       <div class="eyebrow">Health check report</div>
       <h1>Your digital presence, <span>one page.</span></h1>
-      <p class="lead">Benchmark vs a top domestic competitor. Also emailed to your inbox and stored in the dashboard.</p>
+      <p class="lead">Benchmark vs <b>${esc(player.name)}</b>. The full report is on its way to ${esc(user.email)}. No download — email only.</p>
       <div class="metric-grid">
-        ${[["Website", scores.website],["Social", scores.social],["Landing", scores.landing],["Automation", scores.automation],["Reviews", scores.reviews]].map(([k,v]) => `<div class="metric"><div class="k">${k}</div><div class="v ${pill(v)==="good"?"good":pill(v)==="mid"?"warn":"bad"}">${v}</div><small>/ 100</small></div>`).join("")}
-      </div>
-      <div class="report-actions">
-        <button class="btn btn-primary" type="button" id="printReport">Download / print PDF</button>
-        <button class="btn btn-secondary" type="button" id="emailReport">Email me this report</button>
-        <a class="btn btn-secondary" href="#/inbox">Open inbox</a>
+        ${METRIC_KEYS.map((k) => `<div class="metric"><div class="k">${METRIC_LABEL[k]}</div><div class="v ${pill(scores[k])==="good"?"good":pill(scores[k])==="mid"?"warn":"bad"}">${scores[k]}</div><small>${esc(scoreWhy(k, scores[k], acc.answers))}</small></div>`).join("")}
       </div>
       ${renderReportHTML(user, acc)}
       <div class="upsell">
         <div class="tat">24-hour TAT after payment</div>
-        <h3>See more competitors — order now ${rupee(PRICE.competitorPack)}</h3>
-        <p>Unlock 2 domestic competitors + 1 global competitor, scored on the same five metrics. Delivered inside 24 hours.</p>
-        <div class="price">${rupee(PRICE.competitorPack)} <small>incl. briefing, not GST on this micro-product if billed as report fee</small></div>
+        <h3>I want to know more competitors — ${rupee(PRICE.competitorPack)}</h3>
+        <p>Unlock 2 more local competitors + 1 global name, scored on the same metrics. Delivered by email inside 24 hours.</p>
+        <div class="price">${rupee(PRICE.competitorPack)}</div>
         <div class="actions">
-          <button class="btn btn-primary" type="button" id="orderComp">Order competitor pack →</button>
-          <a class="btn btn-secondary" href="#/compare">Skip to DIY vs Webwise</a>
+          <button class="btn btn-primary" type="button" id="orderComp">I want to know more competitors →</button>
+          <a class="btn btn-secondary" href="#/compare">I'll do it all by myself</a>
         </div>
       </div>`);
   };
@@ -516,20 +633,20 @@
   const viewCompetitors = (user, acc) => {
     const scores = metricScore(acc.answers);
     const c = competitorScores(scores);
-    const niche = COMPETITORS[acc.answers.businessType] || COMPETITORS.d2c;
+    const player = localPlayer(acc.answers);
     const paid = !!acc.competitorOrder;
     return shell(user, `
       ${progressBar(user, acc, "offer")}
-      <div class="eyebrow">Competitor pack</div>
-      <h1>${paid ? "Pack unlocked." : "Order the <span>competitor pack.</span>"}</h1>
-      <p class="lead">${paid ? "24-hour TAT clock started. Preview scores below; full write-up lands in your inbox." : "₹1,999 · 2 domestic + 1 global · same five metrics as your health check."}</p>
+      <div class="eyebrow">More competitors</div>
+      <h1>${paid ? "We'll send the pack." : "I want to know <span>more competitors.</span>"}</h1>
+      <p class="lead">${paid ? "24-hour TAT. Named local players land in your email." : `₹1,999 · 2 more local names plus 1 global, vs ${esc(player.name)}.`}</p>
       <div class="card">
         ${paid ? `<p class="note">Order ${esc(acc.competitorOrder.id)} · ${esc(acc.competitorOrder.at)} · Status: <b>In production — 24h TAT</b></p>` : ""}
         <table class="ww-r-table dark">
           <thead><tr><th>Metric</th><th>You</th><th>Domestic A</th><th>Domestic B</th><th>Global</th></tr></thead>
           <tbody>
-            ${["website","social","landing","automation","reviews"].map((k) => `<tr>
-              <td>${k}</td>
+            ${METRIC_KEYS.map((k) => `<tr>
+              <td>${METRIC_LABEL[k]}</td>
               <td>${scores[k]}</td>
               <td>${paid ? c.local[k] : "••••"}</td>
               <td>${paid ? Math.min(99, c.local[k] - 4) : "••••"}</td>
@@ -537,8 +654,8 @@
             </tr>`).join("")}
           </tbody>
         </table>
-        <p class="hint">Domestic A: ${esc(niche.local)}. Domestic B: runner-up in your city cluster. Global: ${esc(niche.global)}.</p>
-        ${paid ? `<div class="actions"><a class="btn btn-primary" href="#/compare">Next: DIY vs Webwise →</a></div>` : `<div class="actions"><button class="btn btn-primary" id="payComp" type="button">Pay ${rupee(PRICE.competitorPack)} & unlock</button><a class="btn btn-secondary" href="#/compare">Continue without pack</a></div>`}
+        <p class="hint">Lead local name: ${esc(player.name)}. ${esc(player.detail)}</p>
+        ${paid ? `<div class="actions"><a class="btn btn-primary" href="#/compare">See the cost of doing it yourself →</a></div>` : `<div class="actions"><button class="btn btn-primary" id="payComp" type="button">I want to know more competitors · ${rupee(PRICE.competitorPack)}</button><a class="btn btn-secondary" href="#/compare">I'll do it all by myself</a></div>`}
       </div>`);
   };
 
@@ -549,62 +666,53 @@
     const save = diy - yearGst;
     return shell(user, `
       ${progressBar(user, acc, "offer")}
-      <div class="eyebrow">Investment logic</div>
-      <h1>DIY stack vs <span>Webwise bundled.</span></h1>
-      <p class="lead">Typical first-year cost to piece this together yourself versus the Client Acquisition System partner rate.</p>
+      <div class="eyebrow">Investment</div>
+      <h1>Cost of doing it <span>yourself</span> vs with Webwise.</h1>
+      <p class="lead">Year-1 cash if you hire vendors and two people, versus the Client Acquisition System partner rate.</p>
       <div class="compare">
         <div class="col">
-          <div class="eyebrow">Do it yourself</div>
+          <div class="eyebrow">Cost of doing it yourself</div>
           <h2>${rupee(diy)}</h2>
-          <p class="hint">Year-1 vendor + staff time (typical)</p>
+          <p class="hint">Typical first-year spend</p>
           <ul>
-            <li>Website ${rupee(PRICE.diy.website)}</li>
-            <li>Landing ${rupee(PRICE.diy.landing)}</li>
-            <li>WhatsApp / chat ${rupee(PRICE.diy.whatsapp)}</li>
-            <li>Reviews tooling ${rupee(PRICE.diy.reviews)}</li>
-            <li>Staff hours ${rupee(PRICE.diy.staff)}</li>
+            <li>High-converting Smart Sites ${rupee(PRICE.diy.website)}</li>
+            <li>WhatsApp Automation ${rupee(PRICE.diy.whatsapp)}</li>
+            <li>Review Automation ${rupee(PRICE.diy.reviews)}</li>
+            <li>Salary of your team of 2 who'd manage all this ${rupee(PRICE.diy.staff)}</li>
           </ul>
         </div>
         <div class="col win">
-          <div class="eyebrow">Webwise Digital</div>
+          <div class="eyebrow">Cost of doing it with Webwise</div>
           <p class="strike">${rupee(PRICE.bundleList)} / mo list</p>
           <h2>${rupee(PRICE.bundlePartner)} + GST / mo</h2>
           <p class="hint">12 months ≈ ${rupee(yearGst)} incl. GST</p>
           <div class="save">${rupee(Math.max(0, save))} saved</div>
-          <p style="color:var(--teal);font-weight:800">Green = money you keep by bundling.</p>
+          <p style="color:var(--teal);font-weight:800">Green = what you keep.</p>
           <ul>
-            <li>AI Smart Site</li>
-            <li>WhatsApp automation</li>
-            <li>Reviews & GBP bonus</li>
+            <li>High-converting Smart Site</li>
+            <li>WhatsApp Automation</li>
+            <li>Review Automation + GBP bonus</li>
             <li>No setup fee · 90-day engagement</li>
           </ul>
         </div>
       </div>
       <div class="actions">
-        <button class="btn btn-teal" type="button" id="approveBtn">Approve partner system →</button>
-        <a class="btn btn-secondary" href="#/nurture">Not now — keep sending me emails</a>
+        <button class="btn btn-teal" type="button" id="approveBtn">Please handle everything for me →</button>
+        <a class="btn btn-secondary" href="#/nurture">I'll handle everything on my own</a>
       </div>`);
   };
 
   const viewNurture = (user, acc) => shell(user, `
     ${progressBar(user, acc, "offer")}
-    <div class="eyebrow">Email sequence</div>
-    <h1>We will stay with you <span>until you convert.</span></h1>
-    <p class="lead">Non-action leads receive this nurture until approval. Case studies, testimonials, urgency.</p>
-    <div class="timeline">
-      ${acc.inbox.map((m) => `
-        <div class="t-item">
-          <div class="dot ${m.status === "sent" ? "green" : ""}"></div>
-          <div class="mail">
-            <div class="from">Day ${m.day} · ${m.status === "sent" ? "Sent" : "Queued"} · Saurabh@webwisedigital.net</div>
-            <h4>${esc(m.subject)}</h4>
-            <p>${esc(m.body)}</p>
-          </div>
-        </div>`).join("")}
-    </div>
-    <div class="actions">
-      <a class="btn btn-primary" href="#/compare">Convert now — see savings</a>
-      <a class="btn btn-secondary" href="#/inbox">Open portal inbox</a>
+    <div class="eyebrow">You're in control</div>
+    <h1>We'll send the report. <span>You decide the next step.</span></h1>
+    <p class="lead">If you want us to build the system later, come back to this portal. Nothing is locked.</p>
+    <div class="card">
+      <p>Your Health Check is on ${esc(user.email || "your email")}. When you're ready, we can still handle Smart Site, WhatsApp and reviews for you.</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="#/compare">Please handle everything for me</a>
+        <a class="btn btn-secondary" href="#/dashboard">Back to my portal</a>
+      </div>
     </div>`);
 
   const viewOnboarding = (user, acc) => {
@@ -738,9 +846,13 @@
 
   const viewInbox = (user, acc) => shell(user, `
     ${progressBar(user, acc, acc.approved ? "onboarding" : "report")}
-    <div class="eyebrow">Portal inbox</div>
-    <h1>Reports & <span>nurture.</span></h1>
-    <div class="timeline">${(acc.inbox.length ? acc.inbox : [{day:0,status:"queued",subject:"No mail yet",body:"Complete the health check to generate your report email."}]).map((m)=>`<div class="mail" style="margin-bottom:10px"><div class="from">Day ${m.day} · ${m.status}</div><h4>${esc(m.subject)}</h4><p>${esc(m.body)}</p></div>`).join("")}</div>`);
+    <div class="eyebrow">Messages</div>
+    <h1>Your <span>Health Check</span></h1>
+    <div class="card">${acc.reportSent
+      ? `<p>The full report was emailed to <b>${esc(user.email)}</b>. Check that inbox (and spam) — we don't offer a download.</p>`
+      : `<p>Finish the quiz and verify your email. We'll send the full report there.</p>`}
+      <div class="actions"><a class="btn btn-secondary" href="#/dashboard">Back to portal</a></div>
+    </div>`);
 
   const viewDash = (user, acc) => {
     const pct = completion(user, acc);
@@ -750,17 +862,14 @@
           <p class="live">Client OS</p>
           <a href="#/dashboard" class="on">Overview</a>
           <a href="#/funnel">Health quiz</a>
-          <a href="#/report">Health check</a>
-          <a href="#/competitors">Competitor pack</a>
-          <a href="#/compare">DIY vs Webwise</a>
-          <a href="#/onboarding">Onboarding</a>
+          <a href="#/sample">Health check</a>
+          ${acc.approved ? `<a href="#/onboarding">Onboarding</a>
           <a href="#/automation">Meta automation</a>
           <a href="#/reviews">Reviews</a>
           <a href="#/upsell-social">Social add-on</a>
-          <a href="#/upsell-email">Email add-on</a>
-          <a href="#/inbox">Inbox</a>
-          <a href="#/nurture">Nurture sequence</a>
-          <a href="#/architecture">System map</a>
+          <a href="#/upsell-email">Email add-on</a>` : `<a href="#/competitors">More competitors</a>
+          <a href="#/compare">Cost comparison</a>`}
+          <a href="#/inbox">Messages</a>
         </aside>
         <div>
           ${progressBar(user, acc, acc.stage || "funnel")}
@@ -785,11 +894,11 @@
     <h1>Modules + <span>flows.</span></h1>
     <div class="card">
       <ol>
-        <li><b>Auth</b> — Google / email / phone → hashed credentials → opt-in → confirmation code.</li>
-        <li><b>Funnel MCQs</b> — 8 questions (type, website, design, certs, social, automation, reviews) feed scores.</li>
-        <li><b>Health check</b> — one-pager vs top domestic competitor; email + download.</li>
-        <li><b>Upsell</b> — competitor pack ₹1,999 (2 domestic + 1 global, 24h TAT) → DIY vs bundle (green savings) → approve.</li>
-        <li><b>Nurture</b> — Day 0/1/3/5/7 emails if they do not approve.</li>
+        <li><b>Auth</b> — Google OAuth or email → verified inbox → Terms of Service.</li>
+        <li><b>Funnel MCQs</b> — questions (type, city, website, design, certs, social, automation, reviews) feed scores.</li>
+        <li><b>Health check</b> — sample format first; full one-pager vs the named local player, emailed after verification.</li>
+        <li><b>Upsell</b> — more competitors ₹1,999 → cost of DIY vs Webwise → please handle everything.</li>
+        <li><b>Nurture</b> — internal email sequence if they do not approve (not shown in the client UI).</li>
         <li><b>Onboarding</b> — company, KYC, Meta number, website (mandatory).</li>
         <li><b>Progress bar</b> — % across 9 stages.</li>
         <li><b>Automation</b> — submit details → Meta approval.</li>
@@ -845,7 +954,6 @@
           go(user.verified ? "/dashboard" : "/check-email");
           return;
         }
-        if (!form.optin || !form.optin.checked) return show("Opt-in is required before we send a confirmation email.");
         const result = await WebwisePortal.signUpEmail({ name, email, password, phone: String(fd.get("phone") || "") });
         go(result.needsEmailConfirm ? "/check-email" : "/funnel");
       } catch (e) {
@@ -865,7 +973,6 @@
       return;
     }
     if (existing) return show("That email already exists. Log in.");
-    if (!form.optin || !form.optin.checked) return show("Opt-in is required before we send a confirmation email.");
     const salt = randomHex(8);
     const user = {
       id: randomHex(8),
@@ -883,42 +990,31 @@
     go("/verify");
   };
 
+  const startGoogle = async (errEl) => {
+    const show = (m) => {
+      if (!errEl) return alert(m);
+      errEl.textContent = m;
+      errEl.classList.remove("hidden");
+    };
+    if (!cloudOn()) {
+      show("Google sign-in is not connected on this environment yet. Use email, or add Supabase keys and enable the Google provider.");
+      return;
+    }
+    try {
+      await WebwisePortal.oauth("google");
+    } catch (e) {
+      show(e.message || "Google sign-in could not start.");
+    }
+  };
+
   const bindAuth = (mode) => {
-    document.getElementById("googleBtn")?.addEventListener("click", async () => {
-      if (cloudOn()) {
-        try { await WebwisePortal.oauth("google"); } catch (e) { alert(e.message); }
-        return;
-      }
-      go("/google");
-    });
+    document.getElementById("googleBtn")?.addEventListener("click", () => startGoogle(document.getElementById("authErr")));
     document.getElementById("togglePass")?.addEventListener("click", () => {
       const input = document.getElementById("passInput");
       if (!input) return;
       input.type = input.type === "password" ? "text" : "password";
     });
     document.getElementById("emailForm")?.addEventListener("submit", (e) => { e.preventDefault(); startEmailSignup(e.target, mode === "login"); });
-  };
-
-  const bindSso = (provider) => {
-    document.getElementById("ssoForm")?.addEventListener("submit", async (e) => {
-      e.preventDefault();
-      if (cloudOn()) {
-        try { await WebwisePortal.oauth(provider); } catch (err) { alert(err.message); }
-        return;
-      }
-      const fd = new FormData(e.target);
-      const email = String(fd.get("email")).trim().toLowerCase();
-      let user = loadUsers().find((u) => u.email === email && u.method === provider);
-      if (!user) {
-        user = {
-          id: randomHex(8), method: provider, name: String(fd.get("name")), email, phone: "",
-          verified: true, optIn: true, pendingCode: "", createdAt: Date.now()
-        };
-        upsertUser(user);
-      }
-      loginSession(user);
-      go("/funnel");
-    });
   };
 
   const render = async () => {
@@ -935,14 +1031,13 @@
       bindAuth("signup");
     } else if (path === "/check-email") {
       app.innerHTML = viewCheckInbox((user && user.email) || "your inbox");
-    } else if (path === "/google" || path === "/microsoft") {
-      const provider = path === "/microsoft" ? "microsoft" : "google";
-      if (cloudOn()) {
-        try { await WebwisePortal.oauth(provider); } catch (e) { alert(e.message); }
-        return;
-      }
-      app.innerHTML = viewSso(provider);
-      bindSso(provider);
+    } else if (path === "/google") {
+      app.innerHTML = viewSso();
+      const err = document.getElementById("authErr");
+      document.getElementById("startGoogle")?.addEventListener("click", () => startGoogle(err));
+      startGoogle(err);
+    } else if (path === "/microsoft") {
+      go("/login");
     } else if (path === "/forgot") {
       app.innerHTML = viewForgot();
       document.getElementById("forgotForm").addEventListener("submit", async (e) => {
@@ -997,9 +1092,10 @@
       const map = {
         "/dashboard": () => viewDash(user, acc),
         "/funnel": () => {
-          if (acc.funnelIndex >= QUESTIONS.length) { go("/report"); return "<p class='lead'>Opening report…</p>"; }
+          if (acc.funnelIndex >= QUESTIONS.length) { go("/sample"); return "<p class='lead'>Opening sample…</p>"; }
           return viewFunnel(user, acc);
         },
+        "/sample": () => viewSample(user, acc),
         "/report": () => {
           acc.stage = "report";
           persist();
@@ -1009,7 +1105,7 @@
         "/compare": () => { acc.comparisonSeen = true; persist(); return viewCompare(user, acc); },
         "/nurture": () => { armNurture(acc); if (acc.inbox[0]) acc.inbox[0].status = "sent"; persist(); return viewNurture(user, acc); },
         "/onboarding": () => {
-          if (!acc.approved) { go("/compare"); return "<p class='lead'>Approve the partner system first.</p>"; }
+          if (!acc.approved) { go("/nurture"); return "<p class='lead'>Opening your next step…</p>"; }
           return viewOnboarding(user, acc);
         },
         "/automation": () => viewAutomation(user, acc),
@@ -1038,28 +1134,53 @@
         if (acc.funnelIndex >= QUESTIONS.length) {
           acc.stage = "report";
           await persist();
-          go("/report");
+          go("/sample");
         } else {
           await persist();
           render();
         }
       }));
 
-      document.getElementById("printReport")?.addEventListener("click", () => window.print());
-      document.getElementById("emailReport")?.addEventListener("click", async () => {
+      document.getElementById("quizBack")?.addEventListener("click", async () => {
+        acc.funnelIndex = Math.max(0, acc.funnelIndex - 1);
+        if (acc.funnelIndex >= QUESTIONS.length) acc.funnelIndex = QUESTIONS.length - 1;
+        await persist();
+        go("/funnel");
+        render();
+      });
+      document.getElementById("unlockReport")?.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const fd = new FormData(e.target);
+        const email = String(fd.get("email") || "").trim().toLowerCase();
+        const code = String(fd.get("code") || "").trim();
+        const err = document.getElementById("authErr");
+        const show = (m) => { err.textContent = m; err.classList.remove("hidden"); };
+        if (!email) return show("Enter a work email.");
+        if (user.email && email !== String(user.email).toLowerCase()) {
+          return show("Use the verified email on this account. Sign in with that address to receive the report.");
+        }
+        if (!user.verified) {
+          if (!code || code !== user.pendingCode) return show("Enter the verification code sent to this email first.");
+          user.verified = true;
+          user.pendingCode = "";
+          upsertUser(user);
+        }
+        acc.onboarding.email = email;
+        acc.reportUnlocked = true;
         acc.reportSent = true;
-        await armNurture(acc);
-        if (acc.inbox[0]) acc.inbox[0].status = "sent";
         await persist();
         if (cloudOn() && WebwisePortal.cfg.mail) {
           try {
+            const player = localPlayer(acc.answers);
+            const scores = metricScore(acc.answers);
+            const lines = METRIC_KEYS.map((k) => `${METRIC_LABEL[k]}: ${scores[k]}/100 — ${scoreWhy(k, scores[k], acc.answers)} vs ${player.name}: ${competitorWhy(k)}`).join("\n\n");
             await WebwisePortal.sendReportEmail(
               "Your Webwise Digital Health Check is ready",
-              "Your one-pager is in the client portal. Download it anytime from your dashboard."
+              `Your full Health Check vs ${player.name} (${player.detail}).\n\n${lines}\n\nThere is no download. Open the portal to continue.`
             );
-          } catch (e) { alert(e.message); }
+          } catch (ex) { show(ex.message); return; }
         }
-        go("/inbox");
+        go("/report");
       });
       document.getElementById("orderComp")?.addEventListener("click", () => go("/competitors"));
       document.getElementById("payComp")?.addEventListener("click", async () => {
