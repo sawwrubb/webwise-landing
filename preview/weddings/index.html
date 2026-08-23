@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex,nofollow" />
+<title>Wedding kit (template) — date, budget, guest count</title>
+<meta name="description" content="Qualify the event. Save the lead. Human for the creative close." />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<style>:root{--bg:#080808;--bg2:#0f0f0f;--panel:#111827;--card:#10151d;--line:rgba(41,171,226,.18);--blue:#29ABE2;--teal:#00D4AA;--white:#F2F2EE;--muted:#8b949e;--soft:#c7cdd4;--danger:#8993a0;--font:'Inter',Arial,sans-serif;--r:12px}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;overflow-x:clip}
+body{background:var(--bg);color:var(--white);font-family:var(--font);font-size:17px;line-height:1.65;overflow-x:clip}
+a{color:inherit;text-decoration:none}
+button,input,select{font:inherit}
+button{border:0;cursor:pointer}
+.wrap{width:min(1180px,calc(100% - 36px));margin:0 auto}
+.lab-banner{position:relative;z-index:50;background:#10151d;border-bottom:1px solid var(--line);padding:10px 18px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:13px;font-weight:800;color:var(--teal)}
+.lab-banner a{color:var(--blue)}
+.nav{position:sticky;top:0;z-index:40;background:rgba(8,8,8,.92);border-bottom:1px solid var(--line);backdrop-filter:blur(18px)}
+.nav-inner{height:70px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.brand{font-size:18px;font-weight:900;letter-spacing:1.6px}
+.brand em{font-style:normal;color:var(--blue)}
+.nav-links{display:flex;align-items:center;gap:22px;font-size:14px;font-weight:700;color:var(--muted)}
+.nav-cta{background:var(--blue);color:#fff;border-radius:8px;padding:11px 16px;font-size:14px;font-weight:900}
+section{padding:80px 0;border-top:1px solid rgba(41,171,226,.08)}
+.eyebrow{display:flex;align-items:center;gap:10px;color:var(--blue);font-size:11px;font-weight:900;letter-spacing:3px;text-transform:uppercase;margin-bottom:18px}
+.eyebrow::before{content:'';width:20px;height:1px;background:var(--blue)}
+h1{font-size:clamp(36px,5vw,68px);line-height:1.04;letter-spacing:-2.2px;font-weight:900;margin-bottom:20px}
+h2{font-size:clamp(28px,3.2vw,46px);line-height:1.1;letter-spacing:-1.4px;font-weight:900;margin-bottom:14px}
+h3{font-size:22px;line-height:1.2;font-weight:900;margin-bottom:8px}
+.copy,.sub{color:var(--muted);font-size:16px;line-height:1.8}
+.btn-row{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-top:26px}
+.btn-primary,.btn-secondary{display:inline-flex;align-items:center;justify-content:center;border-radius:8px;padding:14px 20px;font-weight:900;font-size:15px}
+.btn-primary{background:var(--blue);color:#fff}
+.btn-secondary{border:1px solid var(--line);background:rgba(41,171,226,.07);color:var(--white)}
+.hero{padding:48px 0 72px}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1fr) 400px;gap:56px;align-items:center}
+.hero-pill{display:inline-flex;gap:8px;border:1px solid var(--line);background:rgba(41,171,226,.09);border-radius:100px;color:var(--blue);font-size:12px;font-weight:900;letter-spacing:1.4px;text-transform:uppercase;padding:7px 13px;margin-bottom:20px}
+.hero-copy{max-width:680px;color:var(--soft);font-size:18px;line-height:1.75}
+.guardrails{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.guardrails span{border:1px solid var(--line);background:rgba(16,21,29,.72);border-radius:100px;padding:8px 12px;color:var(--muted);font-size:13px;font-weight:800}
+.phone{background:#0b141a;border:1px solid var(--line);border-radius:24px;padding:18px}
+.phone-head{display:flex;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.08);padding-bottom:14px;margin-bottom:16px;font-size:14px;font-weight:900}
+.phone-status{font-size:11px;color:var(--teal)}
+.chat{display:flex;flex-direction:column;gap:12px;min-height:300px}
+.bubble{max-width:88%;border-radius:14px;padding:12px 14px;font-size:13px;line-height:1.55}
+.bubble.in{background:#202c33;align-self:flex-start}
+.bubble.out{background:#005c4b;align-self:flex-end;font-weight:700}
+.bubble.system{align-self:center;background:rgba(41,171,226,.1);border:1px solid var(--line);color:var(--soft);font-weight:800;text-align:center}
+.strip{padding:22px 0;background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.strip-inner{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.strip b{font-size:13px;letter-spacing:2px;text-transform:uppercase}
+.strip-items{display:flex;gap:10px;flex-wrap:wrap}
+.strip-items span{border:1px solid var(--line);background:var(--card);border-radius:100px;padding:8px 12px;color:var(--muted);font-size:12px;font-weight:800}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.panel,.card,.form-card,.result-card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:28px}
+.problem-lines{display:grid;gap:12px;margin-top:20px}
+.line-card{border:1px solid rgba(41,171,226,.12);background:rgba(8,8,8,.36);border-radius:10px;padding:16px}
+.line-card b{display:block;margin-bottom:6px}
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.num{width:40px;height:40px;border:1px solid var(--blue);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--blue);font-weight:900;margin-bottom:14px}
+.tag{color:var(--teal);font-size:11px;font-weight:900;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px}
+.card p{color:var(--muted);font-size:14px;line-height:1.7}
+.workflow{counter-reset:step;display:grid;gap:12px}
+.flow-step{display:grid;grid-template-columns:46px 1fr;gap:14px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px}
+.flow-step::before{counter-increment:step;content:counter(step,decimal-leading-zero);width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(41,171,226,.1);border:1px solid var(--blue);color:var(--blue);font-weight:900;font-size:12px}
+.flow-step p{color:var(--muted);font-size:14px}
+.safe-list{display:grid;gap:10px;margin-top:16px}
+.safe-item{display:flex;gap:10px;color:var(--muted);font-size:14px}
+.safe-item i{width:22px;height:22px;flex:0 0 22px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(41,171,226,.1);color:var(--blue);font-style:normal;font-size:12px;font-weight:900}
+.safe-item.stop i{color:var(--danger);background:rgba(137,147,160,.08)}
+.niche-list{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.niche-list span{border:1px solid var(--line);border-radius:100px;padding:8px 12px;font-size:13px;font-weight:800}
+.control-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px}
+.control-grid div{border:1px solid rgba(41,171,226,.12);border-radius:10px;padding:14px;color:var(--muted);font-size:14px}
+.cta{background:linear-gradient(135deg,rgba(41,171,226,.13),rgba(0,212,170,.07))}
+.field{margin-bottom:14px}
+.field label{display:block;color:var(--muted);font-size:12px;font-weight:900;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px}
+.field input,.field select{width:100%;background:#141414;border:1px solid var(--line);border-radius:8px;color:var(--white);padding:12px 14px}
+.form-btn{width:100%;border-radius:8px;background:var(--blue);color:#fff;font-weight:900;padding:14px}
+.form-error{display:none;margin-top:12px;border:1px solid rgba(255,120,100,.3);background:rgba(255,120,100,.1);border-radius:10px;padding:12px;color:#ffd5cc;font-size:13px}
+.form-note{font-size:12px;color:var(--muted);text-align:center;margin-top:12px}
+.success{text-align:center;padding:18px}
+.faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:28px}
+.faq-item{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px}
+.faq-item button{width:100%;display:flex;justify-content:space-between;gap:12px;text-align:left;background:transparent;color:var(--white);font-weight:900}
+.faq-a{display:none;color:var(--muted);font-size:14px;margin-top:10px}
+.faq-item.open .faq-a{display:block}
+.plus{color:var(--blue);font-size:22px}
+footer{padding:40px 0;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
+.result-card .leak-inr{font-size:42px;font-weight:900;color:var(--teal);letter-spacing:-1.5px;margin:8px 0 14px}
+.quiz-q{margin-bottom:16px}
+.quiz-q b{display:block;margin-bottom:8px}
+.quiz-q button{display:block;width:100%;text-align:left;margin:6px 0;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:rgba(8,8,8,.4);color:var(--white);font-weight:700}
+.quiz-q button:hover,.quiz-q button.on{border-color:var(--blue);background:rgba(41,171,226,.12)}
+.kit-meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.kit-meta span{font-size:12px;font-weight:800;color:var(--muted);border:1px solid var(--line);border-radius:100px;padding:6px 10px}
+.gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.gallery a.card{display:block;transition:.2s}
+.gallery a.card:hover{border-color:var(--blue);transform:translateY(-3px)}
+.status{color:var(--teal);font-size:11px;font-weight:900;letter-spacing:2px;text-transform:uppercase}
+@media(max-width:900px){.hero-grid,.split,.grid3,.grid2,.faq-grid,.gallery,.control-grid{grid-template-columns:1fr}.nav-links a:not(.nav-cta){display:none}}
+</style>
+</head>
+<body>
+<div class="lab-banner"><span>TEMPLATE · cloned from the Webwise kit · not sold as a live client page yet</span><a href="/preview/">All kits</a></div>
+<nav class="nav"><div class="wrap nav-inner">
+  <a class="brand" href="/">WEBWISE<em>DIGITAL</em></a>
+  <div class="nav-links">
+    <a href="#result">Result Card</a>
+    <a href="#system">System</a>
+    <a href="#demo" class="nav-cta">Build demo</a>
+  </div>
+</div></nav>
+<main>
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="hero-pill">Template · Weddings</div>
+      <h1>From date and budget to a real booking conversation.</h1>
+      <p class="hero-copy">Families WhatsApp five planners the same night. This kit asks date, city, guest count, and budget band, then books a call. It does not design the wedding in chat.</p>
+      <div class="btn-row">
+        <a class="btn-primary" href="#result">See the leak card</a>
+        <a class="btn-secondary" href="https://wa.me/918796504200?text=Hi%20Webwise%2C%20I%20want%20a%20wedding%20kit%20demo.">Message Webwise</a>
+      </div>
+      <div class="guardrails"><span>No invented venue availability</span><span>No final package price in bot</span><span>Planner owns the pitch</span></div>
+      <div class="kit-meta"><span>Kit: weddings</span><span>Wedding planners &amp; caterers</span><span>template</span></div>
+    </div>
+    <div class="phone">
+      <div class="phone-head"><span>Planner WhatsApp</span><span class="phone-status">Qualify flow</span></div>
+      <div class="chat"><div class="bubble in m1">Need a planner for a wedding in Jaipur this December.</div><div class="bubble out m2">Guest count and budget band — under 15L, 15–30L, or 30L+?</div><div class="bubble in m3">About 250 guests. 15–30L.</div><div class="bubble out m4">Recorded. A planner will confirm a 20-min call with three date options.</div><div class="bubble system m5">No fake venue holds.</div></div>
+    </div>
+  </div>
+</section>
+<div class="strip"><div class="wrap strip-inner"><b>Event qualify</b><div class="strip-items"><span>Date</span><span>City</span><span>Guests</span><span>Budget band</span><span>Call booking</span></div></div></div>
+<section id="result">
+  <div class="wrap split">
+    <div>
+      <div class="eyebrow">Result Card</div>
+      <h2>If this leak stays open, the month already has a cost.</h2>
+      <p class="copy">You do not need more Instagram. You need the December family to get a reply tonight.</p>
+      <p class="copy">This card uses honest ranges, not fake case studies. Change the quiz answers on the right to see the number move.</p>
+    </div>
+    <div class="result-card">
+      <div class="tag">Estimated monthly leak</div>
+      <div class="leak-inr" id="leakInr">₹1,34,400</div>
+      <p class="copy" id="leakStory">One missed qualified wedding is a large leak. Range only.</p>
+      <div id="quizBox"></div>
+    </div>
+  </div>
+</section>
+<section id="problem">
+  <div class="wrap split">
+    <div>
+      <div class="eyebrow">The gap</div>
+      <h2>The serious family already talked to someone faster.</h2>
+      <p class="copy">You are on a site visit. The WhatsApp is on a staff phone.</p><p class="copy">Budget and date never get written down.</p>
+    </div>
+    <div class="panel">
+      <h3>What this kit fixes</h3>
+      <div class="problem-lines"><div class="line-card"><b>Qualify once</b><span class="copy">Date, city, guests, band.</span></div><div class="line-card"><b>Call booked</b><span class="copy">Planner time, not endless chat.</span></div><div class="line-card"><b>Lead saved</b><span class="copy">Season rush does not erase the thread.</span></div></div>
+    </div>
+  </div>
+</section>
+<section id="system">
+  <div class="wrap">
+    <div class="eyebrow">Three layers</div>
+    <h2>Qualify, schedule, remind.</h2>
+    <div class="grid3"><article class="card"><div class="num">01</div><div class="tag">Qualify</div><h3>Fit check</h3><p>Out of city or below minimum budget routes politely out.</p></article><article class="card"><div class="num">02</div><div class="tag">Call</div><h3>Planner slot</h3><p>Human pitch stays human.</p></article><article class="card"><div class="num">03</div><div class="tag">Nurture</div><h3>Date reminders</h3><p>Until booked or lost.</p></article></div>
+  </div>
+</section>
+<section id="workflow">
+  <div class="wrap split">
+    <div>
+      <div class="eyebrow">Enquiry path</div>
+      <h2>Instagram and referrals into one qualified card.</h2>
+      <p class="copy">The planner walks into the call with numbers already there.</p>
+    </div>
+    <div class="workflow"><div class="flow-step"><div><b>Family writes</b><p>IG, WA, or site.</p></div></div><div class="flow-step"><div><b>Four facts</b><p>Date, city, guests, budget band.</p></div></div><div class="flow-step"><div><b>Fit or polite no</b><p>Minimums you set.</p></div></div><div class="flow-step"><div><b>Call booked</b><p>Planner confirms.</p></div></div><div class="flow-step"><div><b>Follow-up</b><p>Until decision.</p></div></div></div>
+  </div>
+</section>
+<section id="safety">
+  <div class="wrap grid2">
+    <div class="panel">
+      <div class="eyebrow">Allowed</div>
+      <h2>Allowed</h2>
+      <div class="safe-list"><div class="safe-item"><i>+</i><div>Ask qualifying facts</div></div><div class="safe-item"><i>+</i><div>Share approved process</div></div><div class="safe-item"><i>+</i><div>Book a call</div></div></div>
+    </div>
+    <div class="panel">
+      <div class="eyebrow">Hard stop</div>
+      <h2>Stop</h2>
+      <div class="safe-list"><div class="safe-item stop"><i>x</i><div>Hold a venue you do not control</div></div><div class="safe-item stop"><i>x</i><div>Quote a final creative package</div></div><div class="safe-item stop"><i>x</i><div>Shame a budget</div></div></div>
+    </div>
+  </div>
+</section>
+<section>
+  <div class="wrap split">
+    <div>
+      <div class="eyebrow">Fits this work</div>
+      <h2>Planners, caterers, décor</h2>
+      <p class="copy">Caterers swap ‘menu tasting slot’ for planner call.</p>
+      <div class="niche-list"><span>Planner</span><span>Caterer</span><span>Décor</span><span>Destination</span></div>
+    </div>
+    <div>
+      <div class="eyebrow">You keep control</div>
+      <h2>The planner owns the pitch.</h2>
+      <p class="copy">Bot is a filter, not the closer.</p>
+      <div class="control-grid"><div>Minimum budget</div><div>Cities served</div><div>Calendar</div><div>Lead sheet</div></div>
+    </div>
+  </div>
+</section>
+<section class="cta" id="demo">
+  <div class="wrap split">
+    <div>
+      <div class="eyebrow">Template capture</div>
+      <h2>Build a wedding demo from this kit.</h2>
+      <p class="copy">City, season, and the leak.</p>
+    </div>
+    <div class="form-card" id="formCard">
+      <h3>Build wedding demo</h3>
+      <div class="field"><label>Business name</label><input id="f-name" type="text" placeholder="e.g. Kalra Events" /></div>
+      <div class="field"><label>WhatsApp number</label><input id="f-wa" type="tel" placeholder="+91 98765 43210" /></div>
+      <div class="field"><label>Type</label><select id="f-type"><option value="">Select</option><option>Planner</option><option>Caterer</option><option>Décor</option><option>Destination</option></select></div>
+      <div class="field"><label>Biggest leak</label><select id="f-issue"><option value="">Select</option><option>Slow night replies</option><option>Unqualified leads</option><option>No CRM</option><option>Season overload</option></select></div>
+      <button class="form-btn" id="formBtn" type="button">Build wedding demo</button>
+      <div class="form-error" id="formError"></div>
+      <p class="form-note">Kit lab form. Same n8n capture Webwise already uses. Preview pages are noindex.</p>
+    </div>
+  </div>
+</section>
+<section id="faq">
+  <div class="wrap">
+    <div class="eyebrow">FAQ</div>
+    <h2>Questions before anyone trusts the system.</h2>
+    <div class="faq-grid">
+    <div class="faq-item"><button type="button" onclick="this.parentElement.classList.toggle('open')">Will it quote 18L packages?<span class="plus">+</span></button><div class="faq-a">No. Budget band only. Price is on the call.</div></div>
+    <div class="faq-item"><button type="button" onclick="this.parentElement.classList.toggle('open')">Caterers too?<span class="plus">+</span></button><div class="faq-a">Yes — same kit, tasting instead of design call.</div></div></div>
+  </div>
+</section>
+</main>
+<footer><div class="wrap">Webwise Digital Solutions · Kit lab · +91 8796504200 · Preview only</div></footer>
+<script>
+const KIT = {"id":"weddings","status":"template","niche":"Wedding planners & caterers","pill":"Template · Weddings","businessName":"Wedding kit","title":"Wedding kit (template) — date, budget, guest count","description":"Qualify the event. Save the lead. Human for the creative close.","hero":{"headline":"From date and budget to a real booking conversation.","copy":"Families WhatsApp five planners the same night. This kit asks date, city, guest count, and budget band, then books a call. It does not design the wedding in chat.","primaryCta":"See the leak card","secondaryCta":"Message Webwise"},"guardrails":["No invented venue availability","No final package price in bot","Planner owns the pitch"],"strip":{"label":"Event qualify","items":["Date","City","Guests","Budget band","Call booking"]},"chat":{"title":"Planner WhatsApp","status":"Qualify flow","messages":[{"type":"in","text":"Need a planner for a wedding in Jaipur this December."},{"type":"out","text":"Guest count and budget band — under 15L, 15–30L, or 30L+?"},{"type":"in","text":"About 250 guests. 15–30L."},{"type":"out","text":"Recorded. A planner will confirm a 20-min call with three date options."},{"type":"system","text":"No fake venue holds."}]},"problem":{"eyebrow":"The gap","title":"The serious family already talked to someone faster.","copy":["You are on a site visit. The WhatsApp is on a staff phone.","Budget and date never get written down."],"fixTitle":"What this kit fixes","fixes":[{"title":"Qualify once","copy":"Date, city, guests, band."},{"title":"Call booked","copy":"Planner time, not endless chat."},{"title":"Lead saved","copy":"Season rush does not erase the thread."}]},"system":{"eyebrow":"Three layers","title":"Qualify, schedule, remind.","cards":[{"num":"01","tag":"Qualify","title":"Fit check","copy":"Out of city or below minimum budget routes politely out."},{"num":"02","tag":"Call","title":"Planner slot","copy":"Human pitch stays human."},{"num":"03","tag":"Nurture","title":"Date reminders","copy":"Until booked or lost."}]},"workflow":{"eyebrow":"Enquiry path","title":"Instagram and referrals into one qualified card.","copy":"The planner walks into the call with numbers already there.","steps":[{"title":"Family writes","copy":"IG, WA, or site."},{"title":"Four facts","copy":"Date, city, guests, budget band."},{"title":"Fit or polite no","copy":"Minimums you set."},{"title":"Call booked","copy":"Planner confirms."},{"title":"Follow-up","copy":"Until decision."}]},"safety":{"allowTitle":"Allowed","stopTitle":"Stop","allow":["Ask qualifying facts","Share approved process","Book a call"],"stop":["Hold a venue you do not control","Quote a final creative package","Shame a budget"]},"niches":{"title":"Planners, caterers, décor","copy":"Caterers swap ‘menu tasting slot’ for planner call.","tags":["Planner","Caterer","Décor","Destination"]},"control":{"title":"The planner owns the pitch.","copy":"Bot is a filter, not the closer.","items":["Minimum budget","Cities served","Calendar","Lead sheet"]},"faq":[{"q":"Will it quote 18L packages?","a":"No. Budget band only. Price is on the call."},{"q":"Caterers too?","a":"Yes — same kit, tasting instead of design call."}],"form":{"eyebrow":"Template capture","title":"Build a wedding demo from this kit.","copy":"City, season, and the leak.","button":"Build wedding demo","namePlaceholder":"e.g. Kalra Events","typeLabel":"Type","types":["Planner","Caterer","Décor","Destination"],"issues":["Slow night replies","Unqualified leads","No CRM","Season overload"]},"whatsapp":{"phone":"918796504200","demoText":"Hi Webwise, I want a wedding kit demo."},"resultCard":{"enquiriesPerMonth":35,"missRate":0.4,"arpuInr":80000,"closeRate":0.12,"leakLabel":"One missed qualified wedding is a large leak. Range only.","story":"You do not need more Instagram. You need the December family to get a reply tonight."},"leakQuiz":[{"q":"How fast do you reply after hours?","a":["Under 5 minutes","Within 1 hour","Next working day","Not tracked"]},{"q":"Are date and budget saved?","a":["Always","Sometimes","Only if I remember","No"]},{"q":"Biggest gap?","a":["Slow replies","Unqualified chats","No follow-up","Season chaos"]}],"rules":{"systemPrompt":"Wedding enquiry qualifier. Capture date, city, guests, budget band. Book a planner call. No venue holds, no final package price.","approved":[{"trigger":"december wedding","response":"Ask city, guest count, budget band. Offer to book a call."}],"fallback":"A planner will continue this conversation.","never":["fake venue hold","final package price"]}};
+const quiz = { index: 0, answers: [] };
+function inr(n){ return "₹" + Math.round(n).toLocaleString("en-IN"); }
+function leakFromAnswers(){
+  const card = KIT.resultCard;
+  let miss = card.missRate;
+  const after = quiz.answers.find((a) => a.q.includes("after hours") || a.q.includes("reply"));
+  if (after && /next|not tracked|next day/i.test(after.a)) miss = Math.min(0.55, miss + 0.15);
+  if (after && /under 5|5 minutes/i.test(after.a)) miss = Math.max(0.12, miss - 0.12);
+  const recorded = quiz.answers.find((a) => /record|sheet|saved/i.test(a.q));
+  if (recorded && /^no$/i.test(recorded.a)) miss = Math.min(0.6, miss + 0.1);
+  const missed = card.enquiriesPerMonth * miss;
+  return Math.round(missed * card.arpuInr * card.closeRate);
+}
+function renderQuiz(){
+  const box = document.getElementById("quizBox");
+  const q = KIT.leakQuiz[quiz.index];
+  if (!q) {
+    const n = leakFromAnswers();
+    document.getElementById("leakInr").textContent = inr(n);
+    document.getElementById("leakStory").textContent = "Your answers moved the card. This is still a range until real enquiry data is connected.";
+    box.innerHTML = "<p class='copy'>Score mapped. Send the form or WhatsApp to walk the live flow.</p>";
+    return;
+  }
+  box.innerHTML = "<div class='quiz-q'><b>" + q.q + "</b>" + q.a.map((opt) => "<button type='button' data-a='" + opt.replace(/'/g, "&#39;") + "'>" + opt + "</button>").join("") + "</div>";
+  box.querySelectorAll("button").forEach((btn) => btn.addEventListener("click", () => {
+    quiz.answers.push({ q: q.q, a: btn.getAttribute("data-a") });
+    quiz.index += 1;
+    document.getElementById("leakInr").textContent = inr(leakFromAnswers());
+    renderQuiz();
+  }));
+}
+renderQuiz();
+document.getElementById("formBtn").addEventListener("click", () => {
+  const fields = ["f-name","f-wa","f-type","f-issue"].map((id) => document.getElementById(id));
+  const error = document.getElementById("formError");
+  if (fields.some((el) => !el.value.trim())) { error.style.display = "block"; error.textContent = "Fill every field."; return; }
+  const data = {
+    business_name: fields[0].value.trim(),
+    whatsapp: fields[1].value.trim(),
+    business_type: fields[2].value,
+    biggest_issue: fields[3].value,
+    source: "Kit lab " + KIT.id,
+    page_type: "kit_preview_" + KIT.id,
+    kit_status: KIT.status,
+    submitted_at: new Date().toISOString()
+  };
+  const waText = encodeURIComponent("Hi Webwise, kit " + KIT.id + "\nBusiness: " + data.business_name + "\nType: " + data.business_type + "\nLeak: " + data.biggest_issue);
+  fetch("https://wwds.app.n8n.cloud/webhook/webwise-lead-capture", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(data) })
+    .then((res) => { if (!res.ok) throw new Error("fail"); document.getElementById("formCard").innerHTML = "<div class='success'><b>Request in.</b><p>Message WhatsApp if you want this kit walked live.</p><a class='btn-primary' href='https://wa.me/918796504200?text=" + waText + "'>WhatsApp</a></div>"; })
+    .catch(() => { error.style.display = "block"; error.innerHTML = "Form did not confirm. <a href='https://wa.me/918796504200?text=" + waText + "'>Message WhatsApp</a>"; });
+});
+</script>
+</body></html>

@@ -1,0 +1,119 @@
+{
+  "id": "restaurants",
+  "status": "template",
+  "niche": "Restaurants & hospitality",
+  "pill": "Template · Restaurants",
+  "businessName": "Restaurant kit",
+  "title": "Restaurant kit (template) — tables and events, not unread chats",
+  "description": "Reservations, waitlist, event enquiries. WhatsApp-first.",
+  "hero": {
+    "headline": "From interest to a reserved table or event enquiry.",
+    "copy": "Friday night WhatsApp for a table of six gets lost in the kitchen group. This kit takes covers, time, and occasion, then confirms by the house rules.",
+    "primaryCta": "See the leak card",
+    "secondaryCta": "Message Webwise"
+  },
+  "guardrails": ["No allergen medical advice", "Kitchen confirms large events", "Owner owns offers"],
+  "strip": {
+    "label": "Hospitality flow",
+    "items": ["Reservations", "Waitlist", "Events", "Feedback", "Reviews"]
+  },
+  "chat": {
+    "title": "Restaurant WhatsApp",
+    "status": "Reservation flow",
+    "messages": [
+      { "type": "in", "text": "Table for 6 this Saturday 8pm?" },
+      { "type": "out", "text": "Saturday 8pm — indoor or terrace? Any birthday or cake note?" },
+      { "type": "in", "text": "Indoor. Birthday." },
+      { "type": "out", "text": "Request saved. The host will confirm the table and cake options." },
+      { "type": "system", "text": "Large groups follow house confirmation rules." }
+    ]
+  },
+  "problem": {
+    "eyebrow": "The gap",
+    "title": "The dining room is full. The inbox is not a host.",
+    "copy": [
+      "Guests message while the floor is slammed.",
+      "Event enquiries die because nobody copied them into a sheet."
+    ],
+    "fixTitle": "What this kit fixes",
+    "fixes": [
+      { "title": "Reservation request", "copy": "Covers, time, occasion." },
+      { "title": "Event capture", "copy": "Date, headcount, budget band." },
+      { "title": "Review after a good night", "copy": "Ask when the visit is complete." }
+    ]
+  },
+  "system": {
+    "eyebrow": "Three layers",
+    "title": "Table, event, reputation.",
+    "cards": [
+      { "num": "01", "tag": "Table", "title": "Reservation request", "copy": "House rules: auto-confirm small parties or always host-confirm." },
+      { "num": "02", "tag": "Event", "title": "Party enquiry", "copy": "Route to the events manager with context." },
+      { "num": "03", "tag": "Reputation", "title": "Feedback + review", "copy": "Private complaint to a human. Public review ask after a good visit." }
+    ]
+  },
+  "workflow": {
+    "eyebrow": "Guest path",
+    "title": "Maps and Instagram into one host thread.",
+    "copy": "The floor should not reconstruct the chat from memory.",
+    "steps": [
+      { "title": "Guest writes", "copy": "Table or event." },
+      { "title": "Details captured", "copy": "Covers, time, notes." },
+      { "title": "Host confirms", "copy": "Per house rules." },
+      { "title": "Reminder", "copy": "Same-day ping." },
+      { "title": "After visit", "copy": "Feedback, then review." }
+    ]
+  },
+  "safety": {
+    "allowTitle": "Allowed",
+    "stopTitle": "Stop",
+    "allow": ["Hours and location", "Reservation requests", "Event capture"],
+    "stop": ["Allergy treatment advice", "Promising a table that is not the host’s to give", "Public argument in-thread"]
+  },
+  "niches": {
+    "title": "Restaurants, cafes, banquet",
+    "copy": "Change covers limits in JSON.",
+    "tags": ["Casual dining", "Cafe", "Fine dining", "Banquet"]
+  },
+  "control": {
+    "title": "The host owns the book.",
+    "copy": "The kit never silently overbooks.",
+    "items": ["Cover limits", "Event manager", "Offer codes", "Review link"]
+  },
+  "faq": [
+    { "q": "Does it auto-confirm 20 people?", "a": "No. Large parties go to a human." },
+    { "q": "Allergies?", "a": "It can note a request. It does not give medical advice." }
+  ],
+  "form": {
+    "eyebrow": "Template capture",
+    "title": "Build a restaurant demo from this kit.",
+    "copy": "Covers, peak nights, and the leak.",
+    "button": "Build restaurant demo",
+    "namePlaceholder": "e.g. House of Grain",
+    "typeLabel": "Type",
+    "types": ["Restaurant", "Cafe", "QSR", "Banquet"],
+    "issues": ["Missed reservations", "Event follow-up", "No-shows", "Reviews"]
+  },
+  "whatsapp": {
+    "phone": "918796504200",
+    "demoText": "Hi Webwise, I want a restaurant kit demo."
+  },
+  "resultCard": {
+    "enquiriesPerMonth": 150,
+    "missRate": 0.25,
+    "arpuInr": 3500,
+    "closeRate": 0.5,
+    "leakLabel": "Missed Saturday tables / small events. Range only.",
+    "story": "A table of six that never got a reply is a night of revenue, not a social-media problem."
+  },
+  "leakQuiz": [
+    { "q": "How fast do you reply after hours?", "a": ["Under 5 minutes", "Within 1 hour", "Next working day", "Not tracked"] },
+    { "q": "Are reservations in one book?", "a": ["Always", "Sometimes", "WhatsApp only", "No"] },
+    { "q": "Biggest gap?", "a": ["Missed chats", "No-shows", "Event leakage", "Reviews"] }
+  ],
+  "rules": {
+    "systemPrompt": "Restaurant host assistant. Capture covers, time, occasion. Large groups and complaints to a human. No medical allergy advice.",
+    "approved": [{ "trigger": "table for 6", "response": "Ask time, indoor/terrace, occasion. Save for host confirmation if required." }],
+    "fallback": "The host will confirm availability.",
+    "never": ["medical advice", "silent overbook"]
+  }
+}

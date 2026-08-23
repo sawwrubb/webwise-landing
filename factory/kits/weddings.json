@@ -1,0 +1,119 @@
+{
+  "id": "weddings",
+  "status": "template",
+  "niche": "Wedding planners & caterers",
+  "pill": "Template · Weddings",
+  "businessName": "Wedding kit",
+  "title": "Wedding kit (template) — date, budget, guest count",
+  "description": "Qualify the event. Save the lead. Human for the creative close.",
+  "hero": {
+    "headline": "From date and budget to a real booking conversation.",
+    "copy": "Families WhatsApp five planners the same night. This kit asks date, city, guest count, and budget band, then books a call. It does not design the wedding in chat.",
+    "primaryCta": "See the leak card",
+    "secondaryCta": "Message Webwise"
+  },
+  "guardrails": ["No invented venue availability", "No final package price in bot", "Planner owns the pitch"],
+  "strip": {
+    "label": "Event qualify",
+    "items": ["Date", "City", "Guests", "Budget band", "Call booking"]
+  },
+  "chat": {
+    "title": "Planner WhatsApp",
+    "status": "Qualify flow",
+    "messages": [
+      { "type": "in", "text": "Need a planner for a wedding in Jaipur this December." },
+      { "type": "out", "text": "Guest count and budget band — under 15L, 15–30L, or 30L+?" },
+      { "type": "in", "text": "About 250 guests. 15–30L." },
+      { "type": "out", "text": "Recorded. A planner will confirm a 20-min call with three date options." },
+      { "type": "system", "text": "No fake venue holds." }
+    ]
+  },
+  "problem": {
+    "eyebrow": "The gap",
+    "title": "The serious family already talked to someone faster.",
+    "copy": [
+      "You are on a site visit. The WhatsApp is on a staff phone.",
+      "Budget and date never get written down."
+    ],
+    "fixTitle": "What this kit fixes",
+    "fixes": [
+      { "title": "Qualify once", "copy": "Date, city, guests, band." },
+      { "title": "Call booked", "copy": "Planner time, not endless chat." },
+      { "title": "Lead saved", "copy": "Season rush does not erase the thread." }
+    ]
+  },
+  "system": {
+    "eyebrow": "Three layers",
+    "title": "Qualify, schedule, remind.",
+    "cards": [
+      { "num": "01", "tag": "Qualify", "title": "Fit check", "copy": "Out of city or below minimum budget routes politely out." },
+      { "num": "02", "tag": "Call", "title": "Planner slot", "copy": "Human pitch stays human." },
+      { "num": "03", "tag": "Nurture", "title": "Date reminders", "copy": "Until booked or lost." }
+    ]
+  },
+  "workflow": {
+    "eyebrow": "Enquiry path",
+    "title": "Instagram and referrals into one qualified card.",
+    "copy": "The planner walks into the call with numbers already there.",
+    "steps": [
+      { "title": "Family writes", "copy": "IG, WA, or site." },
+      { "title": "Four facts", "copy": "Date, city, guests, budget band." },
+      { "title": "Fit or polite no", "copy": "Minimums you set." },
+      { "title": "Call booked", "copy": "Planner confirms." },
+      { "title": "Follow-up", "copy": "Until decision." }
+    ]
+  },
+  "safety": {
+    "allowTitle": "Allowed",
+    "stopTitle": "Stop",
+    "allow": ["Ask qualifying facts", "Share approved process", "Book a call"],
+    "stop": ["Hold a venue you do not control", "Quote a final creative package", "Shame a budget"]
+  },
+  "niches": {
+    "title": "Planners, caterers, décor",
+    "copy": "Caterers swap ‘menu tasting slot’ for planner call.",
+    "tags": ["Planner", "Caterer", "Décor", "Destination"]
+  },
+  "control": {
+    "title": "The planner owns the pitch.",
+    "copy": "Bot is a filter, not the closer.",
+    "items": ["Minimum budget", "Cities served", "Calendar", "Lead sheet"]
+  },
+  "faq": [
+    { "q": "Will it quote 18L packages?", "a": "No. Budget band only. Price is on the call." },
+    { "q": "Caterers too?", "a": "Yes — same kit, tasting instead of design call." }
+  ],
+  "form": {
+    "eyebrow": "Template capture",
+    "title": "Build a wedding demo from this kit.",
+    "copy": "City, season, and the leak.",
+    "button": "Build wedding demo",
+    "namePlaceholder": "e.g. Kalra Events",
+    "typeLabel": "Type",
+    "types": ["Planner", "Caterer", "Décor", "Destination"],
+    "issues": ["Slow night replies", "Unqualified leads", "No CRM", "Season overload"]
+  },
+  "whatsapp": {
+    "phone": "918796504200",
+    "demoText": "Hi Webwise, I want a wedding kit demo."
+  },
+  "resultCard": {
+    "enquiriesPerMonth": 35,
+    "missRate": 0.4,
+    "arpuInr": 80000,
+    "closeRate": 0.12,
+    "leakLabel": "One missed qualified wedding is a large leak. Range only.",
+    "story": "You do not need more Instagram. You need the December family to get a reply tonight."
+  },
+  "leakQuiz": [
+    { "q": "How fast do you reply after hours?", "a": ["Under 5 minutes", "Within 1 hour", "Next working day", "Not tracked"] },
+    { "q": "Are date and budget saved?", "a": ["Always", "Sometimes", "Only if I remember", "No"] },
+    { "q": "Biggest gap?", "a": ["Slow replies", "Unqualified chats", "No follow-up", "Season chaos"] }
+  ],
+  "rules": {
+    "systemPrompt": "Wedding enquiry qualifier. Capture date, city, guests, budget band. Book a planner call. No venue holds, no final package price.",
+    "approved": [{ "trigger": "december wedding", "response": "Ask city, guest count, budget band. Offer to book a call." }],
+    "fallback": "A planner will continue this conversation.",
+    "never": ["fake venue hold", "final package price"]
+  }
+}

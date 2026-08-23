@@ -1,0 +1,9 @@
+{
+  "enquiriesPerMonth": 200,
+  "missRate": 0.3,
+  "arpuInr": 900,
+  "closeRate": 0.25,
+  "leakLabel": "Missed chat-assisted orders. Range only.",
+  "story": "If ads are on and chat is slow, you are paying for clicks you do not catch.",
+  "estimatedMonthlyLeakInr": 13500
+}
