@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <title>Webwise Digital | Premium AI Automation Architecture</title>
+  <meta name="description" content="Internal and client-ready architecture for Webwise Digital: service stack, competitor differentiation, and the AI-first operating system that replaces ChatGPT-plus-Vercel chaos." />
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #080808;
+      --bg2: #0f0f0f;
+      --card: #111111;
+      --border: rgba(41,171,226,.16);
+      --cyan: #29ABE2;
+      --teal: #00D4AA;
+      --white: #F2F2EE;
+      --muted: #8B919A;
+      --gold: #E8C37A;
+      --font: "Satoshi", sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--white); font-family: var(--font); line-height: 1.6; }
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
+    nav {
+      position: sticky; top: 0; z-index: 20;
+      background: rgba(8,8,8,.9); border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(16px);
+    }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; min-height: 72px; gap: 16px; }
+    .brand { font-weight: 800; letter-spacing: .08em; font-size: 14px; }
+    .brand span { color: var(--cyan); }
+    .nav-links { display: flex; gap: 18px; flex-wrap: wrap; font-size: 13px; color: var(--muted); }
+    .nav-links a:hover { color: var(--white); }
+    .badge { display: inline-block; color: var(--cyan); font-size: 11px; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; margin-bottom: 14px; }
+    h1 { font-size: clamp(36px, 5vw, 58px); line-height: 1.05; letter-spacing: -1.6px; margin-bottom: 18px; }
+    h1 em, h2 em { color: var(--cyan); font-style: normal; }
+    h2 { font-size: clamp(26px, 3vw, 38px); letter-spacing: -1px; line-height: 1.15; margin-bottom: 12px; }
+    h3 { font-size: 18px; margin-bottom: 8px; }
+    p, li { color: var(--muted); }
+    .lead { font-size: 18px; max-width: 720px; }
+    section { padding: 72px 0; border-top: 1px solid var(--border); }
+    .hero { padding: 88px 0 64px; border-top: 0; background: radial-gradient(ellipse 70% 50% at 80% 0%, rgba(41,171,226,.14), transparent 60%); }
+    .grid-2 { display: grid; grid-template-columns: 1.1fr .9fr; gap: 28px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .grid-5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 22px; }
+    .card strong { color: var(--white); }
+    .tag { display: inline-block; font-size: 11px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--teal); margin-bottom: 10px; }
+    .tag.gold { color: var(--gold); }
+    .tag.cyan { color: var(--cyan); }
+    ul.clean { list-style: none; display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
+    ul.clean li { padding-left: 16px; position: relative; }
+    ul.clean li::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--teal); position: absolute; left: 0; top: 9px; }
+    table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    th, td { text-align: left; padding: 12px 10px; border-bottom: 1px solid var(--border); vertical-align: top; }
+    th { color: var(--cyan); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; }
+    td { color: var(--muted); }
+    td b { color: var(--white); font-weight: 700; }
+    .callout { border-left: 3px solid var(--cyan); padding: 16px 18px; background: rgba(41,171,226,.06); border-radius: 0 10px 10px 0; }
+    .callout p { color: var(--white); }
+    .step { display: grid; grid-template-columns: 56px 1fr; gap: 14px; align-items: start; }
+    .num { width: 40px; height: 40px; border-radius: 10px; background: rgba(41,171,226,.12); color: var(--cyan); display: grid; place-items: center; font-weight: 800; }
+    .stack-row { display: grid; grid-template-columns: 160px 1fr; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--border); }
+    .stack-row:last-child { border-bottom: 0; }
+    .layer { font-size: 12px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--cyan); padding-top: 4px; }
+    footer { padding: 28px 0 48px; color: var(--muted); font-size: 13px; }
+    @media (max-width: 900px) {
+      .grid-2, .grid-3, .grid-5, .stack-row { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="wrap nav-inner">
+      <a class="brand" href="/">WEBWISE <span>DIGITAL</span></a>
+      <div class="nav-links">
+        <a href="#stack">Service stack</a>
+        <a href="#vs">Vs tools</a>
+        <a href="#os">Where to run it</a>
+        <a href="#roadmap">Roadmap</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="wrap">
+      <div class="badge">Architecture framework · Internal + client-ready</div>
+      <h1>Webwise is not a WhatsApp vendor.<br><em>It is the system that owns the enquiry.</em></h1>
+      <p class="lead">This page defines the product you sell, how it sits above Wati / Interakt / Ryze / Hyperleap, and the AI-first operating model that replaces “manage everything in ChatGPT Pro and Vercel” as clients scale.</p>
+      <div class="grid-3" style="margin-top:36px">
+        <div class="card"><div class="tag">Position</div><h3>Benchmark partner</h3><p>Clients buy a revenue system: capture, reply, qualify, book, follow up, review. Tools are plumbing.</p></div>
+        <div class="card"><div class="tag">Problem</div><h3>ChatGPT is not an agency OS</h3><p>It mixes clients, has no deploy, no status, no audit trail. Vercel hosting is fine. ChatGPT as the control room is not.</p></div>
+        <div class="card"><div class="tag">Rule</div><h3>English in. System out.</h3><p>You stay non-technical. AI agents, templates, and one command center do the work. You approve. You do not paste code.</p></div>
+      </div>
+    </div>
+  </header>
+
+  <section id="stack">
+    <div class="wrap">
+      <div class="badge">01 · What you sell</div>
+      <h2>One core system. Five engines. Five upsells.</h2>
+      <p class="lead">Sell the <strong style="color:#F2F2EE">Webwise Customer Acquisition System</strong>. Never sell a bot, a website, or a WhatsApp login as the product.</p>
+
+      <div class="card" style="margin-top:28px">
+        <div class="stack-row">
+          <div class="layer">Core 01</div>
+          <div>
+            <h3>High-converting Smart Site</h3>
+            <p>AI-optimized landing pages, modern UI/UX, trust elements, sticky WhatsApp, review integration. This is the front door. Every niche (clinic, salon, property, D2C) uses the same skeleton with different copy, offers, and booking rules.</p>
+          </div>
+        </div>
+        <div class="stack-row">
+          <div class="layer">Core 02</div>
+          <div>
+            <h3>Business Automation</h3>
+            <p>Lead capture, CRM record, owner assignment, task creation. If a message is not written to a record, the job is not done.</p>
+          </div>
+        </div>
+        <div class="stack-row">
+          <div class="layer">Core 03</div>
+          <div>
+            <h3>Email Automation</h3>
+            <p>Welcome, nurture, conversion, re-engagement. Predictive send windows and lead scoring. Email is the quiet closer after WhatsApp starts the conversation.</p>
+          </div>
+        </div>
+        <div class="stack-row">
+          <div class="layer">Core 04</div>
+          <div>
+            <h3>WhatsApp Automation</h3>
+            <p>White-label inbox, instant replies, reminders, offers. Built on a BSP (QuickReply / Wati / Interakt / Hyperleap). Webwise owns the rules, the scripts, the handoff, and the outcome — not the Meta pipe.</p>
+          </div>
+        </div>
+        <div class="stack-row">
+          <div class="layer">Core 05</div>
+          <div>
+            <h3>Review &amp; Reputation</h3>
+            <p>Ask after a happy moment, collect, score sentiment, publish testimonials on the Smart Site. Reputation is a conversion asset, not a vanity metric.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid-3" style="margin-top:16px">
+        <div class="card"><div class="tag gold">Upsell</div><h3>SEO / AEO / GEO</h3><p>Show up in Google and in ChatGPT, Gemini, Claude, Copilot. Pages, FAQs, entity pages, and answer-ready copy so AI models can cite the business.</p></div>
+        <div class="card"><div class="tag gold">Upsell</div><h3>Social Media Management</h3><p>AI content, scheduling, comment-to-WhatsApp routing. Social is a feeder into the same acquisition system, not a separate agency.</p></div>
+        <div class="card"><div class="tag gold">Upsell</div><h3>IVR / Voice AI</h3><p>Missed-call recovery, smart routing, qualification bots. Same rules as WhatsApp, on the phone line clinics still live on.</p></div>
+        <div class="card"><div class="tag gold">Upsell</div><h3>AI Agents</h3><p>Sales, support, and nurture agents with approved knowledge only. Unknown questions escalate. This is “AI employees,” not a widget.</p></div>
+        <div class="card"><div class="tag gold">Upsell</div><h3>AI Consultancy</h3><p>Quarterly advisory: what to automate next, what not to touch, how to scale without adding headcount. High-ticket, low-delivery-hours.</p></div>
+        <div class="card"><div class="tag cyan">Package rule</div><h3>How to price the stack</h3><p>Core 01–05 = retainer system. Upsells attach after 14-day go-live. Consultancy is a separate monthly seat for owners who want a strategist, not more tools.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="vs">
+    <div class="wrap">
+      <div class="badge">02 · Differentiation</div>
+      <h2>They sell software. <em>You sell the outcome.</em></h2>
+      <p class="lead">Wati, Interakt, Ryze.ai, and Hyperleap are useful. They are not competitors if you refuse to position as “another WhatsApp inbox.” You implement them. You are accountable for booked appointments and recorded leads.</p>
+      <div class="card" style="margin-top:24px; overflow:auto">
+        <table>
+          <thead>
+            <tr>
+              <th>Buyer question</th>
+              <th>Wati / Interakt / Ryze / Hyperleap</th>
+              <th>Webwise Digital</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>What do I buy?</b></td>
+              <td>A login: inbox, broadcasts, chatbot builder, seats, Meta fees.</td>
+              <td>A working acquisition system: site + replies + CRM + reviews, live in 14 days.</td>
+            </tr>
+            <tr>
+              <td><b>Who is on the hook?</b></td>
+              <td>The client’s staff, after they “set up flows.”</td>
+              <td>Webwise. Guardrails, approved answers, handoff, and weekly leak report.</td>
+            </tr>
+            <tr>
+              <td><b>Where does the lead start?</b></td>
+              <td>Usually after the person already messaged WhatsApp.</td>
+              <td>On the Smart Site, Google, Instagram, call, and WhatsApp — one record.</td>
+            </tr>
+            <tr>
+              <td><b>Industry fit</b></td>
+              <td>Generic SMB / D2C / support teams.</td>
+              <td>Clinics, salons, restaurants, weddings, D2C, real estate &amp; architects — with niche rules already written.</td>
+            </tr>
+            <tr>
+              <td><b>Data &amp; lock-in</b></td>
+              <td>Platform account. Export is the client’s problem.</td>
+              <td>Client owns records and business accounts. Export and handover written in the proposal.</td>
+            </tr>
+            <tr>
+              <td><b>AI depth</b></td>
+              <td>Bot on one channel. Quality depends on the buyer’s prompting.</td>
+              <td>Agents + email + voice + site + reputation, all from one knowledge vault.</td>
+            </tr>
+            <tr>
+              <td><b>How you talk about them</b></td>
+              <td>—</td>
+              <td>“We use a certified WhatsApp pipe. You never have to pick a vendor or learn the dashboard.”</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout" style="margin-top:20px">
+        <p>Line to use on sales calls: “Those companies sell you the phone. We install the receptionist, the diary, the follow-up, and the review machine — and we stay until it works.”</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="os">
+    <div class="wrap">
+      <div class="badge">03 · Where to run the agency</div>
+      <h2>Keep Vercel. Stop using ChatGPT as the office.</h2>
+      <p class="lead">GitHub + Vercel is the right place to <em>host</em> sites. It is the wrong place to <em>manage clients</em>. ChatGPT Pro is a thinking partner. It is not a CRM, not a file system, and not a deployment tool. Mixing ten clients in one chat is how mistakes ship.</p>
+
+      <div class="grid-2" style="margin-top:28px">
+        <div class="card">
+          <div class="tag">Stop doing this</div>
+          <h3>Founder workstation (breaks at 5+ clients)</h3>
+          <ul class="clean">
+            <li>Ask ChatGPT to rewrite a page, copy the code, paste into GitHub, hope Vercel deploys.</li>
+            <li>Keep client facts in chat memory (“the clinic in Dwarka wants Saturday slots”).</li>
+            <li>Give clients “we’ll update it tonight” with no status they can see.</li>
+            <li>Rebuild the same WhatsApp flow from scratch every time.</li>
+            <li>Be the only person who knows how anything is hosted.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="tag cyan">Do this instead</div>
+          <h3>Three rooms. AI in each. You approve.</h3>
+          <ul class="clean">
+            <li><strong>Command center</strong> — one board per client: status, logins, knowledge, tasks.</li>
+            <li><strong>Build room</strong> — AI edits the site from English instructions; you preview and approve.</li>
+            <li><strong>Runtime room</strong> — WhatsApp + CRM + n8n templates that already exist; you fill a form, not a chat.</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3 style="margin:36px 0 14px">The AI-first stack (non-technical)</h3>
+      <div class="card" style="overflow:auto">
+        <table>
+          <thead>
+            <tr>
+              <th>Job</th>
+              <th>Keep / move</th>
+              <th>Tool (pick one and stay)</th>
+              <th>What you do</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>Host the marketing site</b></td>
+              <td>Keep</td>
+              <td>GitHub + Vercel for webwisedigital.net only</td>
+              <td>Never edit files by hand. Ask a Cursor Cloud Agent: “Change X on the homepage.” Review the preview. Approve.</td>
+            </tr>
+            <tr>
+              <td><b>Client Smart Sites</b></td>
+              <td>Move off ad-hoc ChatGPT</td>
+              <td><b>Path A (premium):</b> Cursor + GitHub + Vercel, one repo per client.<br><b>Path B (easiest):</b> Framer or Webflow with AI — visual, no Git.</td>
+              <td>Start with Path B until you have a VA. Use Path A when the site must match the Webwise system exactly.</td>
+            </tr>
+            <tr>
+              <td><b>Client records &amp; pipeline</b></td>
+              <td>Leave ChatGPT</td>
+              <td>Zoho CRM or GoHighLevel (GHL). You already mention Zoho in legal pages.</td>
+              <td>Every enquiry becomes a deal. Stages: Lead → Qualified → Booked → Showed → Reviewed.</td>
+            </tr>
+            <tr>
+              <td><b>WhatsApp pipe</b></td>
+              <td>Keep a BSP, hide it</td>
+              <td>QuickReply (current) or Interakt / Wati / Hyperleap as white-label plumbing</td>
+              <td>You do not sell the dashboard. Client sees WhatsApp working. You own templates and rules.</td>
+            </tr>
+            <tr>
+              <td><b>Automations</b></td>
+              <td>Stop one-off ChatGPT recipes</td>
+              <td>n8n Cloud (already in your terms) with 6 saved templates</td>
+              <td>New client = duplicate template, paste their Sheet/CRM IDs. No new workflow from scratch.</td>
+            </tr>
+            <tr>
+              <td><b>Knowledge per client</b></td>
+              <td>Leave mixed ChatGPT threads</td>
+              <td>Notion: one page per client (services, hours, prices, FAQs, escalation). Optional: Claude Project or Custom GPT cloned from that page only.</td>
+              <td>If it is not on the Notion page, the bot is not allowed to say it.</td>
+            </tr>
+            <tr>
+              <td><b>Client experience</b></td>
+              <td>New</td>
+              <td>Notion share link or Softr portal: status, weekly report, request form</td>
+              <td>Clients never wait on “let me check GitHub.” They see Intake / Building / Live / Optimizing.</td>
+            </tr>
+            <tr>
+              <td><b>Thinking &amp; copy</b></td>
+              <td>Keep ChatGPT Pro</td>
+              <td>ChatGPT or Claude for strategy, emails, scripts — not for production files</td>
+              <td>Prompt: “Write the FAQ.” Then paste the approved text into Notion / Framer / the agent. Never “edit my live site.”</td>
+            </tr>
+            <tr>
+              <td><b>Voice / IVR</b></td>
+              <td>Upsell later</td>
+              <td>A voice vendor (e.g. Retell / Vapi / Indian IVR partner) wired into the same CRM</td>
+              <td>Same knowledge vault as WhatsApp. Do not invent a second brain.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="grid-3" style="margin-top:16px">
+        <div class="card">
+          <div class="tag">Default recommendation</div>
+          <h3>If you want one shopping list</h3>
+          <ul class="clean">
+            <li>Notion (command center + client vaults + portal)</li>
+            <li>Framer or Webflow (client sites, AI-first)</li>
+            <li>Vercel + GitHub (your own site only, via Cursor)</li>
+            <li>Zoho or GoHighLevel (CRM)</li>
+            <li>n8n Cloud (6 templates)</li>
+            <li>Existing WhatsApp BSP, white-labeled</li>
+            <li>ChatGPT Pro for thinking only</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="tag">Flawless client experience</div>
+          <h3>What every client gets on day 1</h3>
+          <ul class="clean">
+            <li>Welcome WhatsApp with their portal link</li>
+            <li>Intake form (hours, services, offers, staff names)</li>
+            <li>14-day launch checklist they can see</li>
+            <li>One weekly report: enquiries, replies, bookings, leaks</li>
+            <li>One request button: “Change this on my site / bot”</li>
+            <li>No GitHub, no Vercel, no “prompt I used”</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="tag gold">Why this is premium</div>
+          <h3>Vendors give dashboards</h3>
+          <p>Partners give a calm operating rhythm. The client never learns n8n. They feel a system that already ran inside Webwise first — which matches the homepage promise.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="templates">
+    <div class="wrap">
+      <div class="badge">04 · Productized delivery</div>
+      <h2>Six n8n templates. Not a new invention each client.</h2>
+      <div class="grid-3" style="margin-top:20px">
+        <div class="card"><h3>1. Enquiry → CRM</h3><p>WhatsApp / form / IG → create/update contact → notify owner.</p></div>
+        <div class="card"><h3>2. Qualify → book</h3><p>Approved questions → slot offer → calendar / staff task.</p></div>
+        <div class="card"><h3>3. No-show / nurture</h3><p>If no reply in X hours, send utility template, then email.</p></div>
+        <div class="card"><h3>4. Review ask</h3><p>After “completed” status + delay → Google review link → log sentiment.</p></div>
+        <div class="card"><h3>5. Weekly leak report</h3><p>Counts to WhatsApp for the owner every Monday 9:00.</p></div>
+        <div class="card"><h3>6. Change request</h3><p>Portal form → Notion task → you (or Cursor) execute → mark done.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="roadmap">
+    <div class="wrap">
+      <div class="badge">05 · Execution roadmap</div>
+      <h2>Move the office first. Then productize. Then upsell.</h2>
+      <div style="display:flex;flex-direction:column;gap:22px;margin-top:28px">
+        <div class="step">
+          <div class="num">1</div>
+          <div>
+            <h3>This week — freeze the chaos</h3>
+            <p>Create a Notion database: Client, Niche, Stage, BSP, Site URL, Knowledge page. Move every live client out of ChatGPT into one row. ChatGPT chats get archived after you copy facts into Notion. Do not start new client work in ChatGPT threads.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="num">2</div>
+          <div>
+            <h3>Next — client portal + intake</h3>
+            <p>Duplicate one Notion “Client OS” template per account. Share it. Add a Tally/Fillout intake that writes to Notion. Send the portal link in the kickoff WhatsApp. This is the flawless experience: visibility without you typing updates.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="num">3</div>
+          <div>
+            <h3>Then — stop pasting code</h3>
+            <p>For webwisedigital.net, only Cursor Cloud Agents may change the repo. For new client sites, pick Framer/Webflow unless the client needs the exact Webwise Smart Site kit. ChatGPT writes copy into Notion; the builder tool publishes.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="num">4</div>
+          <div>
+            <h3>Then — lock the 14-day machine</h3>
+            <p>Days 1–2 intake and knowledge vault. Days 3–7 Smart Site + WhatsApp rules. Days 8–10 CRM + the six templates. Days 11–12 review flow. Days 13–14 live test and training video. Same calendar for every niche.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="num">5</div>
+          <div>
+            <h3>Then — sell from the stack, not from tools</h3>
+            <p>Proposal language: Core System (01–05) as the default. Upsells only after go-live, except Voice for clinics that live on the phone. Never quote “Wati setup.” Quote “WhatsApp engine inside the Webwise system.”</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="num">6</div>
+          <div>
+            <h3>Then — hire AI, then a human</h3>
+            <p>A VA who only updates Notion and submits change requests is enough. They do not need to know Vercel. Cursor / Framer / n8n templates do the technical work. You stay on strategy calls and consultancy retainers.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="badge">06 · How to talk</div>
+      <h2>One sentence, three proofs, one boundary.</h2>
+      <div class="grid-2" style="margin-top:20px">
+        <div class="card">
+          <h3>Positioning sentence</h3>
+          <p style="color:#F2F2EE">Webwise Digital installs an AI customer acquisition system that captures every enquiry, answers from your rules, records the lead, and follows up — so the business does not stop when the owner does.</p>
+        </div>
+        <div class="card">
+          <h3>Boundary</h3>
+          <p>We are not cheaper Wati. We are not a chatbot freelancer. If a buyer only wants a WhatsApp login, refer them to a BSP. If they want the leak closed, they buy the system.</p>
+        </div>
+      </div>
+      <div class="callout" style="margin-top:20px">
+        <p>Founder note: Vercel and GitHub stay in the background as hosting. Clients should never hear those words. They should hear portal, weekly report, and “your system is live.” ChatGPT stays on your laptop as a writer, not as the company.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      Webwise Digital Solutions · Architecture framework · Not linked from the public nav · Noindex · For strategy calls and internal ops.
+    </div>
+  </footer>
+</body>
+</html>
