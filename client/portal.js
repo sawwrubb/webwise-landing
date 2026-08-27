@@ -73,7 +73,7 @@
     },
 
     async signUpEmail({ name, email, password, phone }) {
-      const redirectTo = `${location.origin}/client/`;
+      const redirectTo = `${location.origin}/client/index.html`;
       const { data, error } = await this.sb.auth.signUp({
         email,
         password,
@@ -106,7 +106,7 @@
       const { error } = await this.sb.auth.signInWithOAuth({
         provider: supabaseProvider,
         options: {
-          redirectTo: `${origin}/client/?next=health`,
+          redirectTo: `${origin}/client/index.html`,
           skipBrowserRedirect: false,
           queryParams: { prompt: "select_account" }
         }
@@ -131,7 +131,7 @@
 
     async forgotPassword(email) {
       const { error } = await this.sb.auth.resetPasswordForEmail(email, {
-        redirectTo: `${location.origin}/client/#/login`
+        redirectTo: `${location.origin}/client/index.html#/login`
       });
       if (error) throw error;
     },
