@@ -2,189 +2,42 @@
   const STORE_USERS = "ww_users_v1";
   const STORE_SESSION = "ww_session_v1";
   const storeKey = (id) => `ww_account_${id}`;
-  const GST = 0.18;
-  const PRICE = {
-    competitorPack: 1999,
-    bundleList: 20000,
-    bundlePartner: 10000,
-    diy: { website: 115000, whatsapp: 45000, reviews: 25000, staff: 60000 }
-  };
-  const STEPS = [
-    { id: "account", label: "Account" },
-    { id: "funnel", label: "Health quiz" },
-    { id: "report", label: "Health check" },
-    { id: "offer", label: "Offer" },
-    { id: "onboarding", label: "Onboarding" },
-    { id: "automation", label: "Meta automation" },
-    { id: "reviews", label: "Reviews" },
-    { id: "growth", label: "Growth add-ons" },
-    { id: "complete", label: "Live" }
+  const DAY = 86400000;
+  const PRICE = { list: 20000, partner: 10000, gst: 0.18 };
+  const PARTNER_GST = Math.round(PRICE.partner * (1 + PRICE.gst));
+  const SECTIONS = [
+    { id: "health", label: "Health Check", path: "/health" },
+    { id: "proposal", label: "Proposal", path: "/proposal" },
+    { id: "payment", label: "Payment", path: "/payment" },
+    { id: "onboarding", label: "Onboarding", path: "/onboarding" },
+    { id: "approvals", label: "Approvals", path: "/approvals" },
+    { id: "automation", label: "Automation", path: "/automation" },
+    { id: "reviews", label: "Review", path: "/reviews" }
   ];
-
-  const QUESTIONS = [
-    { id: "businessType", q: "What kind of business are we checking?", h: "This sets your competitor benchmark and report copy.", a: [
-      { v: "clinic", l: "Clinic or doctor", d: "Hospitals, clinics, dentists, specialists" },
-      { v: "salon", l: "Salon or spa", d: "Salons, barbers, spas, beauty clinics" },
-      { v: "realestate", l: "Real estate or architect", d: "Agents, builders, architects" },
-      { v: "restaurant", l: "Restaurant or hospitality", d: "Restaurants, cafes, hotels" },
-      { v: "wedding", l: "Wedding or catering", d: "Planners, caterers, events" },
-      { v: "d2c", l: "D2C or local brand", d: "Online brands, retailers, services" }
-    ]},
-    { id: "city", q: "Where is the business based?", h: "We benchmark you against the top local player in that city.", a: [
-      { v: "delhi", l: "Delhi NCR", d: "Delhi, Gurgaon, Noida, Faridabad, Ghaziabad" },
-      { v: "mumbai", l: "Mumbai / Pune", d: "Mumbai, Navi Mumbai, Thane, Pune" },
-      { v: "bengaluru", l: "Bengaluru", d: "Bengaluru and surrounding" },
-      { v: "hyderabad", l: "Hyderabad / South", d: "Hyderabad, Chennai, Kochi" },
-      { v: "other", l: "Another city in India", d: "We'll use the national category leader" }
-    ]},
-    { id: "hasWebsite", q: "Do you have a live website?", h: "A site is required later for Meta automation.", a: [
-      { v: "strong", l: "Yes — updated in the last 12 months", d: "Fast, mobile, converting" },
-      { v: "weak", l: "Yes — but outdated or slow", d: "Looks dated or does not convert" },
-      { v: "none", l: "No website yet", d: "Social or Google only" },
-      { v: "builder", l: "Only a template / Instagram bio link", d: "Not a dedicated business site" }
-    ]},
-    { id: "websiteType", q: "What website type do you want?", h: "Feeds the Smart Site build brief.", a: [
-      { v: "smart", l: "AI Smart Site that talks to visitors", d: "Recommended" },
-      { v: "landing", l: "Single high-converting landing page", d: "One offer, one action" },
-      { v: "multi", l: "Multi-page brochure site", d: "About, services, contact" },
-      { v: "unsure", l: "Not sure — recommend for me", d: "We will pick from your niche" }
-    ]},
-    { id: "designPref", q: "Which design direction feels right?", h: "Used in onboarding and the site brief.", a: [
-      { v: "clinical", l: "Clean clinical / medical", d: "White space, trust, calm" },
-      { v: "premium", l: "Premium dark + accent", d: "Webwise-style authority" },
-      { v: "warm", l: "Warm lifestyle / hospitality", d: "Photos first, inviting" },
-      { v: "minimal", l: "Minimal typography-led", d: "Quiet, expensive, simple" }
-    ]},
-    { id: "certs", q: "Which trust signals should the report and site show?", h: "Certifications, empaneled bodies, awards.", a: [
-      { v: "clinical", l: "Clinical / NABH / board certifications", d: "Doctors, clinics, labs" },
-      { v: "trade", l: "Trade, RERA or industry licences", d: "Property, construction" },
-      { v: "fssai", l: "FSSAI / hospitality credentials", d: "Food, events" },
-      { v: "none", l: "None yet — help me present trust", d: "We will use process + reviews" }
-    ]},
-    { id: "social", q: "How active is social media today?", h: "Benchmark vs the top local player in your city.", a: [
-      { v: "daily", l: "Posting most days", d: "Reels / posts running" },
-      { v: "weekly", l: "A few posts a week", d: "Inconsistent" },
-      { v: "dormant", l: "Profiles exist but quiet", d: "No system" },
-      { v: "none", l: "No business profiles", d: "Start from zero" }
-    ]},
-    { id: "automation", q: "What happens when a lead messages after hours?", h: "This is the automation score.", a: [
-      { v: "instant", l: "AI or staff replies in minutes", d: "Strong" },
-      { v: "morning", l: "We reply next working morning", d: "Leakage" },
-      { v: "missed", l: "Many messages go unanswered", d: "High leak" },
-      { v: "none", l: "No WhatsApp / chat system", d: "Start here" }
-    ]},
-    { id: "reviews", q: "How are Google reviews requested?", h: "Feeds the reputation engine score.", a: [
-      { v: "auto", l: "Automated after every visit", d: "Compounding" },
-      { v: "manual", l: "Staff ask sometimes", d: "Hits and misses" },
-      { v: "rarely", l: "Rarely or never", d: "Gap" },
-      { v: "none", l: "We do not have a GBP process", d: "Bonus: GBP optimisation" }
-    ]}
+  const CATEGORIES = ["Clinic or doctor", "Salon or spa", "Real estate", "Restaurant", "Wedding & events", "Local brand / D2C", "Other"];
+  const WA_TEMPLATES = [
+    { id: "afterhours", name: "After-hours reply", d: "Greet the person, ask what they need, offer the next open slot." },
+    { id: "booking", name: "Appointment booking", d: "Collect date, time and location, then confirm." },
+    { id: "faq", name: "Common questions", d: "Price, timing, parking, insurance — answered instantly." },
+    { id: "review", name: "Review request", d: "After a visit, send the Google review link." }
   ];
-
-  const LOCAL_PLAYERS = {
-    clinic: {
-      delhi: { name: "Clove Dental", detail: "National dental chain with dense Delhi-NCR coverage, instant booking, and a review engine on every chair." },
-      mumbai: { name: "Sabka Dentist", detail: "High-volume Mumbai dental brand with standardised Smart Sites and aggressive Google review capture." },
-      bengaluru: { name: "Apollo Dental", detail: "Hospital-backed dental network; strong maps presence and after-hours enquiry handling." },
-      hyderabad: { name: "KIMS Dental", detail: "Hospital-linked Hyderabad player with trust signals, maps, and call tracking in place." },
-      other: { name: "Clove Dental", detail: "The national chain most local clinics lose after-hours implant and aligner leads to." }
-    },
-    salon: {
-      delhi: { name: "Looks Salon", detail: "Multi-outlet NCR brand with booking links, reels, and review volume that ranks locally." },
-      mumbai: { name: "Jawed Habib", detail: "Recognised Mumbai/Pune name with listing strength and appointment capture on every outlet." },
-      bengaluru: { name: "Naturals", detail: "South India salon chain with consistent GBP, offers, and WhatsApp booking." },
-      hyderabad: { name: "Naturals", detail: "Category-leading salon chain in the south with review velocity and booking automation." },
-      other: { name: "Naturals", detail: "The salon chain most independents lose Google Pack and Instagram DMs to." }
-    },
-    realestate: {
-      delhi: { name: "Square Yards", detail: "NCR-heavy portal-plus-desk model: speed to lead and a structured site-visit pipeline." },
-      mumbai: { name: "Magicbricks local desk", detail: "Portal-fed Mumbai desks that reply in minutes and qualify before a human calls." },
-      bengaluru: { name: "NoBroker", detail: "Tech-led Bengaluru player with on-site conversion and automated follow-up." },
-      hyderabad: { name: "Square Yards", detail: "Organised channel with paid capture, WhatsApp qualification, and visit slots." },
-      other: { name: "Square Yards", detail: "The organised desk most independent brokers lose shared portal leads to." }
-    },
-    restaurant: {
-      delhi: { name: "The Big Chill", detail: "NCR restaurant brand with packed GBP, reservation flow, and review compounding." },
-      mumbai: { name: "Social", detail: "Mumbai-first hospitality brand; listings, waitlist, and social proof run as a system." },
-      bengaluru: { name: "Truffles", detail: "Bengaluru favourite with maps dominance and always-on enquiry replies." },
-      hyderabad: { name: "Paradise", detail: "Hyderabad category leader with brand search, reviews, and table demand capture." },
-      other: { name: "a city-lead restaurant group", detail: "The local group that owns maps, reviews, and after-hours reservations in your category." }
-    },
-    wedding: {
-      delhi: { name: "The Wedding Designers", detail: "NCR planner brand with portfolio SEO, WhatsApp qualification, and review reels." },
-      mumbai: { name: "Wedniksha", detail: "Mumbai-facing wedding house with content velocity and lead-response SLAs." },
-      bengaluru: { name: "Weddings by Shutterdown", detail: "Bengaluru planner with strong Instagram capture and FAQ automation." },
-      hyderabad: { name: "Events n Celebrations", detail: "Hyderabad events brand with maps, packages, and fast WhatsApp close." },
-      other: { name: "the top-rated planner in your city", detail: "Whoever owns Google Pack and Instagram DMs for destination and city weddings near you." }
-    },
-    d2c: {
-      delhi: { name: "Mamaearth", detail: "NCR-born D2C machine: landing speed, reviews, and always-on chat conversion." },
-      mumbai: { name: "Bombay Shaving Company", detail: "Mumbai D2C brand with tight landing pages and review-led ads." },
-      bengaluru: { name: "Wakefit", detail: "Bengaluru D2C operator with site conversion, chat, and review loops at scale." },
-      hyderabad: { name: "a category Amazon/D2C leader", detail: "The brand that ranks, replies in-chat, and harvests reviews on every SKU." },
-      other: { name: "the category Amazon/D2C leader", detail: "Whoever already owns search, chat, and review velocity in your niche." }
-    }
-  };
-
-  const localPlayer = (answers) => {
-    const niche = LOCAL_PLAYERS[answers.businessType] || LOCAL_PLAYERS.d2c;
-    return niche[answers.city] || niche.other;
-  };
-
-  const METRIC_LABEL = {
-    website: "High-converting Smart Sites",
+  const SCORE_LABELS = {
+    design: "Design",
+    reviews: "Reviews",
+    automation: "Automation",
+    rankings: "Organic rankings",
+    website: "Website analysis",
+    seo: "SEO / AEO",
     social: "Social media",
-    automation: "WhatsApp Automation",
-    reviews: "Review Automation"
-  };
-  const METRIC_KEYS = ["website", "social", "automation", "reviews"];
-
-  const scoreWhy = (key, n, answers) => {
-    if (key === "website") {
-      if (answers.hasWebsite === "none" || answers.hasWebsite === "builder") return "Low because there is no converting Smart Site. Visitors leave without a next step.";
-      if (answers.hasWebsite === "weak") return "Mid because a site exists but it is slow or not built to capture intent.";
-      return "High because the site is current. The remaining gap is usually conversion and after-hours capture.";
-    }
-    if (key === "social") {
-      if (answers.social === "none" || answers.social === "dormant") return "Low because profiles are quiet. The local leader posts, replies, and converts DMs.";
-      if (answers.social === "weekly") return "Mid because posting is inconsistent, so Google and Instagram do not compound.";
-      return "High because you are already visible. The leak is usually DM response time, not content volume.";
-    }
-    if (key === "automation") {
-      if (answers.automation === "instant") return "High because someone (or a system) replies in minutes. This is what the local leader also does.";
-      if (answers.automation === "morning") return "Low-to-mid because night and lunch enquiries wait until morning. That is where they book the other clinic.";
-      return "Low because WhatsApp and chat are unanswered. The local leader never lets a message sit.";
-    }
-    if (n >= 75) return "High because reviews are requested as a habit, which feeds Maps ranking.";
-    if (n >= 50) return "Mid because staff ask sometimes. Volume drops the week the front desk is busy.";
-    return "Low because there is no review automation. Finished work is not turning into the next enquiry.";
+    overall: "Overall feedback"
   };
 
-  const competitorWhy = (key) => ({
-    website: "They run a fast Smart Site that talks to the visitor and captures the enquiry before a human is free.",
-    social: "They post on a calendar and reply to DMs from the same system that handles WhatsApp.",
-    automation: "After-hours messages get an answer in seconds, with need, timing and next step already captured.",
-    reviews: "Every completed visit triggers a review request. Maps ranking is a by-product, not a campaign."
-  }[key]);
-
-  const EMAILS = [
-    { day: 0, id: "e0", subject: "Your Webwise Digital Health Check is ready", body: "Your full Health Check is in this email and in the portal. We scored Smart Site, social, WhatsApp Automation and Review Automation against the top local player in your city. There is no download — this inbox is the copy of record." },
-    { day: 1, id: "e1", subject: "Case study: the clinic that stopped missing night enquiries", body: "I'M Dental went live with Smart Site + WhatsApp + reviews. After-hours implant enquiries now get a reply in seconds. Same system we just scored for you." },
-    { day: 3, id: "e2", subject: "What owners tell us after week two", body: "“We did not need more ads. We needed the system that never drops a lead.” — typical partner note. Your leak is still open until onboarding is finished." },
-    { day: 5, id: "e3", subject: "Your competitor pack (₹1,999) — 24-hour TAT", body: "See two domestic competitors + one global benchmark. Order from the report page. Delivery inside 24 hours of payment confirmation." },
-    { day: 7, id: "e4", subject: "72 hours left on the partner rate window", body: "DIY to rebuild website, chat, landing and reviews typically crosses ₹2L+ in vendor + staff cost. The bundled Client Acquisition System is ₹10,000 + GST / month at partner rate. Finish setup today." }
-  ];
-
-  const $ = (html) => {
-    const t = document.createElement("template");
-    t.innerHTML = html.trim();
-    return t.content;
-  };
   const esc = (v) => String(v ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
   const today = () => new Date().toLocaleDateString("en-IN", { day: "numeric", month: "long", year: "numeric" });
   const rupee = (n) => `₹${Number(n).toLocaleString("en-IN")}`;
   const route = () => (location.hash.replace(/^#/, "") || "/").split("?")[0];
   const go = (path) => { location.hash = path; };
+  const cloudOn = () => Boolean(window.WebwisePortal && WebwisePortal.enabled);
 
   const loadUsers = () => JSON.parse(localStorage.getItem(STORE_USERS) || "[]");
   const saveUsers = (u) => localStorage.setItem(STORE_USERS, JSON.stringify(u));
@@ -196,16 +49,48 @@
     if (cloudOn()) return WebwisePortal.saveAccount(acc);
     localStorage.setItem(storeKey(acc.userId), JSON.stringify(acc));
   };
-
   const bufToHex = (buf) => [...new Uint8Array(buf)].map((b) => b.toString(16).padStart(2, "0")).join("");
   const randomHex = (n = 16) => bufToHex(crypto.getRandomValues(new Uint8Array(n)));
-  const hashPass = async (pass, salt) => {
-    const data = new TextEncoder().encode(`${salt}:${pass}`);
-    return bufToHex(await crypto.subtle.digest("SHA-256", data));
-  };
+  const hashPass = async (pass, salt) => bufToHex(await crypto.subtle.digest("SHA-256", new TextEncoder().encode(`${salt}:${pass}`)));
   const otp6 = () => String(Math.floor(100000 + Math.random() * 900000));
 
-  const cloudOn = () => Boolean(window.WebwisePortal && WebwisePortal.enabled);
+  const emptyAccount = (user) => ({
+    userId: user.id,
+    createdAt: Date.now(),
+    stage: "health",
+    health: {
+      businessName: "", website: "", maps: "", category: "", ownerName: user.name || "",
+      seoInterest: false, includeSocial: false, scored: false, scores: null, at: ""
+    },
+    proposal: { viewed: false, at: "" },
+    payment: { status: "awaiting", method: "", paidAt: "", reminderAt: "", orderId: "" },
+    docs: { gst: null, aadhaar: null, website: "", privacy: null, metaAccess: "", at: "" },
+    tat: { startedAt: 0 },
+    design: { inspiration: "", guidelines: "", palette: "", logo: "", refs: "", submitted: false },
+    whatsapp: { templates: [], extraLogic: "", submitted: false },
+    reviews: { process: "", locations: "", gbp: "", submitted: false },
+    upsells: { seo: false, social: false, email: false, ivr: false }
+  });
+
+  const migrate = (user, acc) => {
+    const base = emptyAccount(user);
+    if (!acc) return base;
+    const payment = { ...base.payment, ...(acc.payment || {}) };
+    if (acc.approved && payment.status !== "paid") payment.status = "paid";
+    return {
+      ...base,
+      ...acc,
+      health: { ...base.health, ...(acc.health || {}) },
+      proposal: { ...base.proposal, ...(acc.proposal || {}) },
+      payment,
+      docs: { ...base.docs, ...(acc.docs || {}) },
+      tat: { ...base.tat, ...(acc.tat || {}) },
+      design: { ...base.design, ...(acc.design || {}) },
+      whatsapp: { ...base.whatsapp, ...(acc.whatsapp || {}) },
+      reviews: { ...base.reviews, ...(acc.reviews || {}) },
+      upsells: { ...base.upsells, ...(acc.upsells || {}) }
+    };
+  };
 
   const currentUser = () => {
     if (cloudOn()) return WebwisePortal.currentUser();
@@ -215,206 +100,87 @@
   };
 
   const ensureAccount = async (user) => {
-    if (cloudOn()) return WebwisePortal.loadAccount(user);
-    let acc = account(user.id);
-    if (!acc) {
-      acc = {
-        userId: user.id,
-        createdAt: Date.now(),
-        answers: {},
-        funnelIndex: 0,
-        stage: "funnel",
-        reportSent: false,
-        competitorOrder: null,
-        comparisonSeen: false,
-        approved: false,
-        onboarding: {
-          company: "", address: "", phone: "", email: user.email || "",
-          metaNumber: "", altNumber: "", website: "",
-          websiteType: "", designPref: "", logoName: "", refs: "", certs: "",
-          kyc: { aadhaar: null, gst: null, utility: null }
-        },
-        automation: { submitted: false, metaStatus: "pending", websiteOk: false },
-        reviewsMod: { process: "", locations: "" },
-        upsells: { social: null, emailAuto: null },
-        inbox: [],
-        nurtureArmed: false,
-        reportUnlocked: false
-      };
-      await saveAccount(acc);
-    }
-    if (acc.reportUnlocked == null) acc.reportUnlocked = false;
-    return acc;
+    let acc = cloudOn() ? await WebwisePortal.loadAccount(user) : account(user.id);
+    const next = migrate(user, acc);
+    if (!acc || !acc.health) await saveAccount(next);
+    return next;
   };
 
-  const completion = (user, acc) => {
-    const checks = [
-      !!user,
-      user && user.verified,
-      acc && Object.keys(acc.answers).length >= QUESTIONS.length,
-      acc && acc.reportSent,
-      acc && acc.comparisonSeen,
-      acc && acc.approved,
-      acc && onboardingPct(acc) === 100,
-      acc && acc.automation.submitted,
-      acc && acc.reviewsMod.process,
-      acc && acc.upsells.social != null && acc.upsells.emailAuto != null
-    ];
-    const done = checks.filter(Boolean).length;
-    return Math.round((done / checks.length) * 100);
-  };
-
-  const onboardingPct = (acc) => {
-    const o = acc.onboarding;
-    const need = ["company", "address", "phone", "email", "metaNumber", "altNumber", "website", "websiteType", "designPref"];
-    const filled = need.filter((k) => String(o[k] || "").trim()).length;
-    const kyc = ["aadhaar", "gst", "utility"].filter((k) => o.kyc[k]).length;
-    return Math.round(((filled + kyc) / (need.length + 3)) * 100);
-  };
-
-  const metricScore = (answers) => {
-    const map = {
-      website: { strong: 86, weak: 48, none: 22, builder: 34 },
-      social: { daily: 82, weekly: 61, dormant: 38, none: 18 },
-      landing: { smart: 88, landing: 74, multi: 58, unsure: 40, strong: 70, weak: 42, none: 20, builder: 28 },
-      automation: { instant: 90, morning: 44, missed: 24, none: 16 },
-      reviews: { auto: 88, manual: 52, rarely: 28, none: 18 }
+  const clamp5 = (n) => Math.max(1, Math.min(5, n));
+  const scoreHealth = (h) => {
+    const hasWeb = /^https?:\/\//i.test(h.website || "");
+    const hasMaps = (h.maps || "").length > 10;
+    const scores = {
+      design: hasWeb ? 3 : 1,
+      website: hasWeb ? 3 : 1,
+      reviews: hasMaps ? 3 : 2,
+      automation: 2,
+      rankings: hasWeb && hasMaps ? 3 : hasWeb ? 2 : 1
     };
-    const website = map.website[answers.hasWebsite] ?? 40;
-    const social = map.social[answers.social] ?? 40;
-    const landing = map.landing[answers.websiteType] ?? map.landing[answers.hasWebsite] ?? 40;
-    const automation = map.automation[answers.automation] ?? 40;
-    const reviews = map.reviews[answers.reviews] ?? 40;
-    const overall = Math.round((website + social + landing + automation + reviews) / 5);
-    return { website, social, landing, automation, reviews, overall };
+    if (h.seoInterest) scores.seo = hasWeb ? 2 : 1;
+    if (h.includeSocial) scores.social = 2;
+    const vals = Object.values(scores);
+    scores.overall = clamp5(Math.round(vals.reduce((a, b) => a + b, 0) / vals.length));
+    return scores;
   };
 
-  const competitorScores = (you) => ({
-    local: {
-      website: Math.min(96, you.website + 18),
-      social: Math.min(94, you.social + 16),
-      landing: Math.min(95, you.landing + 20),
-      automation: Math.min(97, you.automation + 28),
-      reviews: Math.min(94, you.reviews + 22)
-    },
-    global: { website: 92, social: 90, landing: 94, automation: 96, reviews: 91 }
-  });
-
-  const pill = (n) => n >= 75 ? "good" : n >= 50 ? "mid" : "bad";
-
-  const armNurture = async (acc) => {
-    if (acc.nurtureArmed) return;
-    acc.nurtureArmed = true;
-    acc.inbox = EMAILS.map((e) => ({
-      ...e,
-      sentAt: Date.now() + e.day * 86400000,
-      status: e.day === 0 ? "sent" : "queued"
-    }));
-    await saveAccount(acc);
-    if (cloudOn() && WebwisePortal.cfg.mail) {
-      try { await WebwisePortal.armNurture(); } catch (err) { console.warn(err); }
-    }
+  const whyScore = (key, n, h) => {
+    const name = h.businessName || "This business";
+    const map = {
+      design: n >= 4 ? "The look is already strong. We would tighten conversion, not start over." : n === 3 ? "The site exists but does not feel as sharp as the local leaders." : "There is no clear brand look online. First impressions are being lost.",
+      website: n >= 4 ? "The site is live and usable. Next step is capturing every visitor." : n === 3 ? "A website is live, but it is not built to convert after-hours visitors." : `${name} is hard to find as a proper website. People bounce to a competitor.`,
+      reviews: n >= 4 ? "Reviews are compounding. Keep the ask automatic." : n === 3 ? "Maps is present, but reviews are not requested as a habit." : "Google Maps is thin. Trust is being decided without you.",
+      automation: n >= 4 ? "Someone (or a system) replies fast. Keep it." : "Night and lunch messages wait. That is where bookings leak.",
+      rankings: n >= 4 ? "Search and Maps already work in your favour." : n === 3 ? "You appear, but not first. SEO/AEO can close that gap." : "People searching your category rarely land on you first.",
+      seo: n >= 3 ? "There is a base to rank. We would deepen pages and answers Google now prefers." : "Search and answer engines have almost nothing to rank. This is the first leak if you want inbound.",
+      social: n >= 3 ? "Profiles exist. DMs and posting still need a system." : "Social is quiet. Competitors own the scroll and the inbox.",
+      overall: n >= 4 ? "Solid base. The win is systems, not more ads." : n === 3 ? "Average online. A competitor who replies at 11pm will take the lead." : "The cost of waiting is lost enquiries every week. Fix the basics first."
+    };
+    return map[key] || "";
   };
 
-  const nav = (user) => `
-    <header class="topbar">
-      <div class="nav">
-        <a class="brand" href="/" aria-label="Webwise Digital home">
-          <img src="/webwise-logo.png" alt="Webwise Digital logo" />
-          <span class="brand-word">WEBWISE <span>DIGITAL</span></span>
-        </a>
-        <div class="nav-right">
-          <a class="hide-sm" href="/">Website</a>
-          ${user ? `<span class="live">Portal</span><a href="#/dashboard">${esc(user.name || user.email || user.phone)}</a><button class="btn btn-secondary" type="button" id="logoutBtn">Log out</button>` : `<a class="btn btn-primary" href="#/login">Client Login</a>`}
-        </div>
-      </div>
-    </header>`;
-
-  const progressBar = (user, acc, nowId) => {
-    const pct = completion(user, acc);
-    const visible = acc.approved ? STEPS : STEPS.filter((s) => !["onboarding","automation","reviews","growth","complete"].includes(s.id));
-    const reached = visible.findIndex((s) => s.id === nowId);
-    return `
-      <div class="progress-shell">
-        <div class="progress-meta"><span>${acc.approved ? "Onboarding completion" : "Your progress"}</span><b>${pct}%</b></div>
-        <div class="progress-track"><div class="progress-fill" style="width:${pct}%"></div></div>
-        <div class="steps">
-          ${visible.map((s, i) => `<span class="step-chip ${i < reached ? "done" : i === reached ? "now" : ""}">${esc(s.label)}</span>`).join("")}
-        </div>
-      </div>`;
+  const paid = (acc) => acc.payment.status === "paid";
+  const docsReady = (acc) => Boolean(acc.docs.gst && acc.docs.aadhaar && acc.docs.website && acc.docs.privacy && acc.docs.metaAccess);
+  const tatDaysLeft = (startedAt, total) => {
+    if (!startedAt) return total;
+    return Math.max(0, Math.ceil((startedAt + total * DAY - Date.now()) / DAY));
+  };
+  const tatPct = (startedAt, total) => {
+    if (!startedAt) return 0;
+    return Math.min(100, Math.round(((Date.now() - startedAt) / (total * DAY)) * 100));
   };
 
-  const shell = (user, inner) => `${nav(user)}<main class="wrap">${inner}</main><p class="footer-mini">Webwise Digital — Calm inside. Systems outside. · GST 07AFRPC8163L1ZX</p>`;
+  const unlocked = (acc, id) => {
+    if (id === "health") return true;
+    if (id === "proposal") return acc.health.scored;
+    if (id === "payment") return acc.proposal.viewed;
+    if (id === "onboarding") return paid(acc);
+    if (id === "approvals" || id === "automation" || id === "reviews") return paid(acc);
+    return true;
+  };
 
-  const renderReportHTML = (user, acc) => {
-    const a = acc.answers;
-    const scores = metricScore(a);
-    const comp = competitorScores(scores);
-    const player = localPlayer(a);
-    const q = QUESTIONS.find((x) => x.id === "businessType").a.find((x) => x.v === a.businessType);
-    const city = (QUESTIONS.find((x) => x.id === "city").a.find((x) => x.v === a.city) || {}).l || "your city";
-    const name = acc.onboarding.company || user.name || "Your business";
-    return `
-      <article class="ww-report" id="healthReport">
-        <div class="ww-r-top">
-          <div class="ww-r-brand"><img src="/webwise-logo.png" alt="" /><b>WEBWISE</b>&nbsp;<span>DIGITAL</span></div>
-          <div class="ww-r-from"><strong>Saurabh Chugh</strong>Founder, Webwise Digital<br>Dwarka, New Delhi<br>+91 87965 04200 · Saurabh@webwisedigital.net</div>
-        </div>
-        <div class="ww-r-banner">
-          <div class="kicker">Digital Health Check · One-Pager</div>
-          <h1>Client Acquisition System Health Check for ${esc(name)}</h1>
-          <p>Smart Site · Social · WhatsApp Automation · Review Automation</p>
-          <div class="ww-r-meta">Prepared for ${esc(user.name || user.email || "Client")} — ${esc(q ? q.l : "Business")} · ${esc(city)} | ${esc(today())} | Ref: WWD-HC-${esc(String(user.id).slice(0, 6).toUpperCase())}</div>
-        </div>
-        <p class="ww-r-quote">“You don’t need more marketing. You need a system that never misses a customer.”</p>
-        <div class="ww-r-body">
-          <div class="ww-r-sec">
-            <div class="ww-r-num">1</div>
-            <div>
-              <h2>You vs ${esc(player.name)}</h2>
-              <p><b>${esc(player.name)}</b> is the top local player we benchmark for ${esc(city)}. ${esc(player.detail)}</p>
-              ${METRIC_KEYS.map((k) => {
-                const gap = comp.local[k] - scores[k];
-                return `<div class="ww-r-card" style="margin-bottom:8px">
-                  <b>${METRIC_LABEL[k]} — you ${scores[k]} / ${player.name} ${comp.local[k]} ${gap > 0 ? "(gap −" + gap + ")" : "(on par)"}</b>
-                  <span><b>You:</b> ${esc(scoreWhy(k, scores[k], a))}<br><b>${esc(player.name)}:</b> ${esc(competitorWhy(k))}</span>
-                </div>`;
-              }).join("")}
-            </div>
-          </div>
-          <div class="ww-r-sec">
-            <div class="ww-r-num">2</div>
-            <div>
-              <h2>What this means</h2>
-              <div class="ww-r-cards">
-                <div class="ww-r-card"><b>Overall presence ${scores.overall}/100</b><span>The largest leaks are usually after-hours replies, inconsistent reviews and a site that does not capture intent.</span></div>
-                <div class="ww-r-card"><b>Website type: ${esc((QUESTIONS.find((x)=>x.id==="websiteType").a.find(x=>x.v===a.websiteType)||{}).l || "—")}</b><span>Design direction: ${esc((QUESTIONS.find((x)=>x.id==="designPref").a.find(x=>x.v===a.designPref)||{}).l || "—")}. Trust signals: ${esc((QUESTIONS.find((x)=>x.id==="certs").a.find(x=>x.v===a.certs)||{}).l || "—")}.</span></div>
-              </div>
-            </div>
-          </div>
-          <div class="ww-r-sec">
-            <div class="ww-r-num">3</div>
-            <div>
-              <h2>Partner system (if you proceed)</h2>
-              <div class="ww-r-invest">
-                <div>
-                  <div class="badge">LAUNCH PARTNER RATE</div>
-                  <div class="amt"><s>${rupee(PRICE.bundleList)}</s> ${rupee(PRICE.bundlePartner)} + GST / month</div>
-                </div>
-                <div style="font-size:13px;color:rgba(255,255,255,.8);text-align:right">90-day engagement<br>Billed monthly · No setup fee<br>Smart Site · WhatsApp · Reviews</div>
-              </div>
-              <div class="ww-r-bonus" style="margin-top:10px"><b>✦ Included bonuses — at no extra cost</b><br>Google Business Profile optimisation · Instagram, Facebook &amp; YouTube profile optimisation · Messaging &amp; positioning refinement</div>
-            </div>
-          </div>
-        </div>
-        <div class="ww-r-foot"><span>Webwise Digital — Calm inside. Systems outside.</span><span>Page 1 / 1</span></div>
-      </article>`;
+  const completion = (acc) => {
+    const checks = [
+      acc.health.scored,
+      acc.proposal.viewed,
+      paid(acc),
+      docsReady(acc),
+      acc.design.submitted,
+      acc.whatsapp.submitted,
+      acc.reviews.submitted
+    ];
+    return Math.round((checks.filter(Boolean).length / checks.length) * 100);
+  };
+
+  const startTat = (acc) => {
+    if (!docsReady(acc) || acc.tat.startedAt) return;
+    acc.tat.startedAt = Date.now();
+    acc.stage = "approvals";
   };
 
   const iconMail = '<svg class="ico" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="2"/><path d="m4 7 8 6 8-6" stroke="currentColor" stroke-width="2"/></svg>';
   const iconLock = '<svg class="ico" viewBox="0 0 24 24" fill="none"><rect x="5" y="10" width="14" height="10" rx="2" stroke="currentColor" stroke-width="2"/><path d="M8 10V8a4 4 0 0 1 8 0v2" stroke="currentColor" stroke-width="2"/></svg>';
   const googleMark = '<svg viewBox="0 0 24 24"><path fill="#4285F4" d="M23.5 12.3c0-.8-.1-1.6-.2-2.3H12v4.4h6.5c-.3 1.5-1.2 2.8-2.5 3.6v3h4c2.4-2.2 3.5-5.4 3.5-8.7z"/><path fill="#34A853" d="M12 24c3.2 0 6-1 7.9-2.9l-4-3.1c-1.1.7-2.5 1.2-3.9 1.2-3 0-5.6-2-6.5-4.8H1.3v3.1C3.2 21.3 7.3 24 12 24z"/><path fill="#FBBC05" d="M5.5 14.4A7.2 7.2 0 0 1 5.1 12c0-.8.1-1.6.4-2.4V6.5H1.3A12 12 0 0 0 0 12c0 1.9.5 3.8 1.3 5.5l4.2-3.1z"/><path fill="#EA4335" d="M12 4.8c1.8 0 3.4.6 4.6 1.8l3.5-3.5C18 1.1 15.2 0 12 0 7.3 0 3.2 2.7 1.3 6.5l4.2 3.1C6.4 6.8 9 4.8 12 4.8z"/></svg>';
-  const msMark = '<svg viewBox="0 0 24 24"><path fill="#F25022" d="M1 1h10v10H1z"/><path fill="#7FBA00" d="M13 1h10v10H13z"/><path fill="#00A4EF" d="M1 13h10v10H1z"/><path fill="#FFB900" d="M13 13h10v10H13z"/></svg>';
 
   const loginChrome = (cardInner) => `
     <div class="login-page">
@@ -423,126 +189,73 @@
           <img src="/webwise-logo.png" alt="Webwise Digital" />
           <span><b>WEBWISE DIGITAL</b><small>Systems that scale businesses</small></span>
         </a>
-        <a class="help-btn" href="https://wa.me/918796504200?text=Hi%20Webwise%2C%20I%20need%20help%20with%20client%20login." target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="none"><path d="M5 15v2a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3v-2M8 11a4 4 0 1 1 8 0M4 11h2M18 11h2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-          Need help?
-        </a>
+        <a class="help-btn" href="https://wa.me/918796504200?text=Hi%20Webwise%2C%20I%20need%20help%20with%20client%20login." target="_blank" rel="noopener">Need help?</a>
       </header>
       <div class="login-body">
         <div class="login-copy">
           <h1>Your Business. <span>Clearly Analyzed. Intelligently Optimized.</span></h1>
-          <p class="sub">Your secure client portal to access your Business Health Check Report, competitor insights and a roadmap to build systems that drive results.</p>
+          <p class="sub">A simple client portal: health check, proposal, payment, then we build the system with you.</p>
           <ul class="feat">
-            <li><i><svg viewBox="0 0 24 24" fill="none"><path d="M12 3 20 7v5c0 5-3.4 8-8 9-4.6-1-8-4-8-9V7l8-4z" stroke="currentColor" stroke-width="2"/><path d="m9 12 2 2 4-4" stroke="currentColor" stroke-width="2"/></svg></i><div><b>100% Secure &amp; Private</b><span>Your data is encrypted and always protected.</span></div></li>
-            <li><i><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="2"/><path d="M12 4v8l6 3" stroke="currentColor" stroke-width="2"/></svg></i><div><b>Data-Backed Insights</b><span>Actionable insights about your business and competitors.</span></div></li>
-            <li><i><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg></i><div><b>Clear Way Forward</b><span>Custom recommendations and systems to help you grow.</span></div></li>
-            <li><i><svg viewBox="0 0 24 24" fill="none"><path d="M13 2 4 14h7l-1 8 10-14h-7l0-6z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></i><div><b>Built for Results</b><span>Turn insights into action with powerful systems.</span></div></li>
+            <li><i>✓</i><div><b>100% Secure &amp; Private</b><span>Your data stays protected.</span></div></li>
+            <li><i>1–5</i><div><b>Clear scores, not jargon</b><span>A one-page health check you can actually read.</span></div></li>
+            <li><i>→</i><div><b>Then a simple path</b><span>Proposal → payment → onboarding. One stage at a time.</span></div></li>
           </ul>
-          <div class="lock-line"><svg viewBox="0 0 24 24" fill="none"><rect x="5" y="10" width="14" height="10" rx="2" stroke="currentColor" stroke-width="2"/><path d="M8 10V8a4 4 0 0 1 8 0v2" stroke="currentColor" stroke-width="2"/></svg> Enterprise grade security • Your data, always private.</div>
         </div>
         <div class="preview-stage" aria-hidden="true">
           <div class="preview-card">
-            <h3>Business Health Score</h3>
-            <div class="gauge-row">
-              <div class="gauge">
-                <svg viewBox="0 0 88 88"><circle cx="44" cy="44" r="34" stroke="#1b2430" stroke-width="8" fill="none"/><circle cx="44" cy="44" r="34" stroke="#29ABE2" stroke-width="8" fill="none" stroke-dasharray="154 214" stroke-linecap="round"/></svg>
-                <b>72</b>
-              </div>
-              <div class="gauge-copy"><small>Good</small><p>You're on the right track! Let's make it exceptional.</p></div>
-            </div>
+            <h3>Business Health Check</h3>
+            <p class="hint">Sample format — 1 to 5, one page.</p>
             <div class="bars">
-              <div class="bar">Visibility<i><em style="width:68%"></em></i>68</div>
-              <div class="bar">Engagement<i><em style="width:74%"></em></i>74</div>
-              <div class="bar">Reputation<i><em style="width:71%"></em></i>71</div>
-              <div class="bar">Conversions<i><em style="width:69%"></em></i>69</div>
+              <div class="bar">Design<i><em style="width:60%"></em></i>3</div>
+              <div class="bar">Reviews<i><em style="width:40%"></em></i>2</div>
+              <div class="bar">Automation<i><em style="width:40%"></em></i>2</div>
+              <div class="bar">Rankings<i><em style="width:40%"></em></i>2</div>
             </div>
-            <table class="mini-table">
-              <thead><tr><th>Competitor overview</th><th>You</th><th>A</th><th>B</th></tr></thead>
-              <tbody>
-                <tr><td>Website</td><td>72</td><td>88</td><td>81</td></tr>
-                <tr><td>Reviews</td><td>64</td><td>91</td><td>77</td></tr>
-                <tr><td>Automation</td><td>41</td><td>86</td><td>70</td></tr>
-              </tbody>
-            </table>
-            <ul class="checks"><li>Improve local visibility</li><li>Increase customer engagement</li><li>Close after-hours reply gaps</li></ul>
             <div class="preview-cta"><span>Build. Automate. Scale.</span><span>→</span></div>
           </div>
         </div>
         ${cardInner}
       </div>
-      <footer class="login-foot">
-        <span>
-          <span>Trusted by 100+ businesses</span>
-          <span>Actionable. Practical. Profitable.</span>
-          <span>Systems that drive real results.</span>
-        </span>
-        <span>© Webwise Digital. All rights reserved.</span>
-      </footer>
-    </div>`;
-
-  const ssoButtons = `
-    <div class="or">or continue with</div>
-    <div class="sso">
-      <button type="button" id="googleBtn">${googleMark} Continue with Google</button>
+      <footer class="login-foot"><span>Trusted by 100+ businesses</span><span>© Webwise Digital</span></footer>
     </div>`;
 
   const googleSetupHint = () => {
     const cb = cloudOn() && window.WebwisePortal?.googleCallbackUri?.();
     if (!cb) return "";
-    return `<p class="hint" id="googleUriHint">If Google says <b>redirect_uri_mismatch</b>, open Google Cloud → APIs &amp; Services → Credentials → the <b>Web application</b> client (not Branding). Under <b>Authorized redirect URIs</b> add this exact URL, then save and wait a minute:<br><code style="display:block;margin-top:8px;word-break:break-all">${esc(cb)}</code></p>`;
+    return `<p class="hint">If Google says redirect_uri_mismatch, add this to the Web client Authorized redirect URIs:<br><code>${esc(cb)}</code></p>`;
   };
 
   const viewLogin = (mode = "login") => {
     const isLogin = mode === "login";
-    const card = `
+    return loginChrome(`
       <aside class="login-card">
         <div class="login-card-head">
-          <div class="shield" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" width="20" height="20"><path d="M12 3 20 7v5c0 5-3.4 8-8 9-4.6-1-8-4-8-9V7l8-4z" stroke="currentColor" stroke-width="2"/><path d="M8 12v-1a4 4 0 0 1 8 0v1" stroke="currentColor" stroke-width="2"/><rect x="9" y="12" width="6" height="5" rx="1" stroke="currentColor" stroke-width="2"/></svg></div>
+          <div class="shield">${googleMark}</div>
           <div>
-            <h2>${isLogin ? "Welcome Back!" : "Get your Health Check"}</h2>
-            <p>${isLogin ? "Log in to access your Business Health Check Report and unlock growth opportunities." : "Create your portal account. We email the full report after you verify this address."}</p>
+            <h2>${isLogin ? "Welcome back" : "Get your Health Check"}</h2>
+            <p>${isLogin ? "Log in to your portal." : "Create an account. We email the report after you confirm this address."}</p>
           </div>
         </div>
-        <form id="emailForm" autocomplete="on">
+        <form id="emailForm">
           ${isLogin ? "" : `<div class="field"><label>Full name <span class="req">*</span></label><div class="ico-field"><input name="name" required placeholder="Your name" /></div></div>`}
-          <div class="field"><label>Work Email</label><div class="ico-field">${iconMail}<input name="email" type="email" required placeholder="you@business.com" /></div></div>
-          <div class="field"><label>Password</label><div class="ico-field">${iconLock}<input id="passInput" name="password" type="password" minlength="8" required placeholder="${isLogin ? "Enter your password" : "Min 8 characters"}" /><button class="eye" type="button" id="togglePass" aria-label="Show password">◉</button></div></div>
-          ${isLogin ? `<div class="forgot"><a href="#/forgot">Forgot password?</a></div>` : `<div class="field"><label>Phone (optional)</label><input name="phone" placeholder="10-digit mobile" /></div><p class="hint">By continuing you agree to the <a href="/terms-of-service/" target="_blank" rel="noopener">Terms of Service</a> and <a href="/privacy-policy/" target="_blank" rel="noopener">Privacy Policy</a>.</p>`}
+          <div class="field"><label>Work email</label><div class="ico-field">${iconMail}<input name="email" type="email" required placeholder="you@business.com" /></div></div>
+          <div class="field"><label>Password</label><div class="ico-field">${iconLock}<input id="passInput" name="password" type="password" minlength="8" required /><button class="eye" type="button" id="togglePass" aria-label="Show password">◉</button></div></div>
+          ${isLogin ? `<div class="forgot"><a href="#/forgot">Forgot password?</a></div>` : `<p class="hint">By continuing you agree to the <a href="/terms-of-service/" target="_blank" rel="noopener">Terms of Service</a>.</p>`}
           <p class="error hidden" id="authErr"></p>
           <button class="btn-login" type="submit">${isLogin ? "Log in" : "Yes, give me my Business Health Check Report"}</button>
         </form>
-        ${ssoButtons}
+        <div class="or">or continue with</div>
+        <div class="sso"><button type="button" id="googleBtn">${googleMark} Continue with Google</button></div>
         ${googleSetupHint()}
         ${isLogin ? `<p class="hint" style="margin-top:12px">By continuing you agree to the <a href="/terms-of-service/" target="_blank" rel="noopener">Terms of Service</a>.</p>` : ""}
-        <p class="switch">${isLogin ? `New to Webwise Digital? <a href="#/signup">Get your Business Health Check →</a>` : `Already have an account? <a href="#/login">Log in</a>`}</p>
-      </aside>`;
-    return loginChrome(card);
+        <p class="switch">${isLogin ? `New here? <a href="#/signup">Get your Health Check →</a>` : `Already have an account? <a href="#/login">Log in</a>`}</p>
+      </aside>`);
   };
-
-  const viewVerify = (user) => loginChrome(`
-    <aside class="login-card">
-      <div class="login-card-head">
-        <div class="shield"><svg viewBox="0 0 24 24" fill="none" width="20" height="20"><rect x="5" y="10" width="14" height="10" rx="2" stroke="currentColor" stroke-width="2"/><path d="M8 10V8a4 4 0 0 1 8 0v2" stroke="currentColor" stroke-width="2"/></svg></div>
-        <div><h2>Confirm it's you</h2><p>Enter the 6-digit code sent to ${esc(user.email || ("+91 " + user.phone))}.</p></div>
-      </div>
-      <p class="note">Demo verification code: <b>${esc(user.pendingCode)}</b></p>
-      <form id="verifyForm">
-        <div class="field"><label>Confirmation code</label><input name="code" inputmode="numeric" maxlength="6" required placeholder="000000" /></div>
-        <p class="error hidden" id="verErr"></p>
-        <button class="btn-login" type="submit">Verify &amp; continue</button>
-      </form>
-    </aside>`);
 
   const viewSso = () => loginChrome(`
     <aside class="login-card">
-      <div class="login-card-head">
-        <div class="shield">${googleMark}</div>
-        <div>
-          <h2>Continue with Google</h2>
-          <p>Opening Google so you can choose an account. We never collect your Google password on this page.</p>
-        </div>
-      </div>
-      <p class="hint">By continuing you agree to the <a href="/terms-of-service/" target="_blank" rel="noopener">Terms of Service</a>.</p>
+      <h2>Continue with Google</h2>
+      <p class="hint">Opening Google so you can choose an account.</p>
       ${googleSetupHint()}
       <p class="error hidden" id="authErr"></p>
       <button class="btn-login" type="button" id="startGoogle">Continue to Google</button>
@@ -551,378 +264,299 @@
 
   const viewForgot = () => loginChrome(`
     <aside class="login-card">
-      <div class="login-card-head">
-        <div class="shield">${iconLock.replace('class="ico"','width="18" height="18"')}</div>
-        <div><h2>Reset password</h2><p>Enter the work email on your portal account. A demo reset code is shown until transactional email is connected.</p></div>
-      </div>
+      <h2>Reset password</h2>
       <form id="forgotForm">
-        <div class="field"><label>Work Email</label><div class="ico-field">${iconMail}<input name="email" type="email" required placeholder="you@business.com" /></div></div>
+        <div class="field"><label>Work email</label><input name="email" type="email" required /></div>
         <p class="error hidden" id="authErr"></p>
         <button class="btn-login" type="submit">Send reset code</button>
       </form>
       <p class="switch"><a href="#/login">Back to login</a></p>
     </aside>`);
 
-  const viewFunnel = (user, acc) => {
-    const i = acc.funnelIndex;
-    const q = QUESTIONS[i];
-    if (!q) { go("/sample"); return ""; }
-    return shell(user, `
-      ${progressBar(user, acc, "funnel")}
-      <div class="eyebrow">Lead capture · ${i + 1} / ${QUESTIONS.length}</div>
-      <h1 class="quiz-q">${esc(q.q)}</h1>
-      <p class="quiz-h">${esc(q.h)}</p>
-      <div class="card">
-        <div class="options">
-          ${q.a.map((opt) => `<button class="option" type="button" data-qid="${q.id}" data-val="${esc(opt.v)}"><span><b>${esc(opt.l)}</b><span>${esc(opt.d)}</span></span><span class="option-arrow">→</span></button>`).join("")}
-        </div>
-        ${i > 0 ? `<div class="actions"><button class="btn btn-secondary" type="button" id="quizBack">← Back</button></div>` : ""}
+  const viewVerify = (user) => loginChrome(`
+    <aside class="login-card">
+      <h2>Confirm it's you</h2>
+      <p class="hint">Code sent to ${esc(user.email)}. Demo code: <b>${esc(user.pendingCode)}</b></p>
+      <form id="verifyForm">
+        <div class="field"><label>Code</label><input name="code" maxlength="6" required /></div>
+        <p class="error hidden" id="verErr"></p>
+        <button class="btn-login" type="submit">Verify</button>
+      </form>
+    </aside>`);
+
+  const viewCheckInbox = (email) => loginChrome(`
+    <aside class="login-card">
+      <h2>Check your email</h2>
+      <p>We sent a confirmation link to ${esc(email)}.</p>
+      <p class="switch"><a href="#/login">Back to login</a></p>
+    </aside>`);
+
+  const nav = (user) => `
+    <header class="topbar"><div class="nav">
+      <a class="brand" href="/"><img src="/webwise-logo.png" alt="" /><span class="brand-word">WEBWISE <span>DIGITAL</span></span></a>
+      <div class="nav-right">
+        <a class="hide-sm" href="/">Website</a>
+        <span class="live">Portal</span>
+        <a href="#/dashboard">${esc(user.name || user.email)}</a>
+        <button class="btn btn-secondary" type="button" id="logoutBtn">Log out</button>
+      </div>
+    </div></header>`;
+
+  const progressBar = (acc, nowId) => {
+    const pct = completion(acc);
+    const reached = SECTIONS.findIndex((s) => s.id === nowId);
+    return `<div class="progress-shell">
+      <div class="progress-meta"><span>Your progress</span><b>${pct}%</b></div>
+      <div class="progress-track"><div class="progress-fill" style="width:${pct}%"></div></div>
+      <div class="steps">${SECTIONS.map((s, i) => `<span class="step-chip ${i < reached ? "done" : i === reached ? "now" : ""}">${esc(s.label)}</span>`).join("")}</div>
+    </div>`;
+  };
+
+  const side = (acc, now) => `
+    <aside class="side">
+      <p class="live">Your workspace</p>
+      <a href="#/dashboard" class="${now === "dashboard" ? "on" : ""}">Dashboard</a>
+      ${SECTIONS.map((s) => {
+        const open = unlocked(acc, s.id);
+        return `<a href="#${s.path}" class="${now === s.id ? "on" : ""} ${open ? "" : "locked"}">${esc(s.label)}</a>`;
+      }).join("")}
+    </aside>`;
+
+  const shell = (user, acc, now, inner) => `${nav(user)}<main class="wrap"><div class="dash">${side(acc, now)}<div>${progressBar(acc, now)}${inner}</div></div></main><p class="footer-mini">Webwise Digital — Calm inside. Systems outside.</p>`;
+
+  const lockView = (user, acc, now, title, need) => shell(user, acc, now, `
+    <p class="eyebrow">${esc(title)}</p>
+    <h1>This step opens next.</h1>
+    <p class="lock-note">${esc(need)}</p>
+    <div class="actions"><a class="btn btn-primary" href="#/dashboard">Back to dashboard</a></div>`);
+
+  const pips = (n) => `<span class="pips">${[1, 2, 3, 4, 5].map((i) => {
+    const on = i <= n ? (n <= 2 ? "low" : n <= 3 ? "mid" : "on") : "";
+    return `<i class="pip ${on}"></i>`;
+  }).join("")}</span>`;
+
+  const viewDash = (user, acc) => {
+    const start = acc.tat.startedAt;
+    return shell(user, acc, "dashboard", `
+      <p class="eyebrow">Dashboard</p>
+      <h1>Where things <span>stand.</span></h1>
+      <p class="lead">One screen. No maze. Finish the open item, then the next section unlocks.</p>
+      <div class="metric-grid">
+        <div class="metric"><div class="k">Health check</div><div class="v ${acc.health.scored ? "good" : "warn"}">${acc.health.scored ? "Ready" : "Open"}</div></div>
+        <div class="metric"><div class="k">Proposal</div><div class="v">${acc.proposal.viewed ? "Seen" : "—"}</div></div>
+        <div class="metric"><div class="k">Payment</div><div class="v ${paid(acc) ? "good" : "warn"}">${paid(acc) ? "Paid" : "Waiting"}</div></div>
+        <div class="metric"><div class="k">Documents</div><div class="v">${docsReady(acc) ? "In" : "Needed"}</div></div>
+        <div class="metric"><div class="k">Build clock</div><div class="v">${start ? "Running" : "—"}</div></div>
+      </div>
+      ${start ? `<div class="tat-grid" style="margin-top:16px">
+        <div class="tat-card"><h3>Smart Site</h3><div class="days">${tatDaysLeft(start, 14)}d</div><p class="hint">14-day TAT · ${tatPct(start, 14)}%</p><div class="progress-track"><div class="progress-fill" style="width:${tatPct(start, 14)}%"></div></div></div>
+        <div class="tat-card"><h3>WhatsApp Automation</h3><div class="days">${tatDaysLeft(start, 21)}d</div><p class="hint">21-day TAT · ${tatPct(start, 21)}%</p><div class="progress-track"><div class="progress-fill" style="width:${tatPct(start, 21)}%"></div></div></div>
+        <div class="tat-card"><h3>Other services</h3><div class="days">${tatDaysLeft(start, 14)}d</div><p class="hint">14-day TAT · ${tatPct(start, 14)}%</p><div class="progress-track"><div class="progress-fill" style="width:${tatPct(start, 14)}%"></div></div></div>
+      </div>` : ""}
+      <div class="actions">
+        <a class="btn btn-primary" href="#/${!acc.health.scored ? "health" : !acc.proposal.viewed ? "proposal" : !paid(acc) ? "payment" : !docsReady(acc) ? "onboarding" : !acc.design.submitted ? "approvals" : !acc.whatsapp.submitted ? "automation" : "reviews"}">Continue →</a>
       </div>`);
   };
 
-  const viewSample = (user, acc) => {
-    if (Object.keys(acc.answers || {}).length < QUESTIONS.length) { go("/funnel"); return "<p class='lead'>Opening the health quiz…</p>"; }
-    if (acc.reportUnlocked) { go("/report"); return "<p class='lead'>Opening your report…</p>"; }
-    const player = localPlayer(acc.answers);
-    return shell(user, `
-      ${progressBar(user, acc, "report")}
-      <div class="eyebrow">Sample format</div>
-      <h1>This is how your <span>Health Check</span> reads.</h1>
-      <p class="lead">Scores, the named local player, and the why-behind-each-number. The full report is emailed only after this address is verified.</p>
-      <div class="card" style="opacity:.88; pointer-events:none; filter:grayscale(.15)">
-        <p class="hint">Sample layout — not your full scored report.</p>
-        <h3>You vs ${esc(player.name)}</h3>
-        <p>${esc(player.detail)}</p>
-        <div class="metric-grid">
-          ${METRIC_KEYS.map((k) => `<div class="metric"><div class="k">${METRIC_LABEL[k]}</div><div class="v">—</div><small>Why it's high or low, in plain language</small></div>`).join("")}
-        </div>
-      </div>
-      <div class="card" style="margin-top:16px">
-        <h3>Email me the full report</h3>
-        <p class="hint">We'll send it to a verified inbox. You can go back and change answers first.</p>
-        <form id="unlockReport">
-          <div class="field"><label>Work email</label><input name="email" type="email" required value="${esc(user.email || "")}" placeholder="you@business.com" ${user.email ? "readonly" : ""} /></div>
-          ${user.verified ? `<p class="hint">We'll send the full report to this verified address only.</p>` : `<p class="hint">Enter the code we sent to this address to unlock the full report.</p>
-          <div class="field"><label>Verification code</label><input name="code" inputmode="numeric" maxlength="6" placeholder="000000" /></div>`}
-          <p class="error hidden" id="authErr"></p>
-          <div class="actions">
-            <button class="btn btn-primary" type="submit">Email my full Health Check</button>
-            <button class="btn btn-secondary" type="button" id="quizBack">← Update my answers</button>
+  const viewHealth = (user, acc) => {
+    const h = acc.health;
+    if (h.scored) return viewReport(user, acc);
+    return shell(user, acc, "health", `
+      <p class="eyebrow">Health Check · before we meet</p>
+      <h1>Five facts. <span>One page.</span></h1>
+      <p class="lead">Business name, website, Google Maps, category, owner. We score 1–5. No long quiz.</p>
+      <div class="card">
+        <form id="healthForm">
+          <div class="field"><label>Business name <span class="req">*</span></label><input name="businessName" required value="${esc(h.businessName)}" /></div>
+          <div class="field"><label>Owner name <span class="req">*</span></label><input name="ownerName" required value="${esc(h.ownerName)}" /></div>
+          <div class="field"><label>Website</label><input name="website" type="url" placeholder="https://" value="${esc(h.website)}" /></div>
+          <div class="field"><label>Google Maps link</label><input name="maps" placeholder="https://maps.google.com/..." value="${esc(h.maps)}" /></div>
+          <div class="field"><label>Category <span class="req">*</span></label>
+            <select name="category" required>${CATEGORIES.map((c) => `<option ${h.category === c ? "selected" : ""}>${c}</option>`).join("")}</select>
           </div>
+          <label class="check"><input type="checkbox" name="seoInterest" ${h.seoInterest ? "checked" : ""} /><span>I also care about showing up on Google / AI answers (SEO &amp; AEO)</span></label>
+          <label class="check"><input type="checkbox" name="includeSocial" ${h.includeSocial ? "checked" : ""} /><span>Include social media presence in this report</span></label>
+          <div class="actions"><button class="btn btn-primary" type="submit">Build my one-pager →</button></div>
         </form>
       </div>`);
   };
 
+  const scoreRows = (h) => {
+    const keys = ["design", "reviews", "automation", "rankings", "website"];
+    if (h.seoInterest) keys.push("seo");
+    if (h.includeSocial) keys.push("social");
+    keys.push("overall");
+    return `<div class="score-5">${keys.map((k) => {
+      const n = h.scores[k];
+      return `<div class="score-row"><b>${SCORE_LABELS[k]}</b>${pips(n)}<span class="score-n">${n}/5</span><p class="score-why">${esc(whyScore(k, n, h))}</p></div>`;
+    }).join("")}</div>`;
+  };
+
   const viewReport = (user, acc) => {
-    if (!acc.reportUnlocked) { go("/sample"); return "<p class='lead'>Opening the sample…</p>"; }
-    const scores = metricScore(acc.answers);
-    const player = localPlayer(acc.answers);
-    return shell(user, `
-      ${progressBar(user, acc, "report")}
-      <div class="eyebrow">Health check report</div>
-      <h1>Your digital presence, <span>one page.</span></h1>
-      <p class="lead">Benchmark vs <b>${esc(player.name)}</b>. The full report is on its way to ${esc(user.email)}. No download — email only.</p>
-      <div class="metric-grid">
-        ${METRIC_KEYS.map((k) => `<div class="metric"><div class="k">${METRIC_LABEL[k]}</div><div class="v ${pill(scores[k])==="good"?"good":pill(scores[k])==="mid"?"warn":"bad"}">${scores[k]}</div><small>${esc(scoreWhy(k, scores[k], acc.answers))}</small></div>`).join("")}
+    const h = acc.health;
+    return shell(user, acc, "health", `
+      <p class="eyebrow">Health Check Report</p>
+      <h1>${esc(h.businessName)} · <span>one page</span></h1>
+      <p class="lead">Prepared for ${esc(h.ownerName)} · ${esc(h.category)} · ${esc(h.at || today())}. Scores are 1 (weak) to 5 (strong).</p>
+      <article class="ww-report" id="healthReport">
+        <div class="ww-r-top">
+          <div class="ww-r-brand"><img src="/webwise-logo.png" alt="" /><b>WEBWISE</b>&nbsp;<span>DIGITAL</span></div>
+          <div class="ww-r-from"><strong>Saurabh Chugh</strong>Founder, Webwise Digital</div>
+        </div>
+        <div class="ww-r-banner">
+          <div class="kicker">Pre-meeting Health Check</div>
+          <h1>${esc(h.businessName)}</h1>
+          <p>${esc(h.website || "No website listed")} · ${esc(h.category)}</p>
+        </div>
+        <div class="ww-r-body">${scoreRows(h)}</div>
+        <div class="ww-r-foot"><span>Calm inside. Systems outside.</span><span>Email copy of record</span></div>
+      </article>
+      <div class="actions">
+        <button class="btn btn-secondary" type="button" id="editHealth">Update details</button>
+        <a class="btn btn-primary" href="#/proposal">I’m interested — show me the proposal →</a>
+      </div>`);
+  };
+
+  const viewProposal = (user, acc) => {
+    if (!unlocked(acc, "proposal")) return lockView(user, acc, "proposal", "Proposal", "Finish the health check first.");
+    const name = acc.health.businessName || "your business";
+    return shell(user, acc, "proposal", `
+      <p class="eyebrow">Proposal</p>
+      <h1>What we would <span>run for you.</span></h1>
+      <p class="lead">Plain language. What you get, what it costs, what you lose by waiting.</p>
+      <div class="result-cards">
+        <div class="result-card"><p class="before">Before</p><p>Night messages sit until morning. Reviews asked “when we remember”. Site looks live but does not convert.</p></div>
+        <div class="result-card"><p class="after">After</p><p>Reply in seconds. Review link after every visit. Smart Site that talks to the visitor. Same system we run on our own work.</p></div>
       </div>
-      ${renderReportHTML(user, acc)}
-      <div class="upsell">
-        <div class="tat">24-hour TAT after payment</div>
-        <h3>I want to know more competitors — ${rupee(PRICE.competitorPack)}</h3>
-        <p>Unlock 2 more local competitors + 1 global name, scored on the same metrics. Delivered by email inside 24 hours.</p>
-        <div class="price">${rupee(PRICE.competitorPack)}</div>
-        <div class="actions">
-          <button class="btn btn-primary" type="button" id="orderComp">I want to know more competitors →</button>
-          <a class="btn btn-secondary" href="#/compare">I'll do it all by myself</a>
-        </div>
-      </div>`);
-  };
-
-  const viewCompetitors = (user, acc) => {
-    const scores = metricScore(acc.answers);
-    const c = competitorScores(scores);
-    const player = localPlayer(acc.answers);
-    const paid = !!acc.competitorOrder;
-    return shell(user, `
-      ${progressBar(user, acc, "offer")}
-      <div class="eyebrow">More competitors</div>
-      <h1>${paid ? "We'll send the pack." : "I want to know <span>more competitors.</span>"}</h1>
-      <p class="lead">${paid ? "24-hour TAT. Named local players land in your email." : `₹1,999 · 2 more local names plus 1 global, vs ${esc(player.name)}.`}</p>
-      <div class="card">
-        ${paid ? `<p class="note">Order ${esc(acc.competitorOrder.id)} · ${esc(acc.competitorOrder.at)} · Status: <b>In production — 24h TAT</b></p>` : ""}
-        <table class="ww-r-table dark">
-          <thead><tr><th>Metric</th><th>You</th><th>Domestic A</th><th>Domestic B</th><th>Global</th></tr></thead>
-          <tbody>
-            ${METRIC_KEYS.map((k) => `<tr>
-              <td>${METRIC_LABEL[k]}</td>
-              <td>${scores[k]}</td>
-              <td>${paid ? c.local[k] : "••••"}</td>
-              <td>${paid ? Math.min(99, c.local[k] - 4) : "••••"}</td>
-              <td>${paid ? c.global[k] : "••••"}</td>
-            </tr>`).join("")}
-          </tbody>
-        </table>
-        <p class="hint">Lead local name: ${esc(player.name)}. ${esc(player.detail)}</p>
-        ${paid ? `<div class="actions"><a class="btn btn-primary" href="#/compare">See the cost of doing it yourself →</a></div>` : `<div class="actions"><button class="btn btn-primary" id="payComp" type="button">I want to know more competitors · ${rupee(PRICE.competitorPack)}</button><a class="btn btn-secondary" href="#/compare">I'll do it all by myself</a></div>`}
-      </div>`);
-  };
-
-  const viewCompare = (user, acc) => {
-    const diy = Object.values(PRICE.diy).reduce((s, n) => s + n, 0);
-    const year = PRICE.bundlePartner * 12;
-    const yearGst = Math.round(year * (1 + GST));
-    const save = diy - yearGst;
-    return shell(user, `
-      ${progressBar(user, acc, "offer")}
-      <div class="eyebrow">Investment</div>
-      <h1>Cost of doing it <span>yourself</span> vs with Webwise.</h1>
-      <p class="lead">Year-1 cash if you hire vendors and two people, versus the Client Acquisition System partner rate.</p>
-      <div class="compare">
-        <div class="col">
-          <div class="eyebrow">Cost of doing it yourself</div>
-          <h2>${rupee(diy)}</h2>
-          <p class="hint">Typical first-year spend</p>
-          <ul>
-            <li>High-converting Smart Sites ${rupee(PRICE.diy.website)}</li>
-            <li>WhatsApp Automation ${rupee(PRICE.diy.whatsapp)}</li>
-            <li>Review Automation ${rupee(PRICE.diy.reviews)}</li>
-            <li>Salary of your team of 2 who'd manage all this ${rupee(PRICE.diy.staff)}</li>
-          </ul>
-        </div>
-        <div class="col win">
-          <div class="eyebrow">Cost of doing it with Webwise</div>
-          <p class="strike">${rupee(PRICE.bundleList)} / mo list</p>
-          <h2>${rupee(PRICE.bundlePartner)} + GST / mo</h2>
-          <p class="hint">12 months ≈ ${rupee(yearGst)} incl. GST</p>
-          <div class="save">${rupee(Math.max(0, save))} saved</div>
-          <p style="color:var(--teal);font-weight:800">Green = what you keep.</p>
-          <ul>
-            <li>High-converting Smart Site</li>
-            <li>WhatsApp Automation</li>
-            <li>Review Automation + GBP bonus</li>
-            <li>No setup fee · 90-day engagement</li>
-          </ul>
-        </div>
+      <div class="card" style="margin-top:16px">
+        <h2>Included</h2>
+        <ul>
+          <li>High-converting Smart Site</li>
+          <li>WhatsApp Automation</li>
+          <li>Review &amp; Reputation (GBP included)</li>
+        </ul>
+        <h2>Bonuses</h2>
+        <p>Google Business Profile, social profile tidy-up, message positioning — no extra fee.</p>
+        <h2>Optional add-ons</h2>
+        <p>SEO / AEO · Social media automation · Email automation · IVR / voice calling</p>
+        <p class="strike">${rupee(PRICE.list)} / month list</p>
+        <p class="price">${rupee(PRICE.partner)} + GST / month</p>
+        <p class="hint">First year at partner rate ≈ ${rupee(PARTNER_GST * 12)} including GST. Doing this with two hires and vendors typically crosses ₹2L.</p>
+        <div class="note"><b>Cost of waiting:</b> every unanswered night lead is a booking ${esc(name)} does not get. Ads cannot fix a closed inbox.</div>
       </div>
       <div class="actions">
-        <button class="btn btn-teal" type="button" id="approveBtn">Please handle everything for me →</button>
-        <a class="btn btn-secondary" href="#/nurture">I'll handle everything on my own</a>
+        <a class="btn btn-primary" href="#/payment">Yes, I want this — go to payment →</a>
+        <a class="btn btn-secondary" href="#/health">Back to report</a>
       </div>`);
   };
 
-  const viewNurture = (user, acc) => shell(user, `
-    ${progressBar(user, acc, "offer")}
-    <div class="eyebrow">You're in control</div>
-    <h1>We'll send the report. <span>You decide the next step.</span></h1>
-    <p class="lead">If you want us to build the system later, come back to this portal. Nothing is locked.</p>
-    <div class="card">
-      <p>Your Health Check is on ${esc(user.email || "your email")}. When you're ready, we can still handle Smart Site, WhatsApp and reviews for you.</p>
-      <div class="actions">
-        <a class="btn btn-primary" href="#/compare">Please handle everything for me</a>
-        <a class="btn btn-secondary" href="#/dashboard">Back to my portal</a>
+  const viewPayment = (user, acc) => {
+    if (!unlocked(acc, "payment")) return lockView(user, acc, "payment", "Payment", "Open the proposal first.");
+    if (paid(acc)) {
+      return shell(user, acc, "payment", `
+        <p class="eyebrow">Payment</p>
+        <h1>Payment <span>received.</span></h1>
+        <p class="lead">Onboarding is open. Upload documents so the build clock can start.</p>
+        <div class="actions"><a class="btn btn-primary" href="#/onboarding">Go to onboarding →</a></div>`);
+    }
+    return shell(user, acc, "payment", `
+      <p class="eyebrow">Payment</p>
+      <h1>Confirm and we <span>start.</span></h1>
+      <p class="lead">${rupee(PRICE.partner)} + GST / month (${rupee(PARTNER_GST)} this invoice). UPI, card or net banking.</p>
+      <div class="pay-opts">
+        <div class="pay-opt on">UPI</div>
+        <div class="pay-opt on">Card</div>
+        <div class="pay-opt on">Net banking</div>
       </div>
-    </div>`);
+      ${acc.payment.reminderAt ? `<p class="note">Reminder marked ${esc(acc.payment.reminderAt)}. We’ll nudge this inbox if payment is still open.</p>` : ""}
+      <div class="actions">
+        <button class="btn btn-primary" type="button" id="payNow">Pay ${rupee(PARTNER_GST)} →</button>
+        <button class="btn btn-secondary" type="button" id="payRemind">Remind me tomorrow</button>
+      </div>`);
+  };
 
   const viewOnboarding = (user, acc) => {
-    const o = acc.onboarding;
-    const pct = onboardingPct(acc);
-    return shell(user, `
-      ${progressBar(user, acc, "onboarding")}
-      <div class="eyebrow">Post-approval handover</div>
-      <h1>Tell us what we need <span>to go live.</span></h1>
-      <p class="lead">Required company, KYC and build preferences. Handover pack ${pct}% complete.</p>
+    if (!unlocked(acc, "onboarding")) return lockView(user, acc, "onboarding", "Onboarding", "Payment comes first.");
+    const d = acc.docs;
+    return shell(user, acc, "onboarding", `
+      <p class="eyebrow">Onboarding</p>
+      <h1>Documents we <span>need.</span></h1>
+      <p class="lead">GST, Aadhaar, live website, privacy policy, Meta access. When these are in, the 14 / 21 day clocks start.</p>
       <div class="card">
-        <form id="onboardForm">
-          <div class="field"><label>Company name <span class="req">*</span></label><input name="company" required value="${esc(o.company)}" /></div>
-          <div class="field"><label>Registered address <span class="req">*</span></label><textarea name="address" required>${esc(o.address)}</textarea></div>
-          <div class="field"><label>Phone <span class="req">*</span></label><input name="phone" required value="${esc(o.phone || user.phone || "")}" /></div>
-          <div class="field"><label>Email <span class="req">*</span></label><input name="email" type="email" required value="${esc(o.email)}" /></div>
-          <div class="field"><label>Fresh Meta / WhatsApp number <span class="req">*</span></label><input name="metaNumber" required value="${esc(o.metaNumber)}" placeholder="Number for Business API" /></div>
-          <div class="field"><label>Alternate number <span class="req">*</span></label><input name="altNumber" required value="${esc(o.altNumber)}" /></div>
-          <div class="field"><label>Website URL <span class="req">*</span></label><input name="website" required value="${esc(o.website)}" placeholder="https:// — mandatory for Meta automation" /></div>
-          <div class="field"><label>Website type</label>
-            <select name="websiteType">${["AI Smart Site","Landing page","Multi-page","Recommend for me"].map((x)=>`<option ${o.websiteType===x?"selected":""}>${x}</option>`).join("")}</select>
-          </div>
-          <div class="field"><label>Colour / design preference</label>
-            <select name="designPref">${["Clean clinical","Premium dark + cyan","Warm lifestyle","Minimal typography"].map((x)=>`<option ${o.designPref===x?"selected":""}>${x}</option>`).join("")}</select>
-          </div>
-          <div class="field"><label>Logo file</label><input name="logo" type="file" accept="image/*,.pdf" /></div>
-          <div class="field"><label>Past / reference sites</label><textarea name="refs">${esc(o.refs)}</textarea></div>
-          <div class="field"><label>Certifications to display</label><input name="certs" value="${esc(o.certs)}" placeholder="NABH, RERA, FSSAI, Harvard, CGHS…" /></div>
-          <p class="hint">KYC — Aadhaar, GST/COI, utility bill. Files stay in this browser session (demo). Production uploads to encrypted storage.</p>
+        <form id="docsForm">
+          <div class="field"><label>Website URL <span class="req">*</span></label><input name="website" required placeholder="https://" value="${esc(d.website || acc.health.website)}" /></div>
+          <div class="field"><label>Meta / WhatsApp Business access note</label><input name="metaAccess" placeholder="Number or Business Manager ID" value="${esc(d.metaAccess)}" /></div>
           <div class="kyc">
-            <label class="file-row">Aadhaar <input name="aadhaar" type="file" accept=".pdf,image/*" /> <span class="ok">${o.kyc.aadhaar ? esc(o.kyc.aadhaar) : "Required"}</span></label>
-            <label class="file-row">GST certificate / COI <input name="gst" type="file" accept=".pdf,image/*" /> <span class="ok">${o.kyc.gst ? esc(o.kyc.gst) : "Required"}</span></label>
-            <label class="file-row">Utility bill <input name="utility" type="file" accept=".pdf,image/*" /> <span class="ok">${o.kyc.utility ? esc(o.kyc.utility) : "Required"}</span></label>
+            <label class="file-row">GST certificate <input name="gst" type="file" accept=".pdf,image/*" /> <span class="ok">${d.gst ? esc(d.gst) : "Required"}</span></label>
+            <label class="file-row">Aadhaar <input name="aadhaar" type="file" accept=".pdf,image/*" /> <span class="ok">${d.aadhaar ? esc(d.aadhaar) : "Required"}</span></label>
+            <label class="file-row">Privacy policy (PDF or link) <input name="privacy" type="file" accept=".pdf,image/*" /> <span class="ok">${d.privacy ? esc(d.privacy) : "Required"}</span></label>
           </div>
-          <div class="actions"><button class="btn btn-primary" type="submit">Save handover pack →</button></div>
+          <p class="hint">Core work: Smart Site, WhatsApp Automation, Review &amp; Reputation. Add-ons below are optional.</p>
+          <label class="check"><input type="checkbox" name="seo" ${acc.upsells.seo ? "checked" : ""} /> SEO / AEO</label>
+          <label class="check"><input type="checkbox" name="social" ${acc.upsells.social ? "checked" : ""} /> Social media automation</label>
+          <label class="check"><input type="checkbox" name="email" ${acc.upsells.email ? "checked" : ""} /> Email automation</label>
+          <label class="check"><input type="checkbox" name="ivr" ${acc.upsells.ivr ? "checked" : ""} /> IVR / voice calling</label>
+          <div class="actions"><button class="btn btn-primary" type="submit">Save documents →</button></div>
+        </form>
+      </div>`);
+  };
+
+  const viewApprovals = (user, acc) => {
+    if (!unlocked(acc, "approvals")) return lockView(user, acc, "approvals", "Approvals", "Pay first, then this section opens.");
+    const d = acc.design;
+    return shell(user, acc, "approvals", `
+      <p class="eyebrow">Web design approval</p>
+      <h1>How should it <span>look?</span></h1>
+      <p class="lead">Short form. Links and files — not a long brief.</p>
+      <div class="card">
+        <form id="designForm">
+          <div class="field"><label>Inspiration links</label><textarea name="inspiration" placeholder="Sites you like">${esc(d.inspiration)}</textarea></div>
+          <div class="field"><label>Brand guidelines (or “none”)</label><input name="guidelines" value="${esc(d.guidelines)}" /></div>
+          <div class="field"><label>Colour palette</label><input name="palette" placeholder="e.g. navy + gold" value="${esc(d.palette)}" /></div>
+          <div class="field"><label>Old logo / files</label><input name="logo" type="file" accept="image/*,.pdf" /></div>
+          <div class="field"><label>Anything else we should match</label><textarea name="refs">${esc(d.refs)}</textarea></div>
+          <div class="actions"><button class="btn btn-primary" type="submit">${d.submitted ? "Update approval" : "Submit design notes →"}</button></div>
         </form>
       </div>`);
   };
 
   const viewAutomation = (user, acc) => {
-    const web = (acc.onboarding.website || "").trim();
-    const ready = /^https?:\/\//i.test(web);
-    return shell(user, `
-      ${progressBar(user, acc, "automation")}
-      <div class="eyebrow">Automation module</div>
-      <h1>Submit for <span>Meta approval.</span></h1>
-      <p class="lead">Website is mandatory for Meta / WhatsApp automation. We cannot file without a live URL.</p>
-      ${ready ? `<div class="note">Website on file: <b>${esc(web)}</b></div>` : `<div class="note">Add a website URL in onboarding before we can submit to Meta.</div>`}
-      <div class="card">
-        <p><b>Details that will be submitted</b></p>
-        <ul>
-          <li>Company: ${esc(acc.onboarding.company || "—")}</li>
-          <li>Meta number: ${esc(acc.onboarding.metaNumber || "—")}</li>
-          <li>Alt number: ${esc(acc.onboarding.altNumber || "—")}</li>
-          <li>Website: ${esc(web || "missing")}</li>
-        </ul>
-        <p>Status: <b>${esc(acc.automation.metaStatus)}</b></p>
-        <div class="actions">
-          <button class="btn btn-primary" id="submitMeta" type="button" ${ready ? "" : "disabled"}>Confirm & submit to Meta →</button>
-          <a class="btn btn-secondary" href="#/onboarding">Fix website</a>
+    if (!unlocked(acc, "automation")) return lockView(user, acc, "automation", "Automation", "Pay first, then pick WhatsApp flows.");
+    const w = acc.whatsapp;
+    const selected = new Set(w.templates || []);
+    return shell(user, acc, "automation", `
+      <p class="eyebrow">WhatsApp Automation approval</p>
+      <h1>Pick the flows. <span>We wire the logic.</span></h1>
+      <p class="lead">Start from templates. Add extra rules in one box.</p>
+      <form id="waForm" class="card">
+        <div class="tpl">
+          ${WA_TEMPLATES.map((t) => `<label class="${selected.has(t.id) ? "on" : ""}"><input type="checkbox" name="tpl" value="${t.id}" ${selected.has(t.id) ? "checked" : ""} /><span><b>${esc(t.name)}</b><br><span class="hint">${esc(t.d)}</span></span></label>`).join("")}
         </div>
-      </div>`);
+        <div class="field" style="margin-top:14px"><label>Extra logic (optional)</label><textarea name="extraLogic" placeholder="e.g. implant leads always go to Dr. Mehta">${esc(w.extraLogic)}</textarea></div>
+        <div class="actions"><button class="btn btn-primary" type="submit">${w.submitted ? "Update flows" : "Approve these flows →"}</button></div>
+      </form>`);
   };
 
-  const viewReviews = (user, acc) => shell(user, `
-    ${progressBar(user, acc, "reviews")}
-    <div class="eyebrow">Review & reputation</div>
-    <h1>How should reviews <span>compound?</span></h1>
-    <p class="lead">GBP optimisation is included as a bonus with the partner system.</p>
-    <div class="card">
-      <form id="revForm">
-        <div class="field"><label>Current review process</label>
+  const viewReviews = (user, acc) => {
+    if (!unlocked(acc, "reviews")) return lockView(user, acc, "reviews", "Review", "Pay first, then we set reviews.");
+    const r = acc.reviews;
+    return shell(user, acc, "reviews", `
+      <p class="eyebrow">Review &amp; Reputation</p>
+      <h1>How do you ask <span>today?</span></h1>
+      <p class="lead">We turn that into an automatic ask. Google Business Profile can be connected for listing cleanup.</p>
+      <form id="revForm" class="card">
+        <div class="field"><label>Current process</label>
           <select name="process">
-            ${[["auto","Automated after every visit"],["staff","Staff ask in person"],["qr","QR / SMS sometimes"],["none","No process yet"]].map(([v,l]) => `<option value="${v}" ${acc.reviewsMod.process===v?"selected":""}>${l}</option>`).join("")}
+            ${[["none", "We rarely ask"], ["staff", "Staff ask in person"], ["sms", "SMS / WhatsApp sometimes"], ["auto", "Already automatic"]].map(([v, l]) => `<option value="${v}" ${r.process === v ? "selected" : ""}>${l}</option>`).join("")}
           </select>
         </div>
         <div class="field"><label>Number of locations</label>
-          <select name="locations">
-            ${["1","2","3-5","6+"].map((v)=>`<option ${acc.reviewsMod.locations===v?"selected":""}>${v}</option>`).join("")}
-          </select>
+          <select name="locations">${["1", "2", "3–5", "6+"].map((v) => `<option ${r.locations === v ? "selected" : ""}>${v}</option>`).join("")}</select>
         </div>
-        <div class="ww-r-bonus" style="background:rgba(0,212,170,.08);border-color:var(--teal);color:var(--white)"><b>Bonus included:</b> Google Business Profile optimisation for every location you list.</div>
-        <div class="actions"><button class="btn btn-primary" type="submit">Save & continue →</button></div>
-      </form>
-    </div>`);
-
-  const viewUpsell = (user, acc, kind) => {
-    const title = kind === "social" ? "Social Media Automation" : "Email Automation";
-    const next = kind === "social" ? "/upsell-email" : "/thanks";
-    const field = kind === "social" ? "social" : "emailAuto";
-    return shell(user, `
-      ${progressBar(user, acc, "growth")}
-      <div class="eyebrow">Final upsell</div>
-      <h1>${title}. <span>Yes or not yet?</span></h1>
-      <p class="lead">${kind === "social" ? "Weekly content engine: blog, YouTube, Instagram + FB shorts. Priced separately after core systems prove out." : "Lifecycle sequences: recall, no-show rescue, offer drops. Runs on the same lead record."}</p>
-      <div class="card">
-        <div class="actions">
-          <button class="btn btn-primary" type="button" data-upsell="${field}" data-val="yes" data-next="${next}">Yes — take me to the landing page</button>
-          <button class="btn btn-secondary" type="button" data-upsell="${field}" data-val="no" data-next="${next}">No — keep me on the nurture sequence</button>
-        </div>
-      </div>`);
+        <div class="field"><label>Google Business Profile link (optional, for instant cleanup)</label><input name="gbp" placeholder="https://business.google.com/..." value="${esc(r.gbp)}" /></div>
+        <div class="actions"><button class="btn btn-primary" type="submit">${r.submitted ? "Update" : "Save review setup →"}</button></div>
+      </form>`);
   };
-
-  const viewSocialLanding = (user) => shell(user, `
-    <div class="eyebrow">Social Media Growth Engine</div>
-    <h1>Content that feeds <span>the system.</span></h1>
-    <p class="lead">Priced separately — start anytime after the core systems prove out.</p>
-    <div class="card">
-      <p>Weekly: 1 blog + YouTube video + Instagram short + FB short. À la carte video per project.</p>
-      <div class="actions"><a class="btn btn-primary" href="#/upsell-email">Continue to email automation →</a></div>
-    </div>`);
-
-  const viewEmailLanding = (user) => shell(user, `
-    <div class="eyebrow">Email automation</div>
-    <h1>Follow-up that <span>does not sleep.</span></h1>
-    <p class="lead">Sequences for new leads, no-shows and 3 / 6 month recall — same record as WhatsApp.</p>
-    <div class="card">
-      <div class="actions"><a class="btn btn-primary" href="#/thanks">Finish setup →</a></div>
-    </div>`);
-
-  const viewThanks = (user, acc) => shell(user, `
-    ${progressBar(user, acc, "complete")}
-    <div class="thanks card">
-      <div class="seal">PREMIUM PARTNER</div>
-      <h1>Calm inside. <span>Systems outside.</span></h1>
-      <p class="lead">Thank you. Your handover is in motion. Meta review is ${esc(acc.automation.metaStatus)}. We start the moment this pack and first payment are confirmed — the same sequence we run for partner clinics.</p>
-      <p>1. Confirmed · 2. Payment · 3. Handover pack · We go live</p>
-      <p>Saurabh Chugh · Founder, Webwise Digital · Dwarka, New Delhi</p>
-      <div class="actions" style="justify-content:center"><a class="btn btn-primary" href="#/dashboard">Open dashboard</a></div>
-    </div>`);
-
-  const viewInbox = (user, acc) => shell(user, `
-    ${progressBar(user, acc, acc.approved ? "onboarding" : "report")}
-    <div class="eyebrow">Messages</div>
-    <h1>Your <span>Health Check</span></h1>
-    <div class="card">${acc.reportSent
-      ? `<p>The full report was emailed to <b>${esc(user.email)}</b>. Check that inbox (and spam) — we don't offer a download.</p>`
-      : `<p>Finish the quiz and verify your email. We'll send the full report there.</p>`}
-      <div class="actions"><a class="btn btn-secondary" href="#/dashboard">Back to portal</a></div>
-    </div>`);
-
-  const viewDash = (user, acc) => {
-    const pct = completion(user, acc);
-    return shell(user, `
-      <div class="dash">
-        <aside class="side">
-          <p class="live">Client OS</p>
-          <a href="#/dashboard" class="on">Overview</a>
-          <a href="#/funnel">Health quiz</a>
-          <a href="#/sample">Health check</a>
-          ${acc.approved ? `<a href="#/onboarding">Onboarding</a>
-          <a href="#/automation">Meta automation</a>
-          <a href="#/reviews">Reviews</a>
-          <a href="#/upsell-social">Social add-on</a>
-          <a href="#/upsell-email">Email add-on</a>` : `<a href="#/competitors">More competitors</a>
-          <a href="#/compare">Cost comparison</a>`}
-          <a href="#/inbox">Messages</a>
-        </aside>
-        <div>
-          ${progressBar(user, acc, acc.stage || "funnel")}
-          <h1>${pct}% complete. <span>Keep going.</span></h1>
-          <p class="lead">Every unfinished step is a leak. Finish setup so Meta, reviews and follow-up can run.</p>
-          <div class="metric-grid">
-            <div class="metric"><div class="k">Report</div><div class="v ${acc.reportSent?"good":"warn"}">${acc.reportSent?"Sent":"Open"}</div></div>
-            <div class="metric"><div class="k">Pack ₹1,999</div><div class="v">${acc.competitorOrder?"On":"—"}</div></div>
-            <div class="metric"><div class="k">Approved</div><div class="v ${acc.approved?"good":"warn"}">${acc.approved?"Yes":"No"}</div></div>
-            <div class="metric"><div class="k">Handover</div><div class="v">${onboardingPct(acc)}%</div></div>
-            <div class="metric"><div class="k">Meta</div><div class="v">${esc(acc.automation.metaStatus)}</div></div>
-          </div>
-          <div class="actions">
-            <a class="btn btn-primary" href="#/${acc.approved ? "onboarding" : acc.reportSent ? "compare" : "funnel"}">Continue where I left off →</a>
-          </div>
-        </div>
-      </div>`);
-  };
-
-  const viewArch = (user) => shell(user, `
-    <div class="eyebrow">Architecture</div>
-    <h1>Modules + <span>flows.</span></h1>
-    <div class="card">
-      <ol>
-        <li><b>Auth</b> — Google OAuth or email → verified inbox → Terms of Service.</li>
-        <li><b>Funnel MCQs</b> — questions (type, city, website, design, certs, social, automation, reviews) feed scores.</li>
-        <li><b>Health check</b> — sample format first; full one-pager vs the named local player, emailed after verification.</li>
-        <li><b>Upsell</b> — more competitors ₹1,999 → cost of DIY vs Webwise → please handle everything.</li>
-        <li><b>Nurture</b> — internal email sequence if they do not approve (not shown in the client UI).</li>
-        <li><b>Onboarding</b> — company, KYC, Meta number, website (mandatory).</li>
-        <li><b>Progress bar</b> — % across 9 stages.</li>
-        <li><b>Automation</b> — submit details → Meta approval.</li>
-        <li><b>Reviews</b> — process + locations + GBP bonus.</li>
-        <li><b>Final upsells</b> — Social yes→landing / no→nurture; Email yes→landing / no→nurture; thank-you.</li>
-      </ol>
-    </div>`);
-
-  const viewCheckInbox = (email) => loginChrome(`
-    <aside class="login-card">
-      <div class="login-card-head">
-        <div class="shield">${iconMail.replace('class="ico"','width="18" height="18"')}</div>
-        <div><h2>Check your email</h2><p>We sent a confirmation link to ${esc(email)}. Open it to enter the portal. The same mailbox will receive your health check and nurture sequence.</p></div>
-      </div>
-      <p class="switch"><a href="#/login">Back to login</a></p>
-    </aside>`);
 
   const requireUser = () => {
     const user = currentUser();
@@ -954,7 +588,6 @@
     const password = String(fd.get("password") || "");
     const err = form.querySelector("#authErr");
     const show = (m) => { err.textContent = m; err.classList.remove("hidden"); };
-
     if (cloudOn()) {
       try {
         if (isLogin) {
@@ -962,18 +595,15 @@
           go(user.verified ? "/dashboard" : "/check-email");
           return;
         }
-        const result = await WebwisePortal.signUpEmail({ name, email, password, phone: String(fd.get("phone") || "") });
-        go(result.needsEmailConfirm ? "/check-email" : "/funnel");
-      } catch (e) {
-        show(e.message || "Could not sign in");
-      }
+        const result = await WebwisePortal.signUpEmail({ name, email, password, phone: "" });
+        go(result.needsEmailConfirm ? "/check-email" : "/health");
+      } catch (e) { show(e.message || "Could not sign in"); }
       return;
     }
-
     const users = loadUsers();
     const existing = users.find((u) => u.email === email && u.method === "email");
     if (isLogin) {
-      if (!existing) return show("No email account found. Sign up first.");
+      if (!existing) return show("No account found. Sign up first.");
       const hash = await hashPass(password, existing.salt);
       if (hash !== existing.passHash) return show("Wrong password.");
       loginSession(existing);
@@ -983,15 +613,8 @@
     if (existing) return show("That email already exists. Log in.");
     const salt = randomHex(8);
     const user = {
-      id: randomHex(8),
-      method: "email",
-      name, email, phone: String(fd.get("phone") || "").trim(),
-      salt,
-      passHash: await hashPass(password, salt),
-      verified: false,
-      optIn: true,
-      pendingCode: otp6(),
-      createdAt: Date.now()
+      id: randomHex(8), method: "email", name, email, phone: "", salt,
+      passHash: await hashPass(password, salt), verified: false, optIn: true, pendingCode: otp6(), createdAt: Date.now()
     };
     upsertUser(user);
     loginSession(user);
@@ -999,20 +622,10 @@
   };
 
   const startGoogle = async (errEl) => {
-    const show = (m) => {
-      if (!errEl) return alert(m);
-      errEl.textContent = m;
-      errEl.classList.remove("hidden");
-    };
-    if (!cloudOn()) {
-      show("Google sign-in is not connected on this environment yet. Use email, or add Supabase keys and enable the Google provider.");
-      return;
-    }
-    try {
-      await WebwisePortal.oauth("google");
-    } catch (e) {
-      show(e.message || "Google sign-in could not start.");
-    }
+    const show = (m) => { if (!errEl) return alert(m); errEl.textContent = m; errEl.classList.remove("hidden"); };
+    if (!cloudOn()) return show("Google sign-in is not connected on this environment yet.");
+    try { await WebwisePortal.oauth("google"); }
+    catch (e) { show(e.message || "Google sign-in could not start."); }
   };
 
   const bindAuth = (mode) => {
@@ -1025,6 +638,13 @@
     document.getElementById("emailForm")?.addEventListener("submit", (e) => { e.preventDefault(); startEmailSignup(e.target, mode === "login"); });
   };
 
+  const fileName = async (input, kind) => {
+    const f = input?.files?.[0];
+    if (!f) return "";
+    if (cloudOn()) return WebwisePortal.uploadKyc(kind, f);
+    return f.name;
+  };
+
   const render = async () => {
     const app = document.getElementById("app");
     const path = route();
@@ -1034,19 +654,18 @@
       if (cloudOn() && user?.verified) return go("/dashboard");
       app.innerHTML = viewLogin("login");
       bindAuth("login");
-    } else if (path === "/signup") {
-      app.innerHTML = viewLogin("signup");
-      bindAuth("signup");
-    } else if (path === "/check-email") {
-      app.innerHTML = viewCheckInbox((user && user.email) || "your inbox");
-    } else if (path === "/google") {
+      return;
+    }
+    if (path === "/signup") { app.innerHTML = viewLogin("signup"); bindAuth("signup"); return; }
+    if (path === "/check-email") { app.innerHTML = viewCheckInbox((user && user.email) || "your inbox"); return; }
+    if (path === "/google") {
       app.innerHTML = viewSso();
       const err = document.getElementById("authErr");
       document.getElementById("startGoogle")?.addEventListener("click", () => startGoogle(err));
       startGoogle(err);
-    } else if (path === "/microsoft") {
-      go("/login");
-    } else if (path === "/forgot") {
+      return;
+    }
+    if (path === "/forgot") {
       app.innerHTML = viewForgot();
       document.getElementById("forgotForm").addEventListener("submit", async (e) => {
         e.preventDefault();
@@ -1058,10 +677,7 @@
             err.classList.remove("hidden");
             err.style.color = "var(--teal)";
             err.textContent = "Reset link sent if that email exists.";
-          } catch (ex) {
-            err.textContent = ex.message;
-            err.classList.remove("hidden");
-          }
+          } catch (ex) { err.textContent = ex.message; err.classList.remove("hidden"); }
           return;
         }
         const existing = loadUsers().find((u) => u.email === email && u.method === "email");
@@ -1072,11 +688,13 @@
         loginSession(existing);
         go("/verify");
       });
-    } else if (path === "/verify") {
+      return;
+    }
+    if (path === "/verify") {
       user = currentUser();
       if (cloudOn()) return go("/check-email");
       if (!user) return go("/login");
-      if (user.verified) return go("/funnel");
+      if (user.verified) return go("/health");
       app.innerHTML = viewVerify(user);
       document.getElementById("verifyForm").addEventListener("submit", (e) => {
         e.preventDefault();
@@ -1090,176 +708,142 @@
         user.verified = true;
         user.pendingCode = "";
         upsertUser(user);
-        go("/funnel");
+        go("/health");
       });
-    } else {
-      user = requireUser();
-      if (!user) return;
-      const acc = await ensureAccount(user);
-      const persist = () => saveAccount(acc);
-      const map = {
-        "/dashboard": () => viewDash(user, acc),
-        "/funnel": () => {
-          if (acc.funnelIndex >= QUESTIONS.length) { go("/sample"); return "<p class='lead'>Opening sample…</p>"; }
-          return viewFunnel(user, acc);
-        },
-        "/sample": () => viewSample(user, acc),
-        "/report": () => {
-          acc.stage = "report";
-          persist();
-          return viewReport(user, acc);
-        },
-        "/competitors": () => viewCompetitors(user, acc),
-        "/compare": () => { acc.comparisonSeen = true; persist(); return viewCompare(user, acc); },
-        "/nurture": () => { armNurture(acc); if (acc.inbox[0]) acc.inbox[0].status = "sent"; persist(); return viewNurture(user, acc); },
-        "/onboarding": () => {
-          if (!acc.approved) { go("/nurture"); return "<p class='lead'>Opening your next step…</p>"; }
-          return viewOnboarding(user, acc);
-        },
-        "/automation": () => viewAutomation(user, acc),
-        "/reviews": () => viewReviews(user, acc),
-        "/upsell-social": () => viewUpsell(user, acc, "social"),
-        "/upsell-email": () => viewUpsell(user, acc, "email"),
-        "/social-landing": () => viewSocialLanding(user),
-        "/email-landing": () => viewEmailLanding(user),
-        "/thanks": () => viewThanks(user, acc),
-        "/inbox": () => viewInbox(user, acc),
-        "/architecture": () => viewArch(user)
-      };
-      const view = map[path] || map["/dashboard"];
-      app.innerHTML = view();
-      if (path === "/funnel" && acc.funnelIndex >= QUESTIONS.length) return;
-
-      document.getElementById("logoutBtn")?.addEventListener("click", async () => {
-        clearSession();
-        if (cloudOn()) await WebwisePortal.logout();
-        go("/login");
-      });
-
-      document.querySelectorAll(".option").forEach((btn) => btn.addEventListener("click", async () => {
-        acc.answers[btn.dataset.qid] = btn.dataset.val;
-        acc.funnelIndex += 1;
-        if (acc.funnelIndex >= QUESTIONS.length) {
-          acc.stage = "report";
-          await persist();
-          go("/sample");
-        } else {
-          await persist();
-          render();
-        }
-      }));
-
-      document.getElementById("quizBack")?.addEventListener("click", async () => {
-        acc.funnelIndex = Math.max(0, acc.funnelIndex - 1);
-        if (acc.funnelIndex >= QUESTIONS.length) acc.funnelIndex = QUESTIONS.length - 1;
-        await persist();
-        go("/funnel");
-        render();
-      });
-      document.getElementById("unlockReport")?.addEventListener("submit", async (e) => {
-        e.preventDefault();
-        const fd = new FormData(e.target);
-        const email = String(fd.get("email") || "").trim().toLowerCase();
-        const code = String(fd.get("code") || "").trim();
-        const err = document.getElementById("authErr");
-        const show = (m) => { err.textContent = m; err.classList.remove("hidden"); };
-        if (!email) return show("Enter a work email.");
-        if (user.email && email !== String(user.email).toLowerCase()) {
-          return show("Use the verified email on this account. Sign in with that address to receive the report.");
-        }
-        if (!user.verified) {
-          if (!code || code !== user.pendingCode) return show("Enter the verification code sent to this email first.");
-          user.verified = true;
-          user.pendingCode = "";
-          upsertUser(user);
-        }
-        acc.onboarding.email = email;
-        acc.reportUnlocked = true;
-        acc.reportSent = true;
-        await persist();
-        if (cloudOn() && WebwisePortal.cfg.mail) {
-          try {
-            const player = localPlayer(acc.answers);
-            const scores = metricScore(acc.answers);
-            const lines = METRIC_KEYS.map((k) => `${METRIC_LABEL[k]}: ${scores[k]}/100 — ${scoreWhy(k, scores[k], acc.answers)} vs ${player.name}: ${competitorWhy(k)}`).join("\n\n");
-            await WebwisePortal.sendReportEmail(
-              "Your Webwise Digital Health Check is ready",
-              `Your full Health Check vs ${player.name} (${player.detail}).\n\n${lines}\n\nThere is no download. Open the portal to continue.`
-            );
-          } catch (ex) { show(ex.message); return; }
-        }
-        go("/report");
-      });
-      document.getElementById("orderComp")?.addEventListener("click", () => go("/competitors"));
-      document.getElementById("payComp")?.addEventListener("click", async () => {
-        if (cloudOn() && WebwisePortal.cfg.payments) {
-          try {
-            acc.competitorOrder = await WebwisePortal.payCompetitorPack();
-            await persist();
-            render();
-          } catch (e) {
-            if (e.message !== "Payment cancelled") alert(e.message);
-          }
-          return;
-        }
-        acc.competitorOrder = { id: "WWD-CP-" + randomHex(3).toUpperCase(), at: today(), amount: PRICE.competitorPack };
-        await persist();
-        render();
-      });
-      document.getElementById("approveBtn")?.addEventListener("click", async () => {
-        acc.approved = true;
-        acc.comparisonSeen = true;
-        acc.stage = "onboarding";
-        await persist();
-        go("/onboarding");
-      });
-      document.getElementById("onboardForm")?.addEventListener("submit", async (e) => {
-        e.preventDefault();
-        const fd = new FormData(e.target);
-        ["company","address","phone","email","metaNumber","altNumber","website","websiteType","designPref","refs","certs"].forEach((k) => {
-          acc.onboarding[k] = String(fd.get(k) || "");
-        });
-        const logo = e.target.logo?.files?.[0];
-        if (logo) acc.onboarding.logoName = logo.name;
-        for (const k of ["aadhaar", "gst", "utility"]) {
-          const f = e.target[k]?.files?.[0];
-          if (f) {
-            acc.onboarding.kyc[k] = cloudOn() ? await WebwisePortal.uploadKyc(k, f) : f.name;
-          }
-        }
-        if (!acc.onboarding.kyc.aadhaar || !acc.onboarding.kyc.gst || !acc.onboarding.kyc.utility) {
-          alert("Upload Aadhaar, GST/COI and utility bill to complete KYC.");
-          return;
-        }
-        await persist();
-        go("/automation");
-      });
-      document.getElementById("submitMeta")?.addEventListener("click", async () => {
-        if (!/^https?:\/\//i.test(acc.onboarding.website || "")) return;
-        acc.automation.submitted = true;
-        acc.automation.websiteOk = true;
-        acc.automation.metaStatus = "submitted — awaiting Meta";
-        acc.stage = "reviews";
-        await persist();
-        go("/reviews");
-      });
-      document.getElementById("revForm")?.addEventListener("submit", async (e) => {
-        e.preventDefault();
-        const fd = new FormData(e.target);
-        acc.reviewsMod.process = String(fd.get("process"));
-        acc.reviewsMod.locations = String(fd.get("locations"));
-        await persist();
-        go("/upsell-social");
-      });
-      document.querySelectorAll("[data-upsell]").forEach((btn) => btn.addEventListener("click", async () => {
-        const field = btn.dataset.upsell;
-        const val = btn.dataset.val;
-        acc.upsells[field] = val;
-        await persist();
-        if (val === "yes") go(field === "social" ? "/social-landing" : "/email-landing");
-        else go(field === "social" ? "/upsell-email" : "/thanks");
-      }));
+      return;
     }
+
+    user = requireUser();
+    if (!user) return;
+    const acc = await ensureAccount(user);
+    const persist = () => saveAccount(acc);
+    const aliases = { "/funnel": "/health", "/sample": "/health", "/report": "/health", "/compare": "/proposal", "/nurture": "/proposal" };
+    const viewPath = aliases[path] || path;
+    const map = {
+      "/dashboard": () => viewDash(user, acc),
+      "/health": () => viewHealth(user, acc),
+      "/proposal": () => { if (unlocked(acc, "proposal")) { acc.proposal.viewed = true; acc.proposal.at = today(); persist(); } return viewProposal(user, acc); },
+      "/payment": () => viewPayment(user, acc),
+      "/onboarding": () => viewOnboarding(user, acc),
+      "/approvals": () => viewApprovals(user, acc),
+      "/automation": () => viewAutomation(user, acc),
+      "/reviews": () => viewReviews(user, acc)
+    };
+    app.innerHTML = (map[viewPath] || map["/dashboard"])();
+
+    document.getElementById("logoutBtn")?.addEventListener("click", async () => {
+      clearSession();
+      if (cloudOn()) await WebwisePortal.logout();
+      go("/login");
+    });
+    document.getElementById("healthForm")?.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const fd = new FormData(e.target);
+      acc.health.businessName = String(fd.get("businessName") || "").trim();
+      acc.health.ownerName = String(fd.get("ownerName") || "").trim();
+      acc.health.website = String(fd.get("website") || "").trim();
+      acc.health.maps = String(fd.get("maps") || "").trim();
+      acc.health.category = String(fd.get("category") || "");
+      acc.health.seoInterest = e.target.seoInterest.checked;
+      acc.health.includeSocial = e.target.includeSocial.checked;
+      acc.health.scores = scoreHealth(acc.health);
+      acc.health.scored = true;
+      acc.health.at = today();
+      acc.stage = "proposal";
+      await persist();
+      if (cloudOn() && WebwisePortal.cfg.mail) {
+        try {
+          const lines = Object.entries(acc.health.scores).map(([k, n]) => `${SCORE_LABELS[k] || k}: ${n}/5 — ${whyScore(k, n, acc.health)}`).join("\n");
+          await WebwisePortal.sendReportEmail("Your Webwise Digital Health Check", `${acc.health.businessName}\n\n${lines}`);
+        } catch (ex) { console.warn(ex); }
+      }
+      render();
+    });
+    document.getElementById("editHealth")?.addEventListener("click", async () => {
+      acc.health.scored = false;
+      await persist();
+      go("/health");
+      render();
+    });
+    document.getElementById("payRemind")?.addEventListener("click", async () => {
+      acc.payment.reminderAt = today();
+      await persist();
+      render();
+    });
+    document.getElementById("payNow")?.addEventListener("click", async () => {
+      if (cloudOn() && WebwisePortal.cfg.payments) {
+        try {
+          const order = await WebwisePortal.pay("engagement");
+          acc.payment = { status: "paid", method: "razorpay", paidAt: today(), reminderAt: acc.payment.reminderAt, orderId: order.id || "" };
+          acc.stage = "onboarding";
+          await persist();
+          go("/onboarding");
+        } catch (e) {
+          if (e.message !== "Payment cancelled") alert(e.message);
+        }
+        return;
+      }
+      acc.payment = { status: "paid", method: "demo", paidAt: today(), reminderAt: acc.payment.reminderAt, orderId: "WWD-" + randomHex(3).toUpperCase() };
+      acc.stage = "onboarding";
+      await persist();
+      go("/onboarding");
+    });
+    document.getElementById("docsForm")?.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const fd = new FormData(e.target);
+      acc.docs.website = String(fd.get("website") || "").trim();
+      acc.docs.metaAccess = String(fd.get("metaAccess") || "").trim();
+      acc.upsells.seo = e.target.seo.checked;
+      acc.upsells.social = e.target.social.checked;
+      acc.upsells.email = e.target.email.checked;
+      acc.upsells.ivr = e.target.ivr.checked;
+      const gst = await fileName(e.target.gst, "gst");
+      const aadhaar = await fileName(e.target.aadhaar, "aadhaar");
+      const privacy = await fileName(e.target.privacy, "privacy");
+      if (gst) acc.docs.gst = gst;
+      if (aadhaar) acc.docs.aadhaar = aadhaar;
+      if (privacy) acc.docs.privacy = privacy;
+      if (!acc.docs.gst || !acc.docs.aadhaar || !acc.docs.website || !acc.docs.privacy || !acc.docs.metaAccess) {
+        alert("Add GST, Aadhaar, website, privacy policy file and Meta access note.");
+        return;
+      }
+      acc.docs.at = today();
+      startTat(acc);
+      await persist();
+      go("/dashboard");
+    });
+    document.getElementById("designForm")?.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const fd = new FormData(e.target);
+      acc.design.inspiration = String(fd.get("inspiration") || "");
+      acc.design.guidelines = String(fd.get("guidelines") || "");
+      acc.design.palette = String(fd.get("palette") || "");
+      acc.design.refs = String(fd.get("refs") || "");
+      const logo = e.target.logo?.files?.[0];
+      if (logo) acc.design.logo = cloudOn() ? await WebwisePortal.uploadKyc("logo", logo) : logo.name;
+      acc.design.submitted = true;
+      await persist();
+      go("/automation");
+    });
+    document.getElementById("waForm")?.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      acc.whatsapp.templates = [...e.target.querySelectorAll("input[name=tpl]:checked")].map((i) => i.value);
+      acc.whatsapp.extraLogic = String(new FormData(e.target).get("extraLogic") || "");
+      acc.whatsapp.submitted = true;
+      await persist();
+      go("/reviews");
+    });
+    document.getElementById("revForm")?.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const fd = new FormData(e.target);
+      acc.reviews.process = String(fd.get("process") || "");
+      acc.reviews.locations = String(fd.get("locations") || "");
+      acc.reviews.gbp = String(fd.get("gbp") || "");
+      acc.reviews.submitted = true;
+      acc.stage = "live";
+      await persist();
+      go("/dashboard");
+    });
   };
 
   window.addEventListener("hashchange", () => { render(); });

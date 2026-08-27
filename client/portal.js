@@ -2,25 +2,19 @@
   const emptyAccount = (user) => ({
     userId: user.id,
     createdAt: Date.now(),
-    answers: {},
-    funnelIndex: 0,
-    stage: "funnel",
-    reportSent: false,
-    competitorOrder: null,
-    comparisonSeen: false,
-    approved: false,
-    onboarding: {
-      company: "", address: "", phone: "", email: user.email || "",
-      metaNumber: "", altNumber: "", website: "",
-      websiteType: "", designPref: "", logoName: "", refs: "", certs: "",
-      kyc: { aadhaar: null, gst: null, utility: null }
+    stage: "health",
+    health: {
+      businessName: "", website: "", maps: "", category: "", ownerName: user.name || "",
+      seoInterest: false, includeSocial: false, scored: false, scores: null, at: ""
     },
-    automation: { submitted: false, metaStatus: "pending", websiteOk: false },
-    reviewsMod: { process: "", locations: "" },
-    upsells: { social: null, emailAuto: null },
-    inbox: [],
-    nurtureArmed: false,
-    reportUnlocked: false
+    proposal: { viewed: false, at: "" },
+    payment: { status: "awaiting", method: "", paidAt: "", reminderAt: "", orderId: "" },
+    docs: { gst: null, aadhaar: null, website: "", privacy: null, metaAccess: "", at: "" },
+    tat: { startedAt: 0 },
+    design: { inspiration: "", guidelines: "", palette: "", logo: "", refs: "", submitted: false },
+    whatsapp: { templates: [], extraLogic: "", submitted: false },
+    reviews: { process: "", locations: "", gbp: "", submitted: false },
+    upsells: { seo: false, social: false, email: false, ivr: false }
   });
 
   const mapUser = (session, profile) => {
@@ -112,7 +106,7 @@
       const { error } = await this.sb.auth.signInWithOAuth({
         provider: supabaseProvider,
         options: {
-          redirectTo: `${origin}/client/?next=funnel`,
+          redirectTo: `${origin}/client/?next=health`,
           skipBrowserRedirect: false,
           queryParams: { prompt: "select_account" }
         }
@@ -199,15 +193,19 @@
     },
 
     async payCompetitorPack() {
+      return this.pay("competitor_pack");
+    },
+
+    async pay(product = "engagement") {
       if (!window.Razorpay) throw new Error("Razorpay checkout failed to load");
-      const order = await this.api("/api/razorpay-order", {});
+      const order = await this.api("/api/razorpay-order", { product });
       return new Promise((resolve, reject) => {
         const rzp = new window.Razorpay({
           key: order.keyId,
           amount: order.amount,
           currency: order.currency,
           name: "Webwise Digital",
-          description: "Competitor pack — 2 domestic + 1 global",
+          description: product === "engagement" ? "Client Acquisition System" : "Competitor pack",
           order_id: order.orderId,
           handler: async (response) => {
             try {

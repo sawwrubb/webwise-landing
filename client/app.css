@@ -412,3 +412,44 @@ h2 { margin: 0 0 8px; font-size: clamp(24px, 3vw, 34px); font-weight: 800; }
   .login-head { width: calc(100% - 24px); }
   .login-body, .login-foot { width: calc(100% - 24px); }
 }
+
+.score-5 { display: grid; gap: 12px; margin: 18px 0; }
+.score-row {
+  display: grid; grid-template-columns: minmax(140px, 200px) 1fr auto; gap: 12px; align-items: center;
+  background: #0a0a0a; border: 1px solid var(--border); border-radius: 12px; padding: 12px 14px;
+}
+.score-row b { font-size: 13px; }
+.pips { display: flex; gap: 6px; }
+.pip {
+  width: 22px; height: 8px; border-radius: 99px; background: #1a1a1a; border: 1px solid var(--border);
+}
+.pip.on { background: var(--cyan); border-color: var(--cyan); }
+.pip.mid { background: #FBBF24; border-color: #FBBF24; }
+.pip.low { background: var(--danger); border-color: var(--danger); }
+.score-n { font-size: 22px; font-weight: 900; color: var(--cyan); }
+.score-why { grid-column: 1 / -1; margin: 0; font-size: 13px; color: var(--muted); }
+.tat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.tat-card { background: #0a0a0a; border: 1px solid var(--border); border-radius: 14px; padding: 16px; }
+.tat-card h3 { margin: 0 0 6px; font-size: 15px; }
+.tat-card .days { font-size: 28px; font-weight: 900; color: var(--teal); }
+.result-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.result-card { border: 1px solid var(--border); border-radius: 14px; padding: 16px; background: #0c0c0c; }
+.result-card .before { color: var(--danger); font-weight: 800; }
+.result-card .after { color: var(--teal); font-weight: 800; }
+.pay-opts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 14px 0; }
+.pay-opt {
+  border: 1px solid var(--border); border-radius: 12px; padding: 14px; text-align: center;
+  background: rgba(255,255,255,.03); font-weight: 800; font-size: 13px;
+}
+.pay-opt.on { border-color: var(--cyan); background: var(--cyan-dim); }
+.lock-note { color: var(--muted); font-size: 14px; }
+.tpl { display: grid; gap: 8px; }
+.tpl label {
+  display: flex; gap: 10px; align-items: flex-start; padding: 12px; border-radius: 12px;
+  border: 1px solid var(--border); background: #0a0a0a; cursor: pointer;
+}
+.tpl label.on { border-color: var(--cyan); background: var(--cyan-dim); }
+.side .locked { opacity: .45; pointer-events: none; }
+@media (max-width: 860px) {
+  .tat-grid, .result-cards, .pay-opts, .score-row { grid-template-columns: 1fr; }
+}

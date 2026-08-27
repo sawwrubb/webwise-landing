@@ -27,13 +27,15 @@ module.exports = async (req, res) => {
   const sb = admin();
   const { data } = await sb.from("portal_accounts").select("state").eq("user_id", user.id).maybeSingle();
   const state = data?.state || {};
-  state.competitorOrder = {
+  const paid = {
     id: razorpay_order_id,
     paymentId: razorpay_payment_id,
     at: new Date().toLocaleDateString("en-IN"),
-    amount: 1999,
     status: "paid"
   };
+  state.competitorOrder = { ...paid, amount: 1999 };
+  state.payment = { ...(state.payment || {}), status: "paid", paidAt: paid.at, orderId: razorpay_order_id, method: "razorpay" };
+  state.stage = "onboarding";
   await sb.from("portal_accounts").upsert({ user_id: user.id, state, updated_at: new Date().toISOString() });
-  json(res, 200, { ok: true, order: state.competitorOrder });
+  json(res, 200, { ok: true, order: paid });
 };
