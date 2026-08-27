@@ -221,7 +221,15 @@
 
   const googleSetupHint = () => {
     const origin = location.origin.replace(/\/$/, "");
-    return `<div class="note"><b>If Google then shows 404:</b> add this in Supabase → Authentication → URL Configuration → Redirect URLs, then Save:<br><code>${esc(origin)}/**</code><br><span class="hint">That sends you back to this Preview, not the live website (the live site has no /client/ page yet).</span></div>`;
+    const back = `${origin}/client/index.html`;
+    return `<div class="note">
+      <b>Google 404 = two locks. Open both.</b>
+      <ol style="margin:8px 0 0;padding-left:18px">
+        <li><b>Vercel</b> → project <b>webwise-landing</b> → Settings → Deployment Protection → turn Preview protection <b>off</b> (Only Production, or Disabled).</li>
+        <li><b>Supabase</b> → Authentication → URL Configuration → set <b>Site URL</b> to:<br><code>${esc(back)}</code></li>
+        <li>Same page, Redirect URLs, add <b>exactly</b>:<br><code>${esc(back)}</code><br>and<br><code>${esc(origin)}/**</code></li>
+      </ol>
+    </div>`;
   };
 
   const viewLogin = (mode = "login") => {

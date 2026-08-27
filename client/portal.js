@@ -103,15 +103,18 @@
     async oauth(provider) {
       const supabaseProvider = provider === "microsoft" ? "azure" : "google";
       const origin = location.origin.replace(/\/$/, "");
-      const { error } = await this.sb.auth.signInWithOAuth({
+      const redirectTo = `${origin}/client/index.html`;
+      const { data, error } = await this.sb.auth.signInWithOAuth({
         provider: supabaseProvider,
         options: {
-          redirectTo: `${origin}/client/index.html`,
-          skipBrowserRedirect: false,
+          redirectTo,
+          skipBrowserRedirect: true,
           queryParams: { prompt: "select_account" }
         }
       });
       if (error) throw error;
+      if (!data?.url) throw new Error("Google did not return a sign-in link");
+      location.assign(data.url);
     },
 
     async signInPhone(phone) {
