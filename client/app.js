@@ -220,9 +220,8 @@
     </div>`;
 
   const googleSetupHint = () => {
-    const cb = cloudOn() && window.WebwisePortal?.googleCallbackUri?.();
-    if (!cb) return "";
-    return `<p class="hint">If Google says redirect_uri_mismatch, add this to the Web client Authorized redirect URIs:<br><code>${esc(cb)}</code></p>`;
+    const origin = location.origin.replace(/\/$/, "");
+    return `<div class="note"><b>If Google then shows 404:</b> add this in Supabase → Authentication → URL Configuration → Redirect URLs, then Save:<br><code>${esc(origin)}/**</code><br><span class="hint">That sends you back to this Preview, not the live website (the live site has no /client/ page yet).</span></div>`;
   };
 
   const viewLogin = (mode = "login") => {
