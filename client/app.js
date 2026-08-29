@@ -180,7 +180,7 @@
 
   const iconMail = '<svg class="ico" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="2"/><path d="m4 7 8 6 8-6" stroke="currentColor" stroke-width="2"/></svg>';
   const iconLock = '<svg class="ico" viewBox="0 0 24 24" fill="none"><rect x="5" y="10" width="14" height="10" rx="2" stroke="currentColor" stroke-width="2"/><path d="M8 10V8a4 4 0 0 1 8 0v2" stroke="currentColor" stroke-width="2"/></svg>';
-  const googleMark = '<svg viewBox="0 0 24 24"><path fill="#4285F4" d="M23.5 12.3c0-.8-.1-1.6-.2-2.3H12v4.4h6.5c-.3 1.5-1.2 2.8-2.5 3.6v3h4c2.4-2.2 3.5-5.4 3.5-8.7z"/><path fill="#34A853" d="M12 24c3.2 0 6-1 7.9-2.9l-4-3.1c-1.1.7-2.5 1.2-3.9 1.2-3 0-5.6-2-6.5-4.8H1.3v3.1C3.2 21.3 7.3 24 12 24z"/><path fill="#FBBC05" d="M5.5 14.4A7.2 7.2 0 0 1 5.1 12c0-.8.1-1.6.4-2.4V6.5H1.3A12 12 0 0 0 0 12c0 1.9.5 3.8 1.3 5.5l4.2-3.1z"/><path fill="#EA4335" d="M12 4.8c1.8 0 3.4.6 4.6 1.8l3.5-3.5C18 1.1 15.2 0 12 0 7.3 0 3.2 2.7 1.3 6.5l4.2 3.1C6.4 6.8 9 4.8 12 4.8z"/></svg>';
+  const iconPhone = '<svg class="ico" viewBox="0 0 24 24" fill="none"><rect x="7" y="2" width="10" height="20" rx="2" stroke="currentColor" stroke-width="2"/><path d="M11 18h2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>';
 
   const loginChrome = (cardInner) => `
     <div class="login-page">
@@ -219,55 +219,41 @@
       <footer class="login-foot"><span>Trusted by 100+ businesses</span><span>© Webwise Digital</span></footer>
     </div>`;
 
-  const googleSetupHint = () => {
-    const origin = location.origin.replace(/\/$/, "");
-    const back = `${origin}/client/index.html`;
-    return `<div class="note">
-      <b>Google 404 = two locks. Open both.</b>
-      <ol style="margin:8px 0 0;padding-left:18px">
-        <li><b>Vercel</b> → project <b>webwise-landing</b> → Settings → Deployment Protection → turn Preview protection <b>off</b> (Only Production, or Disabled).</li>
-        <li><b>Supabase</b> → Authentication → URL Configuration → set <b>Site URL</b> to:<br><code>${esc(back)}</code></li>
-        <li>Same page, Redirect URLs, add <b>exactly</b>:<br><code>${esc(back)}</code><br>and<br><code>${esc(origin)}/**</code></li>
-      </ol>
-    </div>`;
-  };
-
   const viewLogin = (mode = "login") => {
     const isLogin = mode === "login";
     return loginChrome(`
       <aside class="login-card">
         <div class="login-card-head">
-          <div class="shield">${googleMark}</div>
+          <div class="shield">${iconLock.replace('class="ico"', 'width="18" height="18"')}</div>
           <div>
             <h2>${isLogin ? "Welcome back" : "Get your Health Check"}</h2>
-            <p>${isLogin ? "Log in to your portal." : "Create an account. We email the report after you confirm this address."}</p>
+            <p>${isLogin ? "Log in with email or mobile." : "Sign up with email or mobile. A 6-digit code confirms it's you."}</p>
           </div>
         </div>
+        <div class="tabs">
+          <button type="button" class="tab on" data-auth="email">Email</button>
+          <button type="button" class="tab" data-auth="phone">Mobile</button>
+        </div>
         <form id="emailForm">
-          ${isLogin ? "" : `<div class="field"><label>Full name <span class="req">*</span></label><div class="ico-field"><input name="name" required placeholder="Your name" /></div></div>`}
-          <div class="field"><label>Work email</label><div class="ico-field">${iconMail}<input name="email" type="email" required placeholder="you@business.com" /></div></div>
+          ${isLogin ? "" : `<div class="field"><label>Full name <span class="req">*</span></label><input name="name" required placeholder="Your name" /></div>`}
+          <div class="field"><label>Email</label><div class="ico-field">${iconMail}<input name="email" type="email" required placeholder="you@business.com" /></div></div>
           <div class="field"><label>Password</label><div class="ico-field">${iconLock}<input id="passInput" name="password" type="password" minlength="8" required /><button class="eye" type="button" id="togglePass" aria-label="Show password">◉</button></div></div>
           ${isLogin ? `<div class="forgot"><a href="#/forgot">Forgot password?</a></div>` : `<p class="hint">By continuing you agree to the <a href="/terms-of-service/" target="_blank" rel="noopener">Terms of Service</a>.</p>`}
           <p class="error hidden" id="authErr"></p>
           <button class="btn-login" type="submit">${isLogin ? "Log in" : "Yes, give me my Business Health Check Report"}</button>
         </form>
-        <div class="or">or continue with</div>
-        <div class="sso"><button type="button" id="googleBtn">${googleMark} Continue with Google</button></div>
-        ${googleSetupHint()}
+        <form id="phoneForm" class="hidden">
+          ${isLogin ? "" : `<div class="field"><label>Full name <span class="req">*</span></label><input name="name" required placeholder="Your name" /></div>`}
+          <div class="field"><label>Mobile (India)</label><div class="ico-field">${iconPhone}<input name="phone" inputmode="numeric" required placeholder="10-digit number" maxlength="10" /></div></div>
+          <p class="hint">We'll send a 6-digit code. Until SMS is connected, the code is shown on the next screen.</p>
+          ${isLogin ? "" : `<p class="hint">By continuing you agree to the <a href="/terms-of-service/" target="_blank" rel="noopener">Terms of Service</a>.</p>`}
+          <p class="error hidden" id="phoneErr"></p>
+          <button class="btn-login" type="submit">Send code</button>
+        </form>
         ${isLogin ? `<p class="hint" style="margin-top:12px">By continuing you agree to the <a href="/terms-of-service/" target="_blank" rel="noopener">Terms of Service</a>.</p>` : ""}
         <p class="switch">${isLogin ? `New here? <a href="#/signup">Get your Health Check →</a>` : `Already have an account? <a href="#/login">Log in</a>`}</p>
       </aside>`);
   };
-
-  const viewSso = () => loginChrome(`
-    <aside class="login-card">
-      <h2>Continue with Google</h2>
-      <p class="hint">Opening Google so you can choose an account.</p>
-      ${googleSetupHint()}
-      <p class="error hidden" id="authErr"></p>
-      <button class="btn-login" type="button" id="startGoogle">Continue to Google</button>
-      <p class="switch"><a href="#/login">Back to login</a></p>
-    </aside>`);
 
   const viewForgot = () => loginChrome(`
     <aside class="login-card">
@@ -282,13 +268,14 @@
 
   const viewVerify = (user) => loginChrome(`
     <aside class="login-card">
-      <h2>Confirm it's you</h2>
-      <p class="hint">Code sent to ${esc(user.email)}. Demo code: <b>${esc(user.pendingCode)}</b></p>
+      <h2>Enter your code</h2>
+      <p class="hint">Sent to ${esc(user.email || ("+91 " + user.phone))}.${user.pendingCode ? ` Code: <b>${esc(user.pendingCode)}</b>` : ""}</p>
       <form id="verifyForm">
-        <div class="field"><label>Code</label><input name="code" maxlength="6" required /></div>
+        <div class="field"><label>6-digit code</label><input name="code" inputmode="numeric" maxlength="6" required placeholder="000000" /></div>
         <p class="error hidden" id="verErr"></p>
-        <button class="btn-login" type="submit">Verify</button>
+        <button class="btn-login" type="submit">Verify and continue</button>
       </form>
+      <p class="switch"><a href="#/login">Back to login</a></p>
     </aside>`);
 
   const viewCheckInbox = (email) => loginChrome(`
@@ -568,8 +555,8 @@
   const requireUser = () => {
     const user = currentUser();
     if (!user) { go("/login"); return null; }
-    if (!user.verified && route() !== "/verify" && route() !== "/check-email") {
-      go(cloudOn() ? "/check-email" : "/verify");
+    if (!user.verified && route() !== "/verify") {
+      go("/verify");
       return null;
     }
     return user;
@@ -588,6 +575,8 @@
     setSession({ userId: user.id, token: randomHex(24), expires: Date.now() + 1000 * 60 * 60 * 24 * 14 });
   };
 
+  const digits10 = (v) => String(v || "").replace(/\D/g, "").slice(-10);
+
   const startEmailSignup = async (form, isLogin) => {
     const fd = new FormData(form);
     const email = String(fd.get("email") || "").trim().toLowerCase();
@@ -595,22 +584,17 @@
     const password = String(fd.get("password") || "");
     const err = form.querySelector("#authErr");
     const show = (m) => { err.textContent = m; err.classList.remove("hidden"); };
-    if (cloudOn()) {
+    if (cloudOn() && isLogin) {
       try {
-        if (isLogin) {
-          const user = await WebwisePortal.signInEmail({ email, password });
-          go(user.verified ? "/dashboard" : "/check-email");
-          return;
-        }
-        const result = await WebwisePortal.signUpEmail({ name, email, password, phone: "" });
-        go(result.needsEmailConfirm ? "/check-email" : "/health");
-      } catch (e) { show(e.message || "Could not sign in"); }
-      return;
+        const user = await WebwisePortal.signInEmail({ email, password });
+        go(user.verified ? "/dashboard" : "/health");
+        return;
+      } catch (e) { /* use local account below */ }
     }
     const users = loadUsers();
     const existing = users.find((u) => u.email === email && u.method === "email");
     if (isLogin) {
-      if (!existing) return show("No account found. Sign up first.");
+      if (!existing) return show("No email account found. Sign up first.");
       const hash = await hashPass(password, existing.salt);
       if (hash !== existing.passHash) return show("Wrong password.");
       loginSession(existing);
@@ -628,21 +612,53 @@
     go("/verify");
   };
 
-  const startGoogle = async (errEl) => {
-    const show = (m) => { if (!errEl) return alert(m); errEl.textContent = m; errEl.classList.remove("hidden"); };
-    if (!cloudOn()) return show("Google sign-in is not connected on this environment yet.");
-    try { await WebwisePortal.oauth("google"); }
-    catch (e) { show(e.message || "Google sign-in could not start."); }
+  const startPhone = async (form, isLogin) => {
+    const fd = new FormData(form);
+    const phone = digits10(fd.get("phone"));
+    const name = String(fd.get("name") || "").trim();
+    const err = form.querySelector("#phoneErr");
+    const show = (m) => { err.textContent = m; err.classList.remove("hidden"); };
+    if (phone.length !== 10) return show("Enter a 10-digit mobile number.");
+    if (cloudOn()) {
+      try {
+        const formatted = await WebwisePortal.signInPhone(phone);
+        sessionStorage.setItem("ww_otp_phone", formatted);
+        sessionStorage.setItem("ww_otp_name", name);
+        go("/verify-phone");
+        return;
+      } catch (e) { /* SMS not connected — local code */ }
+    }
+    let user = loadUsers().find((u) => u.phone === phone && u.method === "phone");
+    if (isLogin && !user) return show("No mobile account found. Sign up first.");
+    if (!user) {
+      user = {
+        id: randomHex(8), method: "phone", name, email: "", phone,
+        verified: false, optIn: true, pendingCode: otp6(), createdAt: Date.now()
+      };
+    } else {
+      user.pendingCode = otp6();
+      user.verified = false;
+      if (name) user.name = name;
+    }
+    upsertUser(user);
+    loginSession(user);
+    go("/verify");
   };
 
   const bindAuth = (mode) => {
-    document.getElementById("googleBtn")?.addEventListener("click", () => startGoogle(document.getElementById("authErr")));
+    document.querySelectorAll("[data-auth]").forEach((tab) => tab.addEventListener("click", () => {
+      document.querySelectorAll("[data-auth]").forEach((t) => t.classList.toggle("on", t === tab));
+      const phone = tab.dataset.auth === "phone";
+      document.getElementById("emailForm")?.classList.toggle("hidden", phone);
+      document.getElementById("phoneForm")?.classList.toggle("hidden", !phone);
+    }));
     document.getElementById("togglePass")?.addEventListener("click", () => {
       const input = document.getElementById("passInput");
       if (!input) return;
       input.type = input.type === "password" ? "text" : "password";
     });
     document.getElementById("emailForm")?.addEventListener("submit", (e) => { e.preventDefault(); startEmailSignup(e.target, mode === "login"); });
+    document.getElementById("phoneForm")?.addEventListener("submit", (e) => { e.preventDefault(); startPhone(e.target, mode === "login"); });
   };
 
   const fileName = async (input, kind) => {
@@ -664,12 +680,32 @@
       return;
     }
     if (path === "/signup") { app.innerHTML = viewLogin("signup"); bindAuth("signup"); return; }
-    if (path === "/check-email") { app.innerHTML = viewCheckInbox((user && user.email) || "your inbox"); return; }
-    if (path === "/google") {
-      app.innerHTML = viewSso();
-      const err = document.getElementById("authErr");
-      document.getElementById("startGoogle")?.addEventListener("click", () => startGoogle(err));
-      startGoogle(err);
+    if (path === "/google" || path === "/check-email") { go("/login"); return; }
+    if (path === "/verify-phone") {
+      const phone = sessionStorage.getItem("ww_otp_phone");
+      if (!phone) return go("/login");
+      app.innerHTML = loginChrome(`
+        <aside class="login-card">
+          <h2>Enter your code</h2>
+          <p class="hint">Sent to ${esc(phone)}</p>
+          <form id="verifyPhoneForm">
+            <div class="field"><label>6-digit code</label><input name="code" inputmode="numeric" maxlength="6" required /></div>
+            <p class="error hidden" id="verErr"></p>
+            <button class="btn-login" type="submit">Verify and continue</button>
+          </form>
+        </aside>`);
+      document.getElementById("verifyPhoneForm").addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const code = String(new FormData(e.target).get("code") || "");
+        const err = document.getElementById("verErr");
+        try {
+          await WebwisePortal.verifyPhone(phone, code);
+          go("/health");
+        } catch (ex) {
+          err.textContent = ex.message || "That code does not match.";
+          err.classList.remove("hidden");
+        }
+      });
       return;
     }
     if (path === "/forgot") {
@@ -699,7 +735,6 @@
     }
     if (path === "/verify") {
       user = currentUser();
-      if (cloudOn()) return go("/check-email");
       if (!user) return go("/login");
       if (user.verified) return go("/health");
       app.innerHTML = viewVerify(user);

@@ -95,28 +95,6 @@
       return mapUser(this.session, this.profile);
     },
 
-    googleCallbackUri() {
-      const base = String(this.cfg.supabaseUrl || "").replace(/\/$/, "");
-      return base ? `${base}/auth/v1/callback` : "";
-    },
-
-    async oauth(provider) {
-      const supabaseProvider = provider === "microsoft" ? "azure" : "google";
-      const origin = location.origin.replace(/\/$/, "");
-      const redirectTo = `${origin}/client/index.html`;
-      const { data, error } = await this.sb.auth.signInWithOAuth({
-        provider: supabaseProvider,
-        options: {
-          redirectTo,
-          skipBrowserRedirect: true,
-          queryParams: { prompt: "select_account" }
-        }
-      });
-      if (error) throw error;
-      if (!data?.url) throw new Error("Google did not return a sign-in link");
-      location.assign(data.url);
-    },
-
     async signInPhone(phone) {
       const formatted = phone.startsWith("+") ? phone : `+91${phone}`;
       const { error } = await this.sb.auth.signInWithOtp({ phone: formatted });
