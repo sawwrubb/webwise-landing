@@ -1,0 +1,9 @@
+{
+  "name": "webwise-landing",
+  "private": true,
+  "description": "Webwise Digital marketing site + client portal APIs",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.57.4",
+    "nodemailer": "^6.10.1"
+  }
+}
