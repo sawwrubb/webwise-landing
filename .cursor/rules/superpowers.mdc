@@ -1,0 +1,16 @@
+---
+description: Superpowers workflow for building software in this repo
+alwaysApply: true
+---
+
+Before implementing features, products, or non-trivial behavior changes:
+
+1. Read `.cursor/skills/using-superpowers/SKILL.md`.
+2. Use `.cursor/skills/brainstorming/SKILL.md` first. Classify spike / bounded / architectural. Present a design and wait for approval before writing production code.
+3. Architectural work: write a spec, then follow `.cursor/skills/writing-plans/SKILL.md`.
+4. Execute with `.cursor/skills/subagent-driven-development/SKILL.md` or `.cursor/skills/executing-plans/SKILL.md`.
+5. Use `.cursor/skills/test-driven-development/SKILL.md` when adding testable logic. Use `.cursor/skills/systematic-debugging/SKILL.md` for bugs. Verify with `.cursor/skills/verification-before-completion/SKILL.md`.
+
+Do not skip skills because a task feels small. A bounded change still needs a short in-chat design and approval.
+
+Cloud Agent git branch, commit, push, and PR rules in the system prompt take precedence over worktree/merge instructions in Superpowers skills.
