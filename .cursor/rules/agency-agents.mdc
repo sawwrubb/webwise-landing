@@ -1,0 +1,15 @@
+---
+description: Dispatch The Agency specialists for AI-agency work
+alwaysApply: true
+---
+
+This repo vendors The Agency (https://github.com/msitarzewski/agency-agents) at `.cursor/agency-agents/`.
+
+When the task is agency work (offer, funnel, marketing, sales, design, product, delivery, or coordinating specialists):
+
+1. Read `.cursor/skills/using-agency-agents/SKILL.md`.
+2. Pick one or a few specialists from `.cursor/agency-agents/ROSTER.md`.
+3. Read those specialist files before producing work in that role.
+4. For a full pipeline, use Agents Orchestrator plus `.cursor/agency-agents/strategy/QUICKSTART.md`.
+5. Superpowers skills still apply for design approval, planning, TDD, and verification.
+6. Do not load every agent. Do not edit live marketing pages without explicit confirmation.
