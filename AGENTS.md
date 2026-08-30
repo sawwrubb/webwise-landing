@@ -12,6 +12,19 @@ This repository vendors [obra/superpowers](https://github.com/obra/superpowers) 
 
 Desktop Cursor: also install the marketplace plugin with `/add-plugin superpowers` for session-start hooks. Cloud Agents pick up the vendored skills from this repo.
 
+## The Agency (specialists)
+
+This repository vendors [msitarzewski/agency-agents](https://github.com/msitarzewski/agency-agents) in `.cursor/agency-agents/`.
+
+1. Read `.cursor/skills/using-agency-agents/SKILL.md` when the work is agency delivery (sales, marketing, design, product, engineering roles, or a multi-agent pipeline).
+2. Pick specialists from `.cursor/agency-agents/ROSTER.md` and **read only those files**.
+3. For a full pipeline, use Agents Orchestrator plus `.cursor/agency-agents/strategy/QUICKSTART.md` (NEXUS Full / Sprint / Micro).
+4. Superpowers stays the process layer. The Agency stays the role layer. Do not dump the whole roster into one prompt.
+
+Refresh later with `./scripts/update-agency-agents.sh`.
+
+Optional on a personal machine: clone upstream and run `./scripts/install.sh --tool cursor` if you want `@agent` rule files. This repo uses on-demand briefs instead so sessions stay small.
+
 ## Published site
 
 Do not edit published marketing pages, CSS, JS, or sitemap unless the human explicitly confirms that change. See `.cursor/rules/live-site-lock.mdc`.
