@@ -41,7 +41,7 @@ def main() -> None:
         folder = AGENCY / div_id
         if not folder.is_dir():
             continue
-        for path in sorted(folder.glob("*.md")):
+        for path in sorted(folder.rglob("*.md")):
             fm = parse_frontmatter(path)
             if "name" not in fm:
                 continue
