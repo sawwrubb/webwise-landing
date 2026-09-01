@@ -1,0 +1,1659 @@
+<!doctype html>
+<html lang="en-IN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="index, follow" />
+    <title>I M Dentist | Premium Dental &amp; Facial Aesthetic Clinic in North Delhi</title>
+    <meta
+      name="description"
+      content="I M Dentist is a premium dental and facial aesthetic clinic in North Delhi with clinics at Derawal Nagar and Pratap Nagar. Book consultations, explore treatments, view smile transformations and get WhatsApp guidance."
+    />
+    <meta
+      name="keywords"
+      content="I M Dentist, dentist Derawal Nagar, dentist Pratap Nagar, dental clinic New Delhi, dental implants Delhi, smile design Delhi, Dr Sanchit Chawla"
+    />
+    <meta property="og:title" content="I M Dentist | Healthy Teeth. Confident You. Smiles That Last." />
+    <meta
+      property="og:description"
+      content="Premium dental care in North Delhi with advanced technology, patient-first care, WhatsApp booking and two convenient clinics."
+    />
+
+    <!-- ===================================================================
+         IMAGE SWAP GUIDE:
+           1. hero-reference-smiling-patient.png -> hero smiling woman
+           2. dr-sanchit.jpg -> "Why I M Dentist" doctor authority card only
+           3. team-8-doctors.png -> "Our Team" group photo
+           4. clinic-tech-scanning.jpg / clinic-tech-planning.jpg /
+              clinic-tech-treatment.jpg -> technology cards
+           5. clinic-aligner-consult.jpg -> aligner/payment section
+           6. generated-visit-flow.svg -> how a visit works
+           7. case-*.jpg -> before/after transformation cards
+           8. generated-faq-clinic.svg -> questions before treatment
+           9. clinic-derawal.jpg / clinic-pratap.jpg -> location cards
+         Each slot below is marked  data-swap="filename".
+         To swap: drop the file in /images and set the element's
+         background-image (or replace the <img src>). A branded fallback
+         shows until then, so nothing ever looks broken.
+    ==================================================================== -->
+
+    <style>
+      :root {
+        --navy: #07306d;
+        --navy-2: #041f4c;
+        --navy-3: #082f66;
+        --teal: #078f8d;
+        --teal-2: #18aaa3;
+        --teal-dark: #006f73;
+        --sky: #eef8ff;
+        --wash: #f7fbff;
+        --white: #ffffff;
+        --ink: #10224a;
+        --body: #465c78;
+        --muted: #70859f;
+        --line: #dcebf5;
+        --gold: #f8b400;
+        --wa: #25d366;
+        --shadow: 0 22px 44px rgba(7, 48, 109, 0.13);
+        --shadow-soft: 0 12px 28px rgba(7, 48, 109, 0.09);
+        --shadow-card: 0 8px 22px rgba(7, 48, 109, 0.08);
+        --radius: 18px;
+        --radius-lg: 26px;
+        --max: 1280px;
+      }
+
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        background: var(--wash);
+        color: var(--ink);
+        font-family: Inter, "Segoe UI", Arial, sans-serif;
+        line-height: 1.55;
+        -webkit-font-smoothing: antialiased;
+      }
+      a { color: inherit; text-decoration: none; }
+      img, svg { display: block; max-width: 100%; }
+      h1, h2, h3, h4, p { margin: 0; }
+
+      /* ---- ICONS ---- */
+      .ic { width: 24px; height: 24px; flex: 0 0 auto; stroke: currentColor; stroke-width: 1.9; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+      .ic-lg { width: 30px; height: 30px; }
+
+      .icon {
+        align-items: center;
+        display: inline-flex;
+        justify-content: center;
+        flex: 0 0 auto;
+        width: 56px;
+        height: 56px;
+        border-radius: 16px;
+        background: rgba(7, 143, 141, 0.1);
+        color: var(--teal);
+      }
+      .icon .ic { width: 28px; height: 28px; }
+      .icon.round { border-radius: 999px; }
+      .icon.navy { background: rgba(7, 48, 109, 0.09); color: var(--navy); }
+      .icon.solid { background: linear-gradient(135deg, var(--teal), #0aa39a); color: #fff; }
+      .icon.solid-navy { background: linear-gradient(135deg, var(--navy), #0d3f8a); color: #fff; }
+
+      /* ---- LAYOUT ---- */
+      .top-strip, .site-header, section, footer { width: 100%; }
+      .header-inner, .section-inner, .footer-inner, .top-strip-inner {
+        margin: 0 auto;
+        max-width: var(--max);
+        padding-left: clamp(18px, 4vw, 48px);
+        padding-right: clamp(18px, 4vw, 48px);
+      }
+
+      /* ---- TOP STRIP ---- */
+      .top-strip {
+        background: linear-gradient(90deg, var(--teal-dark), var(--teal));
+        color: #fff;
+        font-weight: 700;
+        font-size: 15px;
+      }
+      .top-strip-inner {
+        display: flex; align-items: center; justify-content: space-between;
+        gap: 24px; min-height: 46px; flex-wrap: wrap;
+      }
+      .top-left, .top-right { display: flex; align-items: center; gap: clamp(16px, 3vw, 40px); }
+      .top-pill { display: inline-flex; align-items: center; gap: 9px; white-space: nowrap; }
+      .top-pill .ic { width: 18px; height: 18px; }
+      .top-strip .sep { opacity: .5; }
+      @media (max-width: 860px) { .top-left { display: none; } }
+
+      /* ---- HEADER ---- */
+      .site-header {
+        background: rgba(255,255,255,.97);
+        backdrop-filter: blur(8px);
+        border-bottom: 1px solid rgba(7,48,109,.1);
+        position: sticky; top: 0; z-index: 50;
+      }
+      .header-inner {
+        display: flex; align-items: center; justify-content: space-between;
+        gap: 28px; min-height: 86px;
+      }
+      .logo { display: flex; align-items: center; gap: 13px; }
+      .logo-mark { width: 46px; height: 46px; flex: 0 0 auto; }
+      .logo-text strong {
+        color: var(--navy); display: block;
+        font-size: 25px; font-weight: 800; letter-spacing: 3px;
+        line-height: 1; text-transform: uppercase;
+      }
+      .logo-text span {
+        color: #64768d; display: block; font-size: 12.5px;
+        letter-spacing: .3px; margin-top: 4px;
+      }
+      .nav { display: flex; align-items: center; gap: clamp(16px, 2.4vw, 36px); font-size: 16px; font-weight: 700; }
+      .nav a { color: var(--navy); padding: 8px 0; position: relative; white-space: nowrap; }
+      .nav a.active, .nav a:hover { color: var(--teal); }
+      .nav a.active:after, .nav a:hover:after {
+        content: ""; position: absolute; left: 0; right: 0; bottom: -6px;
+        height: 3px; border-radius: 999px; background: var(--teal);
+      }
+      .menu-btn { display: none; background: none; border: 0; color: var(--navy); cursor: pointer; padding: 6px; }
+      @media (max-width: 1080px) { .nav { display: none; } .menu-btn { display: inline-flex; } }
+
+      /* ---- BUTTONS ---- */
+      .btn {
+        display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+        border: 0; border-radius: 12px; cursor: pointer; font: inherit;
+        font-weight: 700; line-height: 1.1; min-height: 46px; padding: 13px 22px;
+        transition: transform .18s ease, box-shadow .18s ease; white-space: nowrap;
+      }
+      .btn .ic { width: 20px; height: 20px; }
+      .btn:hover { box-shadow: var(--shadow-soft); transform: translateY(-2px); }
+      .btn-primary { background: var(--navy); color: #fff; }
+      .btn-teal { background: linear-gradient(135deg, var(--teal), #0aa39a); color: #fff; }
+      .btn-wa { background: var(--wa); color: #fff; }
+      .btn-outline { background: #fff; border: 1.5px solid rgba(7,143,141,.55); color: var(--teal); }
+      .btn-ghost { background: transparent; border: 1.5px solid rgba(255,255,255,.4); color: #fff; }
+
+      /* ---- SECTION SHELL ---- */
+      section.section {
+        position: relative; overflow: hidden;
+        padding: clamp(52px, 6vw, 92px) 0;
+        background:
+          radial-gradient(circle at 6% 8%, rgba(24,170,163,.06), transparent 26%),
+          linear-gradient(180deg, #fff 0%, #f2f9ff 100%);
+      }
+      section.alt {
+        background:
+          radial-gradient(circle at 94% 10%, rgba(24,170,163,.07), transparent 30%),
+          linear-gradient(180deg, #f4faff 0%, #fff 100%);
+      }
+      .kicker {
+        display: inline-flex; align-items: center; gap: 8px;
+        color: var(--teal); font-size: 14px; font-weight: 800;
+        letter-spacing: 1.4px; text-transform: uppercase; margin-bottom: 16px;
+      }
+      .kicker .ic { width: 17px; height: 17px; }
+      h1, h2 { color: var(--navy); font-weight: 800; line-height: 1.06; letter-spacing: -.5px; }
+      h1 { font-size: clamp(40px, 5.4vw, 68px); }
+      h2 { font-size: clamp(32px, 3.8vw, 52px); }
+      h3 { color: var(--navy); font-size: clamp(19px, 1.7vw, 23px); font-weight: 800; line-height: 1.2; }
+      .teal-text { color: var(--teal); }
+      .lead { color: var(--body); font-size: clamp(16px, 1.3vw, 19px); line-height: 1.6; margin-top: 20px; max-width: 640px; }
+      .underline { display: block; height: 4px; width: 84px; border-radius: 999px; background: var(--teal); margin-top: 20px; }
+      .center { text-align: center; margin-left: auto; margin-right: auto; }
+      .center .underline, .center .kicker { margin-left: auto; margin-right: auto; }
+      .center .lead { margin-left: auto; margin-right: auto; }
+      .legacy-hidden { display: none !important; }
+      .png-reference-section {
+        padding: 0;
+        background: #f3f9ff;
+        overflow: hidden;
+      }
+      .png-reference-inner {
+        width: 100%;
+        margin: 0 auto;
+        background: #f3f9ff;
+      }
+      .png-reference-inner img {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+      @media (max-width: 760px) {
+        .png-reference-section {
+          overflow-x: auto;
+          -webkit-overflow-scrolling: touch;
+        }
+        .png-reference-inner {
+          min-width: 1180px;
+        }
+      }
+
+      /* ---- SWAP-SLOT PHOTO FALLBACK ---- */
+      .photo {
+        position: relative; overflow: hidden; border-radius: var(--radius-lg);
+        background:
+          linear-gradient(135deg, #0d3f8a 0%, #07306d 55%, #062148 100%);
+        min-height: 240px;
+      }
+      .photo[data-swap$=".jpg"] {
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+      .photo[data-swap="clinic-tech-scanning.jpg"] { background-image: url("images/clinic-tech-scanning.jpg"); }
+      .photo[data-swap="clinic-tech-planning.jpg"] { background-image: url("images/clinic-tech-planning.jpg"); }
+      .photo[data-swap="clinic-tech-treatment.jpg"] { background-image: url("images/clinic-tech-treatment.jpg"); }
+      .photo[data-swap="clinic-aligner-consult.jpg"] { background-image: url("images/clinic-aligner-consult.jpg"); }
+      .photo[data-swap="facility-xray.jpg"] { background-image: url("images/facility-xray.jpg"); }
+      .photo[data-swap="facility-scanner.jpg"] { background-image: url("images/facility-scanner.jpg"); }
+      .photo[data-swap="facility-pathology.jpg"] { background-image: url("images/facility-pathology.jpg"); }
+      .photo[data-swap="facility-dental-lab.jpg"] { background-image: url("images/facility-dental-lab.jpg"); }
+      .photo[data-swap="generated-visit-flow.svg"] {
+        background:
+          radial-gradient(circle at 78% 22%, rgba(255,255,255,.86), transparent 20%),
+          linear-gradient(135deg, #f7fcff 0%, #e5f5f7 42%, #0a8f89 100%);
+      }
+      .photo[data-swap="generated-faq-clinic.svg"] {
+        background:
+          radial-gradient(circle at 20% 76%, rgba(43,185,176,.2), transparent 22%),
+          linear-gradient(135deg, #ffffff 0%, #edf8fb 52%, #cdeaf0 100%);
+      }
+      .photo[data-swap="clinic-derawal.jpg"] {
+        background-image: url("images/clinic-derawal.jpg");
+        background-position: center;
+      }
+      .photo[style*="url"] .photo-fallback,
+      .photo[data-swap$=".jpg"] .photo-fallback { display: none; }
+      .photo-fallback {
+        position: absolute; inset: 0; display: flex; flex-direction: column;
+        align-items: center; justify-content: center; gap: 12px; color: #fff; text-align: center; padding: 24px;
+      }
+      .photo[data-swap^="generated-"] .photo-fallback {
+        color: var(--navy); text-shadow: 0 1px 0 rgba(255,255,255,.45);
+      }
+      .photo-fallback .ic { width: 46px; height: 46px; opacity: .85; }
+      .photo-fallback strong { font-size: 16px; font-weight: 700; }
+      .photo-fallback span { font-size: 12.5px; opacity: .72; letter-spacing: .3px; }
+      .photo-fallback .tag {
+        margin-top: 4px; font-size: 11px; font-weight: 700; letter-spacing: 1px;
+        text-transform: uppercase; background: rgba(255,255,255,.14);
+        padding: 4px 12px; border-radius: 999px;
+      }
+      .photo[data-swap^="generated-"] .photo-fallback .tag { background: rgba(7,48,109,.1); }
+
+      /* ---- HERO ---- */
+      .hero { padding-top: 0; }
+      .hero-grid {
+        display: grid; grid-template-columns: 1.05fr .95fr; gap: clamp(28px, 4vw, 56px);
+        align-items: center; padding-top: clamp(40px, 5vw, 68px);
+      }
+      .hero .kicker-pill {
+        display: inline-flex; align-items: center; gap: 8px;
+        background: rgba(7,143,141,.1); color: var(--teal);
+        font-size: 13px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase;
+        padding: 8px 16px; border-radius: 999px; margin-bottom: 22px;
+      }
+      .hero .kicker-pill .ic { width: 16px; height: 16px; }
+      .hero h1 span.teal-text { display: inline; }
+      .hero-actions { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 30px; }
+      .hero-photo { position: relative; min-height: 460px; }
+      .hero-photo .photo { height: 100%; min-height: 460px; }
+      .doctor-badge {
+        position: absolute; right: 18px; bottom: 26px;
+        background: linear-gradient(135deg, var(--navy), #0a336f);
+        color: #fff; border-radius: 18px; padding: 18px 22px;
+        box-shadow: var(--shadow); max-width: 260px;
+      }
+      .doctor-badge .db-top { display: flex; align-items: center; gap: 10px; }
+      .doctor-badge h4 { font-size: 18px; font-weight: 800; }
+      .doctor-badge p { font-size: 12.5px; opacity: .8; }
+      .doctor-badge ul { list-style: none; margin: 14px 0 0; padding: 14px 0 0; border-top: 1px solid rgba(255,255,255,.16); display: grid; gap: 9px; }
+      .doctor-badge li { display: flex; align-items: center; gap: 9px; font-size: 13px; }
+      .doctor-badge li .ic { width: 17px; height: 17px; color: var(--teal-2); }
+      .hero-trust {
+        display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px;
+        margin-top: clamp(34px, 4vw, 52px); background: #fff;
+        border: 1px solid var(--line); border-radius: var(--radius);
+        box-shadow: var(--shadow-card); padding: 22px clamp(14px, 2vw, 26px);
+      }
+      .trust-item { display: flex; align-items: center; gap: 13px; padding: 0 clamp(8px, 1.4vw, 20px); border-right: 1px solid var(--line); }
+      .trust-item:last-child { border-right: 0; }
+      .trust-item strong { color: var(--navy); display: block; font-size: 15px; font-weight: 800; line-height: 1.25; }
+      .trust-item span { color: var(--muted); font-size: 12.5px; line-height: 1.35; }
+      .support-bar {
+        display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px;
+        margin-top: 20px; background: #fff; border: 1px solid var(--line);
+        border-radius: var(--radius); box-shadow: var(--shadow-card); padding: 18px clamp(14px,2vw,24px);
+      }
+      .quick-card { display: flex; align-items: center; gap: 12px; }
+      .quick-card strong { color: var(--navy); display: block; font-size: 14px; font-weight: 800; }
+      .quick-card span { color: var(--muted); font-size: 12.5px; }
+      .quick-card.cta { justify-content: center; }
+      @media (max-width: 980px) {
+        .hero-grid { grid-template-columns: 1fr; }
+        .hero-photo { min-height: 360px; order: -1; }
+        .hero-trust, .support-bar { grid-template-columns: repeat(2, 1fr); }
+        .hero-trust .trust-item:nth-child(2), .trust-item { border-right: 0; }
+      }
+      @media (max-width: 520px) { .hero-trust, .support-bar { grid-template-columns: 1fr; } }
+
+      /* ---- WHY ---- */
+      .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(28px, 4vw, 56px); align-items: center; }
+      .metric-strip { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px 28px; margin-top: 30px; max-width: 560px; }
+      .metric { display: flex; align-items: center; gap: 13px; }
+      .metric strong { color: var(--navy); display: block; font-size: 24px; font-weight: 800; line-height: 1; }
+      .metric .stars { display: inline-flex; gap: 1px; margin: 3px 0; }
+      .metric .stars .ic { width: 14px; height: 14px; fill: var(--gold); stroke: var(--gold); }
+      .metric span.lbl { color: var(--muted); font-size: 12.5px; line-height: 1.3; }
+      .clinical-stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 22px; max-width: 640px; }
+      .clinical-stat { display: flex; align-items: center; gap: 13px; padding: 15px; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); box-shadow: 0 12px 28px rgba(7,48,109,.08); }
+      .clinical-stat .icon { width: 42px; height: 42px; flex: 0 0 42px; }
+      .clinical-stat strong { display: block; color: var(--navy); font-size: 24px; line-height: 1; font-weight: 900; }
+      .clinical-stat .copy { display: block; color: var(--muted); font-size: 12.5px; line-height: 1.35; margin-top: 4px; }
+      .why-photo { position: relative; min-height: 420px; }
+      .why-photo .photo { height: 100%; min-height: 420px; }
+      .why-photo .doctor-badge { position: absolute; }
+      @media (max-width: 900px) { .why-grid { grid-template-columns: 1fr; } .why-photo { min-height: 340px; } }
+      @media (max-width: 560px) { .metric-strip, .clinical-stats { grid-template-columns: 1fr; } }
+
+      /* ---- TRUST LOGOS ---- */
+      .panel-row {
+        display: flex; align-items: center; flex-wrap: wrap; gap: clamp(18px,3vw,44px);
+        justify-content: center; margin-top: 42px; padding: 22px clamp(16px,3vw,34px);
+        background: #fff; border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow-card);
+      }
+      .panel-row .label { color: var(--teal); font-size: 12.5px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; line-height: 1.3; max-width: 130px; }
+      .panel-logo { display: inline-flex; align-items: center; gap: 9px; color: var(--navy); font-weight: 800; font-size: 14.5px; letter-spacing: .5px; opacity: .82; }
+      .panel-logo .crest { width: 34px; height: 34px; flex: 0 0 auto; }
+
+      /* ---- REVIEWS INLINE ---- */
+      .reviews-line { margin-top: 44px; }
+      .review-head { text-align: center; margin-bottom: 26px; }
+      .review-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+      .review-card { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow-card); padding: 24px; position: relative; }
+      .review-card .quote { position: absolute; top: 18px; right: 20px; color: rgba(7,143,141,.18); }
+      .review-card .quote .ic { width: 34px; height: 34px; stroke-width: 0; fill: rgba(7,143,141,.16); }
+      .stars { display: inline-flex; gap: 2px; }
+      .stars .ic { width: 16px; height: 16px; fill: var(--gold); stroke: var(--gold); }
+      .review-card p { color: var(--body); font-size: 15px; margin-top: 14px; line-height: 1.55; }
+      .review-card .who { display: flex; align-items: center; gap: 10px; margin-top: 16px; }
+      .review-card .who .av { width: 38px; height: 38px; border-radius: 999px; background: linear-gradient(135deg, var(--teal), var(--navy)); display: inline-flex; align-items: center; justify-content: center; color: #fff; font-weight: 800; font-size: 14px; }
+      .review-card .who strong { color: var(--navy); font-size: 14px; font-weight: 800; }
+      @media (max-width: 860px) { .review-grid { grid-template-columns: 1fr; } }
+
+      /* ---- TEAM ---- */
+      .team-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(28px,4vw,56px); align-items: center; }
+      .team-points { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 28px; }
+      .team-points > div { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 16px; box-shadow: var(--shadow-card); }
+      .team-points .icon { width: 44px; height: 44px; margin-bottom: 10px; }
+      .team-points .icon .ic { width: 22px; height: 22px; }
+      .team-points strong { color: var(--navy); display: block; font-size: 15px; font-weight: 800; }
+      .team-points span { color: var(--muted); font-size: 13px; }
+      .team-photo { min-height: 400px; }
+      .team-photo .photo { height: 100%; min-height: 400px; }
+      @media (max-width: 900px) { .team-grid { grid-template-columns: 1fr; } .team-photo { min-height: 320px; } }
+
+      /* ---- STORIES ---- */
+      .story-head { display: flex; align-items: center; justify-content: space-between; gap: 28px; flex-wrap: wrap; margin-bottom: 30px; }
+      .rating-block { display: flex; align-items: center; gap: 16px; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow-card); padding: 16px 24px; }
+      .rating-block .g { width: 40px; height: 40px; }
+      .rating-block strong { color: var(--navy); font-size: 34px; font-weight: 800; line-height: 1; display: flex; align-items: center; gap: 10px; }
+      .rating-block p { color: var(--muted); font-size: 13px; margin-top: 4px; }
+      .story-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+      .story-card { position: relative; border-radius: var(--radius); overflow: hidden; min-height: 300px; box-shadow: var(--shadow-card); }
+      .story-card .photo { height: 100%; min-height: 300px; border-radius: 0; }
+      .story-card .play { position: absolute; top: 16px; left: 16px; width: 46px; height: 46px; border-radius: 999px; background: rgba(255,255,255,.9); display: inline-flex; align-items: center; justify-content: center; color: var(--navy); box-shadow: var(--shadow-card); }
+      .story-card .play .ic { width: 22px; height: 22px; fill: var(--navy); stroke: none; margin-left: 3px; }
+      .story-card.clinical-proof .play .ic { fill: none; stroke: var(--navy); margin-left: 0; }
+      .story-card.video-review { background: linear-gradient(135deg, #061f47, #0a8f88); min-height: 300px; border: 1px solid rgba(7,48,109,.08); }
+      .story-card.video-review video { width: 100%; height: 100%; min-height: 300px; display: block; object-fit: cover; background: #061f47; }
+      .story-card.video-review::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 46%; background: linear-gradient(180deg, transparent, rgba(4,25,60,.82)); pointer-events: none; }
+      .story-card.video-review .video-label { position: absolute; top: 14px; left: 14px; z-index: 2; display: inline-flex; align-items: center; gap: 7px; padding: 8px 12px; border-radius: 999px; background: rgba(255,255,255,.92); color: var(--navy); font-size: 12px; font-weight: 800; box-shadow: var(--shadow-card); }
+      .story-card.video-review .video-label .ic { width: 13px; height: 13px; fill: var(--teal); stroke: none; }
+      .story-card.video-review .story-caption { z-index: 2; background: none; pointer-events: none; }
+      .story-caption { position: absolute; left: 0; right: 0; bottom: 0; padding: 20px 18px 18px; background: linear-gradient(180deg, transparent, rgba(4,25,60,.9)); color: #fff; }
+      .story-caption strong { display: block; font-size: 15px; font-weight: 700; line-height: 1.35; }
+      .story-caption span { font-size: 12.5px; opacity: .8; }
+      .center-actions { text-align: center; margin-top: 30px; }
+      @media (max-width: 980px) { .story-grid { grid-template-columns: repeat(2,1fr); } }
+      @media (max-width: 560px) { .story-grid { grid-template-columns: 1fr; } }
+      @media (max-width: 560px) { .story-card.video-review, .story-card.video-review video { min-height: 360px; } }
+
+      /* ---- TECH ---- */
+      .tech-layout { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; align-items: stretch; }
+      .tech-intro { grid-column: 1 / -1; max-width: 620px; margin-bottom: 8px; }
+      .tech-card { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow-card); overflow: hidden; }
+      .tech-card .photo { border-radius: 0; min-height: 190px; }
+      .tech-card-body { padding: 20px 22px 24px; }
+      .tech-card-body .icon { width: 46px; height: 46px; margin-bottom: 12px; }
+      .tech-card-body p { color: var(--body); font-size: 14.5px; margin-top: 8px; }
+      .partner-row { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin: 18px 0 0; padding: 14px 16px; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow-card); }
+      .partner-label { display: inline-flex; align-items: center; gap: 8px; color: var(--navy); font-weight: 800; font-size: 13.5px; margin-right: 6px; }
+      .partner-label .ic { width: 18px; height: 18px; color: var(--teal); }
+      .partner-chip { background: #eaf8f8; color: var(--teal); border: 1px solid rgba(24,170,163,.22); border-radius: 999px; padding: 7px 12px; font-size: 12.5px; font-weight: 800; }
+      @media (max-width: 900px) { .tech-layout { grid-template-columns: 1fr; } }
+
+      /* ---- PAYMENT ---- */
+      .payment-row { display: grid; grid-template-columns: .9fr 1fr; gap: clamp(24px,3vw,44px); align-items: center; margin-top: 44px; background: #fff; border: 1px solid var(--line); border-radius: var(--radius-lg); box-shadow: var(--shadow-card); padding: clamp(22px,3vw,40px); }
+      .payment-row .photo { min-height: 300px; }
+      .payment-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 24px; }
+      .payment-grid > div { display: flex; gap: 12px; align-items: flex-start; }
+      .payment-grid .icon { width: 44px; height: 44px; }
+      .payment-grid strong { color: var(--navy); display: block; font-size: 14.5px; font-weight: 800; }
+      .payment-grid span { color: var(--muted); font-size: 13px; }
+      .secure-row { display: flex; align-items: center; gap: 10px; margin-top: 22px; padding-top: 18px; border-top: 1px solid var(--line); color: var(--muted); font-size: 13px; font-weight: 600; }
+      .secure-row .ic { width: 18px; height: 18px; color: var(--teal); }
+      @media (max-width: 860px) { .payment-row { grid-template-columns: 1fr; } .payment-grid { grid-template-columns: 1fr; } }
+
+      /* ---- FACILITIES ---- */
+      .facilities-block { margin-top: 44px; }
+      .facility-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 18px; margin-top: 24px; }
+      .facility-card { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow-card); overflow: hidden; }
+      .facility-card .photo { border-radius: 0; min-height: 170px; }
+      .facility-body { padding: 18px 18px 20px; }
+      .facility-body .icon { width: 44px; height: 44px; margin-bottom: 12px; }
+      .facility-body h3 { font-size: 18px; }
+      .facility-body p { color: var(--body); font-size: 14px; margin-top: 8px; }
+      .facility-note { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; margin-top: 22px; background: #fff; border: 1px solid var(--line); border-radius: var(--radius-lg); box-shadow: var(--shadow-card); padding: 18px; }
+      .facility-note > div { display: flex; align-items: center; gap: 12px; }
+      .facility-note .icon { width: 40px; height: 40px; }
+      .facility-note strong { color: var(--navy); font-size: 13.5px; display: block; }
+      .facility-note span { color: var(--muted); font-size: 12.5px; }
+      @media (max-width: 980px) { .facility-grid, .facility-note { grid-template-columns: repeat(2,1fr); } }
+      @media (max-width: 560px) { .facility-grid, .facility-note { grid-template-columns: 1fr; } }
+
+      /* ---- PROCESS ---- */
+      .flow-hero { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(24px,3vw,48px); align-items: center; }
+      .flow-photo { min-height: 300px; }
+      .process-benefits { display: flex; flex-wrap: wrap; gap: 10px 26px; margin-top: 30px; }
+      .process-benefits > div { display: flex; align-items: center; gap: 10px; }
+      .process-benefits .icon { width: 40px; height: 40px; }
+      .process-benefits .icon .ic { width: 20px; height: 20px; }
+      .process-benefits strong { color: var(--navy); font-size: 14px; font-weight: 700; }
+      .process-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 18px; margin-top: 34px; }
+      .process-card { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow-card); padding: 24px 22px; position: relative; }
+      .process-card .step { position: absolute; top: 20px; right: 22px; color: rgba(7,48,109,.12); font-size: 40px; font-weight: 900; line-height: 1; }
+      .process-card .icon { width: 48px; height: 48px; margin-bottom: 16px; }
+      .process-card p { color: var(--body); font-size: 14px; margin-top: 8px; }
+      .benefit-row { display: grid; grid-template-columns: repeat(4,1fr); gap: 18px; margin-top: 22px; }
+      .benefit-row > div { display: flex; align-items: center; gap: 12px; background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 16px; box-shadow: var(--shadow-card); }
+      .benefit-row .icon { width: 42px; height: 42px; }
+      .benefit-row strong { color: var(--navy); display: block; font-size: 14px; font-weight: 800; }
+      .benefit-row span.lbl { color: var(--muted); font-size: 12.5px; }
+      @media (max-width: 900px) { .flow-hero { grid-template-columns: 1fr; } .process-grid, .benefit-row { grid-template-columns: repeat(2,1fr); } }
+      @media (max-width: 540px) { .process-grid, .benefit-row { grid-template-columns: 1fr; } }
+
+      /* ---- CHAT / AI ASSISTANT ---- */
+      .ai-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(28px,4vw,56px); align-items: center; }
+      .ai-options { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 28px; }
+      .ai-options > div { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 16px; box-shadow: var(--shadow-card); }
+      .ai-options .icon { width: 44px; height: 44px; margin-bottom: 10px; }
+      .ai-options .icon .ic { width: 22px; height: 22px; }
+      .ai-options h3 { font-size: 16px; }
+      .ai-options p { color: var(--muted); font-size: 13px; margin-top: 4px; }
+      .chat-card { background: #fff; border: 1px solid var(--line); border-radius: var(--radius-lg); box-shadow: var(--shadow); overflow: hidden; }
+      .chat-header { display: flex; align-items: center; justify-content: space-between; gap: 14px; background: linear-gradient(135deg, var(--navy), #0a336f); color: #fff; padding: 18px 22px; }
+      .chat-header .bot { display: flex; align-items: center; gap: 12px; }
+      .bot-face { width: 46px; height: 46px; border-radius: 999px; background: rgba(255,255,255,.14); display: inline-flex; align-items: center; justify-content: center; }
+      .bot-face .ic { width: 26px; height: 26px; color: #fff; }
+      .chat-header h4 { font-size: 16px; font-weight: 800; }
+      .chat-header p { font-size: 12px; opacity: .8; }
+      .chat-status { display: inline-flex; align-items: center; gap: 7px; font-size: 12.5px; font-weight: 700; }
+      .active-dot { width: 9px; height: 9px; border-radius: 999px; background: var(--wa); box-shadow: 0 0 0 4px rgba(37,211,102,.25); }
+      .chat-body { background: linear-gradient(180deg, #f4f9ff, #eef6fd); padding: 22px; display: flex; flex-direction: column; gap: 14px; }
+      .bubble { max-width: 78%; padding: 12px 15px; font-size: 14px; line-height: 1.45; border-radius: 16px; position: relative; }
+      .bot-message { background: #fff; color: var(--ink); border: 1px solid var(--line); border-bottom-left-radius: 5px; align-self: flex-start; box-shadow: var(--shadow-card); }
+      .user-message { background: linear-gradient(135deg, var(--teal), #0aa39a); color: #fff; border-bottom-right-radius: 5px; align-self: flex-end; }
+      .bubble .time { display: block; font-size: 10.5px; opacity: .6; margin-top: 5px; text-align: right; }
+      .bubble .time .ic { width: 13px; height: 13px; display: inline; vertical-align: -2px; margin-left: 3px; }
+      .slot-row { display: flex; gap: 10px; flex-wrap: wrap; align-self: flex-start; }
+      .slot-row button { display: inline-flex; align-items: center; gap: 7px; background: #fff; border: 1.5px solid rgba(7,143,141,.4); color: var(--teal); border-radius: 999px; padding: 9px 16px; font: inherit; font-size: 13px; font-weight: 700; cursor: pointer; }
+      .slot-row button .ic { width: 15px; height: 15px; }
+      .chat-input { width: 100%; display: flex; align-items: center; gap: 12px; background: #fff; border: 1px solid var(--line); border-radius: 999px; padding: 12px 16px; margin-top: 4px; font: inherit; cursor: pointer; text-align: left; }
+      .chat-input .ic { color: var(--muted); }
+      .chat-input span { color: var(--muted); font-size: 14px; flex: 1; }
+      .chat-input .send { width: 40px; height: 40px; border-radius: 999px; background: linear-gradient(135deg, var(--teal), #0aa39a); display: inline-flex; align-items: center; justify-content: center; color: #fff; }
+      .chat-input .send .ic { width: 20px; height: 20px; color: #fff; }
+      @media (max-width: 900px) { .ai-grid { grid-template-columns: 1fr; } .ai-options { grid-template-columns: 1fr 1fr; } }
+
+      /* ---- CASES / BEFORE-AFTER ---- */
+      .cases-head { text-align: center; margin-bottom: 32px; }
+      .case-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 18px; }
+      .case-card { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow-card); overflow: hidden; }
+      .case-image { min-height: 280px; border-radius: 0; background-position: center; }
+      .case-image .photo-fallback { background: linear-gradient(180deg, rgba(4,31,76,.12), rgba(4,31,76,.55)); }
+      .ba { display: grid; grid-template-columns: 1fr 1fr; gap: 3px; }
+      .ba-half { position: relative; min-height: 150px; display: flex; align-items: flex-start; padding: 12px; }
+      .ba-before { background: linear-gradient(135deg, #8794a6, #66748a); }
+      .ba-after { background: linear-gradient(135deg, var(--teal), #0a6f74); }
+      .ba-half .tag { font-size: 10.5px; font-weight: 800; letter-spacing: .8px; text-transform: uppercase; color: #fff; background: rgba(4,25,60,.5); padding: 4px 10px; border-radius: 6px; }
+      .ba-after .tag { background: rgba(4,25,60,.35); }
+      .ba-half .mouth { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; opacity: .5; }
+      .ba-half .mouth .ic { width: 54px; height: 54px; color: #fff; }
+      .case-body { padding: 18px 20px 22px; }
+      .case-body .icon { width: 42px; height: 42px; margin-bottom: 12px; }
+      .case-body p { color: var(--body); font-size: 13.5px; margin-top: 6px; }
+      .case-link { display: inline-flex; align-items: center; gap: 7px; color: var(--teal); font-weight: 800; font-size: 13.5px; margin-top: 14px; }
+      .case-link .ic { width: 16px; height: 16px; }
+      @media (max-width: 980px) { .case-grid { grid-template-columns: repeat(2,1fr); } }
+      @media (max-width: 540px) { .case-grid { grid-template-columns: 1fr; } }
+
+      /* ---- CTA BAND ---- */
+      .cta-band { display: flex; align-items: center; justify-content: space-between; gap: 26px; flex-wrap: wrap; margin-top: 40px; background: linear-gradient(135deg, var(--navy), #0a336f); color: #fff; border-radius: var(--radius-lg); padding: clamp(26px,3vw,40px); }
+      .cta-band h3 { color: #fff; }
+      .cta-band .lead { color: rgba(255,255,255,.82); margin-top: 8px; }
+      .cta-choice { display: flex; gap: 14px; flex-wrap: wrap; }
+
+      /* ---- LOCATIONS ---- */
+      .locations-head { text-align: center; margin-bottom: 34px; }
+      .location-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+      .location-card { background: #fff; border: 1px solid var(--line); border-radius: var(--radius-lg); box-shadow: var(--shadow-card); overflow: hidden; }
+      .location-top { display: grid; grid-template-columns: 1fr auto; gap: 18px; padding: 24px 24px 20px; align-items: start; }
+      .location-top .icon { width: 50px; height: 50px; margin-bottom: 12px; }
+      .location-top h3 { font-size: 22px; }
+      .location-top p { color: var(--body); font-size: 14px; margin-top: 6px; }
+      .location-actions { display: flex; gap: 12px; margin-top: 16px; flex-wrap: wrap; }
+      .location-actions .btn { min-height: 42px; padding: 10px 18px; font-size: 14px; }
+      .loc-thumb { width: 120px; height: 100px; border-radius: 14px; }
+      .map { position: relative; }
+      .map iframe { width: 100%; height: 260px; border: 0; display: block; }
+      .map-card { position: absolute; top: 16px; left: 16px; background: #fff; border-radius: 12px; box-shadow: var(--shadow); padding: 14px 16px; max-width: 260px; }
+      .map-card strong { color: var(--navy); font-size: 14px; font-weight: 800; }
+      .map-card p { color: var(--muted); font-size: 12px; margin-top: 4px; }
+      .map-card .rate { display: flex; align-items: center; gap: 6px; margin-top: 8px; font-size: 13px; font-weight: 800; color: var(--navy); }
+      .location-features { display: flex; flex-wrap: wrap; gap: 8px 20px; padding: 18px 24px; border-top: 1px solid var(--line); }
+      .location-features span { display: inline-flex; align-items: center; gap: 8px; color: var(--body); font-size: 13px; font-weight: 600; }
+      .location-features span .ic { width: 17px; height: 17px; color: var(--teal); }
+      @media (max-width: 900px) { .location-grid { grid-template-columns: 1fr; } }
+      @media (max-width: 480px) { .location-top { grid-template-columns: 1fr; } .loc-thumb { width: 100%; height: 120px; } }
+
+      /* ---- FAQ ---- */
+      .faq-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: clamp(28px,4vw,52px); align-items: start; }
+      .faq-visual { margin-top: 26px; }
+      .faq-visual .photo { min-height: 300px; }
+      .faq-list { display: flex; flex-direction: column; gap: 12px; }
+      .faq-item { background: #fff; border: 1px solid var(--line); border-radius: 14px; box-shadow: var(--shadow-card); overflow: hidden; }
+      .faq-question { display: flex; align-items: center; justify-content: space-between; gap: 14px; cursor: pointer; padding: 18px 20px; list-style: none; font-weight: 700; color: var(--navy); font-size: 15.5px; }
+      .faq-question::-webkit-details-marker { display: none; }
+      .faq-question .q-left { display: flex; align-items: center; gap: 14px; }
+      .faq-question .icon { width: 40px; height: 40px; }
+      .faq-question .icon .ic { width: 20px; height: 20px; }
+      .faq-question .chev { color: var(--teal); transition: transform .2s ease; }
+      .faq-item[open] .chev { transform: rotate(180deg); }
+      .faq-answer { padding: 0 20px 20px 74px; color: var(--body); font-size: 14.5px; line-height: 1.6; }
+      .faq-list .btn { align-self: flex-start; margin-top: 6px; }
+      @media (max-width: 860px) { .faq-grid { grid-template-columns: 1fr; } .faq-answer { padding-left: 20px; } }
+
+      /* ---- FOOTER ---- */
+      .dark-section { background: radial-gradient(circle at 88% 20%, rgba(24,170,163,.16), transparent 34%), linear-gradient(135deg, #062554, #07306d 46%, #08234d); color: #fff; }
+      .closing { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(28px,4vw,56px); padding: clamp(48px,6vw,84px) 0; align-items: center; }
+      .closing h2 { color: #fff; }
+      .closing .kicker { color: var(--teal-2); }
+      .closing .lead { color: rgba(255,255,255,.8); }
+      .choice-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+      .choice { display: flex; align-items: center; gap: 14px; border-radius: 16px; padding: 20px; }
+      .choice.teal { background: linear-gradient(135deg, var(--teal), #0aa39a); color: #fff; }
+      .choice.white { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.16); color: #fff; }
+      .choice .icon { width: 48px; height: 48px; background: rgba(255,255,255,.16); color: #fff; }
+      .choice h3 { color: #fff; font-size: 16px; }
+      .choice p { font-size: 13px; opacity: .82; }
+      .dark-benefits { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 20px; }
+      .dark-benefits > div { background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.1); border-radius: 12px; padding: 16px; }
+      .dark-benefits h3 { color: #fff; font-size: 15px; }
+      .dark-benefits p { font-size: 12.5px; opacity: .74; margin-top: 4px; }
+      .footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1.3fr 1.1fr; gap: 34px; padding: 52px 0; border-top: 1px solid rgba(255,255,255,.12); }
+      .footer-brand .logo-text strong { color: #fff; }
+      .footer-brand .logo-text span { color: rgba(255,255,255,.6); }
+      .footer-brand > p { color: rgba(255,255,255,.7); font-size: 14px; margin-top: 20px; max-width: 280px; }
+      .footer-social { display: flex; gap: 10px; margin-top: 22px; }
+      .footer-social a { width: 40px; height: 40px; border-radius: 999px; background: rgba(255,255,255,.08); display: inline-flex; align-items: center; justify-content: center; color: #fff; transition: background .2s; }
+      .footer-social a:hover { background: var(--teal); }
+      .footer-social .ic { width: 19px; height: 19px; }
+      .footer-col h4 { color: #fff; font-size: 15px; font-weight: 800; margin-bottom: 16px; }
+      .footer-col a { display: block; color: rgba(255,255,255,.72); font-size: 14px; padding: 5px 0; }
+      .footer-col a:hover { color: #fff; }
+      .footer-col p { color: rgba(255,255,255,.72); font-size: 13.5px; margin-bottom: 12px; line-height: 1.5; }
+      .footer-col p strong { color: #fff; }
+      .footer-bottom { display: grid; grid-template-columns: repeat(4,1fr); gap: 24px; padding: 26px 0; border-top: 1px solid rgba(255,255,255,.12); }
+      .footer-bottom > div { display: flex; align-items: flex-start; gap: 12px; }
+      .footer-bottom .ic { width: 22px; height: 22px; color: var(--teal-2); flex: 0 0 auto; margin-top: 2px; }
+      .footer-bottom strong { color: #fff; font-size: 13.5px; display: block; }
+      .footer-bottom span { color: rgba(255,255,255,.6); font-size: 12.5px; }
+      .site-credit { border-top: 1px solid rgba(255,255,255,.12); padding: 18px 0 2px; text-align: center; color: rgba(255,255,255,.72); font-size: 13px; }
+      .site-credit a { color: #fff; font-weight: 800; text-decoration: none; }
+      .site-credit .heart { color: #ff3b30; font-weight: 900; }
+      @media (max-width: 1000px) { .footer-grid { grid-template-columns: 1fr 1fr 1fr; } .closing { grid-template-columns: 1fr; } }
+      @media (max-width: 640px) { .footer-grid { grid-template-columns: 1fr 1fr; } .footer-bottom { grid-template-columns: 1fr; } .choice-grid, .dark-benefits { grid-template-columns: 1fr; } }
+
+      /* ---- STICKY ACTIONS ---- */
+      .sticky-actions { position: fixed; right: 28px; bottom: max(30px, env(safe-area-inset-bottom)); z-index: 70; display: flex; align-items: center; justify-content: flex-end; opacity: 0; transform: translateY(16px); pointer-events: none; transition: opacity .25s ease, transform .25s ease; }
+      .sticky-actions.is-visible { opacity: 1; transform: none; pointer-events: auto; }
+      .sticky-book { display: inline-flex; align-items: center; gap: 10px; color: #fff; font-weight: 800; font-size: 15px; padding: 14px 22px; border-radius: 999px; text-decoration: none; background: var(--wa); box-shadow: 0 12px 30px rgba(37,211,102,.32); }
+      .sticky-book .ic { width: 22px; height: 22px; }
+      .sticky-book .sticky-text { display: flex; flex-direction: column; line-height: 1.15; }
+      .sticky-book small { font-size: 11px; font-weight: 700; opacity: .88; }
+      @media (max-width: 760px) {
+        body { padding-bottom: 82px; }
+        .sticky-actions { left: 14px; right: 14px; bottom: calc(env(safe-area-inset-bottom) + 12px); justify-content: center; }
+        .sticky-book { width: 100%; min-height: 52px; justify-content: center; padding: 12px 14px; font-size: 14px; box-shadow: 0 14px 32px rgba(7,48,109,.24); }
+        .sticky-book .ic { width: 20px; height: 20px; }
+      }
+
+      /* ---- BOOKING MODAL ---- */
+      body.modal-open { overflow: hidden; }
+      [hidden] { display: none !important; }
+      .booking-modal { position: fixed; inset: 0; z-index: 100; display: grid; place-items: center; padding: 24px; background: rgba(3,18,43,.58); opacity: 0; pointer-events: none; transition: opacity .18s ease; }
+      .booking-modal.is-open { opacity: 1; pointer-events: auto; }
+      .booking-dialog { width: min(920px, 100%); max-height: min(92vh, 780px); overflow: auto; background: linear-gradient(180deg, #ffffff, #f5fbff); border: 1px solid rgba(198,217,231,.9); border-radius: 22px; box-shadow: 0 30px 80px rgba(3,18,43,.28); position: relative; transform: translateY(14px) scale(.98); transition: transform .18s ease; }
+      .booking-modal.is-open .booking-dialog { transform: translateY(0) scale(1); }
+      .booking-close { position: absolute; top: 18px; right: 18px; width: 40px; height: 40px; display: inline-flex; align-items: center; justify-content: center; border: 1px solid var(--line); border-radius: 999px; background: #fff; color: var(--navy); cursor: pointer; box-shadow: var(--shadow-card); }
+      .booking-close .ic { width: 20px; height: 20px; }
+      .booking-head { display: grid; grid-template-columns: auto 1fr; gap: 18px; padding: 32px 32px 22px; background: radial-gradient(circle at 88% 12%, rgba(24,170,163,.16), transparent 28%), linear-gradient(135deg, #f8fcff, #eef8fb); border-bottom: 1px solid var(--line); }
+      .booking-head .icon { width: 56px; height: 56px; }
+      .booking-head h2 { font-size: clamp(28px, 4vw, 44px); margin-top: 4px; }
+      .booking-head p { color: var(--body); max-width: 640px; margin-top: 8px; line-height: 1.55; }
+      .booking-form { padding: 28px 32px 32px; }
+      .form-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+      .field { display: flex; flex-direction: column; gap: 8px; }
+      .field.full { grid-column: 1 / -1; }
+      .field label { color: var(--navy); font-size: 13px; font-weight: 800; }
+      .field input, .field select, .field textarea { width: 100%; border: 1.5px solid var(--line); border-radius: 14px; background: #fff; color: var(--ink); font: inherit; font-size: 15px; padding: 13px 14px; outline: none; transition: border-color .16s, box-shadow .16s; }
+      .field textarea { min-height: 96px; resize: vertical; }
+      .field input:focus, .field select:focus, .field textarea:focus { border-color: rgba(7,143,141,.75); box-shadow: 0 0 0 4px rgba(7,143,141,.12); }
+      .booking-slots { margin-top: 20px; padding: 18px; border: 1px solid var(--line); border-radius: 16px; background: #f7fcff; }
+      .booking-slots strong { color: var(--navy); font-size: 14px; }
+      .slot-grid { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+      .slot-choice { display: inline-flex; align-items: center; gap: 8px; border: 1.5px solid rgba(7,143,141,.35); background: #fff; color: var(--teal); border-radius: 999px; padding: 10px 15px; font: inherit; font-size: 13.5px; font-weight: 800; cursor: pointer; }
+      .slot-choice.is-active, .slot-choice:hover { color: #fff; background: linear-gradient(135deg, var(--teal), #0aa39a); border-color: transparent; }
+      .slot-choice .ic { width: 16px; height: 16px; }
+      .booking-summary { display: grid; grid-template-columns: auto 1fr; gap: 14px; margin-top: 20px; padding: 18px; border-radius: 16px; background: rgba(7,48,109,.06); border: 1px solid var(--line); }
+      .booking-summary .icon { width: 42px; height: 42px; }
+      .booking-summary strong { display: block; color: var(--navy); font-size: 15px; }
+      .booking-summary span { display: block; color: var(--body); font-size: 13.5px; margin-top: 4px; line-height: 1.5; }
+      .booking-actions { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin-top: 22px; }
+      .booking-actions .btn { min-height: 48px; }
+      .form-note { color: var(--muted); font-size: 12.5px; line-height: 1.5; margin-top: 12px; }
+      @media (max-width: 720px) {
+        .booking-modal { padding: 14px; align-items: end; }
+        .booking-dialog { max-height: 92vh; border-radius: 18px 18px 0 0; }
+        .booking-head { grid-template-columns: 1fr; padding: 28px 20px 20px; }
+        .booking-form { padding: 22px 20px 24px; }
+        .form-grid { grid-template-columns: 1fr; }
+        .booking-actions .btn { width: 100%; justify-content: center; }
+      }
+
+      @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto; transition: none !important; } }
+    </style>
+  </head>
+  <body>
+    <!-- ICON SPRITE -->
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+      <defs>
+        <symbol id="i-tooth" viewBox="0 0 24 24"><path d="M12 5.5c-1.5-1.2-3-2-4.7-2C5 3.5 3.5 5.4 3.5 8c0 2.3.7 3.8 1.4 6.2.5 1.8.7 4 1.3 5.4.3.7 1.3.8 1.7.1.6-1.1.7-3 1.2-4.4.3-.8.6-1.3 1.4-1.3s1.1.5 1.4 1.3c.5 1.4.6 3.3 1.2 4.4.4.7 1.4.6 1.7-.1.6-1.4.8-3.6 1.3-5.4.7-2.4 1.4-3.9 1.4-6.2 0-2.6-1.5-4.5-3.8-4.5-1.7 0-3.2.8-4.7 2Z"/></symbol>
+        <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.5-3 8-7 9.5C8 19 5 15.5 5 11V6l7-3Z"/></symbol>
+        <symbol id="i-shield-check" viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.5-3 8-7 9.5C8 19 5 15.5 5 11V6l7-3Z"/><path d="M9 11.5l2 2 4-4"/></symbol>
+        <symbol id="i-shield-plus" viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.5-3 8-7 9.5C8 19 5 15.5 5 11V6l7-3Z"/><path d="M12 8v6M9 11h6"/></symbol>
+        <symbol id="i-cal" viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="16" rx="2"/><path d="M4 9h16M8 3v4M16 3v4"/></symbol>
+        <symbol id="i-cal-check" viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="16" rx="2"/><path d="M4 9h16M8 3v4M16 3v4M9.5 15l1.7 1.7L15 13"/></symbol>
+        <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s7-5.7 7-11a7 7 0 1 0-14 0c0 5.3 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></symbol>
+        <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></symbol>
+        <symbol id="i-phone" viewBox="0 0 24 24"><path d="M6.5 4h3l1.5 4-2 1.5a11 11 0 0 0 5 5l1.5-2 4 1.5v3a2 2 0 0 1-2.2 2A16 16 0 0 1 4.5 6.2 2 2 0 0 1 6.5 4Z"/></symbol>
+        <symbol id="i-wa" viewBox="0 0 24 24"><path d="M12 3.5a8.5 8.5 0 0 0-7.3 12.8L3.5 20.5l4.4-1.1A8.5 8.5 0 1 0 12 3.5Z"/><path d="M8.8 8.2c-.2 0-.5.1-.7.4-.2.3-.8.8-.8 1.9s.9 2.2 1 2.4c.1.2 1.7 2.8 4.3 3.8 2.1.8 2.6.7 3 .6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2-.1-.1-.3-.2-.6-.4l-1.4-.7c-.2-.1-.4-.1-.6.1l-.6.8c-.1.2-.3.2-.5.1-.7-.3-1.5-.6-2.4-1.6-.4-.5-.7-1-.8-1.2-.1-.2 0-.4.1-.5l.4-.5c.1-.2.1-.3.2-.5 0-.2 0-.3 0-.5l-.6-1.5c-.2-.5-.4-.4-.6-.4h-.4Z" stroke-width="0" fill="currentColor"/></symbol>
+        <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8L3.5 9.7l5.9-.9L12 3.5Z"/></symbol>
+        <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-4 3.5V16H4V5Z"/></symbol>
+        <symbol id="i-chat-dots" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-4 3.5V16H4V5Z"/><path d="M8.5 10.5h.01M12 10.5h.01M15.5 10.5h.01"/></symbol>
+        <symbol id="i-bot" viewBox="0 0 24 24"><rect x="5" y="8" width="14" height="10" rx="3"/><path d="M12 4v4M9 13h.01M15 13h.01M9.5 16h5"/><circle cx="12" cy="4" r="1"/></symbol>
+        <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 3L5 13h5l-1 8 8-10h-5l1-8Z"/></symbol>
+        <symbol id="i-sparkle" viewBox="0 0 24 24"><path d="M12 4l1.6 4.4L18 10l-4.4 1.6L12 16l-1.6-4.4L6 10l4.4-1.6L12 4Z"/><path d="M18 15l.7 1.8L20.5 17.5l-1.8.7L18 20l-.7-1.8L15.5 17.5l1.8-.7L18 15Z"/></symbol>
+        <symbol id="i-smile" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M8.5 14a4 4 0 0 0 7 0M9 9.5h.01M15 9.5h.01"/></symbol>
+        <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5"/><path d="M5.5 20a6.5 6.5 0 0 1 13 0"/></symbol>
+        <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3.5 19a5.5 5.5 0 0 1 11 0"/><path d="M16 5.3a3 3 0 0 1 0 5.4M15.5 14.2A5.5 5.5 0 0 1 20.5 19"/></symbol>
+        <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-9.5A3.9 3.9 0 0 1 12 8a3.9 3.9 0 0 1 7 2.5C19 15.6 12 20 12 20Z"/></symbol>
+        <symbol id="i-scan" viewBox="0 0 24 24"><path d="M4 8V5.5A1.5 1.5 0 0 1 5.5 4H8M16 4h2.5A1.5 1.5 0 0 1 20 5.5V8M20 16v2.5a1.5 1.5 0 0 1-1.5 1.5H16M8 20H5.5A1.5 1.5 0 0 1 4 18.5V16"/><path d="M8.5 12c0-1.5 1.3-2.5 3.5-2.5s3.5 1 3.5 2.5-1.3 2.5-3.5 2.5"/></symbol>
+        <symbol id="i-monitor" viewBox="0 0 24 24"><rect x="3.5" y="4.5" width="17" height="11" rx="1.5"/><path d="M9 20h6M12 15.5V20"/></symbol>
+        <symbol id="i-card" viewBox="0 0 24 24"><rect x="3.5" y="6" width="17" height="12" rx="2"/><path d="M3.5 10h17M7 14.5h3"/></symbol>
+        <symbol id="i-bank" viewBox="0 0 24 24"><path d="M4 9.5L12 4l8 5.5M5 9.5h14M6.5 9.5v7M10 9.5v7M14 9.5v7M17.5 9.5v7M4 19.5h16"/></symbol>
+        <symbol id="i-rupee" viewBox="0 0 24 24"><path d="M7.5 5h9M7.5 8.5h9M7.5 5c4 0 5.5 2 5.5 4s-1.5 3.5-4 3.5H8.5l6 6.5"/></symbol>
+        <symbol id="i-doc-check" viewBox="0 0 24 24"><path d="M7 3.5h7l4 4V20a.5.5 0 0 1-.5.5h-11A.5.5 0 0 1 6 20V4a.5.5 0 0 1 .5-.5Z"/><path d="M14 3.5V8h4M9 14l1.7 1.7L14 12.5"/></symbol>
+        <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="10.5" width="14" height="9" rx="2"/><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5"/></symbol>
+        <symbol id="i-clipboard" viewBox="0 0 24 24"><rect x="6" y="5" width="12" height="15" rx="1.5"/><path d="M9 5V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v1M9 11h6M9 14.5h4"/></symbol>
+        <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="M15.5 15.5L20 20"/></symbol>
+        <symbol id="i-badge" viewBox="0 0 24 24"><circle cx="12" cy="9" r="5.5"/><path d="M8.5 13.5L7 21l5-2.5L17 21l-1.5-7.5"/></symbol>
+        <symbol id="i-implant" viewBox="0 0 24 24"><path d="M9 3.5h6M10 3.5c0 2 .5 3 2 3s2-1 2-3M12 6.5v3M9.5 9.5h5l-.7 4.5c-.2 1.5-.6 4-1.3 5.5-.2.4-.8.4-1 0-.7-1.5-1.1-4-1.3-5.5L9.5 9.5Z"/></symbol>
+        <symbol id="i-chev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></symbol>
+        <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+        <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+        <symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5-11-6.5Z"/></symbol>
+        <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7"/></symbol>
+        <symbol id="i-checks" viewBox="0 0 24 24"><path d="M2 12.5l4 4L14 8M11 15l1 1L20 8"/></symbol>
+        <symbol id="i-clip" viewBox="0 0 24 24"><path d="M18 8l-7.5 7.5a3 3 0 0 1-4.2-4.2L13 4.3a2 2 0 0 1 2.8 2.8L8.5 14.4"/></symbol>
+        <symbol id="i-send" viewBox="0 0 24 24"><path d="M5 12l14-7-5 14-3-5-6-2Z" fill="currentColor" stroke-width="0"/></symbol>
+        <symbol id="i-headset" viewBox="0 0 24 24"><path d="M5 14v-2a7 7 0 0 1 14 0v2M4 14h2.5v4H5a1 1 0 0 1-1-1v-3ZM20 14h-2.5v4H19a1 1 0 0 0 1-1v-3ZM17.5 18a4 4 0 0 1-4 3h-1"/></symbol>
+        <symbol id="i-quote" viewBox="0 0 24 24"><path d="M9 7c-2.5 1-4 3-4 6v4h5v-5H7c0-2 1-3 2.5-3.5L9 7ZM19 7c-2.5 1-4 3-4 6v4h5v-5h-3c0-2 1-3 2.5-3.5L19 7Z"/></symbol>
+        <symbol id="i-ig" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="4.5"/><circle cx="12" cy="12" r="3.5"/><circle cx="16.5" cy="7.5" r="1" fill="currentColor" stroke-width="0"/></symbol>
+        <symbol id="i-fb" viewBox="0 0 24 24"><path d="M14.5 8.5V6.8c0-.7.3-1.1 1.1-1.1h1.4V3h-2.4c-2.3 0-3.4 1.3-3.4 3.4v2.1H9v2.8h2.2V21h3.3v-9.7h2.3l.4-2.8h-2.7Z" fill="currentColor" stroke-width="0"/></symbol>
+        <symbol id="i-yt" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="3.5"/><path d="M10.5 9.5l4 2.5-4 2.5v-5Z" fill="currentColor" stroke-width="0"/></symbol>
+        <symbol id="i-car" viewBox="0 0 24 24"><path d="M5 16.5v2M19 16.5v2M4 12l1.5-4.5A2 2 0 0 1 7.4 6h9.2a2 2 0 0 1 1.9 1.5L20 12M4 12h16v4H4v-4ZM7 14.5h.01M17 14.5h.01"/></symbol>
+        <symbol id="i-train" viewBox="0 0 24 24"><rect x="6" y="4" width="12" height="12" rx="2.5"/><path d="M6 10h12M9.5 13h.01M14.5 13h.01M8 16l-2 3M16 16l2 3"/></symbol>
+        <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+        <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.5 2.3 2.5 14.7 0 17M12 3.5c-2.5 2.3-2.5 14.7 0 17"/></symbol>
+      </defs>
+    </svg>
+
+    <!-- TOP STRIP -->
+    <div class="top-strip">
+      <div class="top-strip-inner">
+        <div class="top-left">
+          <span class="top-pill"><svg class="ic"><use href="#i-tooth"/></svg> Premium Dental Care</span>
+          <span class="top-pill"><svg class="ic"><use href="#i-smile"/></svg> Healthier Smile</span>
+          <span class="top-pill"><svg class="ic"><use href="#i-heart"/></svg> Stronger Confidence</span>
+        </div>
+        <div class="top-right">
+          <a class="top-pill" href="https://wa.me/917840843477"><svg class="ic"><use href="#i-wa"/></svg> WhatsApp Us (24/7)</a>
+          <span class="sep">|</span>
+          <a class="top-pill" href="tel:+919212143477"><svg class="ic"><use href="#i-phone"/></svg> +91 92121 43477</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- HEADER -->
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="logo" href="#home" aria-label="I M Dentist home">
+          <svg class="logo-mark" viewBox="0 0 48 48" aria-hidden="true">
+            <path d="M24 9c-2.6-2-5-3.2-8-3.2C11.5 5.8 8.5 9 8.5 14c0 4 1.2 6.6 2.4 10.8.9 3.1 1.3 7 2.3 9.5.5 1.3 2.3 1.4 3 .2 1-1.9 1.2-5.2 2-7.6.5-1.4 1-2.3 2.4-2.3" fill="none" stroke="#07306d" stroke-width="3" stroke-linecap="round"/>
+            <path d="M24 9c2.6-2 5-3.2 8-3.2 4.5 0 7.5 3.2 7.5 8.2 0 4-1.2 6.6-2.4 10.8-.9 3.1-1.3 7-2.3 9.5-.5 1.3-2.3 1.4-3 .2-1-1.9-1.2-5.2-2-7.6-.5-1.4-1-2.3-2.4-2.3" fill="none" stroke="#078f8d" stroke-width="3" stroke-linecap="round"/>
+          </svg>
+          <span class="logo-text">
+            <strong>I M Dentist</strong>
+            <span>Dental &amp; Facial Aesthetic Clinic</span>
+          </span>
+        </a>
+        <nav class="nav" aria-label="Primary navigation">
+          <a class="active" href="#home">Home</a>
+          <a href="#why">About Us</a>
+          <a href="#treatments">Treatments</a>
+          <a href="#team">Our Team</a>
+          <a href="#reviews">Reviews</a>
+        </nav>
+        <div style="display:flex;align-items:center;gap:14px">
+          <a class="btn btn-primary" href="#booking" data-booking-open><svg class="ic"><use href="#i-cal"/></svg> Book Appointment</a>
+          <button class="menu-btn" aria-label="Menu"><svg class="ic ic-lg"><use href="#i-menu"/></svg></button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- HERO -->
+      <section id="home" class="section hero">
+        <div class="section-inner">
+          <div class="hero-grid">
+            <div class="hero-copy">
+              <span class="kicker-pill"><svg class="ic"><use href="#i-tooth"/></svg> Premium dental care in North Delhi</span>
+              <h1>Healthy Teeth. Confident You. <span class="teal-text">Smiles That Last.</span></h1>
+              <p class="lead">Advanced dentistry with a gentle touch. Personalised care. Beautiful results.</p>
+              <div class="hero-actions">
+                <a class="btn btn-teal" href="#booking" data-booking-open><svg class="ic"><use href="#i-cal"/></svg> Book Your Consultation</a>
+                <a class="btn btn-outline" href="#treatments"><svg class="ic"><use href="#i-tooth"/></svg> Explore Treatments</a>
+              </div>
+            </div>
+            <div class="hero-photo">
+              <!-- SWAP SLOT: hero smiling woman -->
+              <div class="photo" data-swap="hero-reference-smiling-patient.png" data-position="center right" style="min-height:460px">
+                <div class="photo-fallback">
+                  <svg class="ic"><use href="#i-smile"/></svg>
+                  <strong>Smiling patient</strong>
+                  <span>Premium hero visual</span>
+                  <span class="tag">Premium dental care</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-trust">
+            <div class="trust-item"><span class="icon round"><svg class="ic"><use href="#i-scan"/></svg></span><div><strong>Advanced Technology</strong><span>Modern equipment for precise care</span></div></div>
+            <div class="trust-item"><span class="icon round"><svg class="ic"><use href="#i-user"/></svg></span><div><strong>Expert Dentists</strong><span>Experienced &amp; patient focused</span></div></div>
+            <div class="trust-item"><span class="icon round"><svg class="ic"><use href="#i-heart"/></svg></span><div><strong>Comfort First</strong><span>Painless, calm environment</span></div></div>
+            <div class="trust-item"><span class="icon round"><svg class="ic"><use href="#i-smile"/></svg></span><div><strong>4.9 Google Rating</strong><span>210 Google Reviews</span></div></div>
+          </div>
+
+          <div class="support-bar">
+            <div class="quick-card"><span class="icon round"><svg class="ic"><use href="#i-clock"/></svg></span><div><strong>We're here for you,</strong><span>anytime you need us.</span></div></div>
+            <div class="quick-card"><span class="icon round"><svg class="ic"><use href="#i-wa"/></svg></span><div><strong>WhatsApp Us</strong><span>Anytime (24/7)</span></div></div>
+            <div class="quick-card"><span class="icon round"><svg class="ic"><use href="#i-phone"/></svg></span><div><strong>Call Us</strong><span>+91 92121 43477</span></div></div>
+            <div class="quick-card cta"><a class="btn btn-primary" href="https://wa.me/917840843477"><svg class="ic"><use href="#i-wa"/></svg> Chat on WhatsApp</a></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- WHY -->
+      <section id="why" class="section alt">
+        <div class="section-inner">
+          <div class="why-grid">
+            <div>
+              <span class="kicker"><svg class="ic"><use href="#i-tooth"/></svg> Why I M Dentist</span>
+              <h2>Expert care. Trusted by thousands. <span class="teal-text">Built around you.</span></h2>
+              <span class="underline"></span>
+              <p class="lead">We combine advanced technology with a gentle, personalised approach to deliver safe, comfortable and long-lasting dental solutions you can rely on.</p>
+              <div class="metric-strip">
+                <div class="metric"><span class="icon round solid"><svg class="ic"><use href="#i-star"/></svg></span><div><strong><span class="countup" data-to="4.9">4.9</span></strong><span class="stars"><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg></span><span class="lbl">210 Google Reviews</span></div></div>
+                <div class="metric"><span class="icon round"><svg class="ic"><use href="#i-pin"/></svg></span><div><strong>2</strong><span class="lbl">North Delhi clinic locations</span></div></div>
+                <div class="metric"><span class="icon round"><svg class="ic"><use href="#i-badge"/></svg></span><div><strong>Harvard</strong><span class="lbl">Implantology training &amp; certification</span></div></div>
+                <div class="metric"><span class="icon round"><svg class="ic"><use href="#i-clock"/></svg></span><div><strong>12+</strong><span class="lbl">Years of clinical excellence</span></div></div>
+              </div>
+              <div class="clinical-stats reveal-group">
+                <div class="clinical-stat"><span class="icon round"><svg class="ic"><use href="#i-implant"/></svg></span><div><strong><span class="countup" data-to="10000" data-suffix="+">10,000+</span></strong><span class="copy">Implants &amp; wisdom tooth surgeries</span></div></div>
+                <div class="clinical-stat"><span class="icon round"><svg class="ic"><use href="#i-tooth"/></svg></span><div><strong><span class="countup" data-to="20000" data-suffix="+">20,000+</span></strong><span class="copy">Molar surgeries handled</span></div></div>
+                <div class="clinical-stat"><span class="icon round"><svg class="ic"><use href="#i-doc-check"/></svg></span><div><strong><span class="countup" data-to="50000" data-suffix="+">50,000+</span></strong><span class="copy">Root canal treatments</span></div></div>
+                <div class="clinical-stat"><span class="icon round"><svg class="ic"><use href="#i-smile"/></svg></span><div><strong><span class="countup" data-to="1000" data-suffix="+">1,000+</span></strong><span class="copy">Aligner cases completed</span></div></div>
+              </div>
+            </div>
+            <div class="why-photo">
+              <!-- SWAP SLOT: Dr Sanchit consulting patient -->
+              <div class="photo" data-swap="dr-sanchit.jpg" style="min-height:420px">
+                <div class="photo-fallback">
+                  <svg class="ic"><use href="#i-tooth"/></svg>
+                  <strong>Dr. Sanchit Chawla</strong>
+                  <span>Doctor authority photo</span>
+                  <span class="tag">Doctor profile</span>
+                </div>
+              </div>
+              <div class="doctor-badge">
+                <div class="db-top">
+                  <div class="icon round" style="width:40px;height:40px;background:rgba(255,255,255,.16);color:#fff"><svg class="ic"><use href="#i-tooth"/></svg></div>
+                  <div><h4>Dr. Sanchit Chawla</h4><p>Dental Surgeon &amp; Implantologist</p></div>
+                </div>
+                <ul>
+                  <li><svg class="ic"><use href="#i-check"/></svg> Harvard implantology training</li>
+                  <li><svg class="ic"><use href="#i-check"/></svg> 12+ years clinical experience</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- TRUST LOGOS -->
+          <div class="panel-row" aria-label="Empanelled and trusted by">
+            <span class="label">Empanelled &amp; Trusted By</span>
+            <span class="panel-logo"><svg class="crest" viewBox="0 0 34 34"><circle cx="17" cy="17" r="15" fill="none" stroke="#07306d" stroke-width="1.5"/><path d="M17 7l2.5 5 5.5.5-4 3.8 1.2 5.4L17 24.4 11.8 26.7 13 21.3 9 17.5l5.5-.5L17 7Z" fill="#07306d"/></svg> CGHS</span>
+            <span class="panel-logo"><svg class="crest" viewBox="0 0 34 34"><circle cx="17" cy="17" r="15" fill="none" stroke="#07306d" stroke-width="1.5"/><path d="M17 6v22M6 17h22M9 9l16 16M25 9L9 25" stroke="#07306d" stroke-width="1.3"/></svg> DGHS</span>
+            <span class="panel-logo"><svg class="crest" viewBox="0 0 34 34"><circle cx="17" cy="17" r="14" fill="none" stroke="#c0392b" stroke-width="2.5"/><path d="M8 17h18" stroke="#c0392b" stroke-width="2.5"/></svg> DMRC</span>
+            <span class="panel-logo"><svg class="crest" viewBox="0 0 34 34"><path d="M4 20c6-1 12-4 18-9 3-2.5 6-2 7-0.5.5 1-1 2.5-4 4-6 3-13 5-21 5.5Z" fill="#c0392b"/><path d="M22 11l6-3-2 5" fill="#f39c12"/></svg> Air India</span>
+            <span class="panel-logo"><svg class="crest" viewBox="0 0 34 34"><path d="M17 5l9 3v6c0 6-4 10-9 12-5-2-9-6-9-12V8l9-3Z" fill="none" stroke="#07306d" stroke-width="1.5"/><path d="M13 15l2.5 2.5L21 12" stroke="#07306d" stroke-width="1.5"/></svg> Delhi Police</span>
+            <span class="panel-logo"><svg class="crest" viewBox="0 0 34 34"><circle cx="17" cy="17" r="14" fill="none" stroke="#6c3483" stroke-width="1.5"/><path d="M10 20l7-11 7 11M10 20h14" stroke="#6c3483" stroke-width="1.5"/></svg> Delhi University</span>
+          </div>
+
+          <!-- INLINE REVIEWS -->
+          <div class="reviews-line" id="reviews">
+            <div class="review-head"><h3 style="font-size:26px">What Our Patients Say</h3><span class="underline center" style="margin-top:14px"></span></div>
+            <div class="review-grid">
+              <article class="review-card">
+                <span class="quote"><svg class="ic"><use href="#i-quote"/></svg></span>
+                <span class="stars"><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg></span>
+                <p>Dr. Sanchit and his team made my implant journey so smooth. Truly professional and caring.</p>
+                <div class="who"><span class="av">N</span><strong>Neha S.</strong></div>
+              </article>
+              <article class="review-card">
+                <span class="quote"><svg class="ic"><use href="#i-quote"/></svg></span>
+                <span class="stars"><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg></span>
+                <p>Best dental experience I have ever had. Clear explanation, painless treatment and excellent results.</p>
+                <div class="who"><span class="av">R</span><strong>Rajat M.</strong></div>
+              </article>
+              <article class="review-card">
+                <span class="quote"><svg class="ic"><use href="#i-quote"/></svg></span>
+                <span class="stars"><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg></span>
+                <p>The entire team is warm and welcoming. Highly recommend I M Dentist.</p>
+                <div class="who"><span class="av">P</span><strong>Pooja T.</strong></div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TEAM -->
+      <section id="team" class="section">
+        <div class="section-inner">
+          <div class="team-grid">
+            <div>
+              <span class="kicker"><svg class="ic"><use href="#i-users"/></svg> Meet our skilled team</span>
+              <h2>Experienced hands. Calm care. <span class="teal-text">One clear plan.</span></h2>
+              <span class="underline"></span>
+              <p class="lead">A coordinated dental team helps patients feel heard, guided and cared for from first WhatsApp message to final follow-up.</p>
+              <div class="team-points">
+                <div><span class="icon"><svg class="ic"><use href="#i-implant"/></svg></span><strong>Implant Care</strong><span>Planning-led support for complex cases.</span></div>
+                <div><span class="icon"><svg class="ic"><use href="#i-smile"/></svg></span><strong>Smile Design</strong><span>Clean, natural-looking cosmetic outcomes.</span></div>
+                <div><span class="icon"><svg class="ic"><use href="#i-tooth"/></svg></span><strong>Root Canal</strong><span>Comfort-first care for painful teeth.</span></div>
+                <div><span class="icon"><svg class="ic"><use href="#i-heart"/></svg></span><strong>Family Dentistry</strong><span>Preventive and routine care for all ages.</span></div>
+              </div>
+            </div>
+            <!-- SWAP SLOT: team group photo -->
+            <div class="team-photo">
+              <div class="photo" data-swap="team-8-doctors.png" data-position="center" style="min-height:400px">
+                <div class="photo-fallback">
+                  <svg class="ic"><use href="#i-users"/></svg>
+                  <strong>Our Team</strong>
+                  <span>Group photo</span>
+                  <span class="tag">Care team</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PATIENT STORIES -->
+      <section class="section alt">
+        <div class="section-inner">
+          <div class="story-head">
+            <div>
+              <span class="kicker"><svg class="ic"><use href="#i-play"/></svg> Patient stories</span>
+              <h2>Don't take our word for it. Hear it from <span class="teal-text">our patients.</span></h2>
+              <p class="lead">Watch approved patient review clips and see how I M Dentist patients describe their care.</p>
+            </div>
+            <div class="rating-block">
+              <svg class="g" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M21.6 12.2c0-.6-.1-1.2-.2-1.8H12v3.4h5.4a4.6 4.6 0 0 1-2 3v2.5h3.2c1.9-1.7 3-4.3 3-7.1Z"/><path fill="#34A853" d="M12 22c2.7 0 5-.9 6.6-2.4l-3.2-2.5c-.9.6-2 1-3.4 1-2.6 0-4.8-1.7-5.6-4.1H3.1v2.6A10 10 0 0 0 12 22Z"/><path fill="#FBBC05" d="M6.4 14c-.2-.6-.3-1.3-.3-2s.1-1.4.3-2V7.4H3.1a10 10 0 0 0 0 9.2L6.4 14Z"/><path fill="#EA4335" d="M12 5.9c1.5 0 2.8.5 3.8 1.5l2.8-2.8A10 10 0 0 0 3.1 7.4L6.4 10c.8-2.4 3-4.1 5.6-4.1Z"/></svg>
+              <div><strong><span class="countup" data-to="4.9">4.9</span> <span class="stars"><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg></span></strong><p>210 Google Reviews</p></div>
+            </div>
+          </div>
+          <div class="story-grid">
+            <article class="story-card video-review">
+              <video controls preload="metadata" playsinline>
+                <source src="videos/patient-video-review-1.mp4" type="video/mp4" />
+                Your browser does not support this video.
+              </video>
+              <span class="video-label"><svg class="ic"><use href="#i-play"/></svg> Video review</span>
+              <div class="story-caption"><strong>Patient video review</strong><span>Tap to watch the experience</span></div>
+            </article>
+            <article class="story-card video-review">
+              <video controls preload="metadata" playsinline>
+                <source src="videos/patient-video-review-2.mp4" type="video/mp4" />
+                Your browser does not support this video.
+              </video>
+              <span class="video-label"><svg class="ic"><use href="#i-play"/></svg> Video review</span>
+              <div class="story-caption"><strong>Treatment experience</strong><span>Hear the patient's words directly</span></div>
+            </article>
+            <article class="story-card video-review">
+              <video controls preload="metadata" playsinline>
+                <source src="videos/patient-video-review-3.mp4" type="video/mp4" />
+                Your browser does not support this video.
+              </video>
+              <span class="video-label"><svg class="ic"><use href="#i-play"/></svg> Video review</span>
+              <div class="story-caption"><strong>Clinic care feedback</strong><span>Approved video review</span></div>
+            </article>
+            <article class="story-card video-review">
+              <video controls preload="metadata" playsinline>
+                <source src="videos/patient-video-review-4.mp4" type="video/mp4" />
+                Your browser does not support this video.
+              </video>
+              <span class="video-label"><svg class="ic"><use href="#i-play"/></svg> Video review</span>
+              <div class="story-caption"><strong>Smile journey feedback</strong><span>Tap to watch the review</span></div>
+            </article>
+          </div>
+          <div class="center-actions"><a class="btn btn-primary" href="#reviews">See More Reviews <svg class="ic"><use href="#i-arrow"/></svg></a></div>
+        </div>
+      </section>
+
+      <!-- TECH -->
+      <section class="section png-reference-section legacy-hidden" aria-hidden="true" aria-label="Modern technology and smart treatment planning">
+        <div class="png-reference-inner">
+          <img src="images/ref-tech-section.png" alt="Modern technology, human touch section for I M Dentist" />
+        </div>
+      </section>
+      <section id="treatments" class="section">
+        <div class="section-inner">
+          <div class="tech-intro">
+            <span class="kicker"><svg class="ic"><use href="#i-sparkle"/></svg> Modern technology</span>
+            <h2>See more. Plan better. <span class="teal-text">Treat smarter.</span></h2>
+            <span class="underline"></span>
+            <p class="lead">I M Dentist combines advanced technology with clinical expertise to deliver precise diagnosis, comfortable treatment and predictable results you can trust.</p>
+          </div>
+          <div class="tech-layout">
+            <article class="tech-card"><div class="photo" data-swap="clinic-tech-scanning.jpg" style="min-height:190px"><div class="photo-fallback"><svg class="ic"><use href="#i-scan"/></svg><span class="tag">Digital scanning</span></div></div><div class="tech-card-body"><span class="icon"><svg class="ic"><use href="#i-scan"/></svg></span><h3>Digital Scanning</h3><p>No messy impressions. Just fast, accurate and comfortable scans.</p></div></article>
+            <article class="tech-card"><div class="photo" data-swap="clinic-tech-planning.jpg" style="min-height:190px"><div class="photo-fallback"><svg class="ic"><use href="#i-monitor"/></svg><span class="tag">Precision planning</span></div></div><div class="tech-card-body"><span class="icon"><svg class="ic"><use href="#i-monitor"/></svg></span><h3>Precision Planning</h3><p>3D imaging and digital planning for safer, clearer treatment choices.</p></div></article>
+            <article class="tech-card"><div class="photo" data-swap="clinic-tech-treatment.jpg" style="min-height:190px"><div class="photo-fallback"><svg class="ic"><use href="#i-sparkle"/></svg><span class="tag">Advanced treatment</span></div></div><div class="tech-card-body"><span class="icon"><svg class="ic"><use href="#i-sparkle"/></svg></span><h3>Advanced Treatment</h3><p>State-of-the-art equipment for gentle, efficient and safe treatment.</p></div></article>
+          </div>
+          <div class="partner-row reveal">
+            <span class="partner-label"><svg class="ic"><use href="#i-implant"/></svg> Implant partner ecosystem</span>
+            <span class="partner-chip">Osstem</span>
+            <span class="partner-chip">Nobel Biocare</span>
+            <span class="partner-chip">Straumann</span>
+            <span class="partner-chip">Dentis</span>
+          </div>
+
+          <div class="payment-row">
+            <div class="photo" data-swap="clinic-aligner-consult.jpg" style="min-height:300px"><div class="photo-fallback"><svg class="ic"><use href="#i-tooth"/></svg><span class="tag">Aligners</span></div></div>
+            <div class="payment-copy">
+              <span class="kicker"><svg class="ic"><use href="#i-card"/></svg> Flexible treatment plans</span>
+              <h3 style="font-size:30px">Great dentistry should <span class="teal-text">feel possible.</span></h3>
+              <p class="lead" style="margin-top:14px">We offer flexible payment options that fit your budget, so you can focus on your smile.</p>
+              <div class="payment-grid">
+                <div><span class="icon"><svg class="ic"><use href="#i-card"/></svg></span><div><strong>Easy EMI Options</strong><span>Simple monthly payments.</span></div></div>
+                <div><span class="icon"><svg class="ic"><use href="#i-shield-check"/></svg></span><div><strong>Insurance Support</strong><span>Maximise eligible benefits.</span></div></div>
+                <div><span class="icon"><svg class="ic"><use href="#i-bank"/></svg></span><div><strong>All Major Cards</strong><span>Debit, credit, UPI &amp; cards.</span></div></div>
+                <div><span class="icon"><svg class="ic"><use href="#i-doc-check"/></svg></span><div><strong>Transparent Pricing</strong><span>No hidden costs.</span></div></div>
+              </div>
+              <div class="hero-actions">
+                <a class="btn btn-teal" href="https://wa.me/917840843477"><svg class="ic"><use href="#i-wa"/></svg> Ask About Payment Options</a>
+              </div>
+              <div class="secure-row"><svg class="ic"><use href="#i-lock"/></svg> 100% Secure Transactions — Powered by Razorpay</div>
+            </div>
+          </div>
+
+          <div class="facilities-block">
+            <span class="kicker"><svg class="ic"><use href="#i-shield-plus"/></svg> Advanced clinic facilities</span>
+            <h3 style="font-size:30px;margin-top:10px">Everything needed for clearer diagnosis and smoother treatment.</h3>
+            <div class="facility-grid">
+              <article class="facility-card">
+                <div class="photo" data-swap="facility-xray.jpg"><div class="photo-fallback"><svg class="ic"><use href="#i-monitor"/></svg><span class="tag">X-ray facility</span></div></div>
+                <div class="facility-body"><span class="icon"><svg class="ic"><use href="#i-monitor"/></svg></span><h3>Full Mouth X-ray Facilities</h3><p>Clear full-mouth imaging support for diagnosis and treatment planning.</p></div>
+              </article>
+              <article class="facility-card">
+                <div class="photo" data-swap="facility-scanner.jpg"><div class="photo-fallback"><svg class="ic"><use href="#i-scan"/></svg><span class="tag">Intra oral scanner</span></div></div>
+                <div class="facility-body"><span class="icon"><svg class="ic"><use href="#i-scan"/></svg></span><h3>Intra Oral Scanner</h3><p>Digital impressions and precise records for better treatment planning.</p></div>
+              </article>
+              <article class="facility-card">
+                <div class="photo" data-swap="facility-pathology.jpg"><div class="photo-fallback"><svg class="ic"><use href="#i-doc-check"/></svg><span class="tag">Pathology lab</span></div></div>
+                <div class="facility-body"><span class="icon"><svg class="ic"><use href="#i-doc-check"/></svg></span><h3>In-house Pathology Lab</h3><p>Convenient testing support for pre-treatment checks when clinically needed.</p></div>
+              </article>
+              <article class="facility-card">
+                <div class="photo" data-swap="facility-dental-lab.jpg"><div class="photo-fallback"><svg class="ic"><use href="#i-tooth"/></svg><span class="tag">Dental lab</span></div></div>
+                <div class="facility-body"><span class="icon"><svg class="ic"><use href="#i-tooth"/></svg></span><h3>In-house Dental Lab</h3><p>Support for prosthetics, restorations and smile design workflows.</p></div>
+              </article>
+            </div>
+            <div class="facility-note">
+              <div><span class="icon round"><svg class="ic"><use href="#i-shield-check"/></svg></span><div><strong>Planned diagnosis</strong><span>Less guesswork before care</span></div></div>
+              <div><span class="icon round"><svg class="ic"><use href="#i-clock"/></svg></span><div><strong>Faster workflow</strong><span>More steps handled in-house</span></div></div>
+              <div><span class="icon round"><svg class="ic"><use href="#i-check"/></svg></span><div><strong>Clear records</strong><span>Digital-first treatment files</span></div></div>
+              <div><span class="icon round"><svg class="ic"><use href="#i-heart"/></svg></span><div><strong>Patient comfort</strong><span>Calm, guided experience</span></div></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROCESS -->
+      <section class="section png-reference-section legacy-hidden" aria-hidden="true" aria-label="How a visit works at I M Dentist">
+        <div class="png-reference-inner">
+          <img src="images/ref-visit-section.png" alt="Clear calm no guesswork visit process section for I M Dentist" />
+        </div>
+      </section>
+      <section class="section alt">
+        <div class="section-inner">
+          <div class="flow-hero">
+            <div>
+              <span class="kicker"><svg class="ic"><use href="#i-clipboard"/></svg> How a visit works</span>
+              <h2>Clear. Calm. <span class="teal-text">No guesswork.</span></h2>
+              <span class="underline"></span>
+              <p class="lead">Dentistry made simple and stress-free, from WhatsApp to after-care.</p>
+              <div class="process-benefits">
+                <div><span class="icon round"><svg class="ic"><use href="#i-heart"/></svg></span><strong>Your comfort comes first</strong></div>
+                <div><span class="icon round"><svg class="ic"><use href="#i-clock"/></svg></span><strong>On-time appointments</strong></div>
+                <div><span class="icon round"><svg class="ic"><use href="#i-wa"/></svg></span><strong>WhatsApp support before &amp; after</strong></div>
+                <div><span class="icon round"><svg class="ic"><use href="#i-smile"/></svg></span><strong>Transparent care, happy smiles</strong></div>
+              </div>
+            </div>
+            <div class="flow-photo"><div class="photo" data-swap="generated-visit-flow.svg" style="min-height:300px"><div class="photo-fallback"><svg class="ic"><use href="#i-tooth"/></svg><span class="tag">Consultation</span></div></div></div>
+          </div>
+          <div class="process-grid">
+            <article class="process-card"><span class="step">01</span><span class="icon solid"><svg class="ic"><use href="#i-wa"/></svg></span><h3>WhatsApp or Book</h3><p>Share your concern on WhatsApp or book online. The team suggests a slot when possible.</p></article>
+            <article class="process-card"><span class="step">02</span><span class="icon"><svg class="ic"><use href="#i-search"/></svg></span><h3>Listen &amp; Scan</h3><p>The doctor listens, examines carefully, and explains options in simple language.</p></article>
+            <article class="process-card"><span class="step">03</span><span class="icon"><svg class="ic"><use href="#i-tooth"/></svg></span><h3>Gentle Treatment</h3><p>Treatment is planned around comfort, advanced technology and proven protocols.</p></article>
+            <article class="process-card"><span class="step">04</span><span class="icon"><svg class="ic"><use href="#i-cal-check"/></svg></span><h3>Follow-through</h3><p>The clinic stays with patients after the visit through reminders and after-care.</p></article>
+          </div>
+          <div class="benefit-row">
+            <div><span class="icon round"><svg class="ic"><use href="#i-user"/></svg></span><div><strong>Experienced Doctors</strong><span class="lbl">Skilled. Caring. Trusted.</span></div></div>
+            <div><span class="icon round"><svg class="ic"><use href="#i-scan"/></svg></span><div><strong>Advanced Technology</strong><span class="lbl">Modern tools, better outcomes.</span></div></div>
+            <div><span class="icon round"><svg class="ic"><use href="#i-shield-plus"/></svg></span><div><strong>Hygienic &amp; Safe</strong><span class="lbl">Your safety is our priority.</span></div></div>
+            <div><span class="icon round"><svg class="ic"><use href="#i-badge"/></svg></span><div><strong>210 Google Reviews</strong><span class="lbl">Google Rating</span></div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- AI ASSISTANT -->
+      <section class="section">
+        <div class="section-inner">
+          <div class="ai-grid">
+            <div class="chat-copy">
+              <span class="kicker"><svg class="ic"><use href="#i-bot"/></svg> Patient guidance assistant</span>
+              <h2>Patients get guided before the clinic team <span class="teal-text">replies.</span></h2>
+              <p class="lead">Tell us your concern, preferred branch and time. We collect the details on WhatsApp and our team confirms your appointment.</p>
+              <div class="ai-options">
+                <div><span class="icon"><svg class="ic"><use href="#i-chat-dots"/></svg></span><h3>Instant Guidance</h3><p>Quick answers anytime, 24/7.</p></div>
+                <div><span class="icon"><svg class="ic"><use href="#i-pin"/></svg></span><h3>Branch Options</h3><p>Choose your nearest branch.</p></div>
+                <div><span class="icon"><svg class="ic"><use href="#i-cal"/></svg></span><h3>Smart Scheduling</h3><p>Pick a convenient time slot.</p></div>
+                <div><span class="icon"><svg class="ic"><use href="#i-shield-check"/></svg></span><h3>Expert Advice</h3><p>Clinically verified information.</p></div>
+              </div>
+              <div class="hero-actions">
+                <a class="btn btn-teal" href="https://wa.me/917840843477"><svg class="ic"><use href="#i-wa"/></svg> Chat on WhatsApp</a>
+                <a class="btn btn-outline" href="#locations"><svg class="ic"><use href="#i-pin"/></svg> Choose Branch</a>
+              </div>
+            </div>
+            <div class="chat-card">
+              <div class="chat-header">
+                <div class="bot"><span class="bot-face"><svg class="ic"><use href="#i-bot"/></svg></span><div><h4>I M Dentist Assistant</h4><p>Always here to help</p></div></div>
+                <strong class="chat-status"><span class="active-dot"></span> 24/7 Active</strong>
+              </div>
+              <div class="chat-body">
+                <div class="bubble bot-message">Welcome to I M Dentist 👋 How can we help you today?</div>
+                <div class="bubble user-message">Derawal Nagar. I need implant advice.<span class="time">10:30 AM <svg class="ic"><use href="#i-checks"/></svg></span></div>
+                <div class="bubble bot-message">Noted. Please pick a convenient time. Our team will confirm your appointment.<span class="time">10:30 AM</span></div>
+                <div class="slot-row"><button type="button" data-booking-open data-slot-preset="today"><svg class="ic"><use href="#i-cal"/></svg> Today</button><button type="button" data-booking-open data-slot-preset="tomorrow"><svg class="ic"><use href="#i-cal"/></svg> Tomorrow</button><button type="button" data-booking-open data-slot-preset="week"><svg class="ic"><use href="#i-cal"/></svg> This week</button></div>
+                <div class="bubble bot-message">I can also share location, parking notes and preparation steps.<span class="time">10:31 AM</span></div>
+                <button class="chat-input" type="button" data-booking-open aria-label="Start WhatsApp booking"><svg class="ic"><use href="#i-clip"/></svg><span>Type your message...</span><span class="send"><svg class="ic"><use href="#i-send"/></svg></span></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CASES / BEFORE-AFTER -->
+      <section class="section png-reference-section legacy-hidden" aria-hidden="true" aria-label="Smile transformations and before after cases">
+        <div class="png-reference-inner">
+          <img src="images/ref-transformations-section.png" alt="Real patients real transformations before and after section for I M Dentist" />
+        </div>
+      </section>
+      <section class="section alt">
+        <div class="section-inner">
+          <div class="cases-head">
+            <span class="kicker center"><svg class="ic"><use href="#i-smile"/></svg> Smile transformations</span>
+            <h2>Before &amp; After <span class="teal-text">Smile Transformations.</span></h2>
+            <span class="underline center" style="margin-top:16px"></span>
+            <p class="lead center">Explore smile, implant and cosmetic treatment possibilities through a clean before-and-after style.</p>
+          </div>
+          <div class="case-grid">
+            <article class="case-card"><div class="photo case-image" data-swap="case-smile-correction.jpg" data-position="center"><div class="photo-fallback"><svg class="ic"><use href="#i-smile"/></svg><span class="tag">Smile correction</span></div></div><div class="case-body"><span class="icon"><svg class="ic"><use href="#i-smile"/></svg></span><h3>Smile Correction</h3><p>From uneven smile to a more confident finish.</p><a class="case-link" href="#booking" data-booking-open>View Transformation <svg class="ic"><use href="#i-arrow"/></svg></a></div></article>
+            <article class="case-card"><div class="photo case-image" data-swap="case-full-mouth-restoration.jpg" data-position="center"><div class="photo-fallback"><svg class="ic"><use href="#i-implant"/></svg><span class="tag">Full-mouth restoration</span></div></div><div class="case-body"><span class="icon"><svg class="ic"><use href="#i-implant"/></svg></span><h3>Full-Mouth Restoration</h3><p>Restoring function, comfort and confidence.</p><a class="case-link" href="#booking" data-booking-open>View Patient Journey <svg class="ic"><use href="#i-arrow"/></svg></a></div></article>
+            <article class="case-card"><div class="photo case-image" data-swap="case-implant-restoration.jpg" data-position="center"><div class="photo-fallback"><svg class="ic"><use href="#i-implant"/></svg><span class="tag">Implant restoration</span></div></div><div class="case-body"><span class="icon"><svg class="ic"><use href="#i-implant"/></svg></span><h3>Dental Implant Restoration</h3><p>Complex implant care, planned with precision.</p><a class="case-link" href="#booking" data-booking-open>View Implant Case <svg class="ic"><use href="#i-arrow"/></svg></a></div></article>
+            <article class="case-card"><div class="photo case-image" data-swap="case-cosmetic-enhancement.jpg" data-position="center"><div class="photo-fallback"><svg class="ic"><use href="#i-sparkle"/></svg><span class="tag">Cosmetic enhancement</span></div></div><div class="case-body"><span class="icon"><svg class="ic"><use href="#i-sparkle"/></svg></span><h3>Cosmetic Smile Enhancement</h3><p>Subtle changes. Naturally beautiful results.</p><a class="case-link" href="#booking" data-booking-open>View Transformation <svg class="ic"><use href="#i-arrow"/></svg></a></div></article>
+          </div>
+          <div class="cta-band">
+            <div><h3>Wondering what's possible for your smile?</h3></div>
+            <div class="cta-choice">
+              <a class="btn btn-teal" href="#booking" data-booking-open><svg class="ic"><use href="#i-cal"/></svg> Book a Smile Consultation</a>
+              <a class="btn btn-ghost" href="https://wa.me/917840843477"><svg class="ic"><use href="#i-wa"/></svg> WhatsApp I M Dentist</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- LOCATIONS -->
+      <section id="locations" class="section">
+        <div class="section-inner">
+          <div class="locations-head">
+            <span class="kicker center"><svg class="ic"><use href="#i-pin"/></svg> Two New Delhi locations</span>
+            <h2>Choose the clinic that is <span class="teal-text">easiest to reach.</span></h2>
+            <span class="underline center" style="margin-top:16px"></span>
+            <p class="lead center">Two convenient clinics in North Delhi — Derawal Nagar and Pratap Nagar — with quick paths for calls and WhatsApp.</p>
+          </div>
+          <div class="location-grid">
+            <article class="location-card">
+              <div class="location-top">
+                <div>
+                  <span class="icon solid-navy round"><svg class="ic"><use href="#i-pin"/></svg></span>
+                  <h3>Derawal Nagar</h3>
+                  <p>A-332, Derawal Nagar, Gujranwala Town, near Pentamed Hospital, New Delhi — 110009</p>
+                  <div class="location-actions"><a class="btn btn-teal" href="https://maps.google.com/?q=I+M+Dentist+Derawal+Nagar+New+Delhi"><svg class="ic"><use href="#i-pin"/></svg> Open in Maps</a><a class="btn btn-outline" href="tel:+919212143477"><svg class="ic"><use href="#i-phone"/></svg> Call Clinic</a></div>
+                </div>
+                <div class="photo loc-thumb" data-swap="clinic-derawal.jpg"><div class="photo-fallback"><svg class="ic"><use href="#i-tooth"/></svg></div></div>
+              </div>
+              <div class="map">
+                <iframe title="Derawal Nagar map" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Derawal%20Nagar%20Gujranwala%20Town%20New%20Delhi%20110009&output=embed"></iframe>
+                <div class="map-card"><strong>I M Dentist — Derawal Nagar</strong><p>A-332, Gujranwala Town, New Delhi — 110009</p><div class="rate">4.9 Google Rating · 210 Reviews</div></div>
+              </div>
+              <div class="location-features"><span><svg class="ic"><use href="#i-car"/></svg> Easy Parking</span><span><svg class="ic"><use href="#i-train"/></svg> Near Metro</span><span><svg class="ic"><use href="#i-shield-check"/></svg> Hygienic &amp; Safe</span><span><svg class="ic"><use href="#i-clock"/></svg> Mon–Sun 10–8</span></div>
+            </article>
+            <article class="location-card">
+              <div class="location-top">
+                <div>
+                  <span class="icon solid-navy round"><svg class="ic"><use href="#i-pin"/></svg></span>
+                  <h3>Pratap Nagar</h3>
+                  <p>K-15, near Pratap Nagar Metro Station, Gulabi Bagh, Delhi — 110007</p>
+                  <div class="location-actions"><a class="btn btn-teal" href="https://maps.google.com/?q=I+M+Dentist+Pratap+Nagar+Delhi"><svg class="ic"><use href="#i-pin"/></svg> Open in Maps</a><a class="btn btn-outline" href="tel:+919212143477"><svg class="ic"><use href="#i-phone"/></svg> Call Clinic</a></div>
+                </div>
+                <div class="photo loc-thumb" data-swap="clinic-pratap.jpg"><div class="photo-fallback"><svg class="ic"><use href="#i-tooth"/></svg></div></div>
+              </div>
+              <div class="map">
+                <iframe title="Pratap Nagar map" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Pratap%20Nagar%20Metro%20Station%20Gulabi%20Bagh%20Delhi%20110007&output=embed"></iframe>
+                <div class="map-card"><strong>I M Dentist — Pratap Nagar</strong><p>K-15, Gulabi Bagh, Delhi — 110007</p><div class="rate">4.9 Google Rating · 210 Reviews</div></div>
+              </div>
+              <div class="location-features"><span><svg class="ic"><use href="#i-car"/></svg> Easy Parking</span><span><svg class="ic"><use href="#i-train"/></svg> Near Metro</span><span><svg class="ic"><use href="#i-shield-check"/></svg> Hygienic &amp; Safe</span><span><svg class="ic"><use href="#i-clock"/></svg> Mon–Sun 10–8</span></div>
+            </article>
+          </div>
+          <div class="cta-band" id="booking">
+            <div><h3>Need help choosing?</h3><p class="lead">We're here to guide you.</p></div>
+            <div class="cta-choice"><a class="btn btn-teal" href="#booking" data-booking-open><svg class="ic"><use href="#i-wa"/></svg> WhatsApp Booking</a><a class="btn btn-ghost" href="tel:+919212143477"><svg class="ic"><use href="#i-phone"/></svg> Call +91 92121 43477</a></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section class="section alt">
+        <div class="section-inner">
+          <div class="faq-grid">
+            <div>
+              <span class="kicker"><svg class="ic"><use href="#i-chat-dots"/></svg> Questions patients ask</span>
+              <h2>Questions before treatment? <span class="teal-text">Start here.</span></h2>
+              <span class="underline"></span>
+              <p class="lead">Clear answers to common questions about treatments, costs, comfort, appointments and what to expect.</p>
+              <div class="faq-visual"><div class="photo" data-swap="generated-faq-clinic.svg" style="min-height:300px"><div class="photo-fallback"><svg class="ic"><use href="#i-tooth"/></svg><span class="tag">Questions before treatment</span></div></div></div>
+            </div>
+            <div class="faq-list">
+              <details class="faq-item" open><summary class="faq-question"><span class="q-left"><span class="icon"><svg class="ic"><use href="#i-tooth"/></svg></span> Which treatment is right for my dental problem?</span><span class="chev"><svg class="ic"><use href="#i-chev"/></svg></span></summary><div class="faq-answer">The doctor will assess your concern, scans and comfort goals before suggesting the treatment options that fit your case.</div></details>
+              <details class="faq-item"><summary class="faq-question"><span class="q-left"><span class="icon"><svg class="ic"><use href="#i-heart"/></svg></span> Will my treatment be painful?</span><span class="chev"><svg class="ic"><use href="#i-chev"/></svg></span></summary><div class="faq-answer">Comfort-first protocols, careful planning and modern tools are used to keep treatment as calm as possible.</div></details>
+              <details class="faq-item"><summary class="faq-question"><span class="q-left"><span class="icon"><svg class="ic"><use href="#i-rupee"/></svg></span> How much will my treatment cost?</span><span class="chev"><svg class="ic"><use href="#i-chev"/></svg></span></summary><div class="faq-answer">Costs depend on diagnosis and treatment plan. The clinic shares options clearly before you decide.</div></details>
+              <details class="faq-item"><summary class="faq-question"><span class="q-left"><span class="icon"><svg class="ic"><use href="#i-clipboard"/></svg></span> Can I know the treatment plan before deciding?</span><span class="chev"><svg class="ic"><use href="#i-chev"/></svg></span></summary><div class="faq-answer">Yes. You can understand the plan, likely visits and care steps before committing to treatment.</div></details>
+              <details class="faq-item"><summary class="faq-question"><span class="q-left"><span class="icon"><svg class="ic"><use href="#i-cal"/></svg></span> How many visits will my treatment require?</span><span class="chev"><svg class="ic"><use href="#i-chev"/></svg></span></summary><div class="faq-answer">It depends on the procedure. Simple cases may need fewer visits, while implants and full-mouth work need planned stages.</div></details>
+              <details class="faq-item"><summary class="faq-question"><span class="q-left"><span class="icon"><svg class="ic"><use href="#i-implant"/></svg></span> Are dental implants suitable for me?</span><span class="chev"><svg class="ic"><use href="#i-chev"/></svg></span></summary><div class="faq-answer">Suitability depends on bone health, oral health and goals. The team can guide you after scans and consultation.</div></details>
+              <a class="btn btn-outline" href="#booking">View All Questions <svg class="ic"><use href="#i-arrow"/></svg></a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="dark-section">
+      <div class="footer-inner">
+        <div class="closing">
+          <div>
+            <span class="kicker"><svg class="ic"><use href="#i-cal"/></svg> Ready to book?</span>
+            <h2>Let I M Dentist help you choose the <span class="teal-text">right next step.</span></h2>
+            <p class="lead">Start on WhatsApp, choose your branch, and let the clinic team confirm the appointment.</p>
+          </div>
+          <div>
+            <div class="choice-grid">
+              <a class="choice teal" href="#booking" data-booking-open><span class="icon round"><svg class="ic"><use href="#i-wa"/></svg></span><div><h3>Book your consultation</h3><p>Chat on WhatsApp (24/7)</p></div></a>
+              <a class="choice white" href="#locations"><span class="icon round"><svg class="ic"><use href="#i-pin"/></svg></span><div><h3>Find nearest branch</h3><p>Derawal Nagar or Pratap Nagar</p></div></a>
+            </div>
+            <div class="dark-benefits">
+              <div><h3>Safe &amp; Hygienic</h3><p>Sterilised environment for your safety.</p></div>
+              <div><h3>Expert Team</h3><p>Experienced and caring dentists.</p></div>
+              <div><h3>Advanced Technology</h3><p>Modern equipment for precise treatment.</p></div>
+              <div><h3>Patient-First Care</h3><p>Comfort, care and support at every step.</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <a class="logo" href="#home">
+              <svg class="logo-mark" viewBox="0 0 48 48" aria-hidden="true">
+                <path d="M24 9c-2.6-2-5-3.2-8-3.2C11.5 5.8 8.5 9 8.5 14c0 4 1.2 6.6 2.4 10.8.9 3.1 1.3 7 2.3 9.5.5 1.3 2.3 1.4 3 .2 1-1.9 1.2-5.2 2-7.6.5-1.4 1-2.3 2.4-2.3" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+                <path d="M24 9c2.6-2 5-3.2 8-3.2 4.5 0 7.5 3.2 7.5 8.2 0 4-1.2 6.6-2.4 10.8-.9 3.1-1.3 7-2.3 9.5-.5 1.3-2.3 1.4-3 .2-1-1.9-1.2-5.2-2-7.6-.5-1.4-1-2.3-2.4-2.3" fill="none" stroke="#18aaa3" stroke-width="3" stroke-linecap="round"/>
+              </svg>
+              <span class="logo-text"><strong>I M Dentist</strong><span>Dental &amp; Facial Aesthetic Clinic</span></span>
+            </a>
+            <p>Creating healthy smiles with advanced dentistry, personalised care and a gentle touch.</p>
+            <div class="footer-social">
+              <a href="#" aria-label="Instagram"><svg class="ic"><use href="#i-ig"/></svg></a>
+              <a href="#" aria-label="Facebook"><svg class="ic"><use href="#i-fb"/></svg></a>
+              <a href="#" aria-label="YouTube"><svg class="ic"><use href="#i-yt"/></svg></a>
+              <a href="https://wa.me/917840843477" aria-label="WhatsApp"><svg class="ic"><use href="#i-wa"/></svg></a>
+            </div>
+          </div>
+          <div class="footer-col">
+            <h4>Quick Links</h4>
+            <a href="#home">Home</a><a href="#why">About Us</a><a href="#treatments">Treatments</a><a href="#team">Our Team</a><a href="#reviews">Reviews</a><a href="#locations">Contact Us</a>
+          </div>
+          <div class="footer-col">
+            <h4>Treatments</h4>
+            <a href="#treatments">Dental Implants</a><a href="#treatments">Smile Designing</a><a href="#treatments">Invisible Aligners</a><a href="#treatments">Root Canal Treatment</a><a href="#treatments">Teeth Whitening</a><a href="#treatments">Gum Treatment</a>
+          </div>
+          <div class="footer-col">
+            <h4>Our Branches</h4>
+            <p><strong>Derawal Nagar</strong><br />A-332, Gujranwala Town, near Pentamed Hospital, New Delhi — 110009</p>
+            <p><svg class="ic" style="display:inline;width:15px;height:15px;vertical-align:-2px;color:#18aaa3"><use href="#i-phone"/></svg> +91 92121 43477</p>
+            <p><strong>Pratap Nagar</strong><br />K-15, near Pratap Nagar Metro Station, Gulabi Bagh, Delhi — 110007</p>
+            <p><svg class="ic" style="display:inline;width:15px;height:15px;vertical-align:-2px;color:#18aaa3"><use href="#i-phone"/></svg> +91 92121 43477</p>
+          </div>
+          <div class="footer-col">
+            <h4>Clinic Hours</h4>
+            <p><strong>Monday – Saturday</strong><br />10:00 AM – 8:00 PM</p>
+            <p><strong>Sunday</strong><br />10:00 AM – 2:00 PM<br />(By Appointment Only)</p>
+            <a class="btn btn-ghost" href="tel:+919212143477" style="margin-top:8px"><svg class="ic"><use href="#i-phone"/></svg> Emergency Care</a>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <div><svg class="ic"><use href="#i-lock"/></svg><div><strong>100% Secure &amp; Confidential</strong><span>Your data is safe with us.</span></div></div>
+          <div><svg class="ic"><use href="#i-card"/></svg><div><strong>Payments Accepted</strong><span>Cash, Card, UPI &amp; EMI Options</span></div></div>
+          <div><svg class="ic"><use href="#i-heart"/></svg><div><strong>Follow Us</strong><span>Tips, offers &amp; more</span></div></div>
+          <div><svg class="ic"><use href="#i-tooth"/></svg><div><strong>© 2026 I M Dentist</strong><span>Privacy Policy | Terms &amp; Conditions</span></div></div>
+        </div>
+        <div class="site-credit">Built with <span class="heart" aria-hidden="true">&hearts;</span> by <a href="https://www.webwisedigital.net/" target="_blank" rel="noopener">Webwise Digital</a></div>
+      </div>
+    </footer>
+
+    <div class="sticky-actions" data-sticky-actions aria-label="Sticky booking action">
+      <a class="sticky-book" href="#booking" data-booking-open aria-label="Book on WhatsApp"><svg class="ic"><use href="#i-wa"/></svg><span class="sticky-text"><span>WhatsApp Booking</span><small>+91 78408 43477</small></span></a>
+    </div>
+
+    <div class="booking-modal" id="bookingModal" hidden aria-hidden="true">
+      <div class="booking-dialog" role="dialog" aria-modal="true" aria-labelledby="bookingTitle">
+        <button class="booking-close" type="button" data-booking-close aria-label="Close booking form">
+          <svg class="ic"><use href="#i-x"/></svg>
+        </button>
+
+        <div class="booking-head">
+          <span class="icon solid"><svg class="ic"><use href="#i-bot"/></svg></span>
+          <div>
+            <span class="kicker"><svg class="ic"><use href="#i-wa"/></svg> AI-assisted booking</span>
+            <h2 id="bookingTitle">Book a guided consultation</h2>
+            <p>Share your concern, preferred branch and time. The I M Dentist team will confirm your appointment on WhatsApp.</p>
+          </div>
+        </div>
+
+        <form class="booking-form" id="bookingForm">
+          <div class="form-grid">
+            <div class="field">
+              <label for="patientName">Patient name</label>
+              <input id="patientName" name="patientName" type="text" autocomplete="name" placeholder="Your full name" required />
+            </div>
+            <div class="field">
+              <label for="patientPhone">WhatsApp number</label>
+              <input id="patientPhone" name="patientPhone" type="text" inputmode="tel" autocomplete="tel" placeholder="+91..." required />
+            </div>
+            <div class="field">
+              <label for="branch">Preferred branch</label>
+              <select id="branch" name="branch" required>
+                <option value="">Choose branch</option>
+                <option>Derawal Nagar</option>
+                <option>Pratap Nagar</option>
+                <option>Not sure, please guide me</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="treatment">Treatment concern</label>
+              <select id="treatment" name="treatment" required>
+                <option value="">Choose treatment</option>
+                <option>Dental implants</option>
+                <option>Smile designing</option>
+                <option>Invisible aligners</option>
+                <option>Root canal treatment</option>
+                <option>Teeth whitening</option>
+                <option>Dental pain or emergency</option>
+                <option>General consultation</option>
+                <option>Not sure, please guide me</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="preferredDate">Preferred date</label>
+              <input id="preferredDate" name="preferredDate" type="date" required />
+            </div>
+            <div class="field">
+              <label for="preferredTime">Preferred time</label>
+              <select id="preferredTime" name="preferredTime" required>
+                <option value="">Choose time</option>
+                <option>10:00 AM - 12:00 PM</option>
+                <option>12:00 PM - 2:00 PM</option>
+                <option>2:00 PM - 5:00 PM</option>
+                <option>5:00 PM - 8:00 PM</option>
+                <option>Any available slot</option>
+              </select>
+            </div>
+            <div class="field full">
+              <label for="concern">Anything the doctor should know?</label>
+              <textarea id="concern" name="concern" placeholder="Example: pain, implant advice, smile correction, previous treatment, preferred branch notes"></textarea>
+            </div>
+          </div>
+
+          <div class="booking-slots">
+            <strong>Quick slot preference</strong>
+            <div class="slot-grid">
+              <button class="slot-choice" type="button" data-slot-choice="today"><svg class="ic"><use href="#i-cal"/></svg> Today</button>
+              <button class="slot-choice" type="button" data-slot-choice="tomorrow"><svg class="ic"><use href="#i-cal"/></svg> Tomorrow</button>
+              <button class="slot-choice" type="button" data-slot-choice="week"><svg class="ic"><use href="#i-cal"/></svg> This week</button>
+              <button class="slot-choice" type="button" data-slot-choice="any"><svg class="ic"><use href="#i-clock"/></svg> Any slot</button>
+            </div>
+          </div>
+
+          <div class="booking-summary">
+            <span class="icon round"><svg class="ic"><use href="#i-shield-check"/></svg></span>
+            <div>
+              <strong>Clinic-confirmed appointment</strong>
+              <span>This sends a structured WhatsApp request to the clinic team. The final slot is confirmed by I M Dentist after they check doctor availability.</span>
+            </div>
+          </div>
+
+          <div class="booking-actions">
+            <button class="btn btn-teal" type="submit"><svg class="ic"><use href="#i-wa"/></svg> Send Booking Request on WhatsApp</button>
+            <a class="btn btn-outline" href="tel:+919212143477"><svg class="ic"><use href="#i-phone"/></svg> Call Instead</a>
+          </div>
+          <p class="form-note">No medical records are stored on this page. Please avoid sharing sensitive reports here unless the clinic asks for them on WhatsApp.</p>
+        </form>
+      </div>
+    </div>
+
+    <script>
+
+      // Swap-slot loader: if a real image file exists for a data-swap slot,
+      // use it as the background and hide the fallback. Silent if missing.
+      document.querySelectorAll('.photo[data-swap]').forEach(function (el) {
+        var file = el.getAttribute('data-swap');
+        var img = new Image();
+        img.onload = function () {
+          el.style.backgroundImage = 'url("images/' + file + '")';
+          el.style.backgroundSize = 'cover';
+          el.style.backgroundPosition = el.getAttribute('data-position') || 'center';
+          var fb = el.querySelector('.photo-fallback');
+          if (fb) fb.style.display = 'none';
+        };
+        img.src = 'images/' + file;
+      });
+
+      var bookingModal = document.getElementById('bookingModal');
+      var bookingForm = document.getElementById('bookingForm');
+      var preferredDate = document.getElementById('preferredDate');
+      var preferredTime = document.getElementById('preferredTime');
+      var lastFocus = null;
+
+      function padDatePart(value) {
+        return String(value).padStart(2, '0');
+      }
+
+      function toDateInputValue(date) {
+        return [
+          date.getFullYear(),
+          padDatePart(date.getMonth() + 1),
+          padDatePart(date.getDate())
+        ].join('-');
+      }
+
+      function setSlotPreset(preset) {
+        if (!preferredDate || !preferredTime) return;
+        var date = new Date();
+
+        if (preset === 'tomorrow') {
+          date.setDate(date.getDate() + 1);
+          preferredTime.value = '10:00 AM - 12:00 PM';
+        } else if (preset === 'week') {
+          date.setDate(date.getDate() + 3);
+          preferredTime.value = 'Any available slot';
+        } else if (preset === 'any') {
+          preferredTime.value = 'Any available slot';
+        } else {
+          preferredTime.value = '5:00 PM - 8:00 PM';
+        }
+
+        if (preset !== 'any') {
+          preferredDate.value = toDateInputValue(date);
+        }
+
+        document.querySelectorAll('[data-slot-choice]').forEach(function (button) {
+          button.classList.toggle('is-active', button.getAttribute('data-slot-choice') === preset);
+        });
+      }
+
+      function openBooking(event) {
+        if (event) event.preventDefault();
+        if (!bookingModal) return;
+        lastFocus = document.activeElement;
+        bookingModal.hidden = false;
+        bookingModal.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('modal-open');
+
+        var preset = event && event.currentTarget && event.currentTarget.getAttribute('data-slot-preset');
+        if (preset) setSlotPreset(preset);
+
+        requestAnimationFrame(function () {
+          bookingModal.classList.add('is-open');
+          var firstField = document.getElementById('patientName');
+          if (firstField) firstField.focus();
+        });
+      }
+
+      function closeBooking() {
+        if (!bookingModal) return;
+        bookingModal.classList.remove('is-open');
+        bookingModal.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('modal-open');
+        window.setTimeout(function () {
+          bookingModal.hidden = true;
+        }, 180);
+        if (lastFocus && typeof lastFocus.focus === 'function') {
+          lastFocus.focus();
+        }
+      }
+
+      document.querySelectorAll('[data-booking-open]').forEach(function (trigger) {
+        trigger.addEventListener('click', openBooking);
+      });
+
+      (function setupStickyBooking() {
+        var stickyActions = document.querySelector('[data-sticky-actions]');
+        var hero = document.querySelector('.hero');
+        if (!stickyActions || !hero) return;
+
+        function setStickyState() {
+          var heroBottom = hero.getBoundingClientRect().bottom;
+          stickyActions.classList.toggle('is-visible', heroBottom < 80);
+        }
+
+        setStickyState();
+        window.addEventListener('scroll', setStickyState, { passive: true });
+        window.addEventListener('resize', setStickyState);
+      })();
+
+      document.querySelectorAll('[data-booking-close]').forEach(function (trigger) {
+        trigger.addEventListener('click', closeBooking);
+      });
+
+      document.querySelectorAll('[data-slot-choice]').forEach(function (button) {
+        button.addEventListener('click', function () {
+          setSlotPreset(button.getAttribute('data-slot-choice'));
+        });
+      });
+
+      if (preferredDate) {
+        preferredDate.min = toDateInputValue(new Date());
+      }
+
+      if (bookingModal) {
+        bookingModal.addEventListener('click', function (event) {
+          if (event.target === bookingModal) closeBooking();
+        });
+      }
+
+      document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape' && bookingModal && !bookingModal.hidden) {
+          closeBooking();
+        }
+      });
+
+      if (bookingForm) {
+        bookingForm.addEventListener('submit', function (event) {
+          event.preventDefault();
+          if (!bookingForm.reportValidity()) return;
+
+          var data = new FormData(bookingForm);
+          var message = [
+            'Hello I M Dentist team, I would like to book a consultation.',
+            '',
+            'Name: ' + data.get('patientName'),
+            'WhatsApp number: ' + data.get('patientPhone'),
+            'Preferred branch: ' + data.get('branch'),
+            'Treatment concern: ' + data.get('treatment'),
+            'Preferred date: ' + data.get('preferredDate'),
+            'Preferred time: ' + data.get('preferredTime'),
+            'Notes: ' + (data.get('concern') || 'No extra notes'),
+            '',
+            'Please confirm the slot on WhatsApp.'
+          ].join('\n');
+
+          window.location.href = 'https://wa.me/917840843477?text=' + encodeURIComponent(message);
+        });
+      }
+    </script>
+    <style>
+      @media (prefers-reduced-motion: no-preference) {
+        .reveal, .reveal-group > * {
+          opacity: 0; transform: translateY(26px);
+          transition: opacity .7s cubic-bezier(.22,.61,.36,1), transform .7s cubic-bezier(.22,.61,.36,1);
+          will-change: opacity, transform;
+        }
+        .reveal.in, .reveal-group.in > * { opacity: 1; transform: none; }
+        .reveal-group.in > *:nth-child(1){ transition-delay:.00s }
+        .reveal-group.in > *:nth-child(2){ transition-delay:.08s }
+        .reveal-group.in > *:nth-child(3){ transition-delay:.16s }
+        .reveal-group.in > *:nth-child(4){ transition-delay:.24s }
+        .reveal-group.in > *:nth-child(5){ transition-delay:.32s }
+        .reveal-group.in > *:nth-child(6){ transition-delay:.40s }
+        .hero .hero-copy > *, .hero .hero-photo {
+          opacity: 0; transform: translateY(20px);
+          animation: wwRise .9s cubic-bezier(.22,.61,.36,1) forwards;
+        }
+        .hero .hero-copy > *:nth-child(1){ animation-delay:.05s }
+        .hero .hero-copy > *:nth-child(2){ animation-delay:.15s }
+        .hero .hero-copy > *:nth-child(3){ animation-delay:.25s }
+        .hero .hero-copy > *:nth-child(4){ animation-delay:.35s }
+        .hero .hero-photo{ animation-delay:.30s }
+        @keyframes wwRise { to { opacity:1; transform:none } }
+        .tech-card, .case-card, .review-card, .process-card, .location-card, .story-card {
+          transition: transform .3s ease, box-shadow .3s ease;
+        }
+        .tech-card:hover, .case-card:hover, .review-card:hover,
+        .process-card:hover, .location-card:hover, .story-card:hover {
+          transform: translateY(-6px); box-shadow: 0 26px 50px rgba(7,48,109,.16);
+        }
+      }
+    </style>
+    <script>
+      (function () {
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+        document.querySelectorAll('.story-head, .tech-intro, .partner-row, .payment-row, .facilities-block, .flow-hero, .ai-grid, .cases-head, .cta-band, .locations-head, .faq-grid, .closing, .footer-grid, .footer-bottom').forEach(function (el) {
+          el.classList.add('reveal');
+        });
+        document.querySelectorAll('.hero-trust, .support-bar, .metric-strip, .clinical-stats, .panel-row, .review-grid, .team-points, .story-grid, .tech-layout, .facility-grid, .facility-note, .process-grid, .benefit-row, .ai-options, .case-grid, .location-grid, .dark-benefits, .payment-grid').forEach(function (el) {
+          el.classList.add('reveal-group');
+        });
+
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+          });
+        }, { threshold: 0.16, rootMargin: '0px 0px -8% 0px' });
+        document.querySelectorAll('.reveal, .reveal-group').forEach(function (el) { io.observe(el); });
+
+        function animateCount(el) {
+          var raw = el.getAttribute('data-to');
+          var to = parseFloat(raw), suffix = el.getAttribute('data-suffix') || '';
+          var decimals = raw.indexOf('.') > -1 ? 1 : 0, start = null, dur = 1400;
+          var formatter = new Intl.NumberFormat('en-IN', {
+            minimumFractionDigits: decimals,
+            maximumFractionDigits: decimals
+          });
+          function step(ts) {
+            if (!start) start = ts;
+            var p = Math.min((ts - start) / dur, 1), eased = 1 - Math.pow(1 - p, 3);
+            var current = Number((to * eased).toFixed(decimals));
+            el.textContent = formatter.format(current) + suffix;
+            if (p < 1) requestAnimationFrame(step);
+          }
+          requestAnimationFrame(step);
+        }
+        var cio = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) { animateCount(e.target); cio.unobserve(e.target); }
+          });
+        }, { threshold: 0.6 });
+        document.querySelectorAll('.countup').forEach(function (el) { cio.observe(el); });
+      })();
+    </script>
+  </body>
+</html>
