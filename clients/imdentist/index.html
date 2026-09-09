@@ -189,7 +189,7 @@
          IMAGE SWAP GUIDE:
            1. hero-reference-smiling-patient.png -> hero smiling woman
            2. dr-sanchit.jpg -> "Why I M Dentist" doctor authority card only
-           3. team-8-doctors.png -> "Our Team" group photo
+           3. team-clinic.jpg -> "Our Team" group photo
            4. clinic-tech-scanning.jpg / clinic-tech-planning.jpg /
               clinic-tech-treatment.jpg -> technology cards
            5. clinic-aligner-consult.jpg -> aligner/payment section
@@ -577,9 +577,18 @@
       .team-points .icon .ic { width: 22px; height: 22px; }
       .team-points strong { color: var(--navy); display: block; font-size: 15px; font-weight: 800; }
       .team-points span { color: var(--muted); font-size: 13px; }
-      .team-photo { min-height: 400px; }
-      .team-photo .photo { height: 100%; min-height: 400px; }
-      @media (max-width: 900px) { .team-grid { grid-template-columns: 1fr; } .team-photo { min-height: 320px; } }
+      .team-photo { min-height: 0; }
+      .team-photo img {
+        width: 100%;
+        height: auto;
+        display: block;
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-card);
+        object-fit: cover;
+        object-position: center 42%;
+        background: #e8eef6;
+      }
+      @media (max-width: 900px) { .team-grid { grid-template-columns: 1fr; } .team-photo { min-height: 0; } }
 
       /* ---- STORIES ---- */
       .story-head { display: flex; align-items: center; justify-content: space-between; gap: 28px; flex-wrap: wrap; margin-bottom: 30px; }
@@ -900,8 +909,7 @@
 
         .why-photo,
         .why-photo .photo { min-height: 260px !important; }
-        .team-photo,
-        .team-photo .photo { min-height: 220px !important; }
+        .team-photo { min-height: 0 !important; }
         .team-points,
         .ai-options { grid-template-columns: 1fr; }
         .metric,
@@ -1227,16 +1235,8 @@
                 <div><span class="icon"><svg class="ic"><use href="#i-heart"/></svg></span><strong>Family Dentistry</strong><span>Preventive and routine care for all ages.</span></div>
               </div>
             </div>
-            <!-- SWAP SLOT: team group photo -->
             <div class="team-photo">
-              <div class="photo" data-swap="team-8-doctors.png" data-position="center" style="min-height:400px">
-                <div class="photo-fallback">
-                  <svg class="ic"><use href="#i-users"/></svg>
-                  <strong>Our Team</strong>
-                  <span>Group photo</span>
-                  <span class="tag">Care team</span>
-                </div>
-              </div>
+              <img src="images/team-clinic.jpg" width="1280" height="960" alt="The I M Dentist doctors and clinic team" loading="lazy" decoding="async" />
             </div>
           </div>
         </div>
